@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poradnik Techniczny – Schody Zewnętrzne Żelbetowe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Playfair+Display:wght@700;900&display=swap');
+
+  :root {
+    --navy: #0b1622;
+    --navy2: #152236;
+    --gold: #c07800;
+    --gold2: #e8a020;
+    --red: #c0392b;
+    --green: #1a7a4a;
+    --gray1: #f4f5f7;
+    --gray2: #e8eaed;
+    --gray3: #c0c6cf;
+    --gray4: #7a8694;
+    --text: #1a2332;
+    --line: #dde2e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 10pt;
+    color: var(--text);
+    background: white;
+    line-height: 1.55;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 8mm;
+    background: white;
+    position: relative;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  @media print {
+    body { margin: 0; }
+    .page { margin: 0; page-break-after: always; box-shadow: none; }
+  }
+
+  /* ─────────────────────────────────
+     COVER PAGE
+  ───────────────────────────────── */
+  .cover {
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    min-height: 297mm;
+    padding: 0;
+  }
+
+  .cover-stripe {
+    background: var(--gold);
+    height: 6px;
+    width: 100%;
+  }
+
+  .cover-header {
+    padding: 14mm 14mm 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cover-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    padding: 4px 8px;
+  }
+
+  .cover-doc-no {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+
+  .cover-main {
+    padding: 18mm 14mm 0;
+    flex: 1;
+  }
+
+  .cover-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6mm;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32pt;
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 4mm;
+  }
+
+  .cover-title span {
+    color: var(--gold);
+  }
+
+  .cover-subtitle {
+    font-size: 11pt;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    margin-bottom: 12mm;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 10mm;
+  }
+
+  .cover-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4mm;
+    margin-bottom: 12mm;
+  }
+
+  .cover-spec-box {
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 5mm;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .cover-spec-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 6.5pt;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+
+  .cover-spec-val {
+    font-size: 16pt;
+    font-weight: 700;
+    color: white;
+  }
+
+  .cover-spec-unit {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.45);
+    margin-left: 2px;
+  }
+
+  .cover-warning {
+    background: rgba(192,120,0,0.12);
+    border-left: 4px solid var(--gold);
+    padding: 5mm 6mm;
+    margin-bottom: 12mm;
+  }
+
+  .cover-warning p {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+  }
+
+  .cover-warning strong {
+    color: var(--gold2);
+  }
+
+  .cover-footer {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 6mm 14mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-footer-author {
+    color: rgba(255,255,255,0.4);
+    font-size: 8pt;
+  }
+
+  .cover-footer-author strong {
+    color: rgba(255,255,255,0.75);
+    display: block;
+    font-size: 9pt;
+  }
+
+  .cover-footer-stamp {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 6.5pt;
+    color: rgba(255,255,255,0.25);
+    text-align: right;
+    letter-spacing: 1px;
+  }
+
+  /* ─────────────────────────────────
+     CONTENT PAGES
+  ───────────────────────────────── */
+  .content-page {
+    padding: 12mm 14mm 14mm;
+  }
+
+  /* Page header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 3mm;
+    margin-bottom: 8mm;
+  }
+
+  .page-header-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt;
+    color: var(--gray4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .page-header-right {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  /* Section heading */
+  .section-num {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 2px 7px;
+    letter-spacing: 1px;
+    margin-bottom: 3mm;
+  }
+
+  h1.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 5mm;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4mm;
+  }
+
+  h3 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3mm;
+    margin-top: 5mm;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.5mm;
+  }
+
+  p {
+    margin-bottom: 3mm;
+    font-size: 9.5pt;
+    line-height: 1.6;
+  }
+
+  /* Two-column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5mm;
+  }
+
+  /* Info boxes */
+  .box {
+    border-radius: 2px;
+    padding: 5mm;
+    margin-bottom: 4mm;
+  }
+
+  .box-info {
+    background: #f0f5ff;
+    border-left: 4px solid #2563eb;
+  }
+
+  .box-warn {
+    background: #fff8e6;
+    border-left: 4px solid var(--gold);
+  }
+
+  .box-danger {
+    background: #fff0ef;
+    border-left: 4px solid var(--red);
+  }
+
+  .box-ok {
+    background: #f0faf4;
+    border-left: 4px solid var(--green);
+  }
+
+  .box-dark {
+    background: var(--navy);
+    padding: 5mm 6mm;
+    margin-bottom: 4mm;
+  }
+
+  .box-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 2mm;
+  }
+
+  .box-info .box-label { color: #2563eb; }
+  .box-warn .box-label { color: var(--gold); }
+  .box-danger .box-label { color: var(--red); }
+  .box-ok .box-label { color: var(--green); }
+  .box-dark .box-label { color: var(--gold); }
+
+  .box p {
+    font-size: 9pt;
+    margin-bottom: 1.5mm;
+  }
+
+  .box-dark p {
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* Tables */
+  table.tech {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    margin-bottom: 4mm;
+  }
+
+  table.tech th {
+    background: var(--navy);
+    color: white;
+    font-weight: 600;
+    padding: 3mm 4mm;
+    text-align: left;
+    font-size: 8pt;
+    letter-spacing: 0.3px;
+  }
+
+  table.tech td {
+    padding: 2.5mm 4mm;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  table.tech tr:nth-child(even) td {
+    background: var(--gray1);
+  }
+
+  table.tech td.num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  table.tech td.bad {
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  table.tech td.good {
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  /* Parameter display */
+  .param-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3mm;
+    margin-bottom: 5mm;
+  }
+
+  .param-box {
+    background: var(--gray1);
+    border: 1px solid var(--gray2);
+    padding: 4mm;
+    text-align: center;
+  }
+
+  .param-label {
+    font-size: 7pt;
+    color: var(--gray4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 1.5mm;
+  }
+
+  .param-value {
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--navy);
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1;
+  }
+
+  .param-unit {
+    font-size: 8pt;
+    color: var(--gray4);
+  }
+
+  /* Formula display */
+  .formula-box {
+    background: var(--navy);
+    color: white;
+    padding: 5mm 7mm;
+    margin: 4mm 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4mm;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .formula-text {
+    font-size: 13pt;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .formula-sub {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2mm;
+    text-align: center;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    margin-bottom: 4mm;
+  }
+
+  .checklist li {
+    font-size: 9pt;
+    padding: 2.5mm 0 2.5mm 8mm;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 3mm;
+  }
+
+  .check-box {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--navy);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check-box.danger {
+    border-color: var(--red);
+  }
+
+  .checklist li.critical {
+    background: #fff8f8;
+    padding-left: 8mm;
+    border-left: 3px solid var(--red);
+  }
+
+  /* Layer diagram */
+  .layer-diagram {
+    margin: 5mm 0;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  /* Photo placeholder */
+  .photo-ph {
+    background: var(--gray1);
+    border: 1.5px dashed var(--gray3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2mm;
+    padding: 6mm;
+    min-height: 35mm;
+    text-align: center;
+  }
+
+  .photo-ph-icon {
+    font-size: 18pt;
+    color: var(--gray3);
+  }
+
+  .photo-ph-label {
+    font-size: 8pt;
+    color: var(--gray4);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .photo-caption {
+    font-size: 7.5pt;
+    color: var(--gray4);
+    font-style: italic;
+    margin-top: 1.5mm;
+    padding: 1mm 2mm;
+    background: var(--gray1);
+    border-left: 2px solid var(--gray3);
+  }
+
+  /* Warning strip */
+  .warn-strip {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 8.5pt;
+    padding: 3mm 5mm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 4mm 0;
+  }
+
+  /* Error item */
+  .error-item {
+    background: #fff0ef;
+    border: 1px solid #fcd5d2;
+    border-left: 5px solid var(--red);
+    padding: 4mm 5mm;
+    margin-bottom: 3mm;
+  }
+
+  .error-title {
+    font-weight: 700;
+    font-size: 9.5pt;
+    color: var(--red);
+    margin-bottom: 1.5mm;
+  }
+
+  .error-effect {
+    font-size: 8.5pt;
+    color: #7a1010;
+    margin-bottom: 1.5mm;
+  }
+
+  .error-fix {
+    font-size: 8.5pt;
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  /* Page number */
+  .page-num {
+    position: absolute;
+    bottom: 7mm;
+    right: 14mm;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt;
+    color: var(--gray3);
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 5mm 0;
+  }
+
+  small.tech-note {
+    font-size: 7.5pt;
+    color: var(--gray4);
+    font-style: italic;
+  }
+
+  .highlight {
+    background: #fff8e6;
+    padding: 1px 3px;
+    font-weight: 500;
+  }
+
+  strong.gold { color: var(--gold); }
+  strong.red  { color: var(--red); }
+  strong.green{ color: var(--green); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 1 – OKŁADKA
+═══════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-stripe"></div>
+
+  <div class="cover-header">
+    <div class="cover-badge">Dokument Techniczny</div>
+    <div class="cover-doc-no">REF: SCH-ŻEL-2025 / v1.0</div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-label">Poradnik dla Inwestora</div>
+
+    <h1 class="cover-title">
+      Schody Zewnętrzne<br>
+      <span>Żelbetowe</span><br>
+      od Podstaw
+    </h1>
+
+    <div class="cover-subtitle">
+      Jak zrobić trwałe schody na skarpie — bez błędów, bez domysłów, bez kompromisów
+    </div>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-specs">
+      <div class="cover-spec-box">
+        <div class="cover-spec-label">Szerokość</div>
+        <div class="cover-spec-val">150<span class="cover-spec-unit">cm</span></div>
+      </div>
+      <div class="cover-spec-box">
+        <div class="cover-spec-label">Długość</div>
+        <div class="cover-spec-val">500<span class="cover-spec-unit">cm</span></div>
+      </div>
+      <div class="cover-spec-box">
+        <div class="cover-spec-label">Wysokość</div>
+        <div class="cover-spec-val">240<span class="cover-spec-unit">cm</span></div>
+      </div>
+      <div class="cover-spec-box">
+        <div class="cover-spec-label">Ilość Stopni</div>
+        <div class="cover-spec-val">15<span class="cover-spec-unit">–16</span></div>
+      </div>
+      <div class="cover-spec-box">
+        <div class="cover-spec-label">Wys. Stopnia</div>
+        <div class="cover-spec-val">16<span class="cover-spec-unit">cm</span></div>
+      </div>
+      <div class="cover-spec-box">
+        <div class="cover-spec-label">Głęb. Stopnia</div>
+        <div class="cover-spec-val">31<span class="cover-spec-unit">cm</span></div>
+      </div>
+    </div>
+
+    <div class="cover-warning">
+      <p><strong>Uwaga dla inwestora:</strong> Ten dokument powstał na podstawie konkretnych warunków terenowych Twojej inwestycji. Zawiera wyłącznie zweryfikowane informacje techniczne. Każde odstępstwo od opisanych tu zasad podbudowy, zbrojenia i dylatacji niesie ryzyko pęknięć, osiadania lub całkowitego zniszczenia schodów w ciągu 2–5 lat.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="box box-warn" style="margin-bottom:0">
+        <div class="box-label">⚠ Warunki Terenowe</div>
+        <p>Skarpa / nasyp — brak stabilnego gruntu<br>
+        Ściana: krzywa, popękana, bez izolacji<br>
+        Istniejące rury przy ścianie</p>
+      </div>
+      <div class="box box-ok" style="margin-bottom:0">
+        <div class="box-label">✓ Przeznaczenie</div>
+        <p>Schody dla osób starszych<br>
+        Parametry łagodne i komfortowe<br>
+        Wzór Blondela spełniony</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-author">
+      Opracowanie techniczne<br>
+      <strong>Arkadiusz Bunkowski — Specjalista ds. Remontów</strong>
+    </div>
+    <div class="cover-footer-stamp">
+      DOKUMENT AUTORSKI<br>
+      WSZELKIE PRAWA ZASTRZEŻONE<br>
+      arkadiuszbunkowski.pl
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 2 – PARAMETRY + RYSUNEK SCHODÓW
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 01 — Parametry</div>
+  </div>
+
+  <div class="section-num">SEKCJA 01</div>
+  <h1 class="section-title">Parametry Techniczne Schodów</h1>
+
+  <div class="param-grid">
+    <div class="param-box">
+      <div class="param-label">Szerokość</div>
+      <div class="param-value">150</div>
+      <div class="param-unit">cm</div>
+    </div>
+    <div class="param-box">
+      <div class="param-label">Długość</div>
+      <div class="param-value">500</div>
+      <div class="param-unit">cm</div>
+    </div>
+    <div class="param-box">
+      <div class="param-label">Wysokość całkowita</div>
+      <div class="param-value">240</div>
+      <div class="param-unit">cm</div>
+    </div>
+    <div class="param-box">
+      <div class="param-label">Ilość stopni</div>
+      <div class="param-value">15</div>
+      <div class="param-unit">szt.</div>
+    </div>
+    <div class="param-box">
+      <div class="param-label">Wysokość stopnia (h)</div>
+      <div class="param-value">16</div>
+      <div class="param-unit">cm</div>
+    </div>
+    <div class="param-box">
+      <div class="param-label">Głębokość stopnia (g)</div>
+      <div class="param-value">31</div>
+      <div class="param-unit">cm</div>
+    </div>
+  </div>
+
+  <!-- RYSUNEK TECHNICZNY SCHODÓW -->
+  <div class="section-num">RYSUNEK 01</div>
+  <h2 class="section-title">Przekrój Boczny — Schody z Wymiarami</h2>
+
+  <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid #dde2e8;background:#f9fafb;display:block;">
+    <!-- Grid pomocniczy -->
+    <defs>
+      <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e8eaed" stroke-width="0.5"/>
+      </pattern>
+      <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#0b1622"/>
+      </marker>
+      <marker id="arrow-gold" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#c07800"/>
+      </marker>
+      <marker id="arrow-rev" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto">
+        <path d="M8,0 L8,6 L0,3 z" fill="#0b1622"/>
+      </marker>
+    </defs>
+    <rect width="580" height="280" fill="url(#grid)"/>
+
+    <!-- Ściana przy schodach (lewa) -->
+    <rect x="30" y="10" width="18" height="230" fill="#9ca8b5" stroke="#0b1622" stroke-width="1.5"/>
+    <!-- Pęknięcia na ścianie -->
+    <line x1="36" y1="40" x2="42" y2="70" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="38" y1="100" x2="33" y2="130" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="40" y1="160" x2="44" y2="185" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="39" y="8" font-size="7" fill="#c0392b" text-anchor="middle" font-family="IBM Plex Mono,monospace">⚠</text>
+    <text x="14" y="120" font-size="6.5" fill="#7a8694" text-anchor="middle" transform="rotate(-90,14,120)" font-family="IBM Plex Sans,sans-serif">ŚCIANA (popękana)</text>
+
+    <!-- Podłoże / nasyp -->
+    <path d="M48,240 L530,240 L530,260 Q480,255 400,258 Q300,262 200,258 Q120,255 48,260 Z" fill="#c8b99a" stroke="#9a8060" stroke-width="1"/>
+    <text x="290" y="255" font-size="7" fill="#7a5030" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">NASYP / SKARPA (piasek — wymaga zagęszczenia)</text>
+
+    <!-- Warstwy podbudowy (widoczne pod schodami) -->
+    <!-- Tłuczeń -->
+    <rect x="48" y="210" width="482" height="25" fill="#8aabce" stroke="#5a7a9e" stroke-width="0.8" opacity="0.85"/>
+    <!-- Kliniec -->
+    <rect x="48" y="200" width="482" height="10" fill="#a8c4a0" stroke="#6a9460" stroke-width="0.8" opacity="0.85"/>
+    <!-- Beton podkładowy -->
+    <rect x="48" y="190" width="482" height="10" fill="#c8c8c8" stroke="#888" stroke-width="0.8" opacity="0.9"/>
+
+    <!-- STOPNIE (15 stopni, h=16, g=31, skala: 1cm = 1.6px) -->
+    <!-- h=16 → 14px; g=31 → 28px -->
+    <!-- Schody od lewej do prawej, od dołu do góry -->
+    <!-- Podstawa: y=190 (poziom betonu podkładowego) -->
+    <!-- Stopień 1 (najniższy) = tylko cokół -->
+
+    <!-- Polylinia konturowa schodów -->
+    <polyline 
+      points="48,190 48,176 76,176 76,162 104,162 104,148 132,148 132,134 160,134 160,120 188,120 188,106 216,106 216,92 244,92 244,78 272,78 272,64 300,64 300,64"
+      fill="none" stroke="#0b1622" stroke-width="0" />
+
+    <!-- Rysujemy każdy stopień jako prostokąt -->
+    <!-- Beton schodów — płyta -->
+    <polygon 
+      points="48,190 530,190 530,64 300,64 272,64 272,78 244,78 244,92 216,92 216,106 188,106 188,120 160,120 160,134 132,134 132,148 104,148 104,162 76,162 76,176 48,176"
+      fill="#d6cfc4" stroke="#0b1622" stroke-width="0"/>
+
+    <!-- Obrysy stopni (linie) -->
+    <polyline 
+      points="48,176 76,176 76,162 104,162 104,148 132,148 132,134 160,134 160,120 188,120 188,106 216,106 216,92 244,92 244,78 272,78 272,64 530,64"
+      fill="none" stroke="#0b1622" stroke-width="1.8"/>
+    <line x1="48" y1="190" x2="530" y2="190" stroke="#0b1622" stroke-width="1.8"/>
+    <line x1="530" y1="64" x2="530" y2="190" stroke="#0b1622" stroke-width="1.8"/>
+    <line x1="48" y1="176" x2="48" y2="190" stroke="#0b1622" stroke-width="1.8"/>
+
+    <!-- Pionowe linie stopni -->
+    <line x1="76" y1="162" x2="76" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <line x1="104" y1="148" x2="104" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <line x1="132" y1="134" x2="132" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <line x1="160" y1="120" x2="160" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <line x1="188" y1="106" x2="188" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <line x1="216" y1="92" x2="216" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <line x1="244" y1="78" x2="244" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <line x1="272" y1="64" x2="272" y2="190" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+    <!-- Zbrojenie (zaznaczone jako linie) -->
+    <line x1="50" y1="184" x2="528" y2="184" stroke="#e8a020" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="290" y="182" font-size="6.5" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">— ZBROJENIE φ10 —</text>
+
+    <!-- Dylatacja przy ścianie -->
+    <rect x="46" y="64" width="4" height="126" fill="#c07800" opacity="0.7"/>
+    <text x="42" y="135" font-size="6.5" fill="#c07800" text-anchor="end" font-family="IBM Plex Mono,monospace" transform="rotate(-90,42,135)">DYLATACJA 20mm</text>
+
+    <!-- WYMIARY -->
+    <!-- Szerokość (pozioma) -->
+    <line x1="48" y1="274" x2="530" y2="274" stroke="#0b1622" stroke-width="1" marker-start="url(#arrow-rev)" marker-end="url(#arrow)"/>
+    <text x="289" y="271" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">500 cm</text>
+
+    <!-- Wysokość całkowita -->
+    <line x1="545" y1="64" x2="545" y2="190" stroke="#0b1622" stroke-width="1" marker-start="url(#arrow-rev)" marker-end="url(#arrow)"/>
+    <text x="565" y="132" font-size="7.5" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600" transform="rotate(90,565,132)">240 cm</text>
+
+    <!-- Wymiar stopnia h -->
+    <line x1="536" y1="176" x2="536" y2="190" stroke="#c07800" stroke-width="1" marker-start="url(#arrow-rev)" marker-end="url(#arrow)"/>
+    <text x="542" y="184" font-size="6.5" fill="#c07800" font-family="IBM Plex Mono,monospace">16cm</text>
+
+    <!-- Wymiar głębokości g -->
+    <line x1="48" y1="268" x2="76" y2="268" stroke="#c07800" stroke-width="1" marker-start="url(#arrow-rev)" marker-end="url(#arrow)"/>
+    <text x="62" y="265" font-size="6.5" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">31cm</text>
+
+    <!-- Legenda warstw -->
+    <rect x="305" y="193" width="10" height="7" fill="#8aabce" stroke="#5a7a9e" stroke-width="0.5"/>
+    <text x="318" y="199" font-size="6.5" fill="#2a3a4a" font-family="IBM Plex Sans,sans-serif">tłuczeń 20–25cm</text>
+    <rect x="305" y="202" width="10" height="7" fill="#a8c4a0" stroke="#6a9460" stroke-width="0.5"/>
+    <text x="318" y="208" font-size="6.5" fill="#2a3a4a" font-family="IBM Plex Sans,sans-serif">kliniec 5–8cm</text>
+    <rect x="305" y="211" width="10" height="7" fill="#c8c8c8" stroke="#888" stroke-width="0.5"/>
+    <text x="318" y="217" font-size="6.5" fill="#2a3a4a" font-family="IBM Plex Sans,sans-serif">beton podkładowy</text>
+
+    <!-- Etykiety stopni -->
+    <text x="62" y="173" font-size="6" fill="#555" text-anchor="middle" font-family="IBM Plex Mono,monospace">1</text>
+    <text x="90" y="159" font-size="6" fill="#555" text-anchor="middle" font-family="IBM Plex Mono,monospace">2</text>
+    <text x="118" y="145" font-size="6" fill="#555" text-anchor="middle" font-family="IBM Plex Mono,monospace">3</text>
+    <text x="200" y="117" font-size="6" fill="#555" text-anchor="middle" font-family="IBM Plex Mono,monospace">...</text>
+    <text x="258" y="89" font-size="6" fill="#555" text-anchor="middle" font-family="IBM Plex Mono,monospace">15</text>
+  </svg>
+
+  <p style="font-size:7.5pt;color:#7a8694;font-style:italic;margin-top:1mm;">
+    Rys. 01 — Przekrój boczny schodów. Wymiary schematyczne. Złoty kolor = strefy krytyczne (zbrojenie, dylatacja).
+  </p>
+
+  <div class="section-num" style="margin-top:5mm;">SEKCJA 02</div>
+  <h2 class="section-title">Wzór Komfortu Schodów — Wzór Blondela</h2>
+
+  <div class="box box-info">
+    <div class="box-label">Co to jest Wzór Blondela?</div>
+    <p>To sprawdzony od stuleci wzór architektoniczny, który określa czy schody są wygodne i bezpieczne. Opiera się na długości ludzkiego kroku. Dla osób starszych szczególnie ważne jest, by wynik mieścił się w dolnym zakresie (60–63 cm).</p>
+  </div>
+
+  <div class="formula-box">
+    <div>
+      <div class="formula-text">2h + g = 60 ÷ 65 cm</div>
+      <div class="formula-sub">h = wysokość stopnia (cm) &nbsp;|&nbsp; g = głębokość stopnia (cm)</div>
+    </div>
+  </div>
+
+  <div class="box box-ok">
+    <div class="box-label">✓ Wyliczenie dla tego projektu</div>
+    <p><strong>2 × 16 + 31 = 63 cm</strong> — Wynik: <strong class="green">63 cm ✓ POPRAWNIE</strong></p>
+    <p>Schody mieszczą się w normie komfortu. Dla osób starszych wynik 63 cm jest komfortowy — łagodny skok, bez nadmiernego wysiłku.</p>
+  </div>
+
+  <table class="tech">
+    <tr>
+      <th>Parametr</th>
+      <th>Dla osób starszych</th>
+      <th>Twój projekt</th>
+      <th>Ocena</th>
+    </tr>
+    <tr>
+      <td>Wysokość stopnia (h)</td>
+      <td>14–17 cm</td>
+      <td class="num">16 cm</td>
+      <td class="good">✓ OK</td>
+    </tr>
+    <tr>
+      <td>Głębokość stopnia (g)</td>
+      <td>28–34 cm</td>
+      <td class="num">31 cm</td>
+      <td class="good">✓ OK</td>
+    </tr>
+    <tr>
+      <td>Wynik Blondela (2h+g)</td>
+      <td>60–63 cm</td>
+      <td class="num">63 cm</td>
+      <td class="good">✓ OK</td>
+    </tr>
+    <tr>
+      <td>Szerokość biegu</td>
+      <td>min. 120 cm</td>
+      <td class="num">150 cm</td>
+      <td class="good">✓ Bardzo dobrze</td>
+    </tr>
+  </table>
+
+  <div class="page-num">str. 2</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 3 – PRZYGOTOWANIE TERENU + WARSTWY
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 03 — Przygotowanie Terenu</div>
+  </div>
+
+  <div class="section-num">SEKCJA 03</div>
+  <h1 class="section-title">Przygotowanie Terenu — Na Skarpie i Nasypie</h1>
+
+  <div class="box box-danger">
+    <div class="box-label">🔴 Uwaga — Twoja działka: Warunki Niestandardowe</div>
+    <p>Teren jest <strong>skarpą z nasypem</strong> — część piasku już wysypana, ale <strong>bez właściwego zagęszczenia i podbudowy</strong>. To jest najpoważniejsze ryzyko całego projektu. Beton wylany bezpośrednio na luźny nasyp <strong class="red">pęknie w ciągu 1–3 lat</strong> — gwarantowane.</p>
+  </div>
+
+  <h3>KROK 1 — Roboty Ziemne i Stabilizacja Skarpy</h3>
+
+  <div class="two-col">
+    <div>
+      <p><strong>Co zrobić:</strong></p>
+      <ul style="font-size:9pt;padding-left:5mm;margin-bottom:3mm;">
+        <li>Sprawdzić czy skarpa nie osypuje się — jeśli tak, wymagane skarpowanie (nachylenie 1:1) lub szalunek tracony</li>
+        <li>Usunąć wszelką ziemię humusową (próchnicę) — warstwę brunatno-czarną do końca</li>
+        <li>Wyrównać poziom i zbić grunt do nośności</li>
+        <li>Sprawdzić czy nie ma podmokłości — woda = problem</li>
+      </ul>
+      <div class="box box-warn" style="margin-bottom:0">
+        <div class="box-label">⚠ Ziemia humusowa</div>
+        <p><strong>Definicja:</strong> Próchnica roślinna, czarna/brunatna warstwa. Ściska się, zgniwa, osiada. <strong class="red">Nie wolno na niej nic budować.</strong> Należy ją usunąć w całości.</p>
+      </div>
+    </div>
+    <div>
+      <div class="photo-ph">
+        <div class="photo-ph-icon">📷</div>
+        <div class="photo-ph-label">MIEJSCE NA ZDJĘCIE<br><em>Widok terenu — skarpa, istniejący nasyp z piasku, ściana</em></div>
+      </div>
+      <div class="photo-caption">⚠ Na tym zdjęciu widać: luźny nasyp bez zagęszczenia, brak geowłókniny, ściana bez izolacji</div>
+    </div>
+  </div>
+
+  <h3>KROK 2 — Ściana Oporowa / Sąsiadująca</h3>
+
+  <div class="two-col">
+    <div>
+      <div class="box box-danger">
+        <div class="box-label">🔴 Problem: Ściana Krzywa, Popękana, Bez Izolacji</div>
+        <p><strong>Co grozi:</strong> Wilgoć z gruntu przesącza się przez ścianę → nasyp mokry → osiadanie → pęknięcia schodów. Popękana ściana może parować (wysalanie), co niszczy kontakt betonu ze ścianą.</p>
+      </div>
+      <p><strong>Co MUSISZ zrobić PRZED betonowaniem:</strong></p>
+      <ul style="font-size:9pt;padding-left:5mm;">
+        <li>Odsłonić ścianę od strony gruntu (o ile możliwe)</li>
+        <li>Nałożyć izolację pionową (masa bitumiczna 2× lub membrana)</li>
+        <li>Pęknięcia — wypełnić zaczynem cementowym lub pianą PU</li>
+        <li>Rury przy ścianie — zabezpieczyć (patrz: dylatacja)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="photo-ph">
+        <div class="photo-ph-icon">📷</div>
+        <div class="photo-ph-label">MIEJSCE NA ZDJĘCIE<br><em>Ściana przy schodach — pęknięcia, brak izolacji, istniejące rury</em></div>
+      </div>
+      <div class="photo-caption">⚠ Widoczne: pęknięcia pionowe, brak izolacji, odpryski tynku — wymaga naprawy przed betonowaniem</div>
+    </div>
+  </div>
+
+  <div class="section-num" style="margin-top:5mm;">SEKCJA 04</div>
+  <h1 class="section-title">Warstwy Podbudowy — Przekrój i Opis</h1>
+
+  <div class="warn-strip">⚡ To jest najważniejsza sekcja całego dokumentu — tu decyduje się trwałość schodów</div>
+
+  <p>Schody betonowe to jak budynek — bez fundamentów nic nie stoi. Warstwy pod betonem to Twój fundament. Każda ma swoją rolę i nie możesz jej pominąć ani zastąpić przypadkowym materiałem.</p>
+
+  <!-- PRZEKRÓJ WARSTW -->
+  <div class="section-num">RYSUNEK 02</div>
+
+  <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid #dde2e8;display:block;margin-bottom:2mm;">
+    <defs>
+      <pattern id="cross-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#9ca8b5" stroke-width="1"/>
+      </pattern>
+      <pattern id="dots" width="5" height="5" patternUnits="userSpaceOnUse">
+        <circle cx="2.5" cy="2.5" r="1" fill="#c8b99a" opacity="0.6"/>
+      </pattern>
+      <pattern id="gravel" width="8" height="6" patternUnits="userSpaceOnUse">
+        <ellipse cx="2" cy="3" rx="2" ry="1.5" fill="#8aabce" opacity="0.4"/>
+        <ellipse cx="6" cy="2" rx="1.5" ry="1" fill="#6a8aae" opacity="0.4"/>
+        <ellipse cx="5" cy="5" rx="1.8" ry="1.2" fill="#7a9abe" opacity="0.4"/>
+      </pattern>
+      <pattern id="fine-gravel" width="5" height="4" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1" fill="#a8c4a0" opacity="0.5"/>
+        <circle cx="4" cy="1" r="0.8" fill="#88b080" opacity="0.5"/>
+      </pattern>
+    </defs>
+
+    <!-- Background -->
+    <rect width="560" height="310" fill="#f9fafb"/>
+
+    <!-- Tytuł -->
+    <text x="280" y="18" font-size="9" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">PRZEKRÓJ POPRZECZNY — WARSTWY PODBUDOWY POD SCHODY</text>
+
+    <!-- LEFT SIDE LABEL -->
+    <!-- Beton schodów -->
+    <rect x="80" y="28" width="340" height="35" fill="#d4cfc8" stroke="#0b1622" stroke-width="1.5"/>
+    <text x="250" y="50" font-size="9" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">BETON ŻELBETOWY C20/25 — SCHODY</text>
+
+    <!-- Beton podkładowy -->
+    <rect x="80" y="63" width="340" height="22" fill="#c8c8c8" stroke="#888" stroke-width="1"/>
+    <text x="250" y="78" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">BETON PODKŁADOWY C8/10 — 10 cm</text>
+
+    <!-- Kliniec -->
+    <rect x="80" y="85" width="340" height="30" fill="url(#fine-gravel)" stroke="#6a9460" stroke-width="1"/>
+    <rect x="80" y="85" width="340" height="30" fill="#b8d4b0" opacity="0.3"/>
+    <text x="250" y="104" font-size="8" fill="#2a4a2a" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">KLINIEC (granit / bazalt) — 5–10 cm</text>
+
+    <!-- Tłuczeń -->
+    <rect x="80" y="115" width="340" height="80" fill="url(#gravel)" stroke="#5a7a9e" stroke-width="1"/>
+    <rect x="80" y="115" width="340" height="80" fill="#8aabce" opacity="0.2"/>
+    <text x="250" y="159" font-size="9" fill="#1a3a5a" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">TŁUCZEŃ KAMIENNY — 20–30 cm</text>
+    <text x="250" y="172" font-size="7.5" fill="#3a5a7a" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">(frakcja 31–63 mm, zagęszczony warstwami po 15 cm)</text>
+
+    <!-- Geowłóknina -->
+    <rect x="80" y="195" width="340" height="8" fill="#e8d080" stroke="#b0a040" stroke-width="1"/>
+    <line x1="80" y1="199" x2="420" y2="199" stroke="#a09030" stroke-width="0.8" stroke-dasharray="4,3"/>
+    <text x="250" y="206" font-size="8" fill="#7a6010" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">GEOWŁÓKNINA tkana 200 g/m²</text>
+
+    <!-- Grunt / nasyp -->
+    <rect x="80" y="203" width="340" height="60" fill="url(#dots)" stroke="#9a8060" stroke-width="1"/>
+    <rect x="80" y="203" width="340" height="60" fill="#c8b99a" opacity="0.4"/>
+    <text x="250" y="228" font-size="8" fill="#7a5030" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">GRUNT / NASYP — zagęszczony zagęszczarką</text>
+    <text x="250" y="240" font-size="7" fill="#9a6040" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">(usunąć ziemię humusową, zagęścić co 20 cm)</text>
+
+    <!-- Numery warstw (po lewej) -->
+    <circle cx="60" cy="45" r="12" fill="#0b1622"/>
+    <text x="60" y="49" font-size="9" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">5</text>
+
+    <circle cx="60" cy="74" r="12" fill="#0b1622"/>
+    <text x="60" y="78" font-size="9" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">4b</text>
+
+    <circle cx="60" cy="100" r="12" fill="#0b1622"/>
+    <text x="60" y="104" font-size="9" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">4a</text>
+
+    <circle cx="60" cy="155" r="12" fill="#0b1622"/>
+    <text x="60" y="159" font-size="9" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">3</text>
+
+    <circle cx="60" cy="199" r="12" fill="#0b1622"/>
+    <text x="60" y="203" font-size="9" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">2</text>
+
+    <circle cx="60" cy="230" r="12" fill="#0b1622"/>
+    <text x="60" y="234" font-size="9" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">1</text>
+
+    <!-- Wymiary po prawej -->
+    <line x1="430" y1="28" x2="430" y2="63" stroke="#c07800" stroke-width="1.2" marker-end="url(#arrow-gold)"/>
+    <text x="510" y="50" font-size="7.5" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">min. 12 cm</text>
+    <line x1="430" y1="63" x2="430" y2="85" stroke="#c07800" stroke-width="1.2" marker-end="url(#arrow-gold)"/>
+    <text x="500" y="77" font-size="7.5" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">10 cm</text>
+    <line x1="430" y1="85" x2="430" y2="115" stroke="#c07800" stroke-width="1.2" marker-end="url(#arrow-gold)"/>
+    <text x="500" y="103" font-size="7.5" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">5–10 cm</text>
+    <line x1="430" y1="115" x2="430" y2="195" stroke="#c07800" stroke-width="1.2" marker-end="url(#arrow-gold)"/>
+    <text x="508" y="159" font-size="7.5" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">20–30 cm</text>
+    <line x1="430" y1="195" x2="430" y2="203" stroke="#c07800" stroke-width="1.2" marker-end="url(#arrow-gold)"/>
+    <text x="506" y="200" font-size="7" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">8 mm</text>
+
+    <!-- CAŁKOWITA GRUBOŚĆ -->
+    <line x1="445" y1="63" x2="445" y2="195" stroke="#0b1622" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="540" y="130" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600" transform="rotate(90,540,130)">RAZEM: min. 45 cm</text>
+
+    <!-- Linia gruntu -->
+    <text x="250" y="298" font-size="7.5" fill="#9a7050" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-style="italic">WAŻNE: Całkowita podbudowa (tłuczeń + kliniec) nie może być mniejsza niż 35 cm dla nasypów i skarp</text>
+  </svg>
+
+  <div class="page-num">str. 3</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 4 – OPIS WARSTW SZCZEGÓŁOWY
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 04 — Opis Warstw</div>
+  </div>
+
+  <div class="section-num">SEKCJA 04 — cd.</div>
+  <h1 class="section-title">Szczegółowy Opis Każdej Warstwy</h1>
+
+  <table class="tech" style="font-size:8pt;">
+    <tr>
+      <th style="width:5%">Nr</th>
+      <th style="width:15%">Warstwa</th>
+      <th style="width:10%">Grubość</th>
+      <th style="width:35%">Po co to jest?</th>
+      <th style="width:35%">Dlaczego NIE wolno zastąpić?</th>
+    </tr>
+    <tr>
+      <td class="num" style="background:#0b1622;color:#c07800;text-align:center;font-weight:700;">1</td>
+      <td><strong>Grunt / nasyp zagęszczony</strong></td>
+      <td class="num">warstwy po 20 cm</td>
+      <td>Fundament wszystkiego. Luźny grunt osiada — schody pękną. Każda warstwa 20 cm musi być zagęszczona zagęszczarką wibracyjną do min. 95% Proctora (IS≥0,95).</td>
+      <td class="bad">Brak zagęszczenia = osiadanie. Nie wystarczy "ubić łopatą". Musisz użyć zagęszczarki wibracyjnej (płytowej lub ubijakowej).</td>
+    </tr>
+    <tr>
+      <td class="num" style="background:#0b1622;color:#c07800;text-align:center;font-weight:700;">2</td>
+      <td><strong>Geowłóknina tkana</strong><br><small>200–300 g/m²</small></td>
+      <td class="num">ok. 8 mm</td>
+      <td>Oddziela grunt od kruszywa. Zapobiega wciąganiu się tłucznia w grunt (tzw. kolmatacja). Bez niej tłuczeń zniknie w ziemi po kilku mrozach.</td>
+      <td class="bad">NIE stosować geotkaniny nietkane (ogrodowe) — zbyt słabe. NIE stosować folii — nie przepuszcza wody (grozi podmakaniem). Tylko tkana 200+ g/m².</td>
+    </tr>
+    <tr>
+      <td class="num" style="background:#0b1622;color:#c07800;text-align:center;font-weight:700;">3</td>
+      <td><strong>Tłuczeń kamienny</strong><br><small>frakcja 31–63 mm</small></td>
+      <td class="num">20–30 cm</td>
+      <td>Nośna warstwa podbudowy. Nie zamarza (odprowadza wodę), nie osiada. Przenosi ciężar betonu i ludzi na grunt. Kluczowa grubość — min. 20 cm, przy nasypie i skarpie: 25–30 cm.</td>
+      <td class="bad">NIE używać piasku, żwiru płukanego ani keramzytu — za słabe. NIE stosować tłucznia betonowego z rozbiórki — może zawierać siarkany niszczące beton. Tylko granit lub bazalt 31–63 mm.</td>
+    </tr>
+    <tr>
+      <td class="num" style="background:#0b1622;color:#c07800;text-align:center;font-weight:700;">4a</td>
+      <td><strong>Kliniec kamienny</strong><br><small>frakcja 4–31 mm</small></td>
+      <td class="num">5–10 cm</td>
+      <td>Wyrównuje i zaklinowuje tłuczeń. Tworzy stabilną, gładką powierzchnię pod beton podkładowy. Bez niego beton spłynie między duże kamienie tłucznia.</td>
+      <td class="bad">NIE można pominąć tej warstwy. NIE zastępować piaskiem — piasek nie stabilizuje. Kliniec 4–31 mm (granit).</td>
+    </tr>
+    <tr>
+      <td class="num" style="background:#0b1622;color:#c07800;text-align:center;font-weight:700;">4b</td>
+      <td><strong>Beton podkładowy</strong><br><small>C8/10 (B10)</small></td>
+      <td class="num">8–10 cm</td>
+      <td>Tworzy twardą, czystą płaszczyznę pod główne zbrojenie. Unosi pręty zbrojeniowe nad gruntem (konieczna otulina betonu). Bez niego zbrojenie leży na ziemi i rdzewieje.</td>
+      <td class="bad">NIE pomijać. NIE zastępować grubą folią — folia nie utrzyma prętów na właściwej wysokości. Minimalnie B10, beton wylewany na mokro.</td>
+    </tr>
+    <tr>
+      <td class="num" style="background:#0b1622;color:#c07800;text-align:center;font-weight:700;">5</td>
+      <td><strong>Beton żelbetowy</strong><br><small>C20/25 (B25)</small></td>
+      <td class="num">min. 12–15 cm</td>
+      <td>Właściwa konstrukcja schodów. Musi być zbrojony (siatka φ10 co 20 cm lub pręty fi10). Minimalna klasa C20/25. Wylewać jednorazowo — bez przerw (przerwa = rysa).</td>
+      <td class="bad">NIE stosować betonu B15 — za słaby na schody zewnętrzne. NIE wylewać etapami bez odpowiedniej przerwy technologicznej. NIE pomijać zbrojenia.</td>
+    </tr>
+  </table>
+
+  <div class="box box-warn">
+    <div class="box-label">⚠ Najczęstszy błąd na skarpach i nasypach</div>
+    <p>Inwestorzy i nierzetelni wykonawcy często chcą zaoszczędzić na tłuczniu i "wylać beton na piasek który już tam jest". To jest <strong class="red">katastrofa techniczna</strong>. Piasek bez zagęszczenia osiada nierównomiernie. Po pierwszej zimie, gdy woda zamarza w gruncie, unosi i opuszcza piasek — schody pękają wzdłuż. Po 3 latach nadają się tylko do rozbiórki.</p>
+  </div>
+
+  <div class="section-num" style="margin-top:5mm;">SEKCJA 05</div>
+  <h1 class="section-title">Zagęszczanie — Jak To Zrobić Prawidłowo</h1>
+
+  <div class="two-col">
+    <div>
+      <h3>Sprzęt wymagany</h3>
+      <table class="tech">
+        <tr><th>Warstwa</th><th>Sprzęt</th></tr>
+        <tr><td>Grunt/nasyp</td><td>Zagęszczarka płytowa wibracyjna ≥75 kg lub ubijak skokowy</td></tr>
+        <tr><td>Tłuczeń</td><td>Zagęszczarka płytowa wibracyjna ≥100 kg</td></tr>
+        <tr><td>Kliniec</td><td>Zagęszczarka płytowa ≥75 kg</td></tr>
+      </table>
+      <div class="box box-danger">
+        <div class="box-label">🔴 ZAKAZ</div>
+        <p>Nie wolno zagęszczać ręcznie "przez przydeptanie". Nie wolno zagęszczać warstw grubszych niż 20 cm naraz — wibracja nie sięgnie głębiej.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Procedura krok po kroku</h3>
+      <ol style="font-size:8.5pt;padding-left:5mm;line-height:1.7;">
+        <li>Usuń ziemię humusową do końca</li>
+        <li>Warstwuj nasyp po 15–20 cm</li>
+        <li>Każdą warstwę zagęszczaj przejściami równoległymi z 30% zakładką</li>
+        <li>Sprawdź stopę zagęszczarki — nie powinna się "grzęznąć"</li>
+        <li>Rozłóż geowłókninę — z 30 cm zakładką przy ściance</li>
+        <li>Wysyp tłuczeń — 15 cm → zagęść → kolejne 15 cm → zagęść</li>
+        <li>Wysyp kliniec 5–8 cm → zagęść → wyrównaj łatą</li>
+        <li>Wylej beton podkładowy C8/10</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="page-num">str. 4</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 5 – SZALUNEK, ZBROJENIE, DYLATACJA
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 05 — Szalunek i Zbrojenie</div>
+  </div>
+
+  <div class="section-num">SEKCJA 06</div>
+  <h1 class="section-title">Szalunek — Zasady i Błędy</h1>
+
+  <div class="two-col">
+    <div>
+      <h3>Materiały szalunkowe</h3>
+      <table class="tech">
+        <tr><th>Materiał</th><th>Ocena</th><th>Uwaga</th></tr>
+        <tr><td>Sklejka wodoodporna 18–21 mm</td><td class="good">✓ Najlepszy</td><td>Lekka, łatwa, dobry efekt powierzchni</td></tr>
+        <tr><td>Deski obrzynane 38 mm</td><td class="good">✓ Dobry</td><td>Mocniejszy, cięższy</td></tr>
+        <tr><td>Styropian/płyta OSB</td><td class="bad">✗ Nie</td><td>Za słaby, deformuje się</td></tr>
+      </table>
+
+      <h3>Zasady montażu szalunku</h3>
+      <ul style="font-size:9pt;padding-left:5mm;line-height:1.7;">
+        <li>Szalunek musi być <strong>sztywny</strong> — podpierany co 50 cm</li>
+        <li>Wszystkie kąty i złącza — szczelne (taśma lub masa uszczelniająca)</li>
+        <li>Przed betonowaniem: posmarować olejem szalunkowym lub olejem maszynowym</li>
+        <li>Każdy pionowy element szalunku (risery) — poziomowany poziomnicą</li>
+        <li>Szerokość szalunku na każdym stopniu: <strong>150 cm ± 5 mm</strong></li>
+        <li>Głębokość każdego stopnia: <strong>31 cm ± 3 mm</strong></li>
+      </ul>
+    </div>
+    <div>
+      <div class="photo-ph">
+        <div class="photo-ph-icon">📷</div>
+        <div class="photo-ph-label">MIEJSCE NA ZDJĘCIE<br><em>Przykład prawidłowego szalunku schodów z podparciem i sklejki wodoodpornej</em></div>
+      </div>
+      <div class="photo-caption">✓ Prawidłowo: szalunek z sklejki wodoodpornej, podparty co 50 cm, kąty uszczelnione, olej szalunkowy</div>
+
+      <div class="box box-danger" style="margin-top:3mm;">
+        <div class="box-label">🔴 Błędy szalunkowe</div>
+        <p>• Szalunek za słaby → beton rozsadza szalunek w trakcie wylewania — cały stopień do rozbiórki<br>
+        • Brak oleju szalunkowego → szalunek przykleja się do betonu, odpryski<br>
+        • Nieszczelne kąty → wypłukiwanie cementu → porowata powierzchnia<br>
+        • Za wczesne rozbieranie (przed 3–5 dniami) → kruche krawędzie</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-num">SEKCJA 07</div>
+  <h1 class="section-title">Zbrojenie — Schemat i Zasady</h1>
+
+  <!-- SCHEMAT ZBROJENIA -->
+  <div class="section-num">RYSUNEK 03</div>
+
+  <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid #dde2e8;background:#f9fafb;display:block;margin-bottom:2mm;">
+    <text x="280" y="16" font-size="9" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">SCHEMAT ZBROJENIA — PRZEKRÓJ I WIDOK Z GÓRY</text>
+
+    <!-- PRZEKRÓJ BOCZNY -->
+    <text x="140" y="35" font-size="7.5" fill="#7a8694" text-anchor="middle" font-family="IBM Plex Mono,monospace">PRZEKRÓJ BOCZNY</text>
+
+    <!-- Obrys schodów -->
+    <polyline points="30,180 30,155 80,155 80,130 130,130 130,105 180,105 180,80 230,80 230,55 280,55 280,180"
+      fill="#d4cfc8" stroke="#0b1622" stroke-width="1.5"/>
+    <line x1="30" y1="180" x2="280" y2="180" stroke="#0b1622" stroke-width="1.5"/>
+
+    <!-- Beton podkładowy pod spodem -->
+    <rect x="30" y="180" width="250" height="10" fill="#c0c0c0" stroke="#888" stroke-width="0.8"/>
+
+    <!-- Zbrojenie wzdłużne (poziome) -->
+    <line x1="35" y1="174" x2="275" y2="174" stroke="#c07800" stroke-width="2.5"/>
+    <!-- Zbrojenie wzdłużne drugie -->
+    <line x1="35" y1="168" x2="275" y2="168" stroke="#c07800" stroke-width="2.5"/>
+
+    <!-- Zbrojenie skośne wzdłuż biegu schodów -->
+    <line x1="35" y1="172" x2="275" y2="60" stroke="#e8a020" stroke-width="2" stroke-dasharray="none" opacity="0.7"/>
+    <line x1="35" y1="178" x2="275" y2="66" stroke="#e8a020" stroke-width="2" opacity="0.7"/>
+
+    <!-- Strzemiona -->
+    <line x1="60" y1="155" x2="60" y2="175" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="110" y1="130" x2="110" y2="175" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="160" y1="105" x2="160" y2="175" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="210" y1="80" x2="210" y2="175" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="260" y1="60" x2="260" y2="175" stroke="#c07800" stroke-width="1.5"/>
+
+    <!-- Otulina etykieta -->
+    <line x1="30" y1="174" x2="30" y2="181" stroke="#2563eb" stroke-width="1"/>
+    <line x1="30" y1="177" x2="40" y2="177" stroke="#2563eb" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="28" y="186" font-size="6.5" fill="#2563eb" font-family="IBM Plex Mono,monospace">otulina 3 cm</text>
+
+    <!-- Legenda -->
+    <line x1="30" y1="195" x2="50" y2="195" stroke="#c07800" stroke-width="2.5"/>
+    <text x="55" y="198" font-size="7" fill="#0b1622" font-family="IBM Plex Sans,sans-serif">Pręty φ10 co 20 cm</text>
+    <line x1="150" y1="195" x2="170" y2="195" stroke="#e8a020" stroke-width="2"/>
+    <text x="175" y="198" font-size="7" fill="#0b1622" font-family="IBM Plex Sans,sans-serif">Pręty skośne φ10</text>
+
+    <!-- WIDOK Z GÓRY (prawa strona) -->
+    <text x="420" y="35" font-size="7.5" fill="#7a8694" text-anchor="middle" font-family="IBM Plex Mono,monospace">WIDOK Z GÓRY (siatka)</text>
+
+    <!-- Stopień z góry -->
+    <rect x="310" y="45" width="240" height="130" fill="#d4cfc8" stroke="#0b1622" stroke-width="1.5"/>
+
+    <!-- Pręty wzdłuż (co 20 cm) -->
+    <line x1="310" y1="65" x2="550" y2="65" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="310" y1="85" x2="550" y2="85" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="310" y1="105" x2="550" y2="105" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="310" y1="125" x2="550" y2="125" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="310" y1="145" x2="550" y2="145" stroke="#c07800" stroke-width="1.5"/>
+    <line x1="310" y1="165" x2="550" y2="165" stroke="#c07800" stroke-width="1.5"/>
+
+    <!-- Pręty w poprzek (co 20 cm) -->
+    <line x1="330" y1="45" x2="330" y2="175" stroke="#e8a020" stroke-width="1.5" opacity="0.8"/>
+    <line x1="350" y1="45" x2="350" y2="175" stroke="#e8a020" stroke-width="1.5" opacity="0.8"/>
+    <line x1="390" y1="45" x2="390" y2="175" stroke="#e8a020" stroke-width="1.5" opacity="0.8"/>
+    <line x1="430" y1="45" x2="430" y2="175" stroke="#e8a020" stroke-width="1.5" opacity="0.8"/>
+    <line x1="470" y1="45" x2="470" y2="175" stroke="#e8a020" stroke-width="1.5" opacity="0.8"/>
+    <line x1="510" y1="45" x2="510" y2="175" stroke="#e8a020" stroke-width="1.5" opacity="0.8"/>
+    <line x1="530" y1="45" x2="530" y2="175" stroke="#e8a020" stroke-width="1.5" opacity="0.8"/>
+
+    <!-- Wymiar oka siatki -->
+    <text x="430" y="97" font-size="7" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600">20×20 cm</text>
+    <text x="430" y="108" font-size="6.5" fill="#7a8694" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">φ10 AIII (RB500)</text>
+  </svg>
+
+  <p style="font-size:7.5pt;color:#7a8694;font-style:italic;margin-top:0;margin-bottom:4mm;">Rys. 03 — Schemat zbrojenia schodów. Żółte pręty = siatka dwukierunkowa φ10 co 20 cm. Otulina betonu = min. 3 cm od każdej strony.</p>
+
+  <div class="two-col">
+    <div class="box box-info">
+      <div class="box-label">ℹ Specyfikacja Zbrojenia</div>
+      <p><strong>Pręty:</strong> φ10 mm, stal AIII (RB500W)<br>
+      <strong>Siatka:</strong> 200×200 mm (20×20 cm)<br>
+      <strong>Otulina:</strong> min. 30 mm (3 cm) od każdej strony<br>
+      <strong>Zakład prętów:</strong> min. 40×φ = 40 cm<br>
+      <strong>Podpory (dystansery):</strong> plastikowe, co 50 cm</p>
+    </div>
+    <div class="box box-danger">
+      <div class="box-label">🔴 Krytyczne Błędy Zbrojenia</div>
+      <p>• Pręty leżące bezpośrednio na gruncie → brak otuliny → rdza niszczy beton od środka<br>
+      • Brak prętów przy stopniach → schody bez nośności<br>
+      • Za mała średnica (φ6 zamiast φ10) → pęknięcia pod obciążeniem</p>
+    </div>
+  </div>
+
+  <div class="page-num">str. 5</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 6 – DYLATACJA + BETON
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 06 — Dylatacja i Beton</div>
+  </div>
+
+  <div class="section-num">SEKCJA 08</div>
+  <h1 class="section-title">Dylatacja przy Ścianie — Krytyczny Punkt</h1>
+
+  <div class="warn-strip">⚡ DYLATACJA PRZY ŚCIANIE = OBOWIĄZKOWA — BEZ WYJĄTKÓW</div>
+
+  <div class="two-col">
+    <div>
+      <div class="box box-danger">
+        <div class="box-label">🔴 Co się stanie bez dylatacji?</div>
+        <p>Beton i ściana to dwa <strong>niezależne elementy</strong>. Oba pracują pod wpływem temperatury (+20 do −20°C = różnica 40 stopni). Gdy beton jest bezpośrednio przyklejony do ściany i zacznie się rozszerzać lub kurczyć — popcha lub pociągnie ścianę. Efekt: <strong class="red">rysy na ścianie, pęknięcia schodów, odrywanie się krawędzi</strong>. Przy Twojej ścianie (popękanej i bez izolacji) to jest szczególnie ryzykowne.</p>
+      </div>
+
+      <h3>Materiały dylatacyjne</h3>
+      <table class="tech">
+        <tr><th>Materiał</th><th>Grubość</th><th>Ocena</th></tr>
+        <tr><td>Styropian EPS 100</td><td class="num">20 mm</td><td class="good">✓ Najlepszy</td></tr>
+        <tr><td>Pianka PE (paski)</td><td class="num">20 mm</td><td class="good">✓ Dobry</td></tr>
+        <tr><td>Tektura/papa</td><td class="num">—</td><td class="bad">✗ Nie</td></tr>
+        <tr><td>Brak / sklejona</td><td class="num">—</td><td class="bad">✗ Błąd krytyczny</td></tr>
+      </table>
+
+      <div class="box box-warn">
+        <div class="box-label">⚠ Rury przy ścianie</div>
+        <p>Istniejące rury przy ścianie (balustrada? instalacje?) — każda rura musi być <strong>owinięta pianką PE 20 mm</strong> i pozostawać w dylatacji. Beton nie może bezpośrednio przylegać do rury — rura drga, pracuje termicznie i <strong>rozrywa beton od środka</strong>.</p>
+      </div>
+    </div>
+    <div>
+      <!-- RYSUNEK DYLATACJI -->
+      <div class="section-num">RYSUNEK 04</div>
+      <svg viewBox="0 0 230 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid #dde2e8;background:#f9fafb;display:block;">
+        <text x="115" y="14" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">PRZEKRÓJ — DYLATACJA PRZY ŚCIANIE</text>
+
+        <!-- Ściana -->
+        <rect x="20" y="20" width="35" height="240" fill="#9ca8b5" stroke="#0b1622" stroke-width="1.5"/>
+        <text x="37" y="140" font-size="7" fill="white" text-anchor="middle" transform="rotate(-90,37,140)" font-family="IBM Plex Sans,sans-serif" font-weight="600">ŚCIANA</text>
+
+        <!-- Pęknięcia -->
+        <line x1="30" y1="50" x2="48" y2="80" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="35" y1="120" x2="25" y2="150" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,2"/>
+
+        <!-- Izolacja pionowa (masa bitumiczna) -->
+        <rect x="55" y="20" width="6" height="240" fill="#1a1a1a" opacity="0.8"/>
+        <text x="58" y="14" font-size="6" fill="#1a1a1a" text-anchor="middle" font-family="IBM Plex Mono,monospace">izol.</text>
+
+        <!-- Dylatacja styropian -->
+        <rect x="61" y="25" width="15" height="235" fill="#e8d080" stroke="#b0a040" stroke-width="1"/>
+        <line x1="61" y1="35" x2="76" y2="35" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="50" x2="76" y2="50" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="65" x2="76" y2="65" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="80" x2="76" y2="80" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="95" x2="76" y2="95" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="110" x2="76" y2="110" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="125" x2="76" y2="125" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="140" x2="76" y2="140" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="155" x2="76" y2="155" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="170" x2="76" y2="170" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="185" x2="76" y2="185" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="200" x2="76" y2="200" stroke="#b0a040" stroke-width="0.7"/>
+        <line x1="61" y1="215" x2="76" y2="215" stroke="#b0a040" stroke-width="0.7"/>
+        <text x="68" y="270" font-size="6.5" fill="#8a7010" text-anchor="middle" font-family="IBM Plex Mono,monospace">DYLATACJA</text>
+        <text x="68" y="277" font-size="6.5" fill="#8a7010" text-anchor="middle" font-family="IBM Plex Mono,monospace">EPS 20mm</text>
+
+        <!-- Rura w dylatacji -->
+        <circle cx="68" cy="80" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+        <circle cx="68" cy="80" r="9" fill="none" stroke="#e8a020" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="90" y="78" font-size="6.5" fill="#555" font-family="IBM Plex Sans,sans-serif">rura</text>
+        <text x="90" y="86" font-size="6" fill="#e8a020" font-family="IBM Plex Sans,sans-serif">pianka PE</text>
+
+        <!-- Beton schodów -->
+        <rect x="76" y="80" width="130" height="180" fill="#d4cfc8" stroke="#0b1622" stroke-width="1.5"/>
+
+        <!-- Zbrojenie w betonie -->
+        <line x1="82" y1="85" x2="200" y2="85" stroke="#c07800" stroke-width="2"/>
+        <line x1="82" y1="100" x2="200" y2="100" stroke="#c07800" stroke-width="1.5"/>
+        <line x1="82" y1="250" x2="200" y2="250" stroke="#c07800" stroke-width="2"/>
+
+        <!-- Masy uszczelniające -->
+        <rect x="76" y="25" width="3" height="55" fill="#333" opacity="0.6"/>
+        <text x="80" y="52" font-size="6" fill="#333" font-family="IBM Plex Sans,sans-serif">masa</text>
+        <text x="80" y="59" font-size="6" fill="#333" font-family="IBM Plex Sans,sans-serif">PU</text>
+
+        <!-- Wymiary -->
+        <line x1="61" y1="22" x2="76" y2="22" stroke="#c07800" stroke-width="1" marker-end="url(#arrow-gold)"/>
+        <line x1="76" y1="22" x2="61" y2="22" stroke="#c07800" stroke-width="1" marker-end="url(#arrow-gold)"/>
+        <text x="68" y="19" font-size="6.5" fill="#c07800" text-anchor="middle" font-family="IBM Plex Mono,monospace">20mm</text>
+      </svg>
+      <p style="font-size:7pt;color:#7a8694;font-style:italic;margin-top:1mm;">Rys. 04 — Przekrój przez dylatację. EPS 20 mm przez całą wysokość. Rury owinąć pianką PE.</p>
+    </div>
+  </div>
+
+  <div class="section-num" style="margin-top:4mm;">SEKCJA 09</div>
+  <h1 class="section-title">Beton — Parametry i Wykonanie</h1>
+
+  <div class="two-col">
+    <div>
+      <table class="tech">
+        <tr><th colspan="2">Wymagana klasa betonu: C20/25 (B25)</th></tr>
+        <tr><td>Klasa wytrzymałości</td><td class="num">C20/25</td></tr>
+        <tr><td>Klasa ekspozycji</td><td class="num">XF4 (mróz + sól)</td></tr>
+        <tr><td>Maks. frakcja kruszywa</td><td class="num">16 mm</td></tr>
+        <tr><td>Wskaźnik W/C</td><td class="num">max 0,45</td></tr>
+        <tr><td>Zawartość powietrza</td><td class="num">4–6% (napowietrzony)</td></tr>
+        <tr><td>Konsystencja</td><td class="num">S2 (gęstoplastyczna)</td></tr>
+        <tr><td>Min. czas pielęgnacji</td><td class="num">7 dni (wilgotno)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="box box-warn">
+        <div class="box-label">⚠ Własna produkcja vs. betoniarka</div>
+        <p>Dla schodów zewnętrznych <strong>zalecany beton z betoniarni (RMC)</strong>. Własna produkcja to ryzyko złego proporcjonowania. Jeśli własna — użyj przepisu: 1 cz. cementu CEM I 42.5R + 2 cz. piasku + 3 cz. żwiru + domieszka napowietrzająca + plastyfikator. <strong class="red">Nie rób betonu "na oko".</strong></p>
+      </div>
+      <div class="box box-info">
+        <div class="box-label">ℹ Temperatura betonowania</div>
+        <p>Nie betonować poniżej +5°C (ryzyko zamrożenia). Nie betonować przy >30°C bez ochrony. Optymalna: 10–25°C.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">str. 6</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 7 – NAJCZĘSTSZE BŁĘDY
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 07 — Błędy Krytyczne</div>
+  </div>
+
+  <div class="section-num">SEKCJA 10</div>
+  <h1 class="section-title">Najczęstsze Błędy — i Co Po Nich Zostaje</h1>
+
+  <div class="warn-strip">🔴 Każdy z tych błędów pojawia się co najmniej raz na dziesięć budów. Sprawdź, czy Twój wykonawca ich nie popełni.</div>
+
+  <div class="error-item">
+    <div class="error-title">BŁĄD #1 — Beton wylany bezpośrednio na luźny piasek (brak podbudowy)</div>
+    <div class="error-effect">⚠ Skutek: Nierównomierne osiadanie gruntu → rysy po 1–2 zimach → pęknięcia przez całą szerokość → woda w pęknięciach → rozsadzenie przez mróz → rozbiórka po 3–5 latach. Koszt naprawy: 100–150% kosztu budowy.</div>
+    <div class="error-fix">✓ Rozwiązanie: Zawsze pełna podbudowa — grunt zagęszczony + geowłóknina + tłuczeń 20–30 cm + kliniec 5–10 cm + beton podkładowy.</div>
+  </div>
+
+  <div class="error-item">
+    <div class="error-title">BŁĄD #2 — Brak dylatacji przy ścianie</div>
+    <div class="error-effect">⚠ Skutek: Schody "pchają" ścianę lub ściana "pcha" schody przy zmianach temperatury. Rysy pionowe wzdłuż ściany. Odrywanie się schodów od ściany. Woda dostaje się w szczelinę → mróz → katastrofa.</div>
+    <div class="error-fix">✓ Rozwiązanie: EPS 20 mm przez CAŁĄ wysokość schodów przy ścianie, od fundamentu do góry. Nie skąpić — dylatacja kosztuje 5 zł, brak dylatacji — tysiące.</div>
+  </div>
+
+  <div class="error-item">
+    <div class="error-title">BŁĄD #3 — Zbrojenie leżące na gruncie (brak otuliny)</div>
+    <div class="error-effect">⚠ Skutek: Rdza prętów w ciągu 3–7 lat. Rdza zajmuje 3× więcej miejsca niż metal → rozsadza beton od środka → spękana powierzchnia → odkrycie zbrojenia → przyspieszenie korozji. Nie do naprawy bez skuwania.</div>
+    <div class="error-fix">✓ Rozwiązanie: Plastikowe dystansery co 50 cm. Otulina min. 30 mm od każdej strony.</div>
+  </div>
+
+  <div class="error-item">
+    <div class="error-title">BŁĄD #4 — Zbyt wczesne rozbieranie szalunku</div>
+    <div class="error-effect">⚠ Skutek: Beton nie zdążył nabrać wytrzymałości → kruche krawędzie stopni → odpryski przy pierwszym użyciu → konieczność uzupełniania zaprawą (która pęka po roku).</div>
+    <div class="error-fix">✓ Rozwiązanie: Szalunek pionowy (risery) — nie wcześniej niż 3 dni. Szalunek dolny (spód płyty) — nie wcześniej niż 14–21 dni. Pielęgnacja mokra przez 7 dni.</div>
+  </div>
+
+  <div class="error-item">
+    <div class="error-title">BŁĄD #5 — Beton za rzadki (za dużo wody)</div>
+    <div class="error-effect">⚠ Skutek: Nadmiar wody = słabszy beton. Beton kruszeje po 1–2 zimach. Niska mrozoodporność. Pyłowe powierzchnie stopni. Beton B25 z W/C 0,7 faktycznie zachowuje się jak B15.</div>
+    <div class="error-fix">✓ Rozwiązanie: Konsystencja S2 — beton nie powinien "spływać sam". Używać plastyfikatora zamiast rozcieńczać wodą. Wskaźnik W/C max 0,45.</div>
+  </div>
+
+  <div class="error-item">
+    <div class="error-title">BŁĄD #6 — Brak spadku na płaszczyznach stopni</div>
+    <div class="error-effect">⚠ Skutek: Woda stoi na stopniach → lód w zimie → poślizg → wypadek. Woda wnika w beton → degradacja.</div>
+    <div class="error-fix">✓ Rozwiązanie: Każdy stopień (nośnik) musi mieć spadek 2% (2 cm na 1 mb) od ściany na zewnątrz. Zaznaczyć w szalunku.</div>
+  </div>
+
+  <div class="error-item">
+    <div class="error-title">BŁĄD #7 — Połączenie nowych schodów ze starym betonem / ścianą bez przerwy</div>
+    <div class="error-effect">⚠ Skutek: Różne osiadanie → rysa na połączeniu gwarantowana w ciągu 1–2 lat.</div>
+    <div class="error-fix">✓ Rozwiązanie: Zawsze dylatacja w miejscu styku z istniejącą konstrukcją. Jeśli dowiązanie — stosować mostek adhezyjny (emulsja kontaktowa) + zbrojenie łączące.</div>
+  </div>
+
+  <div class="two-col" style="margin-top:4mm;">
+    <div class="photo-ph">
+      <div class="photo-ph-icon">📷</div>
+      <div class="photo-ph-label">PRZYKŁAD BŁĘDU<br><em>Schody bez dylatacji — rysa wzdłuż ściany po 2 zimach</em></div>
+    </div>
+    <div class="photo-ph">
+      <div class="photo-ph-icon">📷</div>
+      <div class="photo-ph-label">PRZYKŁAD BŁĘDU<br><em>Beton bez podbudowy — widoczne pęknięcia od osiadania</em></div>
+    </div>
+  </div>
+
+  <div class="page-num">str. 7</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 8 – CHECKLISTA DLA INWESTORA
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 08 — Checklista Inwestora</div>
+  </div>
+
+  <div class="section-num">SEKCJA 11</div>
+  <h1 class="section-title">Checklista dla Inwestora — Kontrola Wykonania</h1>
+
+  <p>Ta lista jest Twoim narzędziem do kontroli wykonawcy na każdym etapie. Zaznaczaj każdy punkt dopiero gdy osobiście sprawdzisz lub masz dowód (zdjęcie, faktura). <strong class="red">Jeśli wykonawca nie chce, abyś to sprawdzał — zmień wykonawcę.</strong></p>
+
+  <h3>ETAP 1 — Roboty Ziemne i Grunt</h3>
+  <ul class="checklist">
+    <li><span class="check-box danger"></span> Usunięto ziemię humusową (czarną/brunatną) do końca</li>
+    <li><span class="check-box danger"></span> Teren wyrównany i zbity na wymaganej głębokości</li>
+    <li><span class="check-box danger"></span> Skarpa stabilna — brak osypywania się</li>
+    <li><span class="check-box"></span> Sprawdzono czy nie ma podmokłości / źródeł wody</li>
+  </ul>
+
+  <h3>ETAP 2 — Izolacja Ściany</h3>
+  <ul class="checklist">
+    <li><span class="check-box danger"></span> Ściana odsłonięta od strony gruntu</li>
+    <li><span class="check-box danger"></span> Pęknięcia w ścianie wypełnione (zaczyn cementowy lub PU)</li>
+    <li><span class="check-box danger"></span> Izolacja pionowa ściany wykonana (masa bitumiczna 2×)</li>
+    <li><span class="check-box"></span> Rury przy ścianie zinwentaryzowane i zabezpieczone</li>
+  </ul>
+
+  <h3>ETAP 3 — Podbudowa</h3>
+  <ul class="checklist">
+    <li><span class="check-box danger"></span> Geowłóknina tkana 200+ g/m² ułożona (z zakładką 30 cm)</li>
+    <li><span class="check-box danger"></span> Tłuczeń granit/bazalt 31–63 mm — min. 20 cm (przy skarpie 25–30 cm)</li>
+    <li><span class="check-box danger"></span> Tłuczeń zagęszczony warstwami po 15 cm zagęszczarką wibracyjną</li>
+    <li><span class="check-box danger"></span> Kliniec 4–31 mm — 5–10 cm, zagęszczony i wyrównany</li>
+    <li><span class="check-box danger"></span> Beton podkładowy C8/10 — min. 8 cm, zalany i stwardniały</li>
+  </ul>
+
+  <h3>ETAP 4 — Szalunek</h3>
+  <ul class="checklist">
+    <li><span class="check-box"></span> Szalunek z sklejki wodoodpornej 18–21 mm lub desek 38 mm</li>
+    <li><span class="check-box danger"></span> Wszystkie kąty szczelne</li>
+    <li><span class="check-box"></span> Szalunek posmarowany olejem szalunkowym</li>
+    <li><span class="check-box"></span> Każdy stopień: głębokość 31 cm, szerokość 150 cm — sprawdzone poziomnicą</li>
+    <li><span class="check-box"></span> Spadek 2% na płaszczyznach stopni zaznaczony w szalunku</li>
+  </ul>
+
+  <h3>ETAP 5 — Dylatacja ⚠ KRYTYCZNE</h3>
+  <ul class="checklist">
+    <li class="critical"><span class="check-box danger"></span> <strong>EPS 20 mm (styropian) ułożony przy ścianie przez CAŁĄ wysokość</strong></li>
+    <li class="critical"><span class="check-box danger"></span> <strong>Każda rura przy ścianie owinięta pianką PE 20 mm</strong></li>
+    <li class="critical"><span class="check-box danger"></span> <strong>Dylatacja nie jest usunięta przed betonowaniem</strong></li>
+  </ul>
+
+  <h3>ETAP 6 — Zbrojenie ⚠ KRYTYCZNE</h3>
+  <ul class="checklist">
+    <li class="critical"><span class="check-box danger"></span> <strong>Pręty φ10 AIII na siatce 20×20 cm</strong></li>
+    <li class="critical"><span class="check-box danger"></span> <strong>Dystansery plastikowe zamontowane — otulina min. 30 mm</strong></li>
+    <li class="critical"><span class="check-box danger"></span> <strong>Zbrojenie nie leży na ziemi, betonie podkładowym bez dystanserów</strong></li>
+    <li><span class="check-box"></span> Pręty zakotwione przy ścianie (lub dylatacja — jedna z dwóch opcji)</li>
+  </ul>
+
+  <h3>ETAP 7 — Betonowanie</h3>
+  <ul class="checklist">
+    <li><span class="check-box danger"></span> Beton min. C20/25 klasy XF4, W/C max 0,45</li>
+    <li><span class="check-box danger"></span> Temperatura powietrza +5°C do +30°C</li>
+    <li><span class="check-box"></span> Beton zagęszczony wibratorem (nie "kijkiem")</li>
+    <li><span class="check-box danger"></span> Wylewanie jednorazowe — bez długich przerw</li>
+    <li><span class="check-box"></span> Pielęgnacja mokra przez min. 7 dni (folią lub wilgotną jutą)</li>
+  </ul>
+
+  <h3>ETAP 8 — Rozszalowanie i Odbiór</h3>
+  <ul class="checklist">
+    <li><span class="check-box"></span> Szalunek pionowy zdjęty nie wcześniej niż po 3 dniach</li>
+    <li><span class="check-box"></span> Szalunek dolny zdjęty nie wcześniej niż po 14–21 dniach</li>
+    <li><span class="check-box"></span> Brak rys, pęknięć, odpryśnięć krawędzi</li>
+    <li><span class="check-box"></span> Szczelina dylatacyjna widoczna wzdłuż całej ściany</li>
+    <li><span class="check-box"></span> Uszczelnienie dylatacji masą elastyczną PU lub silikonem mrozoodpornym</li>
+  </ul>
+
+  <div class="box box-dark" style="margin-top:5mm;">
+    <div class="box-label">📋 Podsumowanie Kosztów Podbudowy — Orientacyjnie</div>
+    <table class="tech" style="font-size:8pt;">
+      <tr style="background:rgba(255,255,255,0.1);">
+        <th style="background:rgba(255,255,255,0.15);color:var(--gold);">Pozycja</th>
+        <th style="background:rgba(255,255,255,0.15);color:var(--gold);">Materiał</th>
+        <th style="background:rgba(255,255,255,0.15);color:var(--gold);">Na ten projekt</th>
+      </tr>
+      <tr>
+        <td style="color:#ccc;">Geowłóknina tkana 200 g/m²</td>
+        <td style="color:#ccc;">~1,5 m × 5 m = ok. 8 m²</td>
+        <td style="color:var(--gold2);">~80–120 zł</td>
+      </tr>
+      <tr>
+        <td style="color:#ccc;">Tłuczeń 31–63 mm (granit)</td>
+        <td style="color:#ccc;">ok. 2,5 tony</td>
+        <td style="color:var(--gold2);">~250–400 zł</td>
+      </tr>
+      <tr>
+        <td style="color:#ccc;">Kliniec 4–31 mm</td>
+        <td style="color:#ccc;">ok. 0,5 tony</td>
+        <td style="color:var(--gold2);">~80–120 zł</td>
+      </tr>
+      <tr>
+        <td style="color:#ccc;">Beton podkładowy C8/10</td>
+        <td style="color:#ccc;">~0,7 m³</td>
+        <td style="color:var(--gold2);">~350–500 zł</td>
+      </tr>
+      <tr>
+        <td style="color:#ccc;">Dylatacja EPS 20 mm</td>
+        <td style="color:#ccc;">~2,5 m × 0,25 m</td>
+        <td style="color:var(--gold2);">~30–50 zł</td>
+      </tr>
+      <tr>
+        <td style="color:#ccc;"><strong style="color:rgba(255,255,255,0.9);">RAZEM PODBUDOWA</strong></td>
+        <td style="color:#ccc;">materiały</td>
+        <td style="color:var(--gold2);font-weight:700;">ok. 800–1200 zł</td>
+      </tr>
+    </table>
+    <p style="color:rgba(255,255,255,0.5);font-size:7.5pt;margin-top:2mm;">Ceny orientacyjne 2024/2025. Nie obejmują robocizny ani betonu właściwego schodów.</p>
+  </div>
+
+  <div class="page-num">str. 8</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 9 – PODSUMOWANIE I ZASADY
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 09 — Zasady i Podsumowanie</div>
+  </div>
+
+  <div class="section-num">SEKCJA 12</div>
+  <h1 class="section-title">10 Zasad Których Nigdy Nie Łam</h1>
+
+  <div class="three-col">
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">01</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Nie skąp na tłuczniu</p>
+      <p>Min. 20 cm, przy nasypie 25–30 cm. Tłuczeń to fundament.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">02</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Zawsze geowłóknina</p>
+      <p>Tkana, min. 200 g/m². Bez niej tłuczeń zniknie w gruncie.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">03</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Dylatacja = obowiązek</p>
+      <p>EPS 20 mm przy ścianie przez CAŁĄ wysokość. Bez dyskusji.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">04</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Zbrojenie z otuliną</p>
+      <p>φ10 co 20 cm, dystansery, min. 30 mm od powierzchni.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">05</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Beton C20/25 XF4</p>
+      <p>Nie słabszy. Klasa ekspozycji mrozowej. W/C max 0,45.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">06</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Zagęszczarka — nie łopata</p>
+      <p>Każda warstwa nasypowa — zagęszczarka wibracyjna ≥75 kg.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">07</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Izolacja ściany</p>
+      <p>Masa bitumiczna 2× przed zasypaniem. Ściana popękana = ryzyko.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">08</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Pielęgnacja betonu</p>
+      <p>7 dni mokro (folia lub juta). Nie wystawiać na słońce bez ochrony.</p>
+    </div>
+    <div class="box box-dark" style="text-align:center;padding:5mm;">
+      <div style="font-size:22pt;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;">09</div>
+      <p style="font-size:8.5pt;font-weight:600;color:white;margin-bottom:1mm;">Spadek 2% na stopniach</p>
+      <p>Woda musi spływać. Płaski stopień = kałuże = lód = wypadek.</p>
+    </div>
+  </div>
+
+  <div class="box box-warn" style="margin-top:2mm;">
+    <div class="box-label">10 — Ufaj dokumentacji, nie plotkom</div>
+    <p>Każdy "dobry" sąsiad, kuzyn czy poprzedni wykonawca "wie lepiej". Parametry w tym dokumencie są oparte na normach PN-EN 1992 (Eurokod 2) i wieloletnim doświadczeniu praktycznym. Jeśli ktokolwiek sugeruje pominięcie którejkolwiek z tych zasad — poproś go o pisemne potwierdzenie i gwarancję. <strong class="red">Żaden rzetelny fachowiec nie da Ci gwarancji na niedoróbkę.</strong></p>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-num">PODSUMOWANIE</div>
+  <h2 class="section-title">Złota Kolejność Robót — Skrót</h2>
+
+  <div style="display:flex;flex-direction:column;gap:2mm;margin-bottom:5mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--navy);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">1</div>
+      <div style="font-size:9pt;"><strong>Roboty ziemne</strong> — usunięcie humusu, wyrównanie skarpy, stabilizacja</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--navy);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">2</div>
+      <div style="font-size:9pt;"><strong>Izolacja ściany</strong> — masa bitumiczna 2×, naprawa pęknięć</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--navy);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">3</div>
+      <div style="font-size:9pt;"><strong>Zagęszczanie gruntu</strong> — warstwy po 20 cm, zagęszczarka wibracyjna</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--navy);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">4</div>
+      <div style="font-size:9pt;"><strong>Geowłóknina</strong> — tkana 200 g/m², z zakładką 30 cm</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--navy);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">5</div>
+      <div style="font-size:9pt;"><strong>Tłuczeń 20–30 cm</strong> — granit/bazalt 31–63 mm, zagęszczony warstwami</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--navy);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">6</div>
+      <div style="font-size:9pt;"><strong>Kliniec 5–10 cm</strong> — wyrównanie i zaklinowanie, zagęszczony</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--navy);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">7</div>
+      <div style="font-size:9pt;"><strong>Beton podkładowy C8/10</strong> — 8–10 cm, wyrównać i odczekać</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--gold);color:var(--navy);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">8</div>
+      <div style="font-size:9pt;"><strong>Dylatacja EPS 20 mm</strong> — przy ścianie, przez całą wysokość</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--gold);color:var(--navy);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">9</div>
+      <div style="font-size:9pt;"><strong>Zbrojenie φ10 co 20 cm</strong> — z dystanserami, otulina 30 mm</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--gold);color:var(--navy);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">10</div>
+      <div style="font-size:9pt;"><strong>Szalunek</strong> — sklejka wodoodporna, olej, szczelny</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--gold);color:var(--navy);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">11</div>
+      <div style="font-size:9pt;"><strong>Betonowanie C20/25 XF4</strong> — jednorazowo, zagęszczenie wibratorem</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <div style="background:var(--gold);color:var(--navy);font-family:'IBM Plex Mono',monospace;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9pt;">12</div>
+      <div style="font-size:9pt;"><strong>Pielęgnacja 7 dni</strong> — folia lub juta, wilgotno</div>
+    </div>
+  </div>
+
+  <!-- STOPKA -->
+  <div style="border-top:2px solid var(--navy);padding-top:4mm;display:flex;justify-content:space-between;align-items:flex-end;">
+    <div>
+      <div style="font-size:7pt;color:var(--gray4);font-family:'IBM Plex Mono',monospace;letter-spacing:1px;text-transform:uppercase;">Opracowanie techniczne</div>
+      <div style="font-size:9pt;font-weight:600;color:var(--navy);">Arkadiusz Bunkowski</div>
+      <div style="font-size:8pt;color:var(--gray4);">Specjalista ds. Remontów | arkadiuszbunkowski.pl</div>
+      <div style="font-size:8pt;color:var(--gray4);">+48 790 620 131 | arkadiuszbunkowski@gmail.com</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--gray3);">REF: SCH-ŻEL-2025 / v1.0</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--gray3);">Dokument autorski</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--gray3);">Wszelkie prawa zastrzeżone</div>
+    </div>
+  </div>
+
+  <div class="page-num">str. 9</div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 10 – DRENAŻ + ŁAWA FUNDAMENTOWA
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 10 — Drenaż i Fundamentowanie</div>
+  </div>
+
+  <div class="section-num">SEKCJA 13</div>
+  <h1 class="section-title">Drenaż — Temat Który Wszyscy Pomijają i Wszyscy Żałują</h1>
+
+  <div class="box box-danger">
+    <div class="box-label">🔴 Największa luka przy schodach na skarpie</div>
+    <p>Skarpa z nasypem to naturalne miejsce zbierania się wody opadowej i gruntowej. Woda nie ma ujścia → wchodzi pod podbudowę → zimą zamarza → <strong class="red">podnosi schody o 2–5 cm</strong> → wiosną opada → schody pękają. Dzieje się tak nawet przy idealnie wykonanej podbudowie, jeśli brak drenażu.</p>
+  </div>
+
+  <div class="section-num">RYSUNEK 05</div>
+
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid #dde2e8;background:#f9fafb;display:block;margin-bottom:2mm;">
+    <defs>
+      <pattern id="soil2" width="6" height="6" patternUnits="userSpaceOnUse">
+        <circle cx="3" cy="3" r="1" fill="#c8b99a" opacity="0.5"/>
+      </pattern>
+      <marker id="water-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/>
+      </marker>
+    </defs>
+    <rect width="560" height="230" fill="#f0f5ff" opacity="0.3"/>
+    <rect width="560" height="230" fill="url(#soil2)"/>
+    <rect width="560" height="230" fill="white" opacity="0.7"/>
+
+    <text x="280" y="16" font-size="9" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">PRZEKRÓJ — SYSTEM DRENAŻOWY POD SCHODAMI</text>
+
+    <!-- Ściana -->
+    <rect x="20" y="25" width="20" height="180" fill="#9ca8b5" stroke="#0b1622" stroke-width="1.5"/>
+    <text x="30" y="115" font-size="7" fill="white" text-anchor="middle" transform="rotate(-90,30,115)" font-family="IBM Plex Sans,sans-serif">ŚCIANA</text>
+
+    <!-- Schody schematycznie -->
+    <polyline points="40,90 40,80 80,80 80,70 120,70 120,60 160,60 160,50 200,50 200,205"
+      fill="#d4cfc8" stroke="#0b1622" stroke-width="1.5"/>
+    <line x1="40" y1="205" x2="200" y2="205" stroke="#0b1622" stroke-width="1.5"/>
+    <line x1="40" y1="90" x2="40" y2="205" stroke="#0b1622" stroke-width="1.5"/>
+
+    <!-- Geowłóknina owijająca tłuczeń -->
+    <path d="M40,205 Q38,205 38,203 L38,100 Q38,98 40,98 L200,98 Q202,98 202,100 L202,205 Q202,207 200,207 L40,207 Q38,207 38,205"
+      fill="none" stroke="#b0a040" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="220" y="155" font-size="7.5" fill="#8a7010" font-family="IBM Plex Sans,sans-serif">geowłóknina</text>
+    <text x="220" y="164" font-size="7.5" fill="#8a7010" font-family="IBM Plex Sans,sans-serif">owijająca jak</text>
+    <text x="220" y="173" font-size="7.5" fill="#8a7010" font-family="IBM Plex Sans,sans-serif">"koperta"</text>
+
+    <!-- Tłuczeń drenaż -->
+    <rect x="40" y="100" width="160" height="100" fill="#8aabce" opacity="0.35"/>
+    <text x="120" y="155" font-size="8" fill="#1a3a5a" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">TŁUCZEŃ 31–63 mm</text>
+    <text x="120" y="165" font-size="7" fill="#3a5a7a" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">(pełni też funkcję drenażową)</text>
+
+    <!-- Rura drenarską -->
+    <ellipse cx="55" cy="200" rx="12" ry="6" fill="none" stroke="#c07800" stroke-width="2"/>
+    <ellipse cx="55" cy="200" rx="9" ry="4.5" fill="#e8d080" opacity="0.5"/>
+    <line x1="55" y1="200" x2="400" y2="200" stroke="#c07800" stroke-width="3"/>
+    <text x="230" y="196" font-size="8" fill="#c07800" font-family="IBM Plex Mono,monospace" font-weight="600">RURA DRENARSK.A φ110 PERFOROWANA</text>
+
+    <!-- Strzałki wody -->
+    <line x1="260" y1="130" x2="260" y2="195" stroke="#2563eb" stroke-width="1.5" marker-end="url(#water-arrow)"/>
+    <line x1="300" y1="120" x2="280" y2="195" stroke="#2563eb" stroke-width="1.5" marker-end="url(#water-arrow)"/>
+    <line x1="330" y1="110" x2="295" y2="195" stroke="#2563eb" stroke-width="1.5" marker-end="url(#water-arrow)"/>
+    <text x="360" y="150" font-size="7.5" fill="#2563eb" font-family="IBM Plex Sans,sans-serif">woda opada</text>
+    <text x="360" y="160" font-size="7.5" fill="#2563eb" font-family="IBM Plex Sans,sans-serif">przez tłuczeń</text>
+    <text x="360" y="169" font-size="7.5" fill="#2563eb" font-family="IBM Plex Sans,sans-serif">do rury</text>
+
+    <!-- Odpływ -->
+    <line x1="400" y1="200" x2="450" y2="220" stroke="#c07800" stroke-width="3"/>
+    <text x="460" y="224" font-size="8" fill="#c07800" font-family="IBM Plex Mono,monospace">→ ODPŁYW (studnia/rów)</text>
+
+    <!-- Spadek rury -->
+    <text x="230" y="210" font-size="7" fill="#c07800" font-family="IBM Plex Mono,monospace">SPADEK MIN. 0,5%</text>
+
+    <!-- Grunt -->
+    <rect x="40" y="200" width="160" height="20" fill="#c8b99a" opacity="0.4"/>
+
+    <!-- Izolacja ściany -->
+    <rect x="40" y="25" width="5" height="200" fill="#1a1a1a" opacity="0.7"/>
+    <text x="50" y="22" font-size="6.5" fill="#333" font-family="IBM Plex Mono,monospace">izolacja ściany</text>
+  </svg>
+  <p style="font-size:7.5pt;color:#7a8694;font-style:italic;">Rys. 05 — System drenażowy. Geowłóknina owija tłuczeń jak kopertę. Rura drenarsk.a φ110 na dnie, ze spadkiem 0,5% do studni chłonnej lub rowu.</p>
+
+  <h3>Jak to wykonać — krok po kroku</h3>
+  <div class="two-col">
+    <div>
+      <ol style="font-size:9pt;padding-left:5mm;line-height:1.8;">
+        <li>Ułóż geowłókninę "z nadmiarem" (30–40 cm na każdą stronę)</li>
+        <li>Przy ścianie (na dole) ułóż rurę drenarską φ110 perforowaną <em>otworami w dół</em></li>
+        <li>Rura musi mieć <strong>spadek min. 0,5%</strong> (5 mm na każdy metr) w kierunku odpływu</li>
+        <li>Wsyp tłuczeń 31–63 mm dookoła i nad rurą (min. 10 cm nad rurą)</li>
+        <li>Zawiniętą geowłókniną zamknij "kopertę" od góry — z zakładką min. 30 cm</li>
+        <li>Odprowadź rurę do studni chłonnej (fi600) lub rowu melioracyjnego</li>
+      </ol>
+    </div>
+    <div>
+      <div class="box box-warn">
+        <div class="box-label">⚠ Rura perforowana — otwory w DÓŁ</div>
+        <p>Częsty błąd: rura drenarsk.a ułożona otworami w górę — zbiera piasek, zatka się w rok. Otwory muszą być skierowane w dół, woda wchodzi od dołu przez tłuczeń.</p>
+      </div>
+      <div class="box box-info">
+        <div class="box-label">ℹ Koszt drenażu</div>
+        <p>Rura fi110 perforowana: ~8–12 zł/mb<br>
+        Studnia chłonna fi600: ~200–350 zł<br>
+        <strong>Łącznie: 400–700 zł.</strong><br>
+        Brak drenażu przy skarpie = pewna katastrofa. To jest najtańsze ubezpieczenie całej inwestycji.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-num">SEKCJA 14</div>
+  <h1 class="section-title">Ława Fundamentowa — Przy 240 cm Nie Ma Kompromisu</h1>
+
+  <div class="box box-danger">
+    <div class="box-label">🔴 Głębokość przemarzania gruntu w Polsce</div>
+    <p>Polska: strefa II–III = <strong>głębokość przemarzania 80–100 cm</strong>. Dolna krawędź schodów musi znaleźć się <strong>poniżej tej głębokości</strong> lub na stabilnym, niezamarzającym gruncie (tłuczeń odprowadzający wodę). W przeciwnym razie mróz wypchnięty cały dolny stopień w górę każdej zimy.</p>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3>Kiedy ława jest wymagana</h3>
+      <table class="tech">
+        <tr><th>Sytuacja</th><th>Rozwiązanie</th></tr>
+        <tr><td>Grunt stabilny, niespoistych, tłuczeń do 1 m głębokości</td><td class="good">Wystarczy podbudowa</td></tr>
+        <tr><td>Nasyp, skarpa, grunt spoistych (glina)</td><td class="bad">Ława betonowa obowiązkowa</td></tr>
+        <tr><td>Wysokość schodów powyżej 150 cm</td><td class="bad">Ława betonowa obowiązkowa</td></tr>
+        <tr><td>Twój projekt (skarpa + 240 cm)</td><td class="bad">Ława betonowa obowiązkowa</td></tr>
+      </table>
+
+      <div class="box box-warn">
+        <div class="box-label">⚠ Parametry ławy dla tego projektu</div>
+        <p><strong>Szerokość:</strong> min. 150 cm (= szerokość schodów)<br>
+        <strong>Głębokość posadowienia:</strong> min. 100 cm od terenu<br>
+        <strong>Grubość ławy:</strong> min. 30 cm<br>
+        <strong>Beton:</strong> C16/20 minimum<br>
+        <strong>Zbrojenie:</strong> 4 pręty φ12 wzdłuż + strzemiona φ8 co 25 cm</p>
+      </div>
+    </div>
+    <div>
+      <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid #dde2e8;background:#f9fafb;display:block;">
+        <text x="120" y="14" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">ŁAWA FUNDAMENTOWA</text>
+
+        <!-- Grunt -->
+        <rect x="20" y="100" width="200" height="100" fill="#c8b99a" opacity="0.4" stroke="#9a8060" stroke-width="1"/>
+        <!-- Strefa przemarzania -->
+        <rect x="20" y="100" width="200" height="50" fill="#aaddff" opacity="0.25"/>
+        <line x1="20" y1="150" x2="220" y2="150" stroke="#2563eb" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="230" y="154" font-size="6.5" fill="#2563eb" font-family="IBM Plex Mono,monospace">–100cm</text>
+        <text x="120" y="130" font-size="7" fill="#2563eb" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">strefa przemarzania</text>
+
+        <!-- Ława -->
+        <rect x="40" y="150" width="160" height="40" fill="#c8c8c8" stroke="#0b1622" stroke-width="1.5"/>
+        <text x="120" y="174" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">ŁAWA C16/20</text>
+
+        <!-- Zbrojenie ławy -->
+        <circle cx="60" cy="162" r="3" fill="#c07800"/>
+        <circle cx="80" cy="162" r="3" fill="#c07800"/>
+        <circle cx="160" cy="162" r="3" fill="#c07800"/>
+        <circle cx="180" cy="162" r="3" fill="#c07800"/>
+        <circle cx="60" cy="183" r="3" fill="#c07800"/>
+        <circle cx="80" cy="183" r="3" fill="#c07800"/>
+        <circle cx="160" cy="183" r="3" fill="#c07800"/>
+        <circle cx="180" cy="183" r="3" fill="#c07800"/>
+
+        <!-- Schody nad ławą -->
+        <rect x="40" y="30" width="160" height="70" fill="#d4cfc8" stroke="#0b1622" stroke-width="1.5"/>
+        <text x="120" y="70" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">SCHODY</text>
+
+        <!-- Wymiary -->
+        <line x1="15" y1="100" x2="15" y2="150" stroke="#c07800" stroke-width="1"/>
+        <text x="8" y="128" font-size="6.5" fill="#c07800" text-anchor="middle" transform="rotate(-90,8,128)" font-family="IBM Plex Mono,monospace">100 cm</text>
+
+        <line x1="215" y1="150" x2="215" y2="190" stroke="#c07800" stroke-width="1"/>
+        <text x="232" y="172" font-size="6.5" fill="#c07800" text-anchor="middle" transform="rotate(90,232,172)" font-family="IBM Plex Mono,monospace">30 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="page-num">str. 10</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 11 – BALUSTRADA + SKARPA + ZIMOWANIE
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 11 — Balustrada, Skarpa, Zima</div>
+  </div>
+
+  <div class="section-num">SEKCJA 15</div>
+  <h1 class="section-title">Kotwienie Balustrady — Planuj PRZED Betonowaniem</h1>
+
+  <div class="box box-danger">
+    <div class="box-label">🔴 Jeśli balustrada nie była zaplanowana — masz problem</div>
+    <p>Najpopularniejszy błąd na świeżo wylanym betonie: klient przychodzi i mówi "a gdzie te śruby pod balustradę?". Kucie w stwardniałym betonie tworzy mikropęknięcia wokół otworu. Woda wchodzi w pęknięcia → mróz → kruszenie → balustrada się chwieje po 3 latach.</p>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3>Rozwiązanie: Tuleje Montażowe (Kotwy)</h3>
+      <p>Przed betonowaniem wstawiasz w szalunek <strong>tuleje stalowe</strong> (rury kwadratowe lub okrągłe) w miejscach słupków balustrady. Tuleje są zalewane betonem razem z resztą schodów — po stwardnieniu masz gotowe gniazda do montażu słupków.</p>
+
+      <table class="tech">
+        <tr><th>Parametr</th><th>Wartość</th></tr>
+        <tr><td>Rozstaw słupków balustrady</td><td class="num">max. 120 cm</td></tr>
+        <tr><td>Minimalna głębokość zakotwienia</td><td class="num">15–20 cm w betonie</td></tr>
+        <tr><td>Przekrój tulei (do słupka kw. 40×40)</td><td class="num">rura 50×50×3 mm</td></tr>
+        <tr><td>Wypełnienie tulei po montażu</td><td class="num">zaprawa bezskurczowa</td></tr>
+      </table>
+
+      <div class="box box-ok">
+        <div class="box-label">✓ Alternatywa: Kotwy wklejane chemicznie</div>
+        <p>Jeśli pozapomniałeś o tulejach — kotwy wklejane (żywica epoksydowa) są do zaakceptowania, ALE: wiercenie min. φ20 mm, głębokość min. 150 mm, żywica o klasie mrozoodporności.</p>
+      </div>
+    </div>
+    <div>
+      <svg viewBox="0 0 230 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid #dde2e8;background:#f9fafb;display:block;">
+        <text x="115" y="14" font-size="8" fill="#0b1622" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="600">TULEJA MONTAŻOWA W BETONIE</text>
+        <!-- Stopień betonu -->
+        <rect x="20" y="60" width="190" height="110" fill="#d4cfc8" stroke="#0b1622" stroke-width="1.5"/>
+        <!-- Tuleja -->
+        <rect x="85" y="40" width="30" height="110" fill="#888" stroke="#0b1622" stroke-width="1.5"/>
+        <rect x="87" y="42" width="26" height="106" fill="#aaa"/>
+        <text x="100" y="160" font-size="7" fill="white" text-anchor="middle" font-family="IBM Plex Mono,monospace">TULEJA</text>
+        <!-- Słupek balustrady -->
+        <rect x="90" y="10" width="20" height="40" fill="#555" stroke="#333" stroke-width="1"/>
+        <text x="100" y="30" font-size="6.5" fill="white" text-anchor="middle" font-family="IBM Plex Sans,sans-serif">SŁUPEK</text>
+        <!-- Wymiary -->
+        <line x1="20" y1="40" x2="85" y2="40" stroke="#c07800" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="115" y1="40" x2="210" y2="40" stroke="#c07800" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="20" y1="150" x2="85" y2="150" stroke="#c07800" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="15" y="100" font-size="7" fill="#c07800" text-anchor="middle" transform="rotate(-90,15,100)" font-family="IBM Plex Mono,monospace">min. 150 mm</text>
+        <!-- Zaprawa -->
+        <text x="160" y="80" font-size="7" fill="#2563eb" font-family="IBM Plex Sans,sans-serif">zaprawa</text>
+        <text x="160" y="89" font-size="7" fill="#2563eb" font-family="IBM Plex Sans,sans-serif">bezskurczowa</text>
+        <line x1="155" y1="82" x2="115" y2="70" stroke="#2563eb" stroke-width="0.8"/>
+      </svg>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-num">SEKCJA 16</div>
+  <h1 class="section-title">Nośność Skarpy — Kiedy Ziemia Się Osunie</h1>
+
+  <div class="two-col">
+    <div>
+      <div class="box box-warn">
+        <div class="box-label">⚠ Zasada bezpiecznej odległości od krawędzi skarpy</div>
+        <p>Przy nasypie bez zbrojenia (gabionów, ścianki oporowej) krawędź schodów powinna być oddalona od krawędzi skarpy o <strong>minimum 1× wysokości nasypu</strong>. Przy nasyp.ie 240 cm → min. 240 cm od krawędzi. Ciężar schodów + betonu może wywołać osunięcie skarpy.</p>
+      </div>
+      <h3>Kiedy potrzebna ścianka oporowa lub mur</h3>
+      <ul style="font-size:9pt;padding-left:5mm;line-height:1.7;">
+        <li>Kąt skarpy przekracza 45° (stosunek 1:1)</li>
+        <li>Grunt spoistych (glina, ił) — może "płynąć"</li>
+        <li>Schody bliżej krawędzi niż 1× wysokości nasypu</li>
+        <li>Po deszczach widoczne odpryski i spęcherzenia na skarpie</li>
+      </ul>
+    </div>
+    <div>
+      <div class="box box-info">
+        <div class="box-label">ℹ Opcje stabilizacji skarpy</div>
+        <p><strong>Gabiony:</strong> Kosze stalowe wypełnione kamieniem — najtańsze, przepuszczają wodę. Koszt: ~200–400 zł/m²<br><br>
+        <strong>Mur oporowy z bloczków betonowych:</strong> Estetyczny, trwały. Wymaga fundamentu. Koszt: ~400–700 zł/m²<br><br>
+        <strong>Pale drewniane (szalunek tracony):</strong> Przy skarpach do 150 cm. Szybki montaż.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-num">SEKCJA 17</div>
+  <h1 class="section-title">Zimowanie Świeżego Betonu — Co Zrobić Przy Pracy Późną Jesienią</h1>
+
+  <div class="box box-danger">
+    <div class="box-label">🔴 Beton poniżej +5°C przestaje wiązać. Poniżej 0°C zamraza się i traci do 50% wytrzymałości</div>
+    <p>Jeśli wylewasz schody między październikiem a kwietniem — musisz mieć plan na temperatury. Nie możesz "liczyć na pogodę".</p>
+  </div>
+
+  <table class="tech">
+    <tr>
+      <th>Temperatura powietrza</th>
+      <th>Co robić</th>
+      <th>Co NIE robić</th>
+    </tr>
+    <tr>
+      <td>+5°C do +10°C</td>
+      <td class="good">Betonować, ale nakryć folią bąbelkową na 48h</td>
+      <td class="bad">Nie odkrywać przez 3 doby</td>
+    </tr>
+    <tr>
+      <td>0°C do +5°C</td>
+      <td class="good">Dodać domieszki przyspieszające wiązanie + folia + maty grzewcze</td>
+      <td class="bad">Nie betonować bez ogrzewania</td>
+    </tr>
+    <tr>
+      <td>Poniżej 0°C</td>
+      <td class="good">Namioty grzewcze lub PRZESUNĄĆ termin</td>
+      <td class="bad">NIE betonować bez specjalistycznego sprzętu</td>
+    </tr>
+    <tr>
+      <td>Powyżej +25°C</td>
+      <td class="good">Betonować rano/wieczorem, nakryć mokrą jutą, zraszać 3× dziennie</td>
+      <td class="bad">Nie betonować w pełnym słońcu w południe</td>
+    </tr>
+  </table>
+
+  <div class="box box-ok">
+    <div class="box-label">✓ Praktyczny zestaw zimowy</div>
+    <p>Folia polietylenowa 0,2 mm (kilka zł/m²) + maty słomiane lub styropianowe + termometr na budowie. Koszt ochrony: 50–150 zł. Koszt ponownego wylania po zmarzniętym betonie: 3000–8000 zł.</p>
+  </div>
+
+  <div class="page-num">str. 11</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 12 – HARMONOGRAM ROBÓT
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 12 — Harmonogram</div>
+  </div>
+
+  <div class="section-num">SEKCJA 18</div>
+  <h1 class="section-title">Harmonogram Robót — Kiedy Przyjeżdżać na Kontrolę</h1>
+
+  <p>To jest Twój kalendarz. Wiesz kiedy co się dzieje, więc wiesz kiedy musisz być na placu. Każdy <strong class="red">✓ KONTROLA</strong> to moment, w którym powinieneś osobiście sprawdzić etap lub mieć zdjęcia od wykonawcy.</p>
+
+  <table class="tech" style="font-size:8.5pt;">
+    <tr>
+      <th style="width:12%">Dzień</th>
+      <th style="width:28%">Etap robót</th>
+      <th style="width:30%">Co sprawdzić</th>
+      <th style="width:30%">Uwagi</th>
+    </tr>
+    <tr>
+      <td class="num">Dzień 1–2</td>
+      <td><strong>Roboty ziemne</strong><br><small>Wykop, usunięcie humusu, stabilizacja skarpy</small></td>
+      <td>Czy usunięto całą ziemię czarną/brunatną? Czy skarpa stabilna?</td>
+      <td style="color:#c0392b;font-weight:500;">✓ KONTROLA obowiązkowa</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 2–3</td>
+      <td><strong>Izolacja ściany</strong><br><small>Masa bitumiczna, naprawa pęknięć</small></td>
+      <td>Czy ściana pokryta masą 2×? Czy pęknięcia wypełnione?</td>
+      <td style="color:#c0392b;font-weight:500;">✓ KONTROLA — zdjęcia!</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 3–4</td>
+      <td><strong>Ława fundamentowa</strong><br><small>Kopanie, zbrojenie, betonowanie</small></td>
+      <td>Głębokość min. 100 cm. Zbrojenie φ12. Beton C16/20.</td>
+      <td style="color:#c0392b;font-weight:500;">✓ KONTROLA zbrojenia przed zalaniem!</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 5–6</td>
+      <td><strong>Podbudowa</strong><br><small>Geowłóknina + rura drenarsk.a + tłuczeń + kliniec</small></td>
+      <td>Geowłóknina tkana? Rura drenarsk.a z właściwym spadkiem? Grubość tłucznia?</td>
+      <td style="color:#c0392b;font-weight:500;">✓ KONTROLA każdej warstwy</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 7</td>
+      <td><strong>Zagęszczanie</strong><br><small>Zagęszczarka wibracyjna warstwy po warstwie</small></td>
+      <td>Czy użyto zagęszczarki (nie ręcznie)? Czy warstwy po 15–20 cm?</td>
+      <td>Zapytaj o protokół zagęszczenia</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 8</td>
+      <td><strong>Beton podkładowy</strong><br><small>C8/10, 8–10 cm</small></td>
+      <td>Grubość? Wyrównanie? Odczekać 24h przed zbrojeniem.</td>
+      <td>Odczekać schnięcie</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 9–10</td>
+      <td><strong>Dylatacja + Zbrojenie</strong><br><small>EPS 20 mm + siatka φ10/20×20 + dystansery</small></td>
+      <td><strong class="red">Dylatacja przy ścianie?</strong> Dystansery pod prętami? Otulina 30 mm? Tuleje pod balustradę?</td>
+      <td style="color:#c0392b;font-weight:500;">✓ KRYTYCZNA KONTROLA — zdjęcia z każdej strony!</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 10</td>
+      <td><strong>Szalunek</strong><br><small>Sklejka wodoodporna, olej, podpory</small></td>
+      <td>Szczelność kątów? Olej szalunkowy? Poziomość?</td>
+      <td style="color:#c0392b;font-weight:500;">✓ KONTROLA przed betonowaniem</td>
+    </tr>
+    <tr>
+      <td class="num" style="background:#0b1622;color:#c07800;font-weight:700;">Dzień 11</td>
+      <td style="background:#0b1622;color:white;"><strong style="color:#c07800;">BETONOWANIE</strong><br><small style="color:rgba(255,255,255,0.6);">C20/25 XF4, wibrator, jednorazowo</small></td>
+      <td style="background:#0b1622;color:white;">Klasa betonu na WZ? Wibrator użyty? Temperatura?</td>
+      <td style="background:#0b1622;color:#c07800;font-weight:700;">✓ BĄDŹ NA MIEJSCU</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 12–18</td>
+      <td><strong>Pielęgnacja</strong><br><small>Folia lub mokra juta — 7 dni</small></td>
+      <td>Czy beton jest przykryty? Czy wilgotny pod folią?</td>
+      <td>Sprawdź po 3 i 7 dniach</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 14</td>
+      <td><strong>Rozszalowanie pionowe</strong><br><small>Risery (ścianki stopni)</small></td>
+      <td>Krawędzie stopni całe? Bez odpryśnięć?</td>
+      <td>Nie wcześniej niż +3 dni od lania</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 21–28</td>
+      <td><strong>Rozszalowanie dolne</strong><br><small>Spód płyty schodów</small></td>
+      <td>Brak rys i pęknięć? Dylatacja widoczna?</td>
+      <td style="color:#c0392b;font-weight:500;">✓ KONTROLA końcowa</td>
+    </tr>
+    <tr>
+      <td class="num">Dzień 28–35</td>
+      <td><strong>Odbiór końcowy</strong><br><small>Uszczelnienie dylatacji, obróbki</small></td>
+      <td>Szczelina dylatacyjna uszczelniona masą PU? Odpływ wody z drenażu działa?</td>
+      <td style="color:var(--green);font-weight:500;">Protokół odbioru!</td>
+    </tr>
+  </table>
+
+  <div class="box box-dark" style="margin-top:4mm;">
+    <div class="box-label">📅 Podsumowanie czasu</div>
+    <p>Cały cykl budowy: <strong style="color:var(--gold2);">28–35 dni roboczych.</strong> Schody są gotowe do użytkowania po <strong style="color:var(--gold2);">min. 28 dniach od betonowania</strong> (beton osiąga 100% wytrzymałości po 28 dniach). Chodzenie po schodach przed tym terminem: od 7. dnia, ostrożnie, bez ciężkiego obciążenia.</p>
+  </div>
+
+  <div class="page-num">str. 12</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 13 – PYTANIA DO WYKONAWCY + DOBRZE/ŹLE
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 13 — Wybór Wykonawcy</div>
+  </div>
+
+  <div class="section-num">SEKCJA 19</div>
+  <h1 class="section-title">10 Pytań Do Wykonawcy — Zadaj Przed Podpisaniem Umowy</h1>
+
+  <p>Rzetelny fachowiec odpowie na każde z tych pytań bez wahania. Nierzetelny będzie się plątał, minimalizował temat lub mówił "to nie jest potrzebne". <strong class="red">Brak odpowiedzi = brak doświadczenia.</strong></p>
+
+  <table class="tech" style="font-size:8.5pt;">
+    <tr>
+      <th style="width:5%">Nr</th>
+      <th style="width:40%">Pytanie do wykonawcy</th>
+      <th style="width:30%">Odpowiedź rzetelnego fachowca</th>
+      <th style="width:25%">Sygnał alarmowy</th>
+    </tr>
+    <tr>
+      <td class="num">1</td>
+      <td>Jakiej klasy beton stosujesz do schodów zewnętrznych?</td>
+      <td class="good">C20/25 klasa ekspozycji XF4 lub wyżej</td>
+      <td class="bad">"Normalny beton" / "B15 starczy"</td>
+    </tr>
+    <tr>
+      <td class="num">2</td>
+      <td>Skąd będzie tłuczeń i jakiej frakcji?</td>
+      <td class="good">Granit lub bazalt, frakcja 31–63 mm, z udokumentowanej kopalni</td>
+      <td class="bad">"Zwykły tłuczeń" / "mam coś z rozbiórki"</td>
+    </tr>
+    <tr>
+      <td class="num">3</td>
+      <td>Jak zagęszczasz grunt i tłuczeń?</td>
+      <td class="good">Zagęszczarką wibracyjną, warstwy po 15–20 cm</td>
+      <td class="bad">"Ubijamy łopatą" / "przez przejechanie"</td>
+    </tr>
+    <tr>
+      <td class="num">4</td>
+      <td>Co stosujesz przy ścianie żeby schody nie popękały?</td>
+      <td class="good">Dylatacja z EPS 20 mm przez całą wysokość</td>
+      <td class="bad">"Nic, po co?" / "wystarczy folia"</td>
+    </tr>
+    <tr>
+      <td class="num">5</td>
+      <td>Jakie zbrojenie i jak daleko od powierzchni betonu?</td>
+      <td class="good">Siatka φ10 co 20 cm, dystansery plastikowe, otulina min. 30 mm</td>
+      <td class="bad">"Co się trafi" / brak wiedzy o otulinach</td>
+    </tr>
+    <tr>
+      <td class="num">6</td>
+      <td>Czy stosujesz geowłókninę pod tłuczeń?</td>
+      <td class="good">Tak, tkana min. 200 g/m², z zakładką</td>
+      <td class="bad">"Nie ma potrzeby" / "folia wystarczy"</td>
+    </tr>
+    <tr>
+      <td class="num">7</td>
+      <td>Jak odprowadzisz wodę spod schodów?</td>
+      <td class="good">Rura drenarsk.a fi110 ze spadkiem do studni lub rowu</td>
+      <td class="bad">Cisza / "tłuczeń to wystarczy"</td>
+    </tr>
+    <tr>
+      <td class="num">8</td>
+      <td>Kiedy zdejmujesz szalunek?</td>
+      <td class="good">Pionowy po 3 dniach, dolny po 14–21 dniach</td>
+      <td class="bad">"Jak stwardnieje" / "następnego dnia"</td>
+    </tr>
+    <tr>
+      <td class="num">9</td>
+      <td>Czy dajesz gwarancję pisemną i na ile lat?</td>
+      <td class="good">Tak, min. 3–5 lat na robociznę, pisemnie w umowie</td>
+      <td class="bad">Odmowa / "słowna wystarczy"</td>
+    </tr>
+    <tr>
+      <td class="num">10</td>
+      <td>Co stanie się ze schodami bez ławy fundamentowej przy tej głębokości przemarzania?</td>
+      <td class="good">Wyjaśni temat przemarzania gruntu i zaproponuje właściwe rozwiązanie</td>
+      <td class="bad">Nie wie co to głębokość przemarzania</td>
+    </tr>
+  </table>
+
+  <div class="box box-warn" style="margin-top:3mm;">
+    <div class="box-label">⚠ Złota zasada wyboru</div>
+    <p>Jeśli wykonawca odpowiedział niepoprawnie na <strong>więcej niż 2 pytania</strong> — podziękuj i szukaj dalej. Koszt złego wykonawcy: 100–200% wartości robót na naprawach w ciągu 5 lat. Dobry wykonawca jest droższy o 20–30%. To jest najtańsza "polisa ubezpieczeniowa" jaką możesz kupić.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-num">SEKCJA 20</div>
+  <h1 class="section-title">Tak vs Nie — Co Widzieć Na Placu Budowy</h1>
+
+  <table class="tech" style="font-size:8.5pt;">
+    <tr>
+      <th style="background:#1a7a4a;width:50%">✓ TAK — Prawidłowo</th>
+      <th style="background:#c0392b;width:50%">✗ NIE — Sygnał Alarmowy</th>
+    </tr>
+    <tr>
+      <td class="good">Tłuczeń szary, twardy, ostrokrawędzisty — widać granit lub bazalt</td>
+      <td class="bad">Tłuczeń żółtawy, okrągły, miękki — to żwir płukany lub piasek</td>
+    </tr>
+    <tr>
+      <td class="good">Pręty zbrojeniowe uniesione na plastikowych "grzybkach" (dystanserach)</td>
+      <td class="bad">Pręty leżące bezpośrednio na betonie podkładowym lub kamieniach</td>
+    </tr>
+    <tr>
+      <td class="good">Żółty pasek EPS widoczny wzdłuż całej ściany przy krawędzi schodów</td>
+      <td class="bad">Brak jakiegokolwiek materiału między betonem a ścianą</td>
+    </tr>
+    <tr>
+      <td class="good">Szalunek stabilny, nie ugina się przy ręcznym nacisku, posmarowany olejem</td>
+      <td class="bad">Szalunek się chwieje, sklejony taśmą malarską, bez podparcia</td>
+    </tr>
+    <tr>
+      <td class="good">Wibrator zanurzony w beton co 40–50 cm, beton "bulgocze" i odpowietrza</td>
+      <td class="bad">Beton "rozgarniany" łopatą lub kijem, brak wibrowania</td>
+    </tr>
+    <tr>
+      <td class="good">Beton przykryty folią lub mokrą jutą dzień po wylaniu</td>
+      <td class="bad">Świeży beton leży odkryty na słońcu lub mrozie</td>
+    </tr>
+    <tr>
+      <td class="good">Faktura betonu: gładka, zwarta, jednorodna — bez dziur i jamek</td>
+      <td class="bad">Faktura: porowata, widoczne kamyki bez cementu — "plastry miodu"</td>
+    </tr>
+    <tr>
+      <td class="good">Geowłóknina: biała/szara, włókno tkane, szelest jak papier</td>
+      <td class="bad">Geowłóknina: czarna, miękka ogrodowa — za słaba do podbudowy</td>
+    </tr>
+  </table>
+
+  <div class="page-num">str. 13</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STRONA 14 – SŁOWNICZEK TECHNICZNY
+═══════════════════════════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="page-header-left">Schody Zewnętrzne Żelbetowe — Poradnik Techniczny</div>
+    <div class="page-header-right">§ 14 — Słowniczek</div>
+  </div>
+
+  <div class="section-num">SEKCJA 21</div>
+  <h1 class="section-title">Słowniczek Techniczny — Co To Znaczy?</h1>
+
+  <p>Zebraliśmy tu wszystkie pojęcia z tego dokumentu. Jeśli wykonawca używa tych słów — wiesz o czym mówi. Jeśli ich nie zna — masz problem.</p>
+
+  <div class="two-col">
+    <div>
+      <h3>Materiały i Klasy</h3>
+      <table class="tech" style="font-size:8pt;">
+        <tr><th>Pojęcie</th><th>Co to znaczy</th></tr>
+        <tr>
+          <td><strong>C20/25</strong></td>
+          <td>Klasa betonu — wytrzymałość charakterystyczna 20 MPa (próbka walcowa) / 25 MPa (próbka sześcienna). To jest minimum dla schodów zewnętrznych.</td>
+        </tr>
+        <tr>
+          <td><strong>XF4</strong></td>
+          <td>Klasa ekspozycji — beton narażony na mróz i środki odmrażające (sól). Wymaga napowietrzenia betonu 4–6% i max W/C 0,45.</td>
+        </tr>
+        <tr>
+          <td><strong>W/C</strong></td>
+          <td>Wskaźnik wodno-cementowy — ile wody na kg cementu. Im wyższy — słabszy beton. Max 0,45 dla mrozoodporności.</td>
+        </tr>
+        <tr>
+          <td><strong>AIII / RB500W</strong></td>
+          <td>Gatunek stali zbrojeniowej. φ10 = 10 mm średnicy pręta. Litera "W" = spawalna. Wymagana do schodów zewnętrznych.</td>
+        </tr>
+        <tr>
+          <td><strong>Tłuczeń 31–63 mm</strong></td>
+          <td>Kruszywo kamienne (granit/bazalt), frakcja ziaren 31–63 mm. "Frakcja" = rozmiar kamieni. Ostrokrawędzisty — nie okrągły.</td>
+        </tr>
+        <tr>
+          <td><strong>Kliniec 4–31 mm</strong></td>
+          <td>Drobniejsze kruszywo, wypełnia przestrzenie między tłuczniem, tworzy stabilną powierzchnię.</td>
+        </tr>
+        <tr>
+          <td><strong>Geowłóknina tkana</strong></td>
+          <td>Tkanina techniczna z polipropylenu. "Tkana" = splecione włókna (silna). Nie mylić z nietkana (ogrodowa = za słaba).</td>
+        </tr>
+        <tr>
+          <td><strong>EPS (styropian)</strong></td>
+          <td>Ekspandowany polistyren. Do dylatacji używa się EPS 100 (twardszy). Nie ściska się pod ciężarem betonu.</td>
+        </tr>
+      </table>
+
+      <h3>Wykonawstwo</h3>
+      <table class="tech" style="font-size:8pt;">
+        <tr><th>Pojęcie</th><th>Co to znaczy</th></tr>
+        <tr>
+          <td><strong>Otulina betonu</strong></td>
+          <td>Warstwa betonu chroniąca zbrojenie od zewnątrz. Min. 30 mm dla schodów zewnętrznych. Bez otuliny = rdza = pęknięcia.</td>
+        </tr>
+        <tr>
+          <td><strong>Dystanser</strong></td>
+          <td>Plastikowy "grzybek" lub podpórka trzymająca pręty w odpowiedniej odległości od szalunku. Zapewnia otulinę.</td>
+        </tr>
+        <tr>
+          <td><strong>Dylatacja</strong></td>
+          <td>Przerwa (szczelina) między dwoma elementami betonowymi lub między betonem a ścianą. Pozwala pracować termicznie bez pęknięć.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Grunt i Fundamenty</h3>
+      <table class="tech" style="font-size:8pt;">
+        <tr><th>Pojęcie</th><th>Co to znaczy</th></tr>
+        <tr>
+          <td><strong>Głębokość przemarzania</strong></td>
+          <td>Głębokość do której ziemia zamarza zimą. W Polsce: 80–100 cm w zależności od strefy klimatycznej. Fundament musi być poniżej.</td>
+        </tr>
+        <tr>
+          <td><strong>Ziemia humusowa (próchnica)</strong></td>
+          <td>Czarna/brunatna warstwa z rozkładającą się materią organiczną. Ściska się, osiada, gnije. Musi być usunięta w całości.</td>
+        </tr>
+        <tr>
+          <td><strong>Grunt spoistych</strong></td>
+          <td>Glina, ił, less — grunt który wchłania wodę i pęcznieje. Najbardziej podatny na wysadziny mrozowe.</td>
+        </tr>
+        <tr>
+          <td><strong>Nasyp</strong></td>
+          <td>Sztucznie usypana ziemia lub kruszywo. Bez zagęszczenia osiada latami. Wymaga specjalnego podejścia.</td>
+        </tr>
+        <tr>
+          <td><strong>Zagęszczenie Proctora (Is)</strong></td>
+          <td>Stopień zagęszczenia gruntu w % laboratoryjnego maksimum. Is≥0,95 = wymagane dla podbudów drogowych i budowlanych.</td>
+        </tr>
+        <tr>
+          <td><strong>Kolmatacja</strong></td>
+          <td>Zapychanie się warstwy kruszywa przez drobne cząstki ziemi "wciągane" z dołu. Geowłóknina zapobiega kolmatacji.</td>
+        </tr>
+        <tr>
+          <td><strong>Wysadzina mrozowa</strong></td>
+          <td>Unoszenie się elementu budowlanego przez zamarzającą wodę w gruncie. Może unieść stopień o 3–8 cm.</td>
+        </tr>
+        <tr>
+          <td><strong>Ława fundamentowa</strong></td>
+          <td>Poziomy element betonowy zbrojony, rozłożony na głębokości poniżej przemarzania. Przenosi ciężar na głęboki, stabilny grunt.</td>
+        </tr>
+      </table>
+
+      <h3>Rysunek techniczny</h3>
+      <table class="tech" style="font-size:8pt;">
+        <tr><th>Pojęcie</th><th>Co to znaczy</th></tr>
+        <tr>
+          <td><strong>φ (fi)</strong></td>
+          <td>Symbol średnicy pręta zbrojeniowego. φ10 = pręt o średnicy 10 mm.</td>
+        </tr>
+        <tr>
+          <td><strong>Wzór Blondela (2h+g)</strong></td>
+          <td>Wzór komfortu schodów: 2 × wysokość stopnia + głębokość stopnia = 60–65 cm. Zakres optymalny dla dorosłych.</td>
+        </tr>
+        <tr>
+          <td><strong>Riser</strong></td>
+          <td>Pionowa część szalunku formująca "ścianę" stopnia. Pierwszy do zdjęcia (po 3 dniach).</td>
+        </tr>
+        <tr>
+          <td><strong>Spadek 2%</strong></td>
+          <td>Pochylenie powierzchni 2 cm na każdy metr. Zapewnia odpływ wody. Obowiązkowy na schodach zewnętrznych.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- STOPKA KOŃCOWA -->
+  <div style="margin-top:6mm;background:var(--navy);padding:6mm 8mm;display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:2mm;">Dokument opracowany przez</div>
+      <div style="font-size:11pt;font-weight:700;color:white;font-family:'Playfair Display',serif;">Arkadiusz Bunkowski</div>
+      <div style="font-size:8.5pt;color:rgba(255,255,255,0.6);">Specjalista ds. Remontów | 20+ lat praktyki</div>
+      <div style="font-size:8.5pt;color:rgba(255,255,255,0.5);margin-top:1mm;">arkadiuszbunkowski.pl &nbsp;|&nbsp; +48 790 620 131</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--gold);margin-bottom:2mm;">REF: SCH-ŻEL-2025 / v1.1</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7pt;color:rgba(255,255,255,0.3);">14 stron | Wydanie pełne</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7pt;color:rgba(255,255,255,0.3);">Wszelkie prawa zastrzeżone</div>
+    </div>
+  </div>
+
+  <div class="page-num">str. 14</div>
+</div>
+
+</body>
+</html>
