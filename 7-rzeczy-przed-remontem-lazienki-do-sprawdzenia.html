@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Krótki raport kontrolny dla inwestora przed remontem łazienki w Polsce. 7 najważniejszych rzeczy do sprawdzenia, zanim wpuścisz ekipę. Bonus dla osób z kodem ŁAZIENKA.">
+<meta name="author" content="Arkadiusz Bunkowski">
+<meta property="og:title" content="7 rzeczy, które musisz sprawdzić, zanim wpuścisz ekipę do łazienki">
+<meta property="og:description" content="Krótki raport kontrolny dla inwestora, który nie chce płacić dwa razy za ten sam remont.">
+<meta property="og:type" content="article">
+<title>7 rzeczy, które musisz sprawdzić — Arkadiusz Bunkowski</title>
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Fraunces (editorial serif) + Inter (body) — full Polish glyph support -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+:root {
+  /* Brand colors */
+  --navy:       #0F1B2D;
+  --navy-dark:  #08111E;
+  --navy-soft:  #1A2740;
+  --gold:       #C9A24D;
+  --gold-soft:  #DCB76F;
+  --gold-dark:  #9E7F3D;
+  --cream:      #F7F4EE;
+  --cream-dark: #EFE9DC;
+  --paper:      #FAF8F3;
+  --graphite:   #1C1C1C;
+  --graphite-soft: #3D3D3D;
+  --offwhite:   #F3EFE6;
+  --wine:       #A23B2E;
+  --wine-soft:  #F4E2DF;
+  --line:       #D7D2C7;
+
+  /* Typography */
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing scale (8px base) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  /* Shadows */
+  --shadow-soft: 0 1px 2px rgba(15,27,45,0.04), 0 4px 16px rgba(15,27,45,0.04);
+  --shadow-card: 0 1px 2px rgba(15,27,45,0.06), 0 8px 24px rgba(15,27,45,0.06);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  line-height: 1.6;
+  color: var(--graphite);
+  background: var(--cream);
+  font-feature-settings: "kern", "liga", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--gold); color: var(--navy); }
+::-moz-selection { background: var(--gold); color: var(--navy); }
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   PROGRESS BAR (top)
+============================================================ */
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 100;
+  pointer-events: none;
+}
+.progress__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-soft) 100%);
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 12px rgba(201,162,77,0.5);
+}
+
+/* ============================================================
+   LAYOUT CONTAINERS
+============================================================ */
+.section {
+  padding: clamp(3.5rem, 5vw + 2rem, 7rem) clamp(1.25rem, 4vw, 2.5rem);
+  position: relative;
+}
+.section--navy {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: var(--offwhite);
+}
+.section--paper { background: var(--paper); }
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+}
+.container--wide { max-width: 880px; }
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.7rem, 0.65rem + 0.1vw, 0.78rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.section--navy .eyebrow { color: var(--gold-soft); }
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+}
+.section--navy .display { color: var(--offwhite); }
+.display em { font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 100; color: var(--gold); }
+
+h1.display {
+  font-size: clamp(2.5rem, 1.8rem + 4vw, 5rem);
+  font-weight: 700;
+}
+h2.display {
+  font-size: clamp(1.875rem, 1.5rem + 2.5vw, 3.25rem);
+  font-weight: 600;
+}
+h3.display {
+  font-size: clamp(1.375rem, 1.2rem + 1vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.lead {
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--graphite);
+  margin-block: 1.25rem;
+  max-width: 56ch;
+}
+.section--navy .lead { color: var(--offwhite); }
+
+p { margin-block: 0.9em; max-width: 64ch; }
+p strong { color: var(--navy); font-weight: 600; }
+.section--navy p strong { color: var(--gold); }
+
+.divider {
+  display: inline-block;
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: var(--offwhite);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Subtle grid pattern in hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,162,77,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,162,77,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Decorative gold corner brackets */
+.hero__frame {
+  position: absolute;
+  inset: clamp(1rem, 3vw, 2.5rem);
+  border: 1px solid rgba(201,162,77,0.25);
+  pointer-events: none;
+}
+.hero__frame::before,
+.hero__frame::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--gold);
+}
+.hero__frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.hero__frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.monogram {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  /* Subtelna złota poświata wokół logo na ciemnym tle hero */
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 77, 0.35),
+    0 0 32px rgba(201, 162, 77, 0.25),
+    0 0 64px rgba(201, 162, 77, 0.12);
+}
+.monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.7rem, 0.65rem + 0.15vw, 0.8rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(2rem, 1.5rem + 4vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+  max-width: 16ch;
+}
+
+.hero__subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-variation-settings: "opsz" 24, "SOFT" 100;
+  font-size: clamp(1rem, 0.85rem + 0.5vw, 1.25rem);
+  line-height: 1.4;
+  color: var(--offwhite);
+  max-width: 28ch;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  opacity: 0.9;
+}
+
+.hero__rule {
+  display: block;
+  width: 64px;
+  height: 1.5px;
+  background: var(--gold);
+  margin: clamp(1.5rem, 3vw, 2rem) auto;
+}
+
+.hero__author {
+  margin-top: auto;
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+}
+.hero__author-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: clamp(0.85rem, 0.8rem + 0.2vw, 1rem);
+  color: var(--gold);
+}
+.hero__author-desc {
+  font-size: clamp(0.82rem, 0.78rem + 0.15vw, 0.95rem);
+  color: var(--offwhite);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+.hero__author-desc em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05em;
+  color: var(--gold-soft);
+}
+
+.hero__footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: clamp(3rem, 6vw, 4rem);  /* miejsce na "PRZEWIŃ" */
+  font-size: 0.8rem;
+  color: rgba(243,239,230,0.5);
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+}
+.hero__footer a {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  display: inline-block;
+}
+.hero__footer-bonus {
+  display: block;
+  margin-top: 0;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: clamp(2rem, 4vw, 3rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: float 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .hero__scroll { display: flex; }
+}
+.hero__scroll::after {
+  content: "";
+  width: 1px;
+  height: 32px;
+  background: var(--gold);
+}
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
+  50%      { transform: translate(-50%, 4px); opacity: 1; }
+}
+
+/* ============================================================
+   OPENING QUOTE SECTION
+============================================================ */
+.opening {
+  text-align: left;
+}
+.opening__quote {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(2.25rem, 1.5rem + 4vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+}
+.opening__quote em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--gold-dark);
+  font-weight: 500;
+}
+
+/* ============================================================
+   REAL CASE — featured story on navy
+============================================================ */
+.case__intro {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-variation-settings: "opsz" 36, "SOFT" 100;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--gold-soft);
+  margin-bottom: 1.75rem;
+  max-width: 50ch;
+}
+.case__findings-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 2rem 0 1rem;
+}
+.case__findings {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.case__findings li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--offwhite);
+  line-height: 1.5;
+}
+.case__findings li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 1.5px;
+  background: var(--gold);
+}
+.case__punchline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+  font-size: clamp(1.5rem, 1.25rem + 1.5vw, 2rem);
+  line-height: 1.2;
+  color: var(--gold);
+  margin: 2.5rem 0 0;
+  letter-spacing: -0.015em;
+}
+.case__tagline {
+  display: block;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,162,77,0.25);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "SOFT" 100;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  color: var(--gold);
+  text-align: center;
+}
+
+/* ============================================================
+   ABOUT — "Kim jestem"
+============================================================ */
+.about {
+  position: relative;
+}
+.about__giant {
+  position: absolute;
+  top: clamp(0rem, 2vw, 1rem);
+  right: clamp(-3rem, -4vw, -1rem);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(10rem, 18vw + 4rem, 22rem);
+  line-height: 0.85;
+  color: var(--cream-dark);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+  letter-spacing: -0.05em;
+}
+.about > * { position: relative; z-index: 1; }
+.about__highlight {
+  background: linear-gradient(180deg, rgba(201,162,77,0.10), rgba(201,162,77,0.05));
+  border-left: 3px solid var(--gold);
+  padding: 1.5rem clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 2rem 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  line-height: 1.35;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.about__contrast {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  line-height: 1.4;
+}
+.about__contrast-line {
+  display: block;
+}
+.about__contrast-line--negative {
+  color: var(--graphite-soft);
+  font-style: italic;
+  font-weight: 400;
+}
+.about__contrast-line--positive {
+  color: var(--gold-dark);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   HOWTO — 3 steps
+============================================================ */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  align-items: start;
+}
+.step__num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(2.75rem, 2rem + 3vw, 4rem);
+  line-height: 0.9;
+  color: var(--gold);
+  letter-spacing: -0.04em;
+  min-width: 2.5ch;
+}
+.step__body h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.25;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.015em;
+}
+.step__body p {
+  color: var(--graphite-soft);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.howto__closer {
+  margin-top: clamp(3rem, 5vw, 4rem);
+  background: var(--navy);
+  border-left: 4px solid var(--gold);
+  padding: clamp(1.5rem, 4vw, 2rem) clamp(1.5rem, 4vw, 2rem);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--offwhite);
+}
+.howto__closer p {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.35;
+  margin: 0;
+  max-width: none;
+}
+.howto__closer p strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ============================================================
+   POINT SECTION (1-7)
+============================================================ */
+.point {
+  position: relative;
+}
+.point__header {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.point__num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(2.5rem, 2rem + 3vw, 4rem);
+  line-height: 0.9;
+  color: var(--gold);
+  letter-spacing: -0.04em;
+  flex-shrink: 0;
+}
+.point__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2.25rem);
+  line-height: 1.1;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+.point__intro {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "SOFT" 100;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.45;
+  color: var(--graphite);
+  margin-bottom: 1.75rem;
+}
+
+/* "Z BUDOWY" card — practitioner's voice */
+.zbudowy {
+  background: var(--cream-dark);
+  border-left: 4px solid var(--gold);
+  padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 1.75rem 0;
+}
+.zbudowy__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.zbudowy__label::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.zbudowy p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--graphite);
+  margin: 0;
+}
+.zbudowy p + p { margin-top: 0.9em; }
+
+/* Subhead label */
+.subhead {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 2rem 0 0.75rem;
+}
+
+/* "Co może pójść źle" — bullets */
+.risks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.risks li {
+  position: relative;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--graphite);
+}
+.risks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 8px;
+  height: 1.5px;
+  background: var(--wine);
+}
+
+/* "Co sprawdzić" — checkboxes */
+.checks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.checks input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--gold);
+  background: #fff;
+  border-radius: 3px;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s ease;
+}
+.checks input[type="checkbox"]:hover { background: var(--cream-dark); }
+.checks input[type="checkbox"]:checked {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.checks input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 6px;
+  height: 11px;
+  border: solid var(--navy);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checks label {
+  cursor: pointer;
+  color: var(--graphite);
+  user-select: none;
+}
+
+/* "Zapytaj ekipę" card */
+.zapytaj {
+  background: linear-gradient(180deg, rgba(201,162,77,0.08), rgba(201,162,77,0.04));
+  border-left: 4px solid var(--gold);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: 1.75rem;
+}
+.zapytaj__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.zapytaj__label::before {
+  content: "?";
+  width: 16px;
+  height: 16px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.zapytaj ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.zapytaj li {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--graphite);
+  padding-left: 1rem;
+  position: relative;
+}
+.zapytaj li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold);
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* "Czerwona flaga" card */
+.flaga {
+  background: var(--wine-soft);
+  border-left: 4px solid var(--wine);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: 1.5rem;
+}
+.flaga__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.flaga__label::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--wine);
+  clip-path: polygon(0 0, 100% 0, 75% 50%, 100% 100%, 0 100%);
+}
+.flaga ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.flaga li {
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--graphite);
+  padding-left: 1rem;
+  position: relative;
+}
+.flaga li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--wine);
+  font-weight: 700;
+  font-style: normal;
+}
+.flaga p {
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--graphite);
+  margin: 0;
+}
+
+/* "Decyzja inwestora" — final mandate */
+.decyzja {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  border-left: 4px solid var(--gold);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: 1.75rem;
+  color: var(--offwhite);
+  position: relative;
+}
+.decyzja__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.85rem;
+}
+.decyzja p {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  line-height: 1.35;
+  color: #fff;
+  margin: 0;
+  max-width: 50ch;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   QUICK DECISION CARD (navy section)
+============================================================ */
+.decisioncard {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+  border: 1px solid rgba(201,162,77,0.25);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+  position: relative;
+}
+.decisioncard::before,
+.decisioncard::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--gold);
+}
+.decisioncard::before { top: -1px; left: -1px; border-right: none; border-bottom: none; border-top-left-radius: var(--radius-lg); }
+.decisioncard::after { bottom: -1px; right: -1px; border-left: none; border-top: none; border-bottom-right-radius: var(--radius-lg); }
+
+.decisioncard__intro {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--offwhite);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.bigchecks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.bigchecks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(201,162,77,0.12);
+  transition: background 0.2s ease;
+}
+.bigchecks li:last-child { border-bottom: none; }
+.bigchecks li:hover { background: rgba(201,162,77,0.04); }
+.bigchecks input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 1.8px solid var(--gold);
+  background: transparent;
+  border-radius: 4px;
+  margin-top: 0.05rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+}
+.bigchecks input[type="checkbox"]:checked {
+  background: var(--gold);
+}
+.bigchecks input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 1px;
+  width: 7px;
+  height: 13px;
+  border: solid var(--navy);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.bigchecks label {
+  color: var(--offwhite);
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+  line-height: 1.45;
+  cursor: pointer;
+  user-select: none;
+}
+
+.decisioncard__closer {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,162,77,0.25);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  line-height: 1.4;
+  color: var(--gold);
+}
+.decisioncard__closer span { color: #fff; display: block; font-weight: 600; }
+
+/* ============================================================
+   PRINCIPLE (key quote)
+============================================================ */
+.principle {
+  text-align: center;
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+.principle__top,
+.principle__bottom {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(1.875rem, 1.3rem + 3.5vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.principle__top { color: var(--navy); }
+.principle__bottom { color: var(--gold-dark); margin-top: clamp(1.5rem, 3vw, 2rem); }
+.principle__bottom em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.principle__rule {
+  display: block;
+  width: 48px;
+  height: 1.5px;
+  background: var(--gold);
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto;
+}
+
+.principle__sub {
+  max-width: 36ch;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.2rem);
+  line-height: 1.45;
+  color: var(--navy);
+}
+.principle__notes {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--graphite-soft);
+  line-height: 1.55;
+  max-width: 42ch;
+  margin-inline: auto;
+}
+.principle__author {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold-dark);
+}
+
+/* ============================================================
+   NEXT STEP — CTA section
+============================================================ */
+.nextstep__card {
+  margin: clamp(2rem, 5vw, 3rem) 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  border: 1px solid rgba(201,162,77,0.25);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--offwhite);
+}
+.nextstep__card-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.nextstep__card h3 {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.875rem);
+  line-height: 1.15;
+  color: #fff;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+.nextstep__card h3 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--gold);
+  font-weight: 700;
+}
+.nextstep__card p {
+  margin-top: 1.25rem;
+  color: var(--offwhite);
+  opacity: 0.85;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.cta {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+}
+.cta__lead {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  line-height: 1.35;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 16px rgba(201,162,77,0.25);
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+  min-width: 280px;
+  width: 100%;
+  max-width: 480px;
+}
+.btn:hover {
+  background: var(--gold-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201,162,77,0.35);
+}
+.btn:active { transform: translateY(0); }
+.btn__arrow {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 1.1em;
+  transition: transform 0.2s ease;
+}
+.btn:hover .btn__arrow { transform: translateX(3px); }
+
+.cta__small {
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "SOFT" 100;
+  font-size: 0.9rem;
+  color: var(--graphite-soft);
+}
+
+/* ============================================================
+   PREMIUM CTA — one-tap Messenger button
+============================================================ */
+.premium-cta {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.premium-cta__note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "SOFT" 100;
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--navy);
+  text-align: center;
+  max-width: 44ch;
+  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+}
+
+.premium-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: clamp(1.1rem, 3vw, 1.5rem) clamp(1.25rem, 3vw, 1.75rem);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 60%, var(--gold) 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  color: var(--navy);
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 0 0 1px rgba(201, 162, 77, 0.5),
+    0 10px 28px rgba(201, 162, 77, 0.28),
+    0 28px 56px -18px rgba(15, 27, 45, 0.22);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    background-position 0.6s ease;
+  min-height: 72px;
+}
+
+/* Subtle shimmer sweep on hover */
+.premium-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Outer soft glow on hover */
+.premium-btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: radial-gradient(120% 80% at 50% 50%, rgba(201, 162, 77, 0.45), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.premium-btn:hover {
+  transform: translateY(-3px);
+  background-position: 100% 50%;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 0 0 1px rgba(201, 162, 77, 0.7),
+    0 16px 36px rgba(201, 162, 77, 0.4),
+    0 36px 72px -16px rgba(15, 27, 45, 0.28);
+}
+.premium-btn:hover::before { transform: translateX(100%); }
+.premium-btn:hover::after { opacity: 1; }
+
+.premium-btn:active {
+  transform: translateY(-1px) scale(0.985);
+  transition-duration: 0.1s;
+}
+
+.premium-btn:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 4px;
+}
+
+.premium-btn__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.premium-btn__eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.65rem, 0.6rem + 0.2vw, 0.78rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(15, 27, 45, 0.7);
+  line-height: 1;
+}
+
+.premium-btn__label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(1.65rem, 1.3rem + 2vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+}
+
+.premium-btn__icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: clamp(44px, 12vw, 52px);
+  height: clamp(44px, 12vw, 52px);
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s ease;
+}
+.premium-btn__icon svg {
+  width: 48%;
+  height: 48%;
+  display: block;
+}
+
+.premium-btn:hover .premium-btn__icon {
+  transform: translateX(4px);
+  background: #050B17;
+}
+
+.premium-cta__sub {
+  text-align: center;
+  margin-top: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--graphite-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  align-self: center;
+  opacity: 0.8;
+}
+.premium-cta__sub::before,
+.premium-cta__sub::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--line);
+}
+
+@media (max-width: 480px) {
+  .premium-btn {
+    border-radius: 16px;
+    padding: 1rem 1.1rem;
+    min-height: 64px;
+  }
+  .premium-btn__label { letter-spacing: 0.015em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-btn,
+  .premium-btn::before,
+  .premium-btn::after,
+  .premium-btn__icon { transition: none; }
+  .premium-btn:hover { transform: none; }
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer {
+  background: var(--paper);
+  padding: clamp(3rem, 5vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+.footer__monogram {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  /* W footerze (jasne tło) — subtelna złota obwódka + delikatny shadow */
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 77, 0.5),
+    0 4px 16px rgba(15, 27, 45, 0.08),
+    0 8px 32px rgba(201, 162, 77, 0.12);
+}
+.footer__monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+.footer__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+  color: var(--navy);
+  letter-spacing: 0.02em;
+}
+.footer__role {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--graphite-soft);
+  line-height: 1.5;
+}
+.footer__role em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05em;
+  color: var(--gold-dark);
+}
+.footer__link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.95rem;
+  color: var(--gold-dark);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.footer__divider {
+  width: 64px;
+  height: 1px;
+  background: var(--line);
+  margin: 2rem auto;
+}
+.footer__note {
+  max-width: 56ch;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 14, "SOFT" 50;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--graphite-soft);
+}
+.footer__note + .footer__note { margin-top: 0.85rem; }
+.footer__legal {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--graphite-soft);
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+}
+.footer__legal strong { color: var(--gold-dark); }
+
+/* ============================================================
+   SCROLL REVEAL ANIMATIONS
+============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+  .hero__scroll { animation: none; }
+}
+
+/* ============================================================
+   STICKY MOBILE CTA
+============================================================ */
+.mobile-cta {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, transparent 0%, rgba(247,244,238,0.95) 30%, var(--cream) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 50;
+  transform: translateY(120%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.mobile-cta.is-visible {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.mobile-cta .btn {
+  min-width: 0;
+  max-width: none;
+  width: 100%;
+  font-size: 0.95rem;
+  padding: 0.95rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .mobile-cta { display: none; }
+}
+
+/* ============================================================
+   RESPONSIVE TWEAKS
+============================================================ */
+@media (max-width: 480px) {
+  .point__header { gap: 0.6rem; }
+  .point__num { font-size: 2.5rem; }
+  .point__title { font-size: 1.3rem; }
+  .hero__title { font-size: clamp(1.85rem, 7vw, 2.5rem); }
+  .opening__quote { font-size: clamp(2rem, 9vw, 2.75rem); }
+  .case__punchline { font-size: 1.4rem; }
+  .principle__top, .principle__bottom { font-size: clamp(1.65rem, 7vw, 2.25rem); }
+}
+@media (min-width: 1024px) {
+  .container { max-width: 760px; }
+  .point__header { gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress" aria-hidden="true">
+  <div class="progress__bar" id="progressBar"></div>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<header class="hero">
+  <div class="hero__frame" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <div class="monogram" aria-label="Logo Arkadiusz Bunkowski"><img src="data:image/jpeg;base64,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" alt="Arkadiusz Bunkowski — Łazienka Na Lata" width="320" height="320" loading="eager" decoding="async"></div>
+
+    <p class="hero__eyebrow">Raport kontrolny dla inwestora · Kod: ŁAZIENKA</p>
+
+    <h1 class="hero__title">
+      7 rzeczy, które musisz sprawdzić, zanim wpuścisz ekipę do łazienki
+    </h1>
+
+    <span class="hero__rule" aria-hidden="true"></span>
+
+    <p class="hero__subtitle">
+      Krótki raport kontrolny dla inwestora, który nie chce płacić dwa razy za ten sam remont.
+    </p>
+
+    <div class="hero__author">
+      <p class="hero__author-name">Arkadiusz Bunkowski</p>
+      <p class="hero__author-desc">
+        Ekspert remontów łazienek · 20+ lat praktyki na budowach<br>
+        w Polsce, Anglii i Holandii<br>
+        <em>Twórca Systemu „Łazienka Na Lata™”</em>
+      </p>
+    </div>
+  </div>
+
+  <div class="hero__footer">
+    <span class="hero__footer-bonus">Bonus dla osób, które napisały: <strong style="color:var(--gold)">ŁAZIENKA</strong></span>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">Przewiń</div>
+</header>
+
+<!-- ============================================================
+     OPENING — Najdroższe błędy
+============================================================ -->
+<section class="section section--paper opening reveal">
+  <div class="container">
+    <p class="eyebrow">Zanim podpiszesz umowę</p>
+
+    <h2 class="opening__quote">
+      Najdroższe błędy w łazience nie są na płytkach.
+      <em>One są pod płytkami.</em>
+    </h2>
+
+    <span class="divider" aria-hidden="true"></span>
+
+    <p>
+      Płytki, fugi, lustro i bateria to to, co inwestor widzi po remoncie. Robi zdjęcia. Pokazuje rodzinie. Jest dumny.
+    </p>
+    <p>
+      Tymczasem prawdziwa jakość remontu — ta, która decyduje, czy łazienka wytrzyma 15 lat, czy zacznie się sypać po dwóch — kryje się pod spodem. W hydroizolacji, w spadkach, w sposobie klejenia płytek, w instalacjach, w wentylacji.
+    </p>
+    <p>
+      <strong>To są rzeczy, których po remoncie już nie zobaczysz. Dlatego trzeba je sprawdzić wcześniej.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     REAL CASE — Prawdziwa sytuacja z budowy
+============================================================ -->
+<section class="section section--navy reveal">
+  <div class="container">
+    <p class="eyebrow">Prawdziwa sytuacja z budowy</p>
+
+    <h2 class="display">
+      Co znalazłem pod prysznicem po wcześniejszej ekipie
+    </h2>
+
+    <span class="divider" aria-hidden="true"></span>
+
+    <p class="case__intro">
+      Klient zadzwonił po około dwóch latach od remontu. Pod prysznicem coś zaczęło puszczać — wilgoć, ciemniejące fugi, zapach. Pierwsza ekipa już z nim nie rozmawiała. Mnie poprosił o sprawdzenie.
+    </p>
+
+    <p class="case__findings-label">Po skuciu płytek wyszło, że:</p>
+
+    <ul class="case__findings">
+      <li>ściana pod prysznicem była mocno zniszczona od wilgoci,</li>
+      <li>hydroizolacja praktycznie nie istniała — gdzieś na szybko poszła folia, narożniki bez taśm,</li>
+      <li>płytki były klejone punktowo, „na placki” — to znaczy, że pod każdą płytką było puste miejsce,</li>
+      <li>w tych pustych przestrzeniach woda spokojnie pracowała przez dwa lata.</li>
+    </ul>
+
+    <p>
+      Naprawa nie była drobna. Trzeba było skuć płytki, rozebrać zniszczoną część ściany, wykonać nową konstrukcję, położyć porządną hydroizolację i ułożyć płytki od nowa — tym razem na pełną warstwę kleju.
+    </p>
+
+    <p class="case__punchline">
+      Klient drugi raz zapłacił za tę samą ścianę.
+    </p>
+
+    <em class="case__tagline">I właśnie dlatego powstała ta checklista.</em>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT — Kim jestem
+============================================================ -->
+<section class="section section--paper about reveal">
+  <span class="about__giant" aria-hidden="true">20</span>
+  <div class="container">
+    <p class="eyebrow">Od autora</p>
+
+    <h2 class="display">Kim jestem i po co to dla Ciebie zrobiłem</h2>
+
+    <span class="divider" aria-hidden="true"></span>
+
+    <p>
+      Nazywam się <strong>Arkadiusz Bunkowski</strong>. Ponad 20 lat robię łazienki — i poprawiam łazienki, które ktoś już zepsuł.
+    </p>
+    <p>
+      Pracowałem na budowach w Polsce, Anglii i Holandii. W blokach z wielkiej płyty, w starych kamienicach z krzywymi ścianami, w domach jednorodzinnych i w nowych mieszkaniach deweloperskich.
+    </p>
+    <p>
+      Widziałem wszystko: świetne projekty zniszczone przez tanie wykonanie, drogie ekipy bez pojęcia o hydroizolacji, mieszkania, w których po roku trzeba było kuć łazienkę po raz drugi.
+    </p>
+
+    <blockquote class="about__highlight">
+      Po co to dla Ciebie zrobiłem? Żebyś mógł rozmawiać z ekipą mądrzej, zanim podpiszesz umowę. Żebyś wiedział, o co zapytać i kiedy powiedzieć: „dziękuję, szukam dalej”.
+    </blockquote>
+
+    <div class="about__contrast">
+      <span class="about__contrast-line about__contrast-line--negative">Ten raport nie ma zrobić z Ciebie fachowca.</span>
+      <span class="about__contrast-line about__contrast-line--positive">Ma zrobić z Ciebie świadomego inwestora.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOWTO — Jak używać tego raportu
+============================================================ -->
+<section class="section section--paper reveal">
+  <div class="container">
+    <p class="eyebrow">Instrukcja użycia</p>
+    <h2 class="display">Jak używać tego raportu</h2>
+    <span class="divider" aria-hidden="true"></span>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step__num">1</span>
+        <div class="step__body">
+          <h3>Przeczytaj przed rozmową z ekipą.</h3>
+          <p>Cały raport. 15 minut. To inwestycja, która pozwala Ci wejść w rozmowę z ekipą z czymś więcej niż dobrymi intencjami.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step__num">2</span>
+        <div class="step__body">
+          <h3>Zabierz na oględziny lub spotkanie.</h3>
+          <p>W telefonie albo wydrukowany. To Twoje wsparcie podczas rozmowy — żebyś nie musiał pamiętać wszystkich pytań na pamięć.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step__num">3</span>
+        <div class="step__body">
+          <h3>Nie podpisuj umowy, dopóki nie masz jasnych odpowiedzi.</h3>
+          <p>Każdy z 7 punktów jest po coś. Jeśli ekipa nie potrafi odpowiedzieć albo unika tematu — to też jest odpowiedź.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="howto__closer">
+      <p>
+        Po przejściu przez 7 punktów będziesz wiedzieć,
+        <strong>czy ta ekipa jest gotowa zrobić Twoją łazienkę.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7 POINTS - START
+============================================================ -->
+
+<!-- ============= POINT 01 ============= -->
+<section class="section section--paper point reveal" id="punkt-01">
+  <div class="container">
+    <div class="point__header">
+      <span class="point__num">01</span>
+      <h2 class="point__title">Czy ekipa widziała łazienkę przed wyceną</h2>
+    </div>
+
+    <p class="point__intro">
+      Wycena na podstawie zdjęć z telefonu to nie wycena. To zgadywanie.
+    </p>
+
+    <div class="zbudowy">
+      <p class="zbudowy__label">Z budowy</p>
+      <p>Spotykam to non stop. Ekipa dostaje zdjęcia na WhatsAppie, podaje atrakcyjną cenę, klient podpisuje umowę. Po skuciu pojawia się druga lista pozycji — bo „tego nie było widać”.</p>
+      <p>Zdjęcie nigdy nie pokaże krzywych ścian, kruszącego się podłoża, starego pionu kanalizacyjnego ani problemu z wentylacją.</p>
+    </div>
+
+    <p class="subhead">Co może pójść źle</p>
+    <ul class="risks">
+      <li>Cena rośnie po skuciu o pozycje, których „nie było w wycenie”.</li>
+      <li>Okazuje się, że trzeba wymienić podejście kanalizacyjne — dopłata.</li>
+      <li>Trzeba podnieść posadzkę o kilka centymetrów — dopłata.</li>
+      <li>Ekipa stwierdza, że ściany są krzywe i wymagają dodatkowej pracy — dopłata.</li>
+    </ul>
+
+    <p class="subhead">Co sprawdzić</p>
+    <ul class="checks">
+      <li><input type="checkbox" id="c1-1"><label for="c1-1">Wyceniający był fizycznie w łazience, nie tylko na zdjęciach.</label></li>
+      <li><input type="checkbox" id="c1-2"><label for="c1-2">Obejrzał ściany, podłogę, sufit, kratkę i pion.</label></li>
+      <li><input type="checkbox" id="c1-3"><label for="c1-3">Sam zmierzył pomieszczenie.</label></li>
+      <li><input type="checkbox" id="c1-4"><label for="c1-4">Ocenił stan podłoża i instalacji na miejscu.</label></li>
+    </ul>
+
+    <div class="zapytaj">
+      <p class="zapytaj__label">Zapytaj ekipę</p>
+      <ul>
+        <li>„Czy obejrzy Pan/Pani łazienkę osobiście przed wyceną?”</li>
+        <li>„Czy w cenie są rzeczy, które wyjdą dopiero po skuciu?”</li>
+        <li>„Jeśli okaże się, że trzeba poprawić podłoże — kto za to płaci?”</li>
+      </ul>
+    </div>
+
+    <div class="flaga">
+      <p class="flaga__label">Czerwona flaga</p>
+      <p>Ekipa daje sztywną cenę bez wejścia do mieszkania. Mówi: „Spokojnie, zobaczymy na miejscu” — ale chce podpisu pod umową już dziś.</p>
+    </div>
+
+    <div class="decyzja">
+      <p class="decyzja__label">Decyzja inwestora</p>
+      <p>Jeśli ekipa nie chce przyjść obejrzeć łazienki przed wyceną — nie podpisuj umowy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= POINT 02 ============= -->
+<section class="section section--paper point reveal" id="punkt-02">
+  <div class="container">
+    <div class="point__header">
+      <span class="point__num">02</span>
+      <h2 class="point__title">Czy zakres prac jest rozpisany punkt po punkcie</h2>
+    </div>
+
+    <p class="point__intro">
+      „Remont łazienki” to nie zakres prac. To hasło. Pod tym hasłem każda ekipa rozumie coś innego.
+    </p>
+
+    <div class="zbudowy">
+      <p class="zbudowy__label">Z budowy</p>
+      <p>Klient pokazał mi wycenę: jedna pozycja, jedna kwota — „Remont łazienki, 22 000 zł”. Po skuciu zaczęły pojawiać się „pozycje dodatkowe”: wywóz gruzu, poprawa podłoża, zabudowa pionu, hydroizolacja.</p>
+      <p>Cena rozrosła się o około 30%. Spisanego zakresu nie było, więc nie było o czym dyskutować.</p>
+    </div>
+
+    <p class="subhead">Co może pójść źle</p>
+    <ul class="risks">
+      <li>Hydroizolacja „w domyśle” oznacza folię w płynie z dyskontu, bez taśm w narożnikach.</li>
+      <li>Wywóz gruzu „nie był w zakresie” — dopłata 1500–2500 zł.</li>
+      <li>Skucie poprzedniej posadzki „to oddzielnie” — dopłata.</li>
+      <li>Spisanego białego montażu nie było — okazuje się, że trzeba dorobić.</li>
+    </ul>
+
+    <p class="subhead">Co sprawdzić</p>
+    <ul class="checks">
+      <li><input type="checkbox" id="c2-1"><label for="c2-1">Wycena ma rozbite pozycje, nie jedną kwotę za całość.</label></li>
+      <li><input type="checkbox" id="c2-2"><label for="c2-2">Hydroizolacja jest wpisana osobno (nie „w cenie ułożenia płytek”).</label></li>
+      <li><input type="checkbox" id="c2-3"><label for="c2-3">Wywóz gruzu i utylizacja są jasno przypisane.</label></li>
+      <li><input type="checkbox" id="c2-4"><label for="c2-4">Demontaż, biały montaż i sprzątanie są wymienione.</label></li>
+      <li><input type="checkbox" id="c2-5"><label for="c2-5">Odbiór etapowy i końcowy są w umowie.</label></li>
+    </ul>
+
+    <div class="zapytaj">
+      <p class="zapytaj__label">Zapytaj ekipę</p>
+      <ul>
+        <li>„Czy mogę dostać wycenę z rozbiciem na pozycje?”</li>
+        <li>„Co konkretnie NIE wchodzi w tę cenę?”</li>
+        <li>„Czy hydroizolacja jest wpisana osobno?”</li>
+      </ul>
+    </div>
+
+    <div class="flaga">
+      <p class="flaga__label">Czerwona flaga</p>
+      <p>Wycena to jedna linijka: „Remont łazienki kompleksowo”. Bez rozbicia, bez wyliczenia, bez słowa o hydroizolacji.</p>
+    </div>
+
+    <div class="decyzja">
+      <p class="decyzja__label">Decyzja inwestora</p>
+      <p>Jeśli wycena to jeden wiersz — to nie wycena. Poproś o rozbicie albo szukaj dalej.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= POINT 03 ============= -->
+<section class="section section--paper point reveal" id="punkt-03">
+  <div class="container">
+    <div class="point__header">
+      <span class="point__num">03</span>
+      <h2 class="point__title">Czy hydroizolacja jest wpisana osobno</h2>
+    </div>
+
+    <p class="point__intro">
+      Hydroizolacja to warstwa pod płytkami. To ona naprawdę trzyma wodę. Bez niej płytka i fuga nie wystarczą.
+    </p>
+
+    <div class="zbudowy">
+      <p class="zbudowy__label">Z budowy</p>
+      <p>Klient miał w umowie „hydroizolacja — w zakresie”. Po skuciu okazało się, że pod płytkami była jedna warstwa folii w płynie, narożniki bez taśm, przy odpływie kilka centymetrów w ogóle pominięte.</p>
+      <p>Po dwóch latach woda pracowała w głębi ściany. Sąsiad z dołu zaczął zauważać wilgoć na suficie. Skucie łazienki było nieuniknione.</p>
+    </div>
+
+    <p class="subhead">Co może pójść źle</p>
+    <ul class="risks">
+      <li>Hydroizolacji w ogóle nie ma — bo „płytki są wodoodporne”.</li>
+      <li>Jest, ale tania folia w płynie, bez taśm w narożnikach.</li>
+      <li>Brakuje warstw przy odpływie, na podejściach rur i pod brodzikiem.</li>
+      <li>Po latach pleśń, zalanie sąsiada, konieczność skucia całej łazienki.</li>
+    </ul>
+
+    <p class="subhead">Co sprawdzić</p>
+    <ul class="checks">
+      <li><input type="checkbox" id="c3-1"><label for="c3-1">Hydroizolacja jest wpisana w umowie jako osobna pozycja.</label></li>
+      <li><input type="checkbox" id="c3-2"><label for="c3-2">Ekipa potrafi podać konkretnego producenta systemu.</label></li>
+      <li><input type="checkbox" id="c3-3"><label for="c3-3">Strefa prysznica, narożniki i przejścia rur są objęte hydroizolacją.</label></li>
+      <li><input type="checkbox" id="c3-4"><label for="c3-4">Ekipa zrobi zdjęcia hydroizolacji przed położeniem płytek.</label></li>
+    </ul>
+
+    <div class="zapytaj">
+      <p class="zapytaj__label">Zapytaj ekipę</p>
+      <ul>
+        <li>„Jakim systemem Państwo wykonują hydroizolację?” (powinni podać markę)</li>
+        <li>„Czy w narożnikach i na przejściach rur są taśmy uszczelniające?”</li>
+        <li>„Czy dostanę zdjęcia każdej warstwy przed położeniem płytek?”</li>
+      </ul>
+    </div>
+
+    <div class="flaga">
+      <p class="flaga__label">Czerwona flaga</p>
+      <ul>
+        <li>„Nie potrzeba, płytka jest wodoodporna.”</li>
+        <li>„Damy folię w płynie, wystarczy.”</li>
+        <li>„Zdjęcia? Pan musi nam zaufać.”</li>
+      </ul>
+    </div>
+
+    <div class="decyzja">
+      <p class="decyzja__label">Decyzja inwestora</p>
+      <p>Bez wpisanej osobno hydroizolacji i bez zdjęć przed płytkami — nie pozwalaj zakrywać prysznica.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= POINT 04 ============= -->
+<section class="section section--paper point reveal" id="punkt-04">
+  <div class="container">
+    <div class="point__header">
+      <span class="point__num">04</span>
+      <h2 class="point__title">Czy odpływ, spadek i prysznic są możliwe</h2>
+    </div>
+
+    <p class="point__intro">
+      Prysznic walk-in z odpływem liniowym jest dziś modny. Nie w każdej polskiej łazience da się go zrobić poprawnie.
+    </p>
+
+    <div class="zbudowy">
+      <p class="zbudowy__label">Z budowy</p>
+      <p>Klientka marzyła o walk-in. Ekipa przyjęła zlecenie, wszystko obiecała. Po roku woda zaczęła stać pod ścianą — spadek zrobiono „na czuja”, nie tak, jak wymagał producent odpływu.</p>
+      <p>Skucie posadzki, ponowny spadek, nowe płytki. Drugi raz to samo, na koszt klientki.</p>
+    </div>
+
+    <p class="subhead">Co może pójść źle</p>
+    <ul class="risks">
+      <li>Spadek posadzki zbyt mały lub w złą stronę — woda stoi.</li>
+      <li>Pion kanalizacyjny zbyt daleko — odpływ podłączony bez właściwego spadku.</li>
+      <li>Próg drzwiowy zbyt wysoki — schodek na lata.</li>
+      <li>W bloku z wielkiej płyty nie da się podnieść posadzki o tyle, ile potrzeba.</li>
+    </ul>
+
+    <p class="subhead">Co sprawdzić</p>
+    <ul class="checks">
+      <li><input type="checkbox" id="c4-1"><label for="c4-1">Ekipa obejrzała pion i potwierdziła, że podejście jest możliwe.</label></li>
+      <li><input type="checkbox" id="c4-2"><label for="c4-2">Wie, gdzie konkretnie będzie odpływ.</label></li>
+      <li><input type="checkbox" id="c4-3"><label for="c4-3">Zna spadek zalecany przez producenta wybranego odpływu.</label></li>
+      <li><input type="checkbox" id="c4-4"><label for="c4-4">Ma pomysł na próg drzwiowy i wysokość drzwi po remoncie.</label></li>
+    </ul>
+
+    <div class="zapytaj">
+      <p class="zapytaj__label">Zapytaj ekipę</p>
+      <ul>
+        <li>„Czy w mojej łazience da się zrobić prysznic bez brodzika?”</li>
+        <li>„Gdzie konkretnie planujecie odpływ i jaki będzie spadek?”</li>
+        <li>„Czy podejście kanalizacyjne wystarczy, czy trzeba je przerobić?”</li>
+      </ul>
+    </div>
+
+    <div class="flaga">
+      <p class="flaga__label">Czerwona flaga</p>
+      <ul>
+        <li>„Spokojnie, jakoś to się ułoży na miejscu.”</li>
+        <li>„Damy odpływ gdzie się da, woda jakoś spłynie.”</li>
+        <li>„Nie ma co liczyć spadku — płytka jest na klej, się wyrówna.”</li>
+      </ul>
+    </div>
+
+    <div class="decyzja">
+      <p class="decyzja__label">Decyzja inwestora</p>
+      <p>Jeśli ekipa nie umie powiedzieć, gdzie będzie odpływ i jaki spadek — to jeszcze nie wie, czy w ogóle da się to zrobić.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= POINT 05 ============= -->
+<section class="section section--paper point reveal" id="punkt-05">
+  <div class="container">
+    <div class="point__header">
+      <span class="point__num">05</span>
+      <h2 class="point__title">Czy wentylacja działa i nie zostanie zepsuta</h2>
+    </div>
+
+    <p class="point__intro">
+      Łazienka musi oddychać. Jeśli wilgoć nie ma jak uciec, osiada na ścianach, suficie i fugach.
+    </p>
+
+    <div class="zbudowy">
+      <p class="zbudowy__label">Z budowy</p>
+      <p>Klientka chciała „ładną zamkniętą kratkę pod kafelkiem” dla estetyki. Ekipa zrobiła, nikt nie powiedział, że tak nie wolno.</p>
+      <p>Po 8 miesiącach na suficie pojawiły się czarne plamy. Po roku — pleśń w narożnikach. Cała zabudowa kratki musiała wyjść.</p>
+    </div>
+
+    <p class="subhead">Co może pójść źle</p>
+    <ul class="risks">
+      <li>Zabudowanie kratki płytą lub kafelkiem — wilgoć zostaje w łazience.</li>
+      <li>Drzwi bez podcięcia ani kratki nawiewnej — brak dopływu powietrza.</li>
+      <li>Podłączenie wentylatora pod pion grawitacyjny niezgodnie z zasadami wspólnoty.</li>
+      <li>Po roku czarne plamy w narożnikach i pleśń pod silikonem.</li>
+    </ul>
+
+    <p class="subhead">Co sprawdzić</p>
+    <ul class="checks">
+      <li><input type="checkbox" id="c5-1"><label for="c5-1">Kratka wentylacyjna ciągnie (klasyczny test kartki papieru).</label></li>
+      <li><input type="checkbox" id="c5-2"><label for="c5-2">Ekipa nie planuje zabudować kratki ani kanału.</label></li>
+      <li><input type="checkbox" id="c5-3"><label for="c5-3">Drzwi będą miały podcięcie u dołu lub kratkę nawiewną.</label></li>
+      <li><input type="checkbox" id="c5-4"><label for="c5-4">Ewentualny wentylator nie zakłóci pionu wentylacyjnego.</label></li>
+    </ul>
+
+    <div class="zapytaj">
+      <p class="zapytaj__label">Zapytaj ekipę</p>
+      <ul>
+        <li>„Czy sprawdzą Państwo, czy moja wentylacja w ogóle ciągnie?”</li>
+        <li>„Czy kratka i kanał wentylacyjny zostaną odkryte?”</li>
+        <li>„Czy drzwi będą miały podcięcie lub kratkę nawiewną?”</li>
+      </ul>
+    </div>
+
+    <div class="flaga">
+      <p class="flaga__label">Czerwona flaga</p>
+      <ul>
+        <li>„Damy ładną kratkę zamkniętą i będzie git.”</li>
+        <li>„Po co podcięcie w drzwiach, będzie ciąg z salonu.”</li>
+        <li>„Wentylator załatwi sprawę.” — bez weryfikacji w administracji.</li>
+      </ul>
+    </div>
+
+    <div class="decyzja">
+      <p class="decyzja__label">Decyzja inwestora</p>
+      <p>Wentylacja w bloku to nie temat „na czuja”. Jeśli ekipa to bagatelizuje — pytaj administrację albo szukaj dalej.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= POINT 06 ============= -->
+<section class="section section--paper point reveal" id="punkt-06">
+  <div class="container">
+    <div class="point__header">
+      <span class="point__num">06</span>
+      <h2 class="point__title">Czy instalacje będą sprawdzone przed zakryciem</h2>
+    </div>
+
+    <p class="point__intro">
+      Wszystko, co znika pod płytkami, znika z Twojego życia — do momentu, w którym zaczyna kapać u sąsiada.
+    </p>
+
+    <div class="zbudowy">
+      <p class="zbudowy__label">Z budowy</p>
+      <p>Najgorszy przypadek, jaki pamiętam: po 3 latach klient zalał sąsiada z piętra niżej. Okazało się, że jedno z łączeń było tylko owinięte taśmą — bez porządnej próby szczelności, bez dokumentacji. Ekipa już dawno z nim nie rozmawiała.</p>
+      <p>Naprawa: skucie posadzki, wymiana fragmentu instalacji, nowe płytki, koszty u sąsiada. Cała sprawa rozeszła się przez sąd.</p>
+    </div>
+
+    <p class="subhead">Co może pójść źle</p>
+    <ul class="risks">
+      <li>Brak próby szczelności wody przed zakryciem — pierwsza awaria u sąsiada.</li>
+      <li>Elektryka bez uprawnień, bez różnicówki w obwodzie łazienki.</li>
+      <li>Gniazdka zbyt blisko źródeł wody — ryzyko porażenia.</li>
+      <li>Brak zdjęć rozprowadzonych instalacji — w razie awarii nie wiadomo, gdzie szukać.</li>
+    </ul>
+
+    <p class="subhead">Co sprawdzić</p>
+    <ul class="checks">
+      <li><input type="checkbox" id="c6-1"><label for="c6-1">Próba szczelności instalacji wodnej przed zakryciem.</label></li>
+      <li><input type="checkbox" id="c6-2"><label for="c6-2">Elektrykę wykonuje osoba z uprawnieniami.</label></li>
+      <li><input type="checkbox" id="c6-3"><label for="c6-3">W obwodzie łazienkowym jest zabezpieczenie różnicowoprądowe.</label></li>
+      <li><input type="checkbox" id="c6-4"><label for="c6-4">Zdjęcia instalacji są wykonane i przekazane Tobie przed płytkami.</label></li>
+    </ul>
+
+    <div class="zapytaj">
+      <p class="zapytaj__label">Zapytaj ekipę</p>
+      <ul>
+        <li>„Czy elektrykę robi osoba z uprawnieniami?”</li>
+        <li>„Czy zrobimy próbę szczelności wody przed zakryciem?”</li>
+        <li>„Czy dostanę zdjęcia instalacji przed położeniem płytek?”</li>
+      </ul>
+    </div>
+
+    <div class="flaga">
+      <p class="flaga__label">Czerwona flaga</p>
+      <ul>
+        <li>„Elektryk? Kolega ogarnie.” — bez słowa o uprawnieniach.</li>
+        <li>„Próba szczelności? My zawsze tak robimy, nigdy nic nie cieknie.”</li>
+        <li>„Zdjęć nie robimy.”</li>
+      </ul>
+    </div>
+
+    <div class="decyzja">
+      <p class="decyzja__label">Decyzja inwestora</p>
+      <p>Bez próby szczelności i bez zdjęć instalacji — nie pozwalaj zakrywać niczego płytkami.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= POINT 07 ============= -->
+<section class="section section--paper point reveal" id="punkt-07">
+  <div class="container">
+    <div class="point__header">
+      <span class="point__num">07</span>
+      <h2 class="point__title">Czy płatności, odbiory i poprawki są ustalone</h2>
+    </div>
+
+    <p class="point__intro">
+      Sposób, w jaki płacisz, jest dokładnie tak samo ważny jak to, kogo wybierasz.
+    </p>
+
+    <div class="zbudowy">
+      <p class="zbudowy__label">Z budowy</p>
+      <p>70% zaliczki na start, klient płaci. Po trzech tygodniach ekipa znika — bo dostała drugą budowę. Robota stoi miesiąc. Wraca, kończy „na 80%”.</p>
+      <p>Klient płaci ostatnie 30%, bo chce, żeby w końcu wyszli. Poprawek nie ma. Telefon nie odpowiada.</p>
+    </div>
+
+    <p class="subhead">Co może pójść źle</p>
+    <ul class="risks">
+      <li>70% zaliczki = brak dźwigni do skończenia porządnie.</li>
+      <li>Brak odbiorów etapowych = brak szansy zatrzymać pracę zanim wszystko zniknie pod płytkami.</li>
+      <li>Brak spisanych zasad poprawek = poprawki ciągną się miesiącami albo wcale.</li>
+      <li>Ostatnia rata przed odbiorem końcowym = łazienka kończy się „na 80%”.</li>
+    </ul>
+
+    <p class="subhead">Co sprawdzić</p>
+    <ul class="checks">
+      <li><input type="checkbox" id="c7-1"><label for="c7-1">Płatności rozbite na 4–5 etapów, nie dwie duże transze.</label></li>
+      <li><input type="checkbox" id="c7-2"><label for="c7-2">Każdy etap ma odbiór — szczególnie prace zanikające (instalacje, hydroizolacja).</label></li>
+      <li><input type="checkbox" id="c7-3"><label for="c7-3">Ostatnia rata jest po odbiorze końcowym, nie przed.</label></li>
+      <li><input type="checkbox" id="c7-4"><label for="c7-4">Zasady poprawek są spisane (termin, koszt, zakres).</label></li>
+      <li><input type="checkbox" id="c7-5"><label for="c7-5">Gwarancja na pracę jest jasna — co obejmuje, ile trwa.</label></li>
+    </ul>
+
+    <div class="zapytaj">
+      <p class="zapytaj__label">Zapytaj ekipę</p>
+      <ul>
+        <li>„Czy możemy rozbić płatności na 4–5 etapów?”</li>
+        <li>„Czy mogę odebrać każdy etap przed przejściem do następnego?”</li>
+        <li>„Co obejmuje gwarancja i ile trwa?”</li>
+      </ul>
+    </div>
+
+    <div class="flaga">
+      <p class="flaga__label">Czerwona flaga</p>
+      <ul>
+        <li>„70% zaliczki na start, resztę po zakończeniu.”</li>
+        <li>„My nie robimy żadnych odbiorów.”</li>
+        <li>„Gwarancja? Pan przecież będzie miał piękną łazienkę.”</li>
+      </ul>
+    </div>
+
+    <div class="decyzja">
+      <p class="decyzja__label">Decyzja inwestora</p>
+      <p>Bez etapowych płatności i odbiorów nie podpisuj umowy. Ekipa, która ma czyste sumienie, nie boi się odbiorów.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUICK DECISION CARD
+============================================================ -->
+<section class="section section--paper reveal">
+  <div class="container">
+    <p class="eyebrow">Przed podpisaniem umowy</p>
+    <h2 class="display">Szybka karta decyzji inwestora</h2>
+    <span class="divider" aria-hidden="true"></span>
+
+    <div class="decisioncard">
+      <p class="decisioncard__intro">Odhacz każdy punkt, na który masz jasną odpowiedź.</p>
+
+      <ul class="bigchecks">
+        <li><input type="checkbox" id="qc-1"><label for="qc-1">Ekipa była na miejscu i obejrzała łazienkę.</label></li>
+        <li><input type="checkbox" id="qc-2"><label for="qc-2">Zakres prac jest spisany punkt po punkcie.</label></li>
+        <li><input type="checkbox" id="qc-3"><label for="qc-3">Hydroizolacja jest w zakresie i wpisana osobno.</label></li>
+        <li><input type="checkbox" id="qc-4"><label for="qc-4">Spadki i odpływ są przemyślane przed startem.</label></li>
+        <li><input type="checkbox" id="qc-5"><label for="qc-5">Wentylacja jest sprawdzona, nie zostanie zabudowana.</label></li>
+        <li><input type="checkbox" id="qc-6"><label for="qc-6">Instalacje będą sprawdzone i sfotografowane przed zakryciem.</label></li>
+        <li><input type="checkbox" id="qc-7"><label for="qc-7">Płatności są rozbite na etapy.</label></li>
+        <li><input type="checkbox" id="qc-8"><label for="qc-8">Ostatnia rata jest po odbiorze końcowym.</label></li>
+        <li><input type="checkbox" id="qc-9"><label for="qc-9">Zasady poprawek są jasne i spisane.</label></li>
+      </ul>
+
+      <p class="decisioncard__closer">
+        Jeśli nie możesz odhaczyć większości punktów —
+        <span>nie jesteś jeszcze gotowy podpisać umowy.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRINCIPLE — najważniejsza zasada
+============================================================ -->
+<section class="section section--paper principle reveal">
+  <div class="container">
+    <p class="eyebrow" style="text-align:center">Najważniejsza zasada</p>
+
+    <h2 class="principle__top">
+      Nie sprawdzaj łazienki dopiero wtedy, kiedy jest już ładna.
+    </h2>
+    <h2 class="principle__bottom">
+      <em>Sprawdzaj ją wtedy, kiedy jeszcze widać to, co później zostanie zakryte.</em>
+    </h2>
+
+    <span class="principle__rule" aria-hidden="true"></span>
+
+    <p class="principle__sub">
+      Płytki, fugi, lustra i armatura to ostatnia warstwa projektu. Większość jakości Twojej łazienki dzieje się pod nimi.
+    </p>
+
+    <p class="principle__notes">
+      Inwestor, który to rozumie, nie da się oszukać. Inwestor, który tego nie rozumie, najczęściej dwa razy płaci za tę samą łazienkę.
+    </p>
+
+    <p class="principle__author">— Arkadiusz Bunkowski</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     NEXT STEP — CTA
+============================================================ -->
+<section class="section section--paper reveal" id="cta">
+  <div class="container">
+    <p class="eyebrow">Następny krok</p>
+    <h2 class="display">Wiesz teraz, czego nie wiesz.</h2>
+    <span class="divider" aria-hidden="true"></span>
+
+    <p>To, co właśnie przeczytałeś, to wycinek większej całości — siedem najczęstszych miejsc, gdzie inwestor traci pieniądze, zanim ekipa w ogóle zacznie kuć płytki.</p>
+    <p>Cały <strong>System Inwestora Łazienka Na Lata™</strong> idzie dalej. Obejmuje kontrolę remontu na każdym etapie — przed wpuszczeniem ekipy, w trakcie prac i po odbiorze — i pokazuje, co konkretnie sprawdzić w każdym z tych momentów.</p>
+
+    <div class="nextstep__card">
+      <p class="nextstep__card-label">Lista wczesnego dostępu</p>
+      <h3>System Inwestora <em>Łazienka Na Lata™</em></h3>
+      <p>Rozbudowywany system kontroli remontu łazienki dla świadomych inwestorów. Punkty kontrolne etap po etapie, checklisty hydroizolacji, spadków, odpływu i wentylacji, lista najczęstszych błędów w polskich łazienkach, wersja PDF do druku i mobilna na budowę.</p>
+      <p>Aktualnie kompletuję ostatnie elementy przed premierą. Lista wczesnego dostępu otwarta dla osób, które chcą wejść do Systemu, zanim trafi szerzej.</p>
+    </div>
+
+    <div class="premium-cta">
+      <p class="premium-cta__note">
+        Jedno kliknięcie. Bez wpisywania, bez formularzy. Messenger otworzy się z gotową wiadomością — wciągnę Cię na listę wczesnego dostępu.
+      </p>
+
+      <a href="https://m.me/arkadiuszbunkowski?text=%C5%81AZIENKA"
+         class="premium-btn js-messenger"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-fb-username="arkadiuszbunkowski"
+         data-prefill-text="ŁAZIENKA"
+         aria-label="Otrzymaj wczesny dostęp — wyślij wiadomość ŁAZIENKA na Messengerze">
+        <span class="premium-btn__inner">
+          <span class="premium-btn__eyebrow">Otrzymaj wczesny dostęp</span>
+          <span class="premium-btn__label">ŁAZIENKA</span>
+        </span>
+        <span class="premium-btn__icon" aria-hidden="true">
+          <!-- paper plane / send icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 11.5L21 3L13 21L11 13L3 11.5Z"
+                  stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <span class="premium-cta__sub">Otwiera Messengera · Bez spamu</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__monogram" aria-label="Logo Arkadiusz Bunkowski"><img src="data:image/jpeg;base64,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" alt="Arkadiusz Bunkowski — Łazienka Na Lata" width="320" height="320" loading="lazy" decoding="async"></div>
+    <p class="footer__name">ARKADIUSZ BUNKOWSKI</p>
+    <p class="footer__role">
+      Ekspert remontów łazienek<br>
+      20+ lat praktyki na budowach w Polsce, Anglii i Holandii<br>
+      <em>Twórca Systemu „Łazienka Na Lata™”</em>
+    </p>
+    <a href="https://m.me/arkadiuszbunkowski?text=%C5%81AZIENKA"
+       class="footer__link js-messenger"
+       target="_blank"
+       rel="noopener noreferrer"
+       data-fb-username="arkadiuszbunkowski"
+       data-prefill-text="ŁAZIENKA"
+       aria-label="Kontakt przez Messenger — wyślij wiadomość ŁAZIENKA">Kontakt: Messenger · ŁAZIENKA</a>
+
+    <span class="footer__divider" aria-hidden="true"></span>
+
+    <p class="footer__note">
+      Materiał ma charakter edukacyjny. Nie zastępuje projektu, oględzin na miejscu, dokumentacji technicznej producentów ani konsultacji z osobami posiadającymi odpowiednie uprawnienia.
+    </p>
+    <p class="footer__note">
+      Konkretne rozwiązania techniczne, dobór materiałów, zasady wentylacji oraz wymagania instalacyjne powinny być każdorazowo zweryfikowane w warunkach konkretnego budynku, z uwzględnieniem zasad obowiązujących we wspólnocie lub spółdzielni oraz aktualnej dokumentacji producentów stosowanych systemów.
+    </p>
+
+    <p class="footer__legal">
+      © 2026 Arkadiusz Bunkowski. Wszystkie prawa zastrzeżone.<br>
+      Materiał chroniony prawem autorskim. Nie udostępniaj dalej bez zgody autora.<br>
+      <strong>Wersja 3.0 · Bonus dla osób z kodem ŁAZIENKA</strong>
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     STICKY MOBILE CTA
+============================================================ -->
+<div class="mobile-cta" id="mobileCta" aria-hidden="true">
+  <a href="https://m.me/arkadiuszbunkowski?text=%C5%81AZIENKA"
+     class="btn js-messenger"
+     target="_blank"
+     rel="noopener noreferrer"
+     data-fb-username="arkadiuszbunkowski"
+     data-prefill-text="ŁAZIENKA"
+     aria-label="Napisz na Messengerze: ŁAZIENKA">
+    <span class="btn__arrow">▸</span>
+    <span>Napisz: ŁAZIENKA</span>
+  </a>
+</div>
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script>
+  // Progress bar
+  const progressBar = document.getElementById('progressBar');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (scrollTop / docHeight) * 100;
+    progressBar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Scroll reveal
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
+
+  // Sticky mobile CTA — appears after scrolling past the hero
+  const mobileCta = document.getElementById('mobileCta');
+  const hero = document.querySelector('.hero');
+  if (mobileCta && hero) {
+    const ctaObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          mobileCta.classList.add('is-visible');
+          mobileCta.setAttribute('aria-hidden', 'false');
+        } else {
+          mobileCta.classList.remove('is-visible');
+          mobileCta.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }, { threshold: 0 });
+    ctaObserver.observe(hero);
+
+    // Also hide when reaching the bottom CTA section
+    const ctaSection = document.getElementById('cta');
+    if (ctaSection) {
+      const bottomObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            mobileCta.classList.remove('is-visible');
+            mobileCta.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }, { threshold: 0.3 });
+      bottomObs.observe(ctaSection);
+    }
+  }
+
+  /* ============================================================
+     MESSENGER LINK HANDLER
+     Wykrywa środowisko (Facebook in-app, Messenger app, mobile/desktop
+     browser) i wybiera najlepszą strategię otwierania m.me deep linka.
+
+     - Facebook in-app webview: nie używaj target=_blank (blokuje),
+       pozwól nawigacji w tym samym widoku — FB webview przechwyci m.me
+       i przekaże do Messenger app.
+     - Messenger in-app: link otwierany natywnie.
+     - Mobile Safari/Chrome: m.me otwiera Messenger app albo prompt do
+       instalacji — pozwól target=_blank.
+     - Desktop: target=_blank do messenger.com (m.me redirectuje).
+  ============================================================ */
+  (function() {
+    const ua = navigator.userAgent || '';
+    // Facebook in-app browser identifies itself with FBAN / FBAV / FB_IAB
+    const isFacebookInApp = /FBAN|FBAV|FB_IAB|FB4A|FBIOS/i.test(ua);
+    // Messenger in-app browser
+    const isMessengerInApp = /Messenger|MessengerLite/i.test(ua);
+    // Instagram in-app (czasem podstrony FB osadzone na Reels)
+    const isInstagramInApp = /Instagram/i.test(ua);
+    const isInAppWebview = isFacebookInApp || isMessengerInApp || isInstagramInApp;
+
+    const isIOS = /iPhone|iPad|iPod/i.test(ua) && !window.MSStream;
+    const isAndroid = /Android/i.test(ua);
+    const isMobile = isIOS || isAndroid;
+
+    document.querySelectorAll('.js-messenger').forEach(function(link) {
+      const username = link.getAttribute('data-fb-username') || 'arkadiuszbunkowski';
+      const prefill = link.getAttribute('data-prefill-text') || 'ŁAZIENKA';
+      const prefillEncoded = encodeURIComponent(prefill);
+
+      // Canonical href (działa wszędzie jako fallback) — zachowujemy.
+      const httpsUrl = 'https://m.me/' + username + '?text=' + prefillEncoded;
+      link.setAttribute('href', httpsUrl);
+
+      // W Facebook/Instagram in-app webview target=_blank często jest blokowany
+      // albo otwiera pustą kartę. Lepiej nawigować w tym samym widoku — webview
+      // przechwyci m.me i przekaże do Messenger app.
+      if (isInAppWebview) {
+        link.removeAttribute('target');
+        // 'rel' zostawiamy bez 'noreferrer', żeby m.me poprawnie zidentyfikowało
+        // ruch z webview Mety i przekazało do app.
+        link.setAttribute('rel', 'noopener');
+      }
+
+      link.addEventListener('click', function(e) {
+        // Pozwól standardowej nawigacji w in-app webview (sam się przekieruje
+        // do Messenger app). Nic nie robimy.
+        if (isInAppWebview) {
+          return;
+        }
+
+        // Mobile zewnętrzna przeglądarka — spróbuj otworzyć Messenger app
+        // przez deep link fb-messenger://, z fallbackiem do m.me jeśli app
+        // nie jest zainstalowana.
+        if (isMobile) {
+          e.preventDefault();
+
+          // iOS: użyj uniwersalnego m.me linka — Apple Universal Links
+          // automatycznie otworzą Messenger jeśli zainstalowany,
+          // inaczej www.messenger.com.
+          if (isIOS) {
+            // Otwórz w tym samym oknie — uniwersalny link działa najlepiej
+            // gdy nawigacja jest user-initiated i bez window.open.
+            window.location.href = httpsUrl;
+            return;
+          }
+
+          // Android: spróbuj intent:// do Messenger app, fallback do m.me.
+          if (isAndroid) {
+            const intentUrl =
+              'intent://user/' + username +
+              '#Intent;package=com.facebook.orca;scheme=fb-messenger;' +
+              'S.browser_fallback_url=' + encodeURIComponent(httpsUrl) +
+              ';end';
+            window.location.href = intentUrl;
+            return;
+          }
+        }
+
+        // Desktop: standardowe zachowanie target=_blank do m.me/messenger.com.
+        // Nic nie robimy — link kliknie się normalnie.
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
