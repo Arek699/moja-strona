@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="pl" style="background:#121212;color:#ededed;color-scheme:dark;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#121212">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Łazienka">
+<title>ŁAZIENKA NA LATA™ — System inwestora</title>
+<meta name="description" content="Operacyjna checklista remontu łazienki. Praktyk z 20+ lat doświadczenia. Polska · Anglia · Holandia.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23121212'/><text x='50%25' y='62%25' font-family='Georgia,serif' font-size='38' font-weight='900' font-style='italic' text-anchor='middle' fill='%23c9a861'>Ł</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23121212'/><text x='50%25' y='62%25' font-family='Georgia,serif' font-size='108' font-weight='900' font-style='italic' text-anchor='middle' fill='%23c9a861'>Ł</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" onerror="this.onerror=null;this.remove();">
+
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #121212; --bg-elevated: #1a1a1a; --bg-card: #1f1f1f; --bg-deep: #0d0d0d;
+  --bg-overlay: rgba(18, 18, 18, 0.88);
+  --gold: #c9a861; --gold-bright: #dcb872; --gold-soft: rgba(201, 168, 97, 0.12);
+  --gold-line: rgba(201, 168, 97, 0.25); --gold-glow: rgba(201, 168, 97, 0.14);
+  --gold-aura: rgba(201, 168, 97, 0.08);
+  --text: #ededed; --text-muted: #b3b3b3; --text-dim: #888888; --text-faint: #5a5a5a;
+  --wine: #c84d3e; --wine-soft: rgba(200, 77, 62, 0.09); --wine-strong: rgba(200, 77, 62, 0.18);
+  --success: #6aa66a;
+  --border: rgba(255, 255, 255, 0.04); --border-strong: rgba(255, 255, 255, 0.09);
+  --border-warm: rgba(201, 168, 97, 0.12);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --tap: 48px; --radius-sm: 6px; --radius: 12px; --radius-lg: 18px; --header-h: 64px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.25);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.35);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.45);
+  --shadow-gold: 0 10px 32px rgba(201, 168, 97, 0.14);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.025);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms; --dur: 260ms; --dur-slow: 360ms;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; text-rendering: optimizeLegibility; background: #121212 !important; color: #ededed; -webkit-overflow-scrolling: touch; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+body { margin: 0; background: #121212 !important; color: #ededed !important; font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding-top: calc(var(--header-h) + var(--safe-top)); padding-left: var(--safe-left); padding-right: var(--safe-right); overscroll-behavior: none; touch-action: manipulation; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201, 168, 97, 0.18); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(201, 168, 97, 0.32); }
+.hero, .etap, .section-info, main { background: #121212; color: #ededed; }
+h1, h2, h3 { color: #ededed; }
+.hero h1 { color: #ededed; }
+@media (forced-colors: active) { body { background: #121212; color: #ededed; } .hero h1, h2, h3 { color: #ededed; } .accent { color: #c9a861; } }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+button, a { font-family: inherit; }
+
+/* HEADER */
+.header { position: fixed; top: 0; left: 0; right: 0; height: calc(var(--header-h) + var(--safe-top)); padding-top: var(--safe-top); background: var(--bg-overlay); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); z-index: 300; display: flex; align-items: center; justify-content: space-between; padding-left: max(18px, var(--safe-left)); padding-right: max(18px, var(--safe-right)); }
+.header::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent); pointer-events: none; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); user-select: none; }
+.brand-mark { width: 22px; height: 2px; background: var(--gold); border-radius: 1px; }
+.brand-tag { font-size: 9px; color: var(--gold); letter-spacing: 0.18em; margin-left: 2px; }
+.hamburger { width: var(--tap); height: var(--tap); background: transparent; border: 1px solid var(--border-strong); border-radius: 50%; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; position: relative; z-index: 301; transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out); }
+.hamburger:hover, .hamburger:focus-visible { border-color: var(--gold); background: var(--gold-soft); }
+.hamburger:active { transform: scale(0.96); }
+.hamburger span { display: block; width: 16px; height: 1.5px; background: var(--gold); transition: transform var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out); transform-origin: center; }
+.hamburger.open span:nth-child(1) { transform: translateY(3.25px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { transform: translateY(-3.25px) rotate(-45deg); }
+
+/* MENU */
+.menu-overlay { position: fixed; inset: 0; background: var(--bg); z-index: 200; padding: calc(var(--header-h) + var(--safe-top) + 18px) max(22px, var(--safe-right)) max(40px, var(--safe-bottom)) max(22px, var(--safe-left)); overflow-y: auto; -webkit-overflow-scrolling: touch; transform: translateX(100%); transition: transform var(--dur-slow) var(--ease-out); visibility: hidden; pointer-events: none; }
+.menu-overlay.open { transform: translateX(0); visibility: visible; pointer-events: auto; }
+.menu-label { font-size: 10px; letter-spacing: 0.24em; color: var(--gold); margin: 0 0 22px; text-transform: uppercase; font-weight: 700; }
+.menu-list { list-style: none; padding: 0; margin: 0 0 28px; }
+.menu-list li { margin: 0; }
+.menu-list .menu-link { display: flex; align-items: baseline; gap: 14px; padding: 16px 0; width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border); color: var(--text); text-align: left; cursor: pointer; font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; transition: color var(--dur) var(--ease-out), padding-left var(--dur) var(--ease-out); min-height: var(--tap); }
+.menu-list .menu-link:hover, .menu-list .menu-link:focus-visible { color: var(--gold); padding-left: 6px; }
+.menu-num { font-family: var(--font-body); font-size: 10.5px; font-weight: 700; color: var(--text-dim); letter-spacing: 0.12em; min-width: 24px; }
+.menu-progress { font-family: var(--font-body); font-size: 11px; color: var(--gold); margin-left: auto; font-weight: 600; letter-spacing: 0.05em; }
+.menu-divider { height: 1px; background: var(--border); margin: 20px 0; }
+.menu-clear { width: 100%; min-height: var(--tap); background: transparent; color: var(--text-muted); border: 1px solid var(--border-strong); border-radius: var(--radius); font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; cursor: pointer; margin-top: 8px; transition: all var(--dur) var(--ease-out); }
+.menu-clear:hover, .menu-clear:focus-visible { border-color: var(--wine); color: var(--wine); background: var(--wine-soft); }
+
+/* HERO */
+.hero { padding: 64px 24px 36px; position: relative; overflow: hidden; background: radial-gradient(ellipse 600px 400px at 50% -20%, var(--gold-aura), transparent 70%), radial-gradient(ellipse 400px 300px at 100% 10%, rgba(201,168,97,0.05), transparent 60%), #121212; }
+.hero::after { content: ""; position: absolute; bottom: 0; left: 24px; right: 24px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-line), transparent); }
+.hero-kicker { font-size: 10px; letter-spacing: 0.28em; color: var(--gold); font-weight: 700; text-transform: uppercase; margin: 0 0 22px; }
+.hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(34px, 9vw, 52px); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 22px; }
+.hero h1 .accent { color: var(--gold); font-style: italic; font-weight: 700; }
+.hero p { font-size: 15.5px; color: var(--text-muted); margin: 0 0 28px; max-width: 30em; line-height: 1.65; }
+.hero-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 28px; font-size: 12px; color: var(--gold); letter-spacing: 0.04em; font-weight: 600; }
+.hero-tags .tag-sep { color: var(--text-faint); font-weight: 400; }
+.hero-help { margin: -8px 0 26px; padding: 14px 16px; background: rgba(255,255,255,0.02); border-radius: var(--radius); border: 1px solid var(--border); font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+.hero-meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+.hero-meta strong { color: var(--gold); font-weight: 700; }
+.hero-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.hero-tool { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; background: rgba(255,255,255,0.02); color: var(--text-muted); border: 1px solid var(--border-strong); border-radius: var(--radius); font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; min-height: 40px; transition: all var(--dur) var(--ease-out); }
+.hero-tool:hover, .hero-tool:focus-visible { color: var(--gold); border-color: var(--gold-line); background: var(--gold-soft); }
+.hero-tool[aria-pressed="true"] { background: var(--gold-soft); color: var(--gold); border-color: var(--gold); }
+.hero-tool-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; flex-shrink: 0; }
+.hero-tool-icon svg { width: 100%; height: 100%; display: block; }
+
+body.tryb-budowa .punkt-title { font-size: 17px; }
+body.tryb-budowa .punkt-desc { font-size: 15px; line-height: 1.65; }
+body.tryb-budowa .punkt { padding: 22px 6px; }
+body.tryb-budowa .punkt-checkbox { width: 32px; height: 32px; border-radius: 8px; border-width: 2px; }
+body.tryb-budowa .etap-name { font-size: 30px; }
+body.tryb-budowa .etap-num { font-size: 54px; }
+body.tryb-budowa .etap-intro { font-size: 16px; line-height: 1.7; }
+body.tryb-budowa .search input { font-size: 17px; padding: 16px 44px 16px 44px; }
+
+.global-progress { margin-top: 36px; padding: 24px; background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-card) 100%); border-radius: var(--radius); border: 1px solid var(--border); border-left: 3px solid var(--gold); position: relative; overflow: hidden; box-shadow: var(--shadow-card); }
+.global-progress::before { content: ""; position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle at center, var(--gold-glow), transparent 65%); pointer-events: none; }
+.global-progress-label { font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; font-weight: 700; margin: 0 0 8px; }
+.global-progress-num { font-family: var(--font-display); font-size: 34px; font-weight: 900; line-height: 1; margin: 0 0 8px; letter-spacing: -0.02em; }
+.global-progress-num .of { color: var(--text-dim); font-size: 17px; font-weight: 600; font-family: var(--font-body); margin-left: 4px; }
+.global-progress-bar { height: 6px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden; margin-top: 14px; position: relative; }
+.global-progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 100%); border-radius: 3px; transition: width var(--dur-slow) var(--ease-out); width: 0%; position: relative; box-shadow: 0 0 10px rgba(201,168,97,0.35); }
+
+/* SEARCH */
+.search-wrap { position: sticky; top: calc(var(--header-h) + var(--safe-top)); background: var(--bg-overlay); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); padding: 14px 22px; z-index: 50; }
+.search-wrap::after { content: ""; position: absolute; bottom: 0; left: 22px; right: 22px; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); pointer-events: none; }
+.search { position: relative; display: flex; align-items: center; }
+.search input { width: 100%; background: var(--bg-elevated); border: 1px solid var(--border-strong); color: var(--text); font-family: var(--font-body); font-size: 15px; padding: 14px 44px 14px 44px; border-radius: var(--radius); outline: none; transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); -webkit-appearance: none; }
+.search input:focus { border-color: var(--gold); background: var(--bg-card); box-shadow: 0 0 0 3px var(--gold-glow); }
+.search input::placeholder { color: var(--text-faint); }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-muted); pointer-events: none; }
+.search-clear { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: transparent; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; display: none; border-radius: 50%; }
+.search-clear.visible { display: block; }
+.search-results-count { margin: 10px 0 0; font-size: 11px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; display: none; }
+.search-results-count.visible { display: block; }
+
+/* ETAP — z ikoną */
+.etap { scroll-margin-top: calc(var(--header-h) + var(--safe-top) + 80px); padding: 60px 24px 40px; position: relative; }
+.etap::after { content: ""; position: absolute; bottom: 0; left: 24px; right: 24px; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); }
+
+/* === BANNER „PUNKT BEZ POWROTU" === */
+.etap-critical-banner {
+  margin: 0 0 28px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(200,77,62,0.12), rgba(200,77,62,0.06));
+  border: 1px solid rgba(200,77,62,0.35);
+  border-left: 3px solid var(--wine);
+  border-radius: var(--radius);
+  position: relative;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.etap-critical-banner-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(200,77,62,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wine);
+  margin-top: 2px;
+}
+.etap-critical-banner-icon svg { width: 18px; height: 18px; }
+.etap-critical-banner-content { flex: 1; min-width: 0; }
+.etap-critical-banner-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--wine);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+.etap-critical-banner-text {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 500;
+}
+
+.etap-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 22px; }
+.etap-num-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 62px;
+}
+.etap-num { font-family: var(--font-display); font-size: 46px; font-weight: 900; line-height: 0.9; color: var(--gold); letter-spacing: -0.04em; text-shadow: 0 0 24px rgba(201,168,97,0.15); }
+.etap-icon-wrap {
+  width: 32px;
+  height: 32px;
+  color: var(--gold);
+  opacity: 0.85;
+}
+.etap-icon-wrap svg { width: 100%; height: 100%; display: block; }
+.etap-titles { flex: 1; min-width: 0; }
+.etap-name { font-family: var(--font-display); font-size: 26px; font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 8px; }
+.etap-subtitle { font-size: 14px; color: var(--text-muted); font-style: italic; margin: 0; line-height: 1.5; }
+.etap-progress { display: flex; align-items: center; gap: 14px; margin: 20px 0 0; padding: 14px 18px; background: var(--bg-elevated); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-card); }
+.etap-progress-text { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+.etap-progress-text strong { color: var(--gold); font-weight: 700; }
+.etap-progress-bar { flex: 1; height: 5px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden; position: relative; }
+.etap-progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 100%); border-radius: 3px; transition: width var(--dur-slow) var(--ease-out); width: 0%; box-shadow: 0 0 8px rgba(201,168,97,0.3); }
+.etap.complete .etap-progress-fill { background: linear-gradient(90deg, var(--success) 0%, #6fb86f 100%); }
+.etap.complete .etap-progress-text strong { color: var(--success); }
+.etap-intro { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; margin: 24px 0 28px; }
+
+/* PUNKT — z drugą flagą („muszę zobaczyć") i ikoną notatki */
+.punkt { display: flex; gap: 12px; padding: 18px 6px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background var(--dur-fast) var(--ease-out); user-select: none; min-height: var(--tap); scroll-margin-top: calc(var(--header-h) + var(--safe-top) + 80px); position: relative; }
+.punkt:hover { background: rgba(255,255,255,0.015); }
+.punkt:last-child { border-bottom: none; }
+@keyframes punkt-tap { 0% { background: transparent; } 40% { background: var(--gold-soft); } 100% { background: transparent; } }
+.punkt.just-checked { animation: punkt-tap 500ms var(--ease-out); }
+.punkt-checkbox { flex-shrink: 0; width: 24px; height: 24px; border: 1.5px solid var(--gold-line); border-radius: 7px; background: rgba(255,255,255,0.015); margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all var(--dur) var(--ease-out); position: relative; }
+.punkt:hover .punkt-checkbox { border-color: var(--gold); background: rgba(201,168,97,0.04); box-shadow: 0 0 0 4px var(--gold-glow); }
+.punkt.checked .punkt-checkbox { background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%); border-color: var(--gold); box-shadow: var(--shadow-gold), inset 0 1px 0 rgba(255,255,255,0.2); }
+.punkt.checked .punkt-checkbox::after { content: ""; width: 11px; height: 6px; border-left: 2px solid var(--bg-deep); border-bottom: 2px solid var(--bg-deep); transform: rotate(-45deg) translate(1px, -1px); animation: check-pop var(--dur) var(--ease-spring); }
+@keyframes check-pop { 0% { transform: rotate(-45deg) translate(1px, -1px) scale(0); } 100% { transform: rotate(-45deg) translate(1px, -1px) scale(1); } }
+.punkt-content { flex: 1; min-width: 0; }
+.punkt-title { font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--text); margin: 0 0 4px; transition: color var(--dur) var(--ease-out); }
+.punkt-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin: 0; }
+.punkt.checked .punkt-title { color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--gold-line); text-decoration-thickness: 1px; }
+.punkt.checked .punkt-desc { color: var(--text-dim); }
+.punkt.hidden { display: none; }
+.punkt.search-match .punkt-title { color: var(--gold); }
+
+/* PUNKT — akcje (flaga „muszę zobaczyć" + notatka + schemat) */
+.punkt-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+.punkt-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  background: rgba(255,255,255,0.015);
+  color: var(--text-faint);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--dur) var(--ease-out);
+  padding: 0;
+}
+.punkt-action-btn svg { width: 14px; height: 14px; }
+.punkt-action-btn:hover, .punkt-action-btn:focus-visible {
+  color: var(--gold);
+  border-color: var(--gold-line);
+  background: var(--gold-soft);
+}
+.punkt-action-btn.flagged { color: var(--gold); border-color: var(--gold); background: var(--gold-soft); }
+.punkt-action-btn.has-note { color: var(--gold); border-color: var(--gold-line); }
+.punkt-action-btn.has-note::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 1px solid var(--bg);
+}
+.punkt-action-btn { position: relative; }
+
+.etap.hidden, .section-info.hidden, .audyt.hidden, .co-dalej.hidden,
+.case-card.hidden, .flaga.hidden, .galeria.hidden { display: none; }
+.case-card.search-match { border-left-color: var(--gold-bright); box-shadow: var(--shadow-md); }
+.case-card.search-match .case-title { color: var(--gold); }
+.flaga.search-match { box-shadow: 0 0 0 1px var(--gold-line), 0 4px 12px rgba(0,0,0,0.2); }
+
+/* AKCJE ETAPU — dodany przycisk „Pytania do ekipy" */
+.etap-actions { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+.etap-action { flex: 1; min-width: calc(50% - 5px); min-height: var(--tap); padding: 12px 14px; border-radius: var(--radius); font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: 0.03em; cursor: pointer; transition: all var(--dur) var(--ease-out); border: 1px solid; line-height: 1.3; white-space: normal; }
+.etap-action.mark-all { background: transparent; color: var(--gold); border-color: var(--gold-line); }
+.etap-action.mark-all:hover { background: var(--gold-soft); border-color: var(--gold); }
+.etap-action.clear-etap { background: transparent; color: var(--text-muted); border-color: var(--border-strong); }
+.etap-action.clear-etap:hover { color: var(--text); border-color: var(--text-muted); }
+.etap-action.pytania-do-ekipy {
+  background: linear-gradient(180deg, rgba(201,168,97,0.1), rgba(201,168,97,0.04));
+  color: var(--gold);
+  border-color: var(--gold-line);
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.etap-action.pytania-do-ekipy:hover { background: var(--gold-soft); border-color: var(--gold); }
+.etap-action.pytania-do-ekipy svg { width: 16px; height: 16px; }
+
+/* SECTION INFO (case study, czerwone flagi) */
+.section-info { padding: 60px 24px 40px; position: relative; scroll-margin-top: calc(var(--header-h) + var(--safe-top) + 80px); }
+.section-info::after { content: ""; position: absolute; bottom: 0; left: 24px; right: 24px; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); }
+.section-info h2 { font-family: var(--font-display); font-size: clamp(28px, 7vw, 34px); font-weight: 900; line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 12px; }
+.section-info-subtitle { font-size: 14px; color: var(--gold); font-style: italic; margin: 0 0 22px; }
+.section-info-intro { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; margin: 0 0 30px; max-width: 32em; }
+.disclaimer { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 2px solid var(--gold-line); padding: 14px 16px; border-radius: var(--radius); margin: 0 0 30px; font-size: 12.5px; color: var(--text-muted); line-height: 1.6; font-style: italic; }
+
+.case-card { background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-card) 100%); padding: 26px; border-radius: var(--radius); margin-bottom: 18px; border: 1px solid var(--border); border-left: 2px solid var(--gold); transition: all var(--dur) var(--ease-out); box-shadow: var(--shadow-card); }
+.case-card:hover { border-color: var(--gold-line); box-shadow: var(--shadow-md); }
+.case-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 10px; letter-spacing: 0.2em; font-weight: 700; }
+.case-num { color: var(--gold); font-family: var(--font-display); }
+.case-place { color: var(--text-dim); padding-left: 10px; border-left: 1px solid var(--border-strong); }
+.case-title { font-family: var(--font-display); font-size: 21px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 18px; color: var(--text); }
+.case-row { margin-bottom: 12px; }
+.case-row-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em; margin-bottom: 4px; color: var(--text-dim); text-transform: uppercase; }
+.case-row-text { font-size: 13.5px; line-height: 1.55; color: var(--text); margin: 0; }
+.case-lekcja { margin-top: 16px; padding: 14px 16px; background: var(--gold-soft); border-left: 2px solid var(--gold); border-radius: var(--radius-sm); }
+.case-lekcja-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em; margin-bottom: 6px; color: var(--gold); text-transform: uppercase; }
+.case-lekcja-text { font-size: 13.5px; line-height: 1.55; color: var(--text); margin: 0; font-weight: 500; }
+
+/* === KOSZT BŁĘDU — badge przy case study === */
+.case-koszt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(200,77,62,0.14), rgba(200,77,62,0.06));
+  border: 1px solid rgba(200,77,62,0.3);
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: var(--text);
+  font-weight: 600;
+}
+.case-koszt-label {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--wine);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.case-koszt-value {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.flaga { background: var(--wine-soft); border: 1px solid rgba(200,77,62,0.12); border-left: 2px solid var(--wine); padding: 18px 20px; margin-bottom: 12px; border-radius: var(--radius); }
+.flaga-title { font-size: 15px; font-weight: 600; color: var(--wine); margin: 0 0 6px; line-height: 1.4; display: flex; align-items: baseline; gap: 10px; }
+.flaga-title::before { content: "⚠"; font-size: 13px; flex-shrink: 0; }
+.flaga-desc { font-size: 13.5px; color: var(--text); line-height: 1.6; margin: 0; }
+
+/* === GALERIA BŁĘDÓW — sekcja z ilustracjami SVG === */
+.galeria { padding: 60px 24px 40px; position: relative; scroll-margin-top: calc(var(--header-h) + var(--safe-top) + 80px); }
+.galeria::after { content: ""; position: absolute; bottom: 0; left: 24px; right: 24px; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); }
+.galeria h2 { font-family: var(--font-display); font-size: clamp(28px, 7vw, 34px); font-weight: 900; line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 12px; }
+.galeria-subtitle { font-size: 14px; color: var(--gold); font-style: italic; margin: 0 0 22px; }
+.galeria-intro { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; margin: 0 0 30px; max-width: 32em; }
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+.galeria-tile {
+  background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+}
+.galeria-tile:hover, .galeria-tile:focus-visible {
+  border-color: var(--gold-line);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.galeria-tile-illustration {
+  aspect-ratio: 16/10;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.galeria-tile-illustration svg { width: 80%; height: 80%; }
+.galeria-tile-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--wine);
+  background: rgba(200,77,62,0.18);
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.galeria-tile-content { padding: 14px 16px; }
+.galeria-tile-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14.5px;
+  line-height: 1.25;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+.galeria-tile-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* === GALERIA MODAL — fullscreen viewer === */
+.galeria-modal {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-deep);
+  z-index: 410;
+  display: none;
+  flex-direction: column;
+  padding: calc(var(--safe-top) + 12px) 0 calc(var(--safe-bottom) + 12px);
+}
+.galeria-modal.show { display: flex; }
+.galeria-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.galeria-modal-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0;
+  line-height: 1.2;
+  flex: 1;
+  padding-right: 12px;
+}
+.galeria-modal-close {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.galeria-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 22px 40px;
+}
+.galeria-stage {
+  margin-bottom: 22px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+.galeria-stage-illustration {
+  aspect-ratio: 16/10;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.galeria-stage-illustration svg { width: 100%; height: 100%; max-height: 240px; }
+.galeria-stage-meta {
+  padding: 16px 18px;
+}
+.galeria-stage-label {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.galeria-stage-label.problem { background: rgba(200,77,62,0.18); color: var(--wine); }
+.galeria-stage-label.skutek { background: rgba(255,165,0,0.14); color: #ff9c45; }
+.galeria-stage-label.poprawnie { background: rgba(106,166,106,0.18); color: var(--success); }
+.galeria-stage-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+}
+.galeria-modal-koszt {
+  background: linear-gradient(135deg, rgba(200,77,62,0.14), rgba(200,77,62,0.06));
+  border: 1px solid rgba(200,77,62,0.3);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 26px;
+}
+.galeria-modal-koszt-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--wine);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.galeria-modal-koszt-value {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.galeria-modal-koszt-note {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* AUDYT */
+.audyt { background: radial-gradient(ellipse 500px 300px at 50% 0%, var(--gold-aura), transparent 70%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 72px 24px 52px; position: relative; scroll-margin-top: calc(var(--header-h) + var(--safe-top) + 80px); overflow: hidden; }
+.audyt::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.audyt h2 { font-family: var(--font-display); font-size: clamp(30px, 8vw, 38px); font-weight: 900; line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 12px; }
+.audyt-subtitle { font-size: 14px; color: var(--gold); font-style: italic; margin: 0 0 14px; line-height: 1.55; }
+.audyt-process { font-size: 13.5px; color: var(--text); margin: 0 0 24px; padding: 14px 16px; background: rgba(201,168,97,0.06); border: 1px solid var(--gold-line); border-radius: var(--radius); line-height: 1.6; }
+.audyt-intro { font-size: 14.5px; color: var(--text); line-height: 1.7; margin: 0 0 22px; }
+.audyt-purpose { background: var(--bg-deep); padding: 18px 20px; border-radius: var(--radius); border-left: 2px solid var(--gold); margin: 0 0 28px; font-size: 13.5px; color: var(--text-muted); line-height: 1.6; font-style: italic; }
+.audyt-co-label { font-size: 10px; letter-spacing: 0.22em; color: var(--gold); font-weight: 700; text-transform: uppercase; margin: 0 0 14px; }
+.audyt-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+.audyt-item:last-of-type { border-bottom: none; }
+.audyt-item-num { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.18em; min-width: 24px; padding-top: 2px; }
+.audyt-item-content { flex: 1; }
+.audyt-item-title { font-size: 15px; font-weight: 600; color: var(--text); margin: 0 0 4px; }
+.audyt-item-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin: 0; }
+.audyt-testimoniale-label { font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; font-weight: 700; margin: 30px 0 14px; }
+.audyt-testimoniale-list { display: flex; flex-direction: column; gap: 12px; }
+.audyt-testimonial { margin: 0; padding: 16px 18px; background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-left: 2px solid var(--gold-line); border-radius: var(--radius); }
+.audyt-testimonial-text { font-size: 13.5px; color: var(--text); font-style: italic; line-height: 1.55; margin: 0; }
+.audyt-testimoniale-note { font-size: 11.5px; color: var(--text-dim); font-style: italic; margin: 10px 0 0; line-height: 1.5; }
+.audyt-price-card { background: var(--bg-deep); border: 1px solid var(--gold); padding: 32px 24px; border-radius: var(--radius); margin: 32px 0 22px; text-align: center; box-shadow: var(--shadow-gold); position: relative; overflow: hidden; }
+.audyt-price-label { font-size: 10px; letter-spacing: 0.26em; color: var(--gold); font-weight: 700; text-transform: uppercase; margin: 0 0 14px; }
+.audyt-price { font-family: var(--font-display); font-size: clamp(48px, 14vw, 64px); font-weight: 900; line-height: 1; margin: 0 0 12px; letter-spacing: -0.03em; }
+.audyt-termin { font-size: 13px; color: var(--text-muted); margin: 0; font-style: italic; }
+.audyt-cta { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%); color: var(--bg-deep); text-align: center; padding: 20px 24px; border-radius: var(--radius); font-family: var(--font-body); font-weight: 700; font-size: 14.5px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; margin-top: 20px; min-height: var(--tap); box-shadow: 0 6px 18px rgba(201,168,97,0.22); transition: all var(--dur) var(--ease-out); }
+.audyt-cta::after { content: "→"; font-size: 18px; }
+.audyt-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(201,168,97,0.32); }
+.audyt-cta-sub { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--text-muted); font-style: italic; line-height: 1.45; }
+.audyt-disclaimer { margin: 24px 0 0; padding: 14px 16px; background: rgba(255,255,255,0.02); border-left: 2px solid var(--text-faint); border-radius: var(--radius-sm); font-size: 12px; color: var(--text-dim); line-height: 1.55; font-style: italic; }
+.audyt-info { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+.audyt-info-block { display: flex; gap: 14px; padding: 14px 0; align-items: flex-start; }
+.audyt-info-block-label { font-size: 10px; letter-spacing: 0.18em; font-weight: 700; color: var(--gold); text-transform: uppercase; min-width: 96px; padding-top: 3px; flex-shrink: 0; }
+.audyt-info-block-text { font-size: 13px; color: var(--text); line-height: 1.6; margin: 0; }
+
+/* FOOTER */
+.footer { padding: 48px 22px calc(40px + var(--safe-bottom)); text-align: center; color: var(--text-dim); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+.footer-quote { font-family: var(--font-display); font-size: 18px; font-style: italic; color: var(--text); margin: 0 auto 22px; max-width: 24em; line-height: 1.45; font-weight: 600; text-transform: none; letter-spacing: -0.01em; }
+.footer-author { color: var(--gold); letter-spacing: 0.18em; font-weight: 600; font-size: 11px; }
+.footer-bio { margin: 18px auto 0; max-width: 28em; font-size: 11.5px; line-height: 1.6; color: var(--text-dim); letter-spacing: normal; text-transform: none; font-style: italic; }
+.footer-meta { margin-top: 28px; font-size: 10px; color: var(--text-faint); }
+.footer-legal { margin-top: 32px; padding-top: 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 10px; position: relative; }
+.footer-legal::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); }
+.footer-legal-link { background: transparent; border: none; color: var(--text-muted); font-family: var(--font-body); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; text-decoration: none; padding: 8px 4px; cursor: pointer; min-height: 32px; display: inline-flex; align-items: center; }
+.footer-legal-link:hover { color: var(--gold); }
+.footer-legal-sep { color: var(--text-faint); font-size: 11px; user-select: none; }
+
+/* TOAST */
+.toast { position: fixed; bottom: calc(28px + var(--safe-bottom)); left: 50%; transform: translateX(-50%) translateY(140%); background: var(--bg-elevated); color: var(--gold); border: 1px solid var(--gold); padding: 12px 24px; border-radius: var(--radius); font-size: 12.5px; font-weight: 600; z-index: 500; transition: transform var(--dur-slow) var(--ease-spring); box-shadow: var(--shadow-lg); max-width: min(380px, calc(100vw - 32px)); text-align: center; line-height: 1.4; letter-spacing: 0.02em; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* CONFETTI */
+.confetti-burst { position: fixed; z-index: 450; pointer-events: none; width: 0; height: 0; }
+.confetti-burst i { position: absolute; left: 0; top: 0; width: 6px; height: 6px; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); border-radius: 1px; opacity: 0; animation: confetti-pop 1.2s var(--ease-out) forwards; animation-delay: var(--delay, 0ms); }
+.confetti-burst i:nth-child(3n) { background: var(--gold); width: 5px; height: 5px; }
+.confetti-burst i:nth-child(5n) { background: var(--gold-bright); width: 4px; height: 4px; }
+@keyframes confetti-pop { 0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy) + 80px)) rotate(var(--rot)); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .confetti-burst { display: none; } }
+
+/* MODAL */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 400; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); opacity: 0; transition: opacity var(--dur) var(--ease-out); }
+.modal-backdrop.show { display: flex; opacity: 1; }
+.modal { background: var(--bg-elevated); border: 1px solid var(--gold-line); border-radius: var(--radius); padding: 28px; max-width: 380px; width: 100%; box-shadow: var(--shadow-lg); transform: scale(0.96); transition: transform var(--dur) var(--ease-spring); }
+.modal-backdrop.show .modal { transform: scale(1); }
+.modal-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin: 0 0 12px; line-height: 1.2; letter-spacing: -0.01em; }
+.modal-text { font-size: 14px; color: var(--text-muted); margin: 0 0 24px; line-height: 1.55; }
+.modal-actions { display: flex; gap: 10px; }
+.modal-btn { flex: 1; min-height: var(--tap); border-radius: var(--radius); font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border: 1px solid; transition: all var(--dur) var(--ease-out); }
+.modal-btn.cancel { background: transparent; color: var(--text-muted); border-color: var(--border-strong); }
+.modal-btn.cancel:hover { color: var(--text); border-color: var(--text-muted); }
+.modal-btn.confirm { background: var(--wine); color: var(--text); border-color: var(--wine); }
+.modal-btn.confirm:hover { background: #d04030; }
+
+.modal-legal { background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-card) 100%); border: 1px solid var(--gold-line); border-radius: var(--radius); padding: 28px 24px 24px; max-width: 480px; width: 100%; max-height: 80vh; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); transform: scale(0.96); transition: transform var(--dur) var(--ease-spring); position: relative; overflow: hidden; }
+.modal-backdrop.show .modal-legal { transform: scale(1); }
+.modal-legal::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.modal-legal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.modal-legal-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin: 0; line-height: 1.2; letter-spacing: -0.01em; color: var(--text); }
+.modal-legal-close { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: transparent; border: 1px solid var(--border-strong); color: var(--text-muted); font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.modal-legal-close:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-soft); }
+.modal-legal-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; font-size: 14px; color: var(--text-muted); line-height: 1.65; padding: 4px 2px; margin-bottom: 20px; }
+.modal-legal-body p { margin: 0 0 14px; }
+.modal-legal-placeholder { color: var(--text); padding: 14px 16px; background: rgba(200, 77, 62, 0.08); border-left: 2px solid var(--wine); border-radius: var(--radius-sm); }
+.modal-legal-placeholder strong { color: var(--wine); display: block; font-weight: 700; }
+.modal-legal-footer { display: flex; justify-content: flex-end; border-top: 1px solid var(--border); padding-top: 16px; gap: 10px; }
+.modal-legal-btn-close { min-height: var(--tap); padding: 0 24px; border-radius: var(--radius); font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; background: transparent; color: var(--gold); border: 1px solid var(--gold-line); transition: all var(--dur) var(--ease-out); }
+.modal-legal-btn-close:hover { background: var(--gold-soft); border-color: var(--gold); }
+.modal-legal-btn-primary {
+  min-height: var(--tap);
+  padding: 0 24px;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: var(--gold);
+  color: var(--bg-deep);
+  border: 1px solid var(--gold);
+  transition: all var(--dur) var(--ease-out);
+}
+.modal-legal-btn-primary:hover { background: var(--gold-bright); }
+
+/* === PYTANIA DO EKIPY — modal === */
+.pytanie-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--gold-line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.pytanie-num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  min-width: 22px;
+  padding-top: 1px;
+  flex-shrink: 0;
+}
+.pytanie-text {
+  flex: 1;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0 12px 0 0;
+}
+.pytanie-copy {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--dur) var(--ease-out);
+}
+.pytanie-copy svg { width: 14px; height: 14px; }
+.pytanie-copy:hover { color: var(--gold); border-color: var(--gold-line); background: var(--gold-soft); }
+.pytanie-copy.copied { color: var(--success); border-color: var(--success); }
+
+/* === DZIENNIK BUDOWY — modal i lista notatek === */
+.dziennik-empty {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-style: italic;
+}
+.dziennik-context {
+  background: var(--gold-soft);
+  border-left: 2px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.dziennik-context-label {
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 0 4px;
+}
+.dziennik-context-text {
+  font-size: 13.5px;
+  color: var(--text);
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.dziennik-textarea {
+  width: 100%;
+  min-height: 120px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 14px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.dziennik-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(0,0,0,0.35);
+}
+.dziennik-note-list { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.dziennik-note {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.dziennik-note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.dziennik-note-date {
+  font-size: 10.5px;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.dziennik-note-delete {
+  background: transparent;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1;
+}
+.dziennik-note-delete:hover { color: var(--wine); background: var(--wine-soft); }
+.dziennik-note-text {
+  font-size: 13.5px;
+  color: var(--text);
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* EXPORT */
+.export-intro { font-size: 13px; color: var(--text-muted); margin: 0 0 18px; line-height: 1.6; }
+.export-actions { display: flex; flex-direction: column; gap: 10px; }
+.export-action { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); cursor: pointer; font-family: var(--font-body); text-align: left; min-height: var(--tap); transition: all var(--dur) var(--ease-out); }
+.export-action:hover { border-color: var(--gold-line); background: var(--gold-soft); }
+.export-action-icon { flex-shrink: 0; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--bg-deep); color: var(--gold); border-radius: var(--radius-sm); }
+.export-action-icon svg { width: 20px; height: 20px; display: block; }
+.export-action-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.export-action-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.export-action-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+.export-import { cursor: pointer; }
+
+/* === ONBOARDING — pełnoekranowy 3-step === */
+.onboarding {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 600;
+  display: none;
+  flex-direction: column;
+  padding: calc(var(--safe-top) + 40px) 24px calc(var(--safe-bottom) + 24px);
+  animation: ob-fade-in var(--dur-slow) var(--ease-out);
+}
+.onboarding.show { display: flex; }
+@keyframes ob-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.onboarding-steps {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.onboarding-step {
+  display: none;
+  animation: ob-slide-in 0.4s var(--ease-spring);
+}
+@keyframes ob-slide-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.onboarding-step.active { display: block; }
+.onboarding-visual {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, var(--gold-soft), transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--gold);
+}
+.onboarding-visual svg { width: 48px; height: 48px; }
+.onboarding-kicker {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+.onboarding-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 7vw, 32px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 18px;
+  color: var(--text);
+}
+.onboarding-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 28em;
+}
+.onboarding-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  padding-top: 24px;
+}
+.onboarding-dots {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.onboarding-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  transition: background var(--dur) var(--ease-out), width var(--dur) var(--ease-out);
+}
+.onboarding-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 4px;
+}
+.onboarding-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 380px;
+}
+.onboarding-btn {
+  min-height: 50px;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid;
+  transition: all var(--dur) var(--ease-out);
+}
+.onboarding-btn.skip {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: var(--border-strong);
+  padding: 0 20px;
+}
+.onboarding-btn.skip:hover { color: var(--text); }
+.onboarding-btn.next {
+  flex: 1;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  color: var(--bg-deep);
+  border-color: var(--gold);
+  box-shadow: 0 6px 18px rgba(201,168,97,0.22);
+}
+.onboarding-btn.next:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(201,168,97,0.32); }
+
+/* === SCHEMAT MODAL — pokazuje techniczny diagram === */
+.schemat-modal-body { padding: 0; }
+.schemat-illustration {
+  background: #0a0a0a;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  min-height: 220px;
+}
+.schemat-illustration svg { width: 100%; max-width: 380px; height: auto; }
+.schemat-caption {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+  padding: 0 8px;
+}
+
+/* CO DALEJ */
+.co-dalej { padding: 64px 24px 48px; position: relative; background: radial-gradient(ellipse 500px 300px at 50% 0%, var(--gold-aura), transparent 70%), var(--bg); }
+.co-dalej::after { content: ""; position: absolute; bottom: 0; left: 24px; right: 24px; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); }
+.co-dalej-kicker { font-size: 10px; letter-spacing: 0.28em; color: var(--gold); font-weight: 700; text-transform: uppercase; margin: 0 0 12px; }
+.co-dalej-title { font-family: var(--font-display); font-size: clamp(30px, 8vw, 38px); font-weight: 900; line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 12px; }
+.co-dalej-intro { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; margin: 0 0 28px; }
+.co-dalej-cards { display: flex; flex-direction: column; gap: 14px; }
+.co-dalej-card { background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-card) 100%); padding: 22px 20px; border: 1px solid var(--border); border-left: 2px solid var(--gold); border-radius: var(--radius); box-shadow: var(--shadow-card); transition: all var(--dur) var(--ease-out); }
+.co-dalej-card:hover { border-color: var(--gold-line); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.co-dalej-card-label { font-size: 10px; letter-spacing: 0.2em; color: var(--gold); font-weight: 700; text-transform: uppercase; margin: 0 0 8px; }
+.co-dalej-card-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin: 0 0 8px; line-height: 1.2; color: var(--text); }
+.co-dalej-card-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.55; margin: 0 0 14px; }
+.co-dalej-card-link { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--gold-line); color: var(--gold); padding: 10px 16px; border-radius: var(--radius); font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; min-height: 40px; transition: all var(--dur) var(--ease-out); }
+.co-dalej-card-link:hover { background: var(--gold-soft); border-color: var(--gold); }
+
+.no-results { padding: 60px 22px; text-align: center; color: var(--text-muted); display: none; }
+.no-results.show { display: block; }
+.no-results-icon { font-size: 36px; margin-bottom: 14px; color: var(--gold); font-family: var(--font-display); }
+.no-results-text { font-size: 14px; }
+.no-results-text strong { color: var(--text); }
+
+@media (min-width: 720px) { .hero, .etap, .section-info, .audyt, .galeria, .co-dalej { padding-left: 40px; padding-right: 40px; } .search-wrap { padding-left: 40px; padding-right: 40px; } body { font-size: 17px; } }
+@media (min-width: 1024px) { body { max-width: 760px; margin: 0 auto; border-left: 1px solid var(--border); border-right: 1px solid var(--border); } .header { max-width: 760px; left: 50%; transform: translateX(-50%); } .search-wrap { width: 760px; left: 50%; margin-left: -380px; box-sizing: border-box; } }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.etap, .section-info, .audyt, .galeria { animation: fadeUp var(--dur-slow) var(--ease-out); animation-fill-mode: both; }
+</style>
+</head>
+<body style="background:#121212;color:#ededed;">
+
+<!-- HEADER -->
+<header class="header" role="banner">
+  <div class="brand" aria-label="Łazienka na Lata">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Łazienka na Lata</span>
+    <span class="brand-tag" aria-hidden="true">™</span>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+</header>
+
+<!-- MENU OVERLAY -->
+<nav class="menu-overlay" id="menu" aria-hidden="true" aria-label="Nawigacja główna">
+  <p class="menu-label">Nawigacja</p>
+  <ul class="menu-list" id="menu-list"></ul>
+  <div class="menu-divider"></div>
+  <button class="menu-clear" id="menu-clear" type="button">Wyczyść postęp</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <p class="hero-kicker">System inwestora · Wersja mobile</p>
+  <h1 id="hero-title">Sprawdź łazienkę zanim <span class="accent">błędy</span> zostaną pod płytkami.</h1>
+  <p>Mobilna checklista inwestora. <span id="hero-total-text">—</span> punktów kontroli na każdym etapie remontu.</p>
+  <p class="hero-help">Klikaj sprawdzone punkty. Postęp zapisuje się w tym telefonie.</p>
+  <div class="hero-tags" aria-label="Zakres tematyczny">
+    <span>Hydroizolacja</span><span class="tag-sep">·</span>
+    <span>Spadki</span><span class="tag-sep">·</span>
+    <span>Odpływy</span><span class="tag-sep">·</span>
+    <span>Płytki</span><span class="tag-sep">·</span>
+    <span>Odbiór</span><span class="tag-sep">·</span>
+    <span>Płatności</span>
+  </div>
+  <div class="hero-meta" aria-label="Statystyki praktyka">
+    <span><strong>20+</strong> lat praktyki</span>
+    <span><strong>3</strong> kraje</span>
+    <span><strong id="hero-total-meta">—</strong> punktów</span>
+  </div>
+  <div class="global-progress" role="region" aria-label="Twój postęp">
+    <p class="global-progress-label">Twój postęp</p>
+    <div class="global-progress-num">
+      <span id="global-pct">0</span>%
+      <span class="of">· <span id="global-count">0</span> z <span id="global-total">—</span></span>
+    </div>
+    <div class="global-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="global-progress-fill" id="global-fill"></div>
+    </div>
+  </div>
+
+  <div class="hero-tools" role="group" aria-label="Narzędzia">
+    <button type="button" class="hero-tool" id="toggle-budowa" aria-pressed="false">
+      <span class="hero-tool-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </span>
+      <span class="hero-tool-label">Tryb budowa</span>
+    </button>
+    <button type="button" class="hero-tool" id="open-export">
+      <span class="hero-tool-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="12" y1="18" x2="12" y2="12"/>
+          <polyline points="9 15 12 18 15 15"/>
+        </svg>
+      </span>
+      <span class="hero-tool-label">Eksport postępu</span>
+    </button>
+    <button type="button" class="hero-tool" id="share-app">
+      <span class="hero-tool-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="5" r="3"/>
+          <circle cx="6" cy="12" r="3"/>
+          <circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+      </span>
+      <span class="hero-tool-label">Udostępnij</span>
+    </button>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-wrap" role="search">
+  <div class="search">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+    </svg>
+    <input type="search" id="search" placeholder="Szukaj: mankiet, spadek, hydroizolacja…" autocomplete="off" aria-label="Szukaj">
+    <button class="search-clear" id="search-clear" aria-label="Wyczyść wyszukiwanie">×</button>
+  </div>
+  <p class="search-results-count" id="search-count" aria-live="polite"></p>
+</div>
+
+<div class="no-results" id="no-results" role="status" aria-live="polite">
+  <div class="no-results-icon" aria-hidden="true">—</div>
+  <p class="no-results-text">Brak wyników dla <strong id="search-term"></strong></p>
+</div>
+
+<main id="main"></main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p class="footer-quote">„Każdy z tych błędów do uniknięcia za pięć minut uwagi we właściwym momencie."</p>
+  <p class="footer-author">— Arkadiusz Bunkowski</p>
+  <p class="footer-bio">Ekspert remontów łazienek z ponad 20-letnią praktyką na budowach w Polsce, Anglii i Holandii. Twórca systemu Łazienka Na Lata™.</p>
+  <nav class="footer-legal" aria-label="Informacje prawne i kontakt">
+    <button type="button" class="footer-legal-link" data-legal="regulamin">Regulamin</button>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <button type="button" class="footer-legal-link" data-legal="polityka-prywatnosci">Polityka prywatności</button>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <button type="button" class="footer-legal-link" data-legal="polityka-cookies">Polityka cookies</button>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <a href="mailto:arkadiuszbunkowski@gmail.com" class="footer-legal-link">Kontakt</a>
+  </nav>
+  <p class="footer-meta">Łazienka na Lata™ · System inwestora · 2026</p>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- MODAL: Wyczyść postęp -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <h3 class="modal-title" id="modal-title">Wyczyścić postęp?</h3>
+    <p class="modal-text">Wszystkie odhaczone punkty zostaną usunięte. Tej akcji nie można cofnąć.</p>
+    <div class="modal-actions">
+      <button class="modal-btn cancel" id="modal-cancel" type="button">Anuluj</button>
+      <button class="modal-btn confirm" id="modal-confirm" type="button">Wyczyść</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Regulamin / Polityka / Cookies -->
+<div class="modal-backdrop" id="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+  <div class="modal-legal">
+    <header class="modal-legal-header">
+      <h3 class="modal-legal-title" id="legal-modal-title">Dokument</h3>
+      <button class="modal-legal-close" id="legal-modal-close-x" type="button" aria-label="Zamknij">×</button>
+    </header>
+    <div class="modal-legal-body" id="legal-modal-body" tabindex="0">
+      <p class="modal-legal-placeholder"><strong>Dokument roboczy.</strong></p>
+    </div>
+    <footer class="modal-legal-footer">
+      <button class="modal-legal-btn-close" id="legal-modal-close-btn" type="button">Zamknij</button>
+    </footer>
+  </div>
+</div>
+
+<!-- MODAL: Eksport postępu -->
+<div class="modal-backdrop" id="export-modal" role="dialog" aria-modal="true" aria-labelledby="export-modal-title">
+  <div class="modal-legal">
+    <header class="modal-legal-header">
+      <h3 class="modal-legal-title" id="export-modal-title">Eksport postępu</h3>
+      <button class="modal-legal-close" id="export-modal-close-x" type="button" aria-label="Zamknij">×</button>
+    </header>
+    <div class="modal-legal-body">
+      <p class="export-intro">Wybierz, co chcesz zrobić ze swoim postępem. Dane pozostają w Twoim telefonie.</p>
+      <div class="export-actions">
+        <button type="button" class="export-action" data-export="pdf">
+          <span class="export-action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          </span>
+          <span class="export-action-body">
+            <span class="export-action-title">Drukuj / zapisz jako PDF</span>
+            <span class="export-action-desc">Pełny postęp — Twoja kopia robocza</span>
+          </span>
+        </button>
+        <button type="button" class="export-action" data-export="ekipa">
+          <span class="export-action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          </span>
+          <span class="export-action-body">
+            <span class="export-action-title">Lista do ekipy (PDF)</span>
+            <span class="export-action-desc">Tylko punkty oflagowane — załącznik do umowy / wiadomości</span>
+          </span>
+        </button>
+        <button type="button" class="export-action" data-export="email">
+          <span class="export-action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <span class="export-action-body">
+            <span class="export-action-title">Wyślij e-mailem</span>
+            <span class="export-action-desc">Otwiera Twoją apkę pocztową</span>
+          </span>
+        </button>
+        <button type="button" class="export-action" data-export="copy">
+          <span class="export-action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </span>
+          <span class="export-action-body">
+            <span class="export-action-title">Skopiuj jako tekst</span>
+            <span class="export-action-desc">Wklej do notatki lub wiadomości</span>
+          </span>
+        </button>
+        <button type="button" class="export-action" data-export="json">
+          <span class="export-action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </span>
+          <span class="export-action-body">
+            <span class="export-action-title">Backup (JSON)</span>
+            <span class="export-action-desc">Postęp + notatki + flagi</span>
+          </span>
+        </button>
+        <label class="export-action export-import">
+          <span class="export-action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </span>
+          <span class="export-action-body">
+            <span class="export-action-title">Przywróć z backupu</span>
+            <span class="export-action-desc">Wczytaj wcześniej zapisany plik JSON</span>
+          </span>
+          <input type="file" id="import-file" accept="application/json,.json" hidden>
+        </label>
+      </div>
+    </div>
+    <footer class="modal-legal-footer">
+      <button class="modal-legal-btn-close" id="export-modal-close-btn" type="button">Zamknij</button>
+    </footer>
+  </div>
+</div>
+
+<!-- MODAL: Pytania do ekipy -->
+<div class="modal-backdrop" id="pytania-modal" role="dialog" aria-modal="true" aria-labelledby="pytania-modal-title">
+  <div class="modal-legal">
+    <header class="modal-legal-header">
+      <div>
+        <p style="font-size:10px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;font-weight:700;margin:0 0 6px;">Pytania do ekipy</p>
+        <h3 class="modal-legal-title" id="pytania-modal-title">—</h3>
+      </div>
+      <button class="modal-legal-close" id="pytania-modal-close-x" type="button" aria-label="Zamknij">×</button>
+    </header>
+    <div class="modal-legal-body" id="pytania-modal-body">
+      <p class="export-intro">Skopiuj jedno pytanie albo wszystkie do raz — wyślij ekipie na WhatsApp / mailu / przeczytaj na spotkaniu.</p>
+      <div id="pytania-list"></div>
+    </div>
+    <footer class="modal-legal-footer">
+      <button class="modal-legal-btn-close" id="pytania-modal-close-btn" type="button">Zamknij</button>
+      <button class="modal-legal-btn-primary" id="pytania-copy-all" type="button">Skopiuj wszystkie</button>
+    </footer>
+  </div>
+</div>
+
+<!-- MODAL: Dziennik budowy (notatka do punktu) -->
+<div class="modal-backdrop" id="dziennik-modal" role="dialog" aria-modal="true" aria-labelledby="dziennik-modal-title">
+  <div class="modal-legal">
+    <header class="modal-legal-header">
+      <div>
+        <p style="font-size:10px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;font-weight:700;margin:0 0 6px;">Dziennik budowy</p>
+        <h3 class="modal-legal-title" id="dziennik-modal-title">Notatka</h3>
+      </div>
+      <button class="modal-legal-close" id="dziennik-modal-close-x" type="button" aria-label="Zamknij">×</button>
+    </header>
+    <div class="modal-legal-body">
+      <div class="dziennik-context" id="dziennik-context">
+        <p class="dziennik-context-label">Punkt</p>
+        <p class="dziennik-context-text" id="dziennik-context-text">—</p>
+      </div>
+      <textarea class="dziennik-textarea" id="dziennik-textarea" placeholder="Napisz, co zaobserwowałeś dzisiaj. Data, problem, telefon do ekipy, kogo zapytałeś, co usłyszałeś…"></textarea>
+      <div class="dziennik-note-list" id="dziennik-note-list"></div>
+    </div>
+    <footer class="modal-legal-footer">
+      <button class="modal-legal-btn-close" id="dziennik-modal-close-btn" type="button">Zamknij</button>
+      <button class="modal-legal-btn-primary" id="dziennik-save-btn" type="button">Dodaj notatkę</button>
+    </footer>
+  </div>
+</div>
+
+<!-- MODAL: Schemat techniczny -->
+<div class="modal-backdrop" id="schemat-modal" role="dialog" aria-modal="true" aria-labelledby="schemat-modal-title">
+  <div class="modal-legal">
+    <header class="modal-legal-header">
+      <div>
+        <p style="font-size:10px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;font-weight:700;margin:0 0 6px;">Schemat</p>
+        <h3 class="modal-legal-title" id="schemat-modal-title">—</h3>
+      </div>
+      <button class="modal-legal-close" id="schemat-modal-close-x" type="button" aria-label="Zamknij">×</button>
+    </header>
+    <div class="modal-legal-body schemat-modal-body">
+      <div class="schemat-illustration" id="schemat-illustration"></div>
+      <p class="schemat-caption" id="schemat-caption">—</p>
+    </div>
+    <footer class="modal-legal-footer">
+      <button class="modal-legal-btn-close" id="schemat-modal-close-btn" type="button">Zamknij</button>
+    </footer>
+  </div>
+</div>
+
+<!-- GALERIA — fullscreen modal -->
+<div class="galeria-modal" id="galeria-modal" role="dialog" aria-modal="true" aria-labelledby="galeria-modal-title">
+  <header class="galeria-modal-header">
+    <h3 class="galeria-modal-title" id="galeria-modal-title">—</h3>
+    <button class="galeria-modal-close" id="galeria-modal-close" type="button" aria-label="Zamknij">×</button>
+  </header>
+  <div class="galeria-modal-body" id="galeria-modal-body"></div>
+</div>
+
+<!-- ONBOARDING — 3-screen pierwsze odpalenie -->
+<div class="onboarding" id="onboarding" role="dialog" aria-modal="true" aria-labelledby="ob-title">
+  <div class="onboarding-steps">
+    <div class="onboarding-step active" data-step="1">
+      <div class="onboarding-visual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 12l2 2 4-4"/>
+          <circle cx="12" cy="12" r="10"/>
+        </svg>
+      </div>
+      <p class="onboarding-kicker">Krok 1 z 3</p>
+      <h2 class="onboarding-title" id="ob-title">71 punktów kontroli</h2>
+      <p class="onboarding-text">Każdy punkt to konkretna rzecz do sprawdzenia na budowie. Klikaj odhaczone — postęp zapisuje się w tym telefonie.</p>
+    </div>
+    <div class="onboarding-step" data-step="2">
+      <div class="onboarding-visual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/>
+          <path d="M8 12l3 3 5-6"/>
+        </svg>
+      </div>
+      <p class="onboarding-kicker">Krok 2 z 3</p>
+      <h2 class="onboarding-title">Trzy etapy bez powrotu</h2>
+      <p class="onboarding-text">Hydraulika, spadki, hydroizolacja. Po nich ekipa zakrywa wszystko płytkami i błędu już nie zobaczysz. Te etapy mają czerwony banner.</p>
+    </div>
+    <div class="onboarding-step" data-step="3">
+      <div class="onboarding-visual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <p class="onboarding-kicker">Krok 3 z 3</p>
+      <h2 class="onboarding-title">Twoje narzędzia</h2>
+      <p class="onboarding-text">Flaga „muszę zobaczyć", notatki w dzienniku budowy, gotowe pytania do ekipy, eksport listy do umowy. Wszystko w prawym górnym menu.</p>
+    </div>
+  </div>
+  <div class="onboarding-footer">
+    <div class="onboarding-dots" aria-hidden="true">
+      <span class="onboarding-dot active"></span>
+      <span class="onboarding-dot"></span>
+      <span class="onboarding-dot"></span>
+    </div>
+    <div class="onboarding-actions">
+      <button class="onboarding-btn skip" id="onboarding-skip" type="button">Pomiń</button>
+      <button class="onboarding-btn next" id="onboarding-next" type="button">Dalej →</button>
+    </div>
+  </div>
+</div>
+<script>
+'use strict';
+
+const ICONS = {
+  etap_01: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>',
+  etap_02: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>',
+  etap_03: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h6"/><path d="M14 12h6"/><rect x="10" y="9" width="4" height="6" rx="1"/><circle cx="7" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/></svg>',
+  etap_04: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s-7 8-7 13a7 7 0 0 0 14 0c0-5-7-13-7-13z"/></svg>',
+  etap_05: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>',
+  etap_06: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>',
+  etap_07: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2"/><path d="M17.73 2.27A2.5 2.5 0 1 1 19.5 6.5H2"/><path d="M14.5 13.5A2.5 2.5 0 1 0 16.27 17.73L2 19"/></svg>',
+  etap_08: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11h10v8a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path d="M9 7c0-1.5 1-2 3-2s3 .5 3 2v4H9z"/></svg>',
+  etap_09: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+  etap_10: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9h4.5a2 2 0 0 1 0 4H9"/><path d="M9 13h5.5a2 2 0 0 1 0 4H9"/></svg>',
+  flag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>',
+  note: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4z"/></svg>',
+  schemat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>',
+  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+  pytania: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  warning: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+};
+
+const SCHEMATY = {
+  spadek: {
+    title: 'Spadek pod prysznicem 1,5–2%',
+    svg: '<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><text x="20" y="30" fill="#c9a861" font-family="Inter" font-size="11" letter-spacing="2">PRZEKRÓJ POSADZKI</text><line x1="40" y1="160" x2="340" y2="190" stroke="#c9a861" stroke-width="3"/><circle cx="340" cy="190" r="6" fill="#c84d3e"/><text x="350" y="195" fill="#c84d3e" font-family="Inter" font-size="11" font-weight="600">odpływ</text><text x="20" y="170" fill="#888" font-family="Inter" font-size="10">4,5–6 cm</text><text x="180" y="140" fill="#ededed" font-family="Inter" font-size="12" text-anchor="middle" font-weight="600">1,5–2 cm na każdy metr</text><text x="180" y="80" fill="#6aa66a" font-family="Inter" font-size="14" text-anchor="middle" font-weight="700">✓ Spadek 1,5–2%</text><text x="180" y="100" fill="#888" font-family="Inter" font-size="11" text-anchor="middle">Woda odpływa bez kałuż</text></svg>',
+    caption: 'Spadek pod prysznicem to 1,5–2 cm różnicy poziomu na każdy metr posadzki. Bez niwelatora laserowego nie da się tego zmierzyć „na oko".'
+  },
+  hydroizolacja_warstwy: {
+    title: 'Hydroizolacja — dwie warstwy',
+    svg: '<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><text x="20" y="30" fill="#c9a861" font-family="Inter" font-size="11" letter-spacing="2">WARSTWY HYDROIZOLACJI</text><rect x="40" y="160" width="300" height="20" fill="#3a3a3a"/><text x="36" y="173" fill="#888" font-family="Inter" font-size="9" text-anchor="end">Jastrych</text><rect x="40" y="140" width="300" height="20" fill="#3d5b8a" opacity="0.85"/><text x="36" y="153" fill="#5b9eff" font-family="Inter" font-size="9" text-anchor="end">W1 (niebieska)</text><rect x="40" y="120" width="300" height="20" fill="#7a7a7a" opacity="0.85"/><text x="36" y="133" fill="#bbb" font-family="Inter" font-size="9" text-anchor="end">W2 (szara)</text><rect x="40" y="100" width="300" height="20" fill="#c9a861" opacity="0.7"/><text x="36" y="113" fill="#c9a861" font-family="Inter" font-size="9" text-anchor="end">Klej</text><rect x="40" y="80" width="300" height="20" fill="#2a2a2a" stroke="#777"/><text x="36" y="93" fill="#888" font-family="Inter" font-size="9" text-anchor="end">Płytki</text><text x="190" y="55" fill="#6aa66a" font-family="Inter" font-size="13" text-anchor="middle" font-weight="700">✓ Dwa kolory = kontrola pokrycia</text></svg>',
+    caption: 'Pierwsza warstwa niebieska, druga szara. Gdy szara pokryje całą niebieską — masz pewność, że nigdzie nie ma przepuszczeń.'
+  },
+  wywiniecie: {
+    title: 'Wywinięcie hydroizolacji',
+    svg: '<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><text x="20" y="30" fill="#c9a861" font-family="Inter" font-size="11" letter-spacing="2">STREFA MOKRA — WANNA HYDROIZOLACJI</text><rect x="100" y="80" width="200" height="20" fill="#3d5b8a" opacity="0.85"/><rect x="100" y="80" width="20" height="120" fill="#3d5b8a" opacity="0.85"/><rect x="280" y="80" width="20" height="120" fill="#3d5b8a" opacity="0.85"/><rect x="100" y="180" width="200" height="10" fill="#3d5b8a" opacity="0.85"/><text x="78" y="135" fill="#c9a861" font-family="Inter" font-size="11" text-anchor="end" font-weight="600">min. 20–30 cm</text><text x="200" y="60" fill="#6aa66a" font-family="Inter" font-size="13" text-anchor="middle" font-weight="700">✓ Pełna wanna hydroizolacji</text><text x="200" y="145" fill="#5b9eff" font-family="Inter" font-size="10" text-anchor="middle">hydroizolacja</text><text x="190" y="210" fill="#888" font-family="Inter" font-size="10" text-anchor="middle">W kabinie: do 2 m lub do sufitu</text></svg>',
+    caption: 'Hydroizolacja musi wywinąć się na ściany minimum 20–30 cm. W pełnej kabinie prysznicowej — do dwóch metrów lub do sufitu.'
+  },
+  klejenie_wielkoformat: {
+    title: 'Klejenie wielkoformatu',
+    svg: '<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="combs2" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse"><line x1="0" y1="3" x2="6" y2="3" stroke="#c9a861" stroke-width="2"/></pattern></defs><rect width="380" height="220" fill="#0a0a0a"/><text x="20" y="30" fill="#c9a861" font-family="Inter" font-size="11" letter-spacing="2">KLEJENIE WIELKOFORMATU 60×60+</text><rect x="60" y="80" width="120" height="80" fill="#1f1f1f" stroke="#c84d3e" stroke-width="1.5"/><text x="120" y="60" fill="#c84d3e" font-family="Inter" font-size="12" text-anchor="middle" font-weight="700">✗ ŹLE</text><circle cx="80" cy="100" r="6" fill="#c9a861" opacity="0.7"/><circle cx="160" cy="100" r="6" fill="#c9a861" opacity="0.7"/><circle cx="120" cy="120" r="6" fill="#c9a861" opacity="0.7"/><circle cx="80" cy="140" r="6" fill="#c9a861" opacity="0.7"/><circle cx="160" cy="140" r="6" fill="#c9a861" opacity="0.7"/><text x="120" y="180" fill="#c84d3e" font-family="Inter" font-size="10" text-anchor="middle">5 plamek — pustki</text><rect x="200" y="80" width="120" height="80" fill="#1f1f1f" stroke="#6aa66a" stroke-width="1.5"/><text x="260" y="60" fill="#6aa66a" font-family="Inter" font-size="12" text-anchor="middle" font-weight="700">✓ DOBRZE</text><rect x="206" y="86" width="108" height="68" fill="url(#combs2)" opacity="0.85"/><text x="260" y="180" fill="#6aa66a" font-family="Inter" font-size="10" text-anchor="middle">Pełna paca + smarowanie</text></svg>',
+    caption: 'Wielkoformat wymaga klejenia na pełną pacę zębatą + smarowania spodu płytki. Pokrycie min. 80%, w strefie mokrej 100%.'
+  }
+};
+
+const DATA = {
+  etapy: [
+    {id:"etap-01",num:"01",name:"Przed podpisaniem umowy",subtitle:"Tu decyduje się jakość całego remontu.",icon:ICONS.etap_01,
+      intro:"Jedyny moment bez konsekwencji finansowych. Większość problemów zaczyna się od decyzji podjętych zanim ekipa weszła na budowę.",
+      pytania_do_ekipy:["Czy podasz mi swój NIP, żebym sprawdził działalność w CEIDG?","Czy mogę zobaczyć dwie zakończone realizacje osobiście — nie ze zdjęć?","Czy wycena ma rozbicie na pozycje (robocizna, materiał, demontaż, hydraulika, elektryka) — czy ryczałt?","Jakie kary umowne za zwłokę z winy wykonawcy proponujesz w umowie?","Czy zgadzasz się na rozłożenie płatności: 20–30% zaliczki, druga transza po hydroizolacji, reszta po odbiorze?","Jaką gwarancję dajesz: 24, 36 miesięcy, czy więcej? Z jaką procedurą zgłoszenia?","Czy zrobisz foto-dokumentację etapów ukrytych (rury, hydroizolacja, klej) i prześlesz mi do chmury?","Czy prace dodatkowe wyceniasz wyłącznie pisemnym aneksem przed wykonaniem?"],
+      punkty:[
+        {id:"01-01",title:"Wykonawca pokazał NIP",desc:"Sprawdź w CEIDG/KRS. Działalność aktywna, nie zawieszona."},
+        {id:"01-02",title:"Wycena rozbita na pozycje",desc:"Robocizna, materiał, demontaż, gruz, hydraulika, elektryka. Bez ryczałtu."},
+        {id:"01-03",title:"Dwie referencyjne realizacje",desc:"Obejrzane osobiście, nie ze zdjęć."},
+        {id:"01-04",title:"Termin start i koniec w umowie",desc:"Z karą umowną za zwłokę z winy wykonawcy."},
+        {id:"01-05",title:"Płatności rozłożone na etapy",desc:"Zaliczka 20–30%. Druga transza po hydroizolacji. Reszta po odbiorze."},
+        {id:"01-06",title:"Gwarancja min. 24 miesiące",desc:"Optymalnie 36, z procedurą zgłoszenia."},
+        {id:"01-07",title:"Foto-dokumentacja etapów ukrytych",desc:"Rury, hydroizolacja, klej pod płytkami. Zdjęcia w chmurze."},
+        {id:"01-08",title:"Zasady prac dodatkowych",desc:"Wyłącznie pisemny aneks z wyceną przed wykonaniem."}
+      ]},
+    {id:"etap-02",num:"02",name:"Przed rozpoczęciem prac",subtitle:"Pięć minut uwagi oszczędza tygodnie poprawek.",icon:ICONS.etap_02,
+      intro:"Umowa podpisana, materiał zamówiony. To moment, w którym zabezpieczasz wszystko, co masz.",
+      pytania_do_ekipy:["Kiedy odbieracie materiał i czy będę przy odbiorze, żeby sprawdzić numery partii płytek?","Kto odpowiada za wywóz gruzu i jaką dostanę fakturę z wysypiska?","Czy zrobicie foto-dokumentację stanu przed remontem — z datą?","Komu przekazuję klucze — kto formalnie odbiera odpowiedzialność za mieszkanie?"],
+      punkty:[
+        {id:"02-01",title:"Materiał odbierasz osobiście",desc:"Sprawdzasz numery partii płytek i liczysz sztuki."},
+        {id:"02-02",title:"Foto-dokumentacja stanu przed",desc:"Ściany, podłoga, meble w sąsiednich pomieszczeniach. Z datą."},
+        {id:"02-03",title:"Lokalizacja głównego zaworu wody",desc:"Pokazana ekipie. Pierwsza wiedza, którą muszą mieć."},
+        {id:"02-04",title:"Wywóz gruzu udokumentowany",desc:"Kto, koszt, faktura z wysypiska. Śmietnik osiedlowy oznacza mandat dla Ciebie."},
+        {id:"02-05",title:"Klucze przekazane formalnie",desc:"Spisz dane osoby odbierającej i potwierdź protokołem."},
+        {id:"02-06",title:"Sąsiad poniżej poinformowany",desc:"Twój numer w razie problemu. Zadzwoni do Ciebie, nie wezwie hydraulika."}
+      ]},
+    {id:"etap-03",num:"03",name:"Hydraulika",subtitle:"Schowana w bruzdach. Niewidoczna.",icon:ICONS.etap_03,
+      critical:true,critical_message:"Hydraulika znika za płytkami. Naprawa po remoncie = skuwanie ściany. Sprawdź TERAZ, zanim ekipa to zakryje.",
+      intro:"Hydraulika znika za płytkami. Naprawa po remoncie kosztuje wielokrotnie więcej niż dobrze dobrana rura.",
+      pytania_do_ekipy:["Jakie ciśnienie wody zmierzyliście manometrem? Czy potrzebny będzie reduktor?","Czy rozdzielacz montujecie w skrytce rewizyjnej z dostępem bez kucia?","Czy będą zawory odcinające do każdego punktu osobno?","Jak wygląda procedura próby ciśnieniowej? Na ile bar, ile godzin, czy będzie pisemny protokół?","Czy zrobicie foto/wideo trasy rur przed zabudową i prześlecie mi do chmury?","Czy bateria podtynkowa idzie w skrzynce montażowej, żeby można ją wymienić bez kucia?","Jakim systemem łączycie rury — zaciskanym, zgrzewanym, lutowanym?"],
+      punkty:[
+        {id:"03-01",title:"Ciśnienie wody zmierzone manometrem",desc:"Powyżej 5 bar — potrzebny reduktor."},
+        {id:"03-02",title:"Rozdzielacz w skrytce rewizyjnej",desc:"Dostęp bez kucia ściany za 5 lat."},
+        {id:"03-03",title:"Zawory odcinające do każdego punktu",desc:"Umywalka, prysznic, wanna, WC, pralka. Odcinasz jeden bez zamykania wody w całym mieszkaniu."},
+        {id:"03-04",title:"Pisemna próba ciśnieniowa",desc:"Min. 10 bar, min. 24h, spadek zarejestrowany."},
+        {id:"03-05",title:"Foto/wideo trasy rur przed zabudową",desc:"Każda bruzda, każde połączenie. Zapisane w chmurze."},
+        {id:"03-06",title:"Bateria podtynkowa w skrzynce montażowej",desc:"Umożliwia wymianę bez kucia ściany."},
+        {id:"03-07",title:"Połączenia rur zaciskane systemowo",desc:"Zgodnie z systemem producenta."}
+      ]},
+    {id:"etap-04",num:"04",name:"Odpływy i spadki",subtitle:"Woda spływa albo stoi. Trzeciej opcji nie ma.",icon:ICONS.etap_04,
+      critical:true,critical_message:"Spadki ustala się PRZED położeniem płytek. Po klejeniu kałuża zostanie z Tobą na lata. Test wiadrem wody to 5 minut.",
+      intro:"Problem ze spadkiem to jedna z najczęstszych reklamacji. Wiadro wody przed klejeniem płytek pokazuje wszystko.",
+      pytania_do_ekipy:["Jakim narzędziem mierzycie spadek — niwelator laserowy czy poziomica?","Czy robicie test wodą przed klejeniem płytek?","Jakim mankietem uszczelniacie odpływ — systemowym producenta, czy tylko silikonem?","Czy kratka odpływowa zostanie zlicowana z płytką, bez wystającej ramki?","Do jakiej ściany montujecie stelaż WC — nośnej czy działowej?"],
+      punkty:[
+        {id:"04-01",title:"Spadek pod prysznicem 1,5–2%",desc:"1,5–2 cm na metr. Sprawdzone niwelatorem laserowym.",schemat:"spadek"},
+        {id:"04-02",title:"Test wodą przed położeniem płytek",desc:"Wiadro wody na świeży jastrych płynie pod kratkę bez kałuż."},
+        {id:"04-03",title:"Test wodą po położeniu płytek",desc:"Po 30 sekundach brak kałuż większych niż moneta."},
+        {id:"04-04",title:"Odpływ uszczelniony mankietem systemowym",desc:"Nie tylko silikonem. Słaby punkt całego systemu."},
+        {id:"04-05",title:"Kratka zlicowana z płytką",desc:"Bez wystającej ramki ani wgłębienia, w którym stoi woda."},
+        {id:"04-06",title:"Syfon dostępny do czyszczenia",desc:"Przez kratkę. Bez zalewania silikonem."},
+        {id:"04-07",title:"Stelaż WC do ściany nośnej",desc:"Nie do ścianki działowej z kartongipsu."}
+      ]},
+    {id:"etap-05",num:"05",name:"Hydroizolacja",subtitle:"Warstwa, której nie widać, a która decyduje o wszystkim.",icon:ICONS.etap_05,
+      critical:true,critical_message:"To ostatnia bariera między Tobą a sąsiadem niżej. Po płytkach nie naprawisz jej bez skuwania całej łazienki.",
+      intro:"Najpoważniejsze problemy w łazience są pod płytkami. Hydroizolacja to ostatnia bariera, której później nie naprawisz bez skuwania.",
+      pytania_do_ekipy:["Jakim systemem robicie hydroizolację? Mapei, Sopro, Atlas, Schomburg, Kreisel — który?","Czy nakładacie folię w płynie dwuwarstwowo — pierwsza niebieska, druga szara?","Jak wysoko wywijacie hydroizolację na ściany w strefie mokrej?","Czy hydroizolujecie CAŁĄ podłogę, czy tylko strefę mokrą?","Jakie taśmy systemowe używacie w narożnikach?","Jakie mankiety na rurach — systemowe, czy tylko silikon?","Czy zrobicie foto każdej warstwy z datą?"],
+      punkty:[
+        {id:"05-01",title:"Folia w płynie dwuwarstwowo, dwa kolory",desc:"Niebieska + szara. Kontrola pokrycia gołym okiem.",schemat:"hydroizolacja_warstwy"},
+        {id:"05-02",title:"Druga warstwa po wyschnięciu pierwszej",desc:"4–6 godzin zgodnie z kartą techniczną producenta."},
+        {id:"05-03",title:"Wywinięcie na ściany min. 20–30 cm",desc:"W strefie mokrej. W pełnej kabinie — do dwóch metrów lub do sufitu.",schemat:"wywiniecie"},
+        {id:"05-04",title:"Cała podłoga, nie tylko prysznic",desc:"Pełna hydroizolacja podłogi. Pralka i awaria baterii nie znają strefy mokrej."},
+        {id:"05-05",title:"Taśmy systemowe w narożnikach",desc:"Wewnętrznych i zewnętrznych. Wklejone w pierwszą warstwę."},
+        {id:"05-06",title:"Mankiety na rurach",desc:"Zimna, ciepła, podejścia baterii. Systemowe, nie silikon."},
+        {id:"05-07",title:"Foto każdej warstwy z datą",desc:"Przed pierwszą, po pierwszej, po drugiej, po taśmach."},
+        {id:"05-08",title:"Producent systemowy",desc:"Mapei, Sopro, Atlas, Schomburg, Kreisel — zgodnie z systemem."}
+      ]},
+    {id:"etap-06",num:"06",name:"Płytki",subtitle:"Trwałość decyduje się w warstwie, której nikt nie widzi.",icon:ICONS.etap_06,
+      intro:"Płytki to widoczna część. To, czy wytrzymają, decyduje się pod nimi — w warstwie kleju.",
+      pytania_do_ekipy:["Jakim klejem klejecie wielkoformat — C1, C2, C2TES1?","Czy klejenie idzie na pełną pacę zębatą, z pokryciem min. 80%?","Czy smarujecie też spód płytki klejem przy 60×60 i większych?","Jakim systemem poziomujecie wielkoformat — kliny, śruby?","Czy zostawiacie dylatacje w narożach ściana-podłoga i ściana-ściana?","Po jakim czasie zrobicie próbę dźwięku?"],
+      punkty:[
+        {id:"06-01",title:"Klejenie na pełną pacę zębatą",desc:"Pokrycie min. 80%, w strefie mokrej 100%.",schemat:"klejenie_wielkoformat"},
+        {id:"06-02",title:"Smarowanie spodu płytki przy 60×60+",desc:"Klej na podłoże i na tylną stronę płytki. Zapobiega pustkom pod spodem."},
+        {id:"06-03",title:"System poziomujący przy wielkoformatach",desc:"Kliny, śruby. Przy 60×120+ zalecane przez producentów."},
+        {id:"06-04",title:"Klej dobrany do rodzaju płytek",desc:"Gres C1, mrozoodporny C2, wielkoformat C2TES1. Klasa kleju z opakowania."},
+        {id:"06-05",title:"Dylatacje w narożach",desc:"Ściana-podłoga i ściana-ściana. Zapobiega pęknięciom fug przy zmianach temperatury."},
+        {id:"06-06",title:"Kontrola kątów 90° po pierwszym rzędzie",desc:"5 mm błędu na metrze rośnie do 5 cm na pięciu metrach."},
+        {id:"06-07",title:"Próba dźwięku drugiego dnia",desc:"Klucz lub moneta — opukaj losowo 10 płytek. Głuchy odgłos to pustki. Wyjątek: mata grzewcza na XPS."}
+      ]},
+    {id:"etap-07",num:"07",name:"Wentylacja",subtitle:"Wilgoć, która nie wychodzi, zostaje w ścianach.",icon:ICONS.etap_07,
+      intro:"Łazienka to najwilgotniejsze pomieszczenie w mieszkaniu. Słaba wentylacja zwiększa ryzyko pleśni.",
+      pytania_do_ekipy:["Sprawdzicie ciąg wentylacyjny kartką A5 — czy się utrzymuje na kratce?","Czy w łazience bez okna instalujecie wentylator z czujnikiem wilgotności?","Czy drzwi do łazienki mają podcięcie 1,5–2,5 cm albo kratkę nawiewną?","Czy w wentylatorze będzie klapa zwrotna?"],
+      punkty:[
+        {id:"07-01",title:"Test kartką A5 w kanale",desc:"Test orientacyjny, nie ekspertyza. Kartka przyłożona do kratki powinna się utrzymać. Jeśli odpada — konsultacja z kominiarzem."},
+        {id:"07-02",title:"Wentylator z czujnikiem wilgotności",desc:"Lub z opóźnieniem 3–15 min. W łazience bez okna — zalecane."},
+        {id:"07-03",title:"Drzwi z podcięciem 1,5–2,5 cm",desc:"Albo kratka nawiewna. Powietrze potrzebuje drogi wejścia."},
+        {id:"07-04",title:"Klapa zwrotna w wentylatorze",desc:"Zapobiega cofaniu zimnego powietrza i zapachów."},
+        {id:"07-05",title:"Działa przy zamkniętych drzwiach i oknach",desc:"Test do wykonania na odbiorze."},
+        {id:"07-06",title:"Kanał wentylacyjny niezablokowany",desc:"Czasem ekipa zostawia tam folię lub gruz."}
+      ]},
+    {id:"etap-08",num:"08",name:"Silikon i narożniki",subtitle:"Pięć centymetrów silikonu mówi wszystko o ekipie.",icon:ICONS.etap_08,
+      intro:"Silikon to najczęściej źle wykonywany detal w łazience. Najszybszy wskaźnik uważności wykonawcy.",
+      pytania_do_ekipy:["Jakim silikonem fugujecie narożniki — sanitarny z fungicydem?","Po jakim czasie od fugowania nakładacie silikon?","Czy używacie taśmy malarskiej po obu stronach?","Czy w narożnikach ścian dajecie silikon, czy fugę?"],
+      punkty:[
+        {id:"08-01",title:"Silikon sanitarny z fungicydem",desc:"Oznaczenie sanitary + fungicide na tubce. Nie budowlany, nie akryl."},
+        {id:"08-02",title:"Po pełnym wyschnięciu fugowania",desc:"24–48 godzin po fugowaniu."},
+        {id:"08-03",title:"Powierzchnia czysta, sucha, odtłuszczona",desc:"Alkohol techniczny. Silikon na brudzie nie trzyma."},
+        {id:"08-04",title:"Taśma malarska po obu stronach",desc:"Równa krawędź, bez zacieków."},
+        {id:"08-05",title:"Wygładzenie z wodą i płynem do naczyń",desc:"Szpachelką lub mokrym palcem. Nie palcem na sucho."},
+        {id:"08-06",title:"W narożnikach ścian silikon, nie fuga",desc:"Fuga w narożniku pęknie po pierwszej zmianie temperatury."},
+        {id:"08-07",title:"Wanna-ściana — silikon na pełnej długości",desc:"Bez przerw. Każda przerwa to potencjalny słaby punkt."}
+      ]},
+    {id:"etap-09",num:"09",name:"Odbiór prac",subtitle:"Twój moment największej dźwigni.",icon:ICONS.etap_09,
+      intro:"Po podpisaniu protokołu i wypłacie ostatniej transzy argumenty tracą siłę. Każdy element sprawdzasz teraz.",
+      pytania_do_ekipy:["Robimy razem test wodą wszystkich punktów po 2 minuty?","Czy zrobicie drugą próbę ciśnieniową przy mnie?","Czy zrobimy razem próbę dźwięku całej powierzchni płytek?","Mam tolerancję pionu ścian na piśmie w umowie?","Jaki termin usunięcia uwag z protokołu odbioru proponujecie?"],
+      punkty:[
+        {id:"09-01",title:"Test wodą wszystkich punktów po 2 minuty",desc:"Każda umywalka, prysznic, wanna, WC, pralka. Po kolei."},
+        {id:"09-02",title:"Druga próba ciśnieniowa pisemnie",desc:"Powtórzona przy Tobie. Parametry potwierdzone na papierze."},
+        {id:"09-03",title:"Próba dźwięku całej powierzchni płytek",desc:"Klucz lub moneta. Każda głucha w różnych miejscach to jedna naprawa."},
+        {id:"09-04",title:"Test wentylacji kartką A5",desc:"Test orientacyjny przy zamkniętych drzwiach i oknach."},
+        {id:"09-05",title:"Pomiar pionu wszystkich ścian",desc:"Łata 2-metrowa, poziomica. Tolerancja ustalona w umowie."},
+        {id:"09-06",title:"Pisemny protokół z listą uwag",desc:"Z terminem usunięcia. Bez tego nie podpisujesz."},
+        {id:"09-07",title:"Pełna dokumentacja przekazana",desc:"Faktury, instrukcje, karty gwarancyjne, foto-dokumentacja."},
+        {id:"09-08",title:"Ostatnia transza po podpisaniu protokołu",desc:"Bez uwag lub po ich usunięciu."}
+      ]},
+    {id:"etap-10",num:"10",name:"Płatności ekipie",subtitle:"Pieniądze to Twoja realna dźwignia jakości.",icon:ICONS.etap_10,
+      intro:"Każda złotówka wypłacona za wcześnie przestaje pracować dla Ciebie. Pieniądze są dźwignią tylko w Twojej kieszeni.",
+      pytania_do_ekipy:["Zgadzasz się na zaliczkę 20–30% i resztę w transzach po etapach?","Akceptujesz kaucję gwarancyjną 5–10% wstrzymaną na 6–12 miesięcy?","Każdą płatność dokumentujemy fakturą VAT lub rachunkiem?","Każda praca dodatkowa wyłącznie pisemnym aneksem?"],
+      punkty:[
+        {id:"10-01",title:"Zaliczka na start: 20–30%",desc:"Na materiał i otwarcie placu."},
+        {id:"10-02",title:"Druga transza po etapie krytycznym",desc:"Po hydraulice i hydroizolacji: 30–40%."},
+        {id:"10-03",title:"Ostatnia transza po protokole odbioru",desc:"30–40%. Bez uwag lub po ich usunięciu."},
+        {id:"10-04",title:"Kaucja gwarancyjna 5–10%",desc:"Wstrzymana na 6–12 miesięcy. Zapisana w umowie."},
+        {id:"10-05",title:"Płatność przelewem bankowym",desc:"Zostawia ślad finansowy."},
+        {id:"10-06",title:"Każda płatność udokumentowana",desc:"Faktura VAT lub rachunek przy działalności nierejestrowanej."},
+        {id:"10-07",title:"Prace dodatkowe wyłącznie pisemny aneks",desc:"Z wyceną, podpisany przed wykonaniem."}
+      ]}
+  ],
+
+  case_study: {
+    id:"case-study", title:"Z archiwum praktyka", subtitle:"Cztery historie z budów. Cztery lekcje do zapamiętania.",
+    intro:"Polska. Anglia. Holandia. Każdy przypadek można było zauważyć wcześniej.",
+    disclaimer:"Historie oparte na rzeczywistych sytuacjach z praktyki. Szczegóły zmienione dla ochrony prywatności klientów. Koszty orientacyjne — różnią się w zależności od regionu i zakresu prac.",
+    items: [
+      {num:"01",place:"POLSKA · TORUŃ",title:"Przeciekło do sąsiada.",kontekst:"Bloki z lat 90. Pierwszy remont na własną rękę. Łazienka 4 m². Ekipa z grupy facebookowej.",zle:"Hydroizolacja tylko pod brodzikiem. Na ścianach nic.",konsekwencje:"Po kilku miesiącach plama na suficie sąsiada. Skucie strefy mokrej. Wymiana sufitu poniżej. Zerwany kontakt z ekipą.",koszt:"6–12 tys. zł + remont u sąsiada",lekcja:"Hydroizolacja ścian to standardowy element systemu, nie dodatkowa pozycja. Pytanie o nią na etapie wyceny rozwiązuje większość takich sytuacji."},
+      {num:"02",place:"ANGLIA · LEEDS",title:"Kałuża, która została.",kontekst:"Łazienka pod wynajem, 3,5 m². Ekipa znajomi znajomych.",zle:"Spadek 0,5% zamiast wymaganych 1,5–2%. Bez niwelatora, na oko.",konsekwencje:"Stała kałuża po każdym prysznicu. Czarne fugi w 3 miesiące. Skucie i wymiana strefy.",koszt:"4–7 tys. zł + 2–3 tygodnie bez łazienki",lekcja:"Test wiadrem wody przed klejeniem płytek zajmuje pięć minut. Pokazuje wszystko, czego nie zobaczysz później przez warstwę płytek."},
+      {num:"03",place:"ANGLIA · BIRMINGHAM",title:"Pękła w środku kwadratu.",kontekst:"Łazienka rodzinna 6 m². Wielkoformat 60×60 w atrakcyjnej cenie.",zle:"Klejenie na pięć plamek kleju zamiast pełnej pacy. Pokrycie około 25%.",konsekwencje:"Po kilkunastu miesiącach płytka pękła w środku po upadku lekkiego przedmiotu. Próba dźwięku ujawniła pustki na sporej części posadzki.",koszt:"3–8 tys. zł przy całkowitej wymianie posadzki",lekcja:"Wielkoformat wymaga pełnego pokrycia kleju zgodnie z kartą techniczną producenta danego systemu."},
+      {num:"04",place:"HOLANDIA · ROTTERDAM",title:"Mankiet za kilka euro.",kontekst:"Apartament z 2022 roku, 5 m². Odpływ liniowy systemowy.",zle:"Mankiet uszczelniający do odpływu pominięty. Połączenie tylko folią hydroizolacyjną.",konsekwencje:"Mikroprzeciek przez kilka miesięcy. Wełna pod posadzką nasiąkała. Pełna wymiana strefy prysznica.",koszt:"5–10 tys. zł + utracona gwarancja",lekcja:"Mankiet to standardowy element systemu odpływu. Bez niego producent zwykle nie udziela gwarancji systemowej."}
+    ]
+  },
+
+  czerwone_flagi: {
+    id:"czerwone-flagi", title:"Czerwone flagi ekipy", subtitle:"Sygnały, które warto rozpoznać wcześnie.",
+    intro:"Czasem ekipa wygląda dobrze. Pisemna oferta, miła rozmowa, portfolio. Jeśli zauważysz dwa z poniższych sygnałów — warto przemyśleć decyzję.",
+    flagi:[
+      {title:"Znikanie na 2–3 dni bez kontaktu",desc:"Pilna inna robota. Twoja budowa stoi, Ty płacisz czynsz."},
+      {title:"Niechęć do foto-dokumentacji etapów ukrytych",desc:"Zwykle nie niekompetencja — brak chęci zostawiania śladu."},
+      {title:"My wiemy lepiej, robimy to od 20 lat",desc:"W odpowiedzi na pytanie techniczne. Dobry fachowiec odpowiada konkretnie."},
+      {title:"Gotówka bez faktury",desc:"Ubrane w rabat za gotówkę. W praktyce: brak rejestracji, brak gwarancji."},
+      {title:"Brak zakończonych realizacji do obejrzenia",desc:"Tylko zdjęcia w telefonie. Kto ma czym się pochwalić, pokazuje na żywo."},
+      {title:"Wycena znacząco niższa od konkurencji",desc:"Warto sprawdzić, gdzie ekipa ucięła. Zwykle: hydroizolacja, klej, próby."},
+      {title:"Notoryczne doliczanie poza wyceną",desc:"Każdy profesjonalista przewiduje dodatki w fazie wyceny."},
+      {title:"Wykończenia byle jak pod koniec",desc:"Krzywe silikony, pęcherze, niedoczyszczone fugi."},
+      {title:"Niechęć do kaucji gwarancyjnej",desc:"Dobra ekipa wie, że 5% na pół roku to standard."},
+      {title:"Brak telefonu i adresu, kontakt tylko WhatsApp",desc:"Anonimowa ekipa to anonimowy problem za rok."}
+    ]
+  },
+
+  galeria: {
+    id: "galeria", title: "Co siedzi pod płytkami",
+    subtitle: "Sześć ukrytych błędów z budów. Każdy do zauważenia w pięć minut.",
+    intro: "To, czego nie zobaczysz, gdy ekipa skończy. Tap kafelek — zobacz problem, konsekwencję i jak powinno być.",
+    items: [
+      {id:"g-01",title:"Hydroizolacja tylko pod brodzikiem",krotki_opis:"Ścian nikt nie pokrył. Plama u sąsiada przyszła po miesiącach.",
+       problem:{label:"PROBLEM",text:"Hydroizolacja położona wyłącznie na podłodze w strefie prysznica. Ściany pomalowane jak zwykłe — bez folii, bez wywinięcia."},
+       skutek:{label:"PO KILKU MIESIĄCACH",text:"Woda spod prysznica zaczęła penetrować szczeliny w fugach narożnych. Strop nasiąkł. Na suficie sąsiada pojawiła się plama."},
+       poprawnie:{label:"JAK POWINNO BYĆ",text:"Folia w płynie dwuwarstwowa na całej podłodze + wywinięcie 20–30 cm na ściany (w pełnej kabinie do 2 m lub do sufitu). Taśmy systemowe w narożnikach."},
+       koszt:"6–12 tys. zł",koszt_note:"+ remont u sąsiada poniżej",
+       ilustracja:'<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><rect x="60" y="60" width="260" height="140" fill="none" stroke="#3a3a3a" stroke-width="2"/><rect x="60" y="180" width="260" height="20" fill="#3d5b8a" opacity="0.6"/><text x="60" y="50" fill="#c84d3e" font-family="Inter" font-size="11" font-weight="700">✗ Tylko podłoga</text><line x1="60" y1="180" x2="60" y2="60" stroke="#c84d3e" stroke-width="2" stroke-dasharray="4,4"/><line x1="320" y1="180" x2="320" y2="60" stroke="#c84d3e" stroke-width="2" stroke-dasharray="4,4"/><text x="40" y="120" fill="#c84d3e" font-family="Inter" font-size="9" text-anchor="end">brak na ścianach</text><path d="M 80 180 Q 70 150 65 130" fill="none" stroke="#5b9eff" stroke-width="2" stroke-dasharray="3,3"/><circle cx="65" cy="125" r="3" fill="#5b9eff"/><text x="80" y="120" fill="#5b9eff" font-family="Inter" font-size="10">woda przesącza</text></svg>'},
+      {id:"g-02",title:"Spadek 0,5% zamiast 1,5–2%",krotki_opis:"Wykonany na oko. Po prysznicu kałuża zostaje.",
+       problem:{label:"PROBLEM",text:"Jastrych w strefie prysznica ma spadek około 0,5%. Wykonawca pracował bez niwelatora laserowego, na oko."},
+       skutek:{label:"PO KILKU MIESIĄCACH",text:"Stała kałuża po każdym prysznicu. Czarne fugi w 3 miesiące. Płytki w kałuży zaczynają się odklejać."},
+       poprawnie:{label:"JAK POWINNO BYĆ",text:"Spadek 1,5–2% — czyli 1,5–2 cm na metr posadzki. Sprawdzony niwelatorem laserowym. Test wodą przed klejeniem płytek."},
+       koszt:"4–7 tys. zł",koszt_note:"+ 2–3 tygodnie bez łazienki",
+       ilustracja:'<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><line x1="40" y1="160" x2="340" y2="167" stroke="#c84d3e" stroke-width="3"/><text x="180" y="50" fill="#c84d3e" font-family="Inter" font-size="13" text-anchor="middle" font-weight="700">✗ Spadek 0,5%</text><circle cx="340" cy="167" r="6" fill="#c84d3e"/><ellipse cx="170" cy="172" rx="50" ry="6" fill="#5b9eff" opacity="0.6"/><text x="170" y="195" fill="#5b9eff" font-family="Inter" font-size="11" text-anchor="middle">stała kałuża</text><text x="180" y="80" fill="#888" font-family="Inter" font-size="11" text-anchor="middle">7 mm różnicy na 3 m — za mało</text></svg>'},
+      {id:"g-03",title:"Wielkoformat na pięć plamek",krotki_opis:"Pustki pod płytkami. Pęknie po upadku szczotki.",
+       problem:{label:"PROBLEM",text:"Płytki 60×60 i większe klejone wyłącznie kropkami kleju w narożach i środku. Pokrycie kleju pod płytką: 20–30%."},
+       skutek:{label:"PO KILKUNASTU MIESIĄCACH",text:"Płytka pękła w środku po upadku lekkiego przedmiotu. Próba dźwięku — głuchy odgłos na sporej części posadzki."},
+       poprawnie:{label:"JAK POWINNO BYĆ",text:"Klejenie na pełną pacę zębatą + smarowanie spodu płytki. Pokrycie min. 80%, w strefie mokrej 100%. Klej klasy C2TES1."},
+       koszt:"3–8 tys. zł",koszt_note:"przy całkowitej wymianie posadzki",
+       ilustracja:'<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><text x="190" y="40" fill="#c84d3e" font-family="Inter" font-size="13" text-anchor="middle" font-weight="700">✗ 5 plamek kleju</text><rect x="80" y="70" width="220" height="120" fill="#1f1f1f" stroke="#555"/><circle cx="100" cy="90" r="10" fill="#c9a861" opacity="0.7"/><circle cx="280" cy="90" r="10" fill="#c9a861" opacity="0.7"/><circle cx="190" cy="130" r="10" fill="#c9a861" opacity="0.7"/><circle cx="100" cy="170" r="10" fill="#c9a861" opacity="0.7"/><circle cx="280" cy="170" r="10" fill="#c9a861" opacity="0.7"/><text x="190" y="100" fill="#c84d3e" font-family="Inter" font-size="11" text-anchor="middle">PUSTKA</text><text x="140" y="150" fill="#c84d3e" font-family="Inter" font-size="11" text-anchor="middle">PUSTKA</text><text x="240" y="150" fill="#c84d3e" font-family="Inter" font-size="11" text-anchor="middle">PUSTKA</text></svg>'},
+      {id:"g-04",title:"Mankiet odpływu pominięty",krotki_opis:"Producent stracił gwarancję. Mikroprzeciek.",
+       problem:{label:"PROBLEM",text:"Odpływ liniowy systemowy bez mankietu uszczelniającego producenta. Połączenie tylko folią hydroizolacyjną."},
+       skutek:{label:"PO KILKU MIESIĄCACH",text:"Mikroprzeciek na styku odpływ-folia. Wełna pod posadzką nasiąka. Po pół roku zapach. Pełna wymiana strefy prysznica."},
+       poprawnie:{label:"JAK POWINNO BYĆ",text:"Mankiet systemowy producenta odpływu, wklejony w pierwszą warstwę hydroizolacji, przykryty drugą warstwą. Element za kilka euro — chroni cały system."},
+       koszt:"5–10 tys. zł",koszt_note:"+ utracona gwarancja producenta",
+       ilustracja:'<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><text x="190" y="40" fill="#c84d3e" font-family="Inter" font-size="13" text-anchor="middle" font-weight="700">✗ Brak mankietu</text><rect x="40" y="120" width="300" height="40" fill="#3a3a3a"/><rect x="40" y="100" width="300" height="20" fill="#3d5b8a" opacity="0.7"/><rect x="160" y="100" width="60" height="60" fill="#222" stroke="#c84d3e" stroke-width="2"/><text x="190" y="135" fill="#c84d3e" font-family="Inter" font-size="11" text-anchor="middle">odpływ</text><circle cx="160" cy="115" r="3" fill="#5b9eff"/><circle cx="220" cy="115" r="3" fill="#5b9eff"/><text x="100" y="115" fill="#c84d3e" font-family="Inter" font-size="9" text-anchor="end">brak uszczelnienia</text></svg>'},
+      {id:"g-05",title:"Rury bez foto-dokumentacji",krotki_opis:"Pięć lat później pęknie w bruździe. Nikt nie wie gdzie.",
+       problem:{label:"PROBLEM",text:"Ekipa schowała wszystkie rury w bruzdach bez wykonania fotografii ani szkicu rozmieszczenia."},
+       skutek:{label:"5 LAT PÓŹNIEJ",text:"Po latach przeciek za płytkami. Hydraulik musi skuwać losowe miejsca, żeby znaleźć rurę. Większy obszar zniszczenia, większy koszt."},
+       poprawnie:{label:"JAK POWINNO BYĆ",text:"Foto/wideo trasy każdej rury PRZED zabudową, zapisane w chmurze. Każda bruzda, każde połączenie z opisem. Twoja własność, na całe życie łazienki."},
+       koszt:"2–5 tys. zł",koszt_note:"przy losowym skuwaniu w poszukiwaniu rury",
+       ilustracja:'<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><text x="190" y="40" fill="#c84d3e" font-family="Inter" font-size="13" text-anchor="middle" font-weight="700">✗ Bez foto-dokumentacji</text><rect x="60" y="60" width="260" height="140" fill="none" stroke="#3a3a3a" stroke-width="2"/><path d="M 80 80 Q 120 100 150 90 T 200 110 T 280 100" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="5,3" opacity="0.5"/><path d="M 90 130 Q 130 140 180 150 T 270 160" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="5,3" opacity="0.5"/><text x="190" y="115" fill="#c84d3e" font-family="Inter" font-size="20" text-anchor="middle" font-weight="700">?</text><text x="190" y="145" fill="#c84d3e" font-family="Inter" font-size="11" text-anchor="middle">gdzie są rury?</text></svg>'},
+      {id:"g-06",title:"Stelaż WC do ścianki działowej",krotki_opis:"Karton-gips się ugnie. WC zacznie pracować.",
+       problem:{label:"PROBLEM",text:"Stelaż WC zamontowany do ścianki działowej z karton-gipsu zamiast do ściany nośnej. Brak właściwego podparcia."},
+       skutek:{label:"PO 1–2 LATACH",text:"Stelaż pracuje pod ciężarem osoby siadającej. Ścianka wokół WC pęka. Spłuczka chodzi w mocowaniu. Wyciek wody za WC."},
+       poprawnie:{label:"JAK POWINNO BYĆ",text:"Stelaż mocowany WYŁĄCZNIE do ściany nośnej lub do specjalnej konstrukcji stalowej posadowionej na posadzce. Karton-gips to wykończenie, nie konstrukcja."},
+       koszt:"3–6 tys. zł",koszt_note:"przy demontażu zabudowy i wymianie stelaża",
+       ilustracja:'<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="220" fill="#0a0a0a"/><text x="190" y="40" fill="#c84d3e" font-family="Inter" font-size="13" text-anchor="middle" font-weight="700">✗ Stelaż na karton-gipsie</text><rect x="120" y="60" width="140" height="140" fill="#2a2a2a" stroke="#555"/><text x="280" y="135" fill="#888" font-family="Inter" font-size="10">karton-gips</text><rect x="160" y="80" width="60" height="80" fill="none" stroke="#c84d3e" stroke-width="2"/><rect x="170" y="160" width="40" height="30" fill="#3a3a3a"/><circle cx="190" cy="100" r="3" fill="#c84d3e"/><circle cx="190" cy="140" r="3" fill="#c84d3e"/><text x="105" y="93" fill="#c84d3e" font-family="Inter" font-size="9" text-anchor="end">stelaż pracuje</text></svg>'}
+    ]
+  },
+
+  audyt: {
+    id:"audyt", title:"Audyt Wideo Przed Remontem Łazienki™",
+    subtitle:"Praktyczna analiza inwestorska. Twoje materiały, moje 20 lat na budowach.",
+    process:"Wysyłasz materiały. Otrzymujesz nagranie wideo z konkretną analizą Twojej łazienki.",
+    intro:"Twój projekt, wycena, zdjęcia i pytania trafiają do mnie. Siadam z nimi tak, jak przez ostatnie 20 lat siadałem nad setkami łazienek w Polsce, Anglii i Holandii.",
+    purpose:"Audyt pomaga wychwycić ryzyka, zanim zostaną zakryte. Porządkuje decyzje i przygotowuje Cię do rozmowy z ekipą.",
+    co_zawiera_label:"W ramach audytu otrzymujesz",
+    co_zawiera:[
+      {num:"01",title:"Analizę Twoich materiałów",desc:"Projekt, zdjęcia, wycena — z konkretnymi uwagami."},
+      {num:"02",title:"Analizę ryzyk Twojego projektu",desc:"Co warto sprawdzić zanim ekipa zakryje to płytkami."},
+      {num:"03",title:"Pytania do wykonawcy",desc:"Gotowe, konkretne pytania techniczne."},
+      {num:"04",title:"Listę do dopilnowania na budowie",desc:"Co kontrolować na każdym etapie."},
+      {num:"05",title:"Nagranie wideo z omówieniem",desc:"Spokojnie, krok po kroku, dla Twojej sytuacji."}
+    ],
+    cena:"397 zł", cena_label:"Jednorazowo",
+    termin:"Realizacja po przesłaniu kompletu materiałów.",
+    disclaimer:"Audyt online nie zastępuje projektu technicznego, oględzin na miejscu ani opinii osoby z odpowiednimi uprawnieniami.",
+    gwarancja:"Jeśli po otrzymaniu analizy uznasz, że nie wniosła wartości — napisz. Sytuacje rozwiązujemy indywidualnie.",
+    limitacja:"Realizuję ograniczoną liczbę audytów tygodniowo.",
+    cta_main:"Zamów audyt",
+    cta_sub:"Wysyłasz zdjęcia, projekt, wycenę. Otrzymujesz nagranie wideo z analizą.",
+    testimoniale_label:"Co najczęściej słyszę od inwestorów",
+    testimoniale:[
+      {tekst:"Po analizie dopytaliśmy ekipę o kilka rzeczy, na które wcześniej w ogóle nie zwracaliśmy uwagi."},
+      {tekst:"Najbardziej praktyczna była lista konkretnych rzeczy do dopilnowania."},
+      {tekst:"Spokojne omówienie naszej sytuacji — bez sprzedaży, bez ogólników."}
+    ]
+  }
+};
+
+const AUDYT_LINK = "[WSTAW_LINK_DO_GOOGLE_FORMS_LUB_STRIPE]";
+const STORAGE_KEY = "lazienkaNaLata_v1";
+const FLAGS_KEY = "lazienkaNaLata_flags_v1";
+const NOTES_KEY = "lazienkaNaLata_dziennik_v1";
+const ONBOARDING_KEY = "lazienkaNaLata_onboarding_v1";
+const TRYB_BUDOWA_KEY = "lazienkaNaLata_trybBudowa_v1";
+const MILESTONE_KEY = "lazienkaNaLata_milestones_v1";
+
+function lsGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(_){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}
+
+let state = lsGet(STORAGE_KEY) || {};
+let flags = lsGet(FLAGS_KEY) || {};
+let notes = lsGet(NOTES_KEY) || {};
+let shownMilestones = new Set(lsGet(MILESTONE_KEY) || []);
+
+function saveState(){lsSet(STORAGE_KEY,state)}
+function saveFlags(){lsSet(FLAGS_KEY,flags)}
+function saveNotes(){lsSet(NOTES_KEY,notes)}
+function saveMilestones(){lsSet(MILESTONE_KEY,[...shownMilestones])}
+
+function isChecked(id){return Boolean(state[id])}
+function isFlagged(id){return Boolean(flags[id])}
+function getNotes(id){return notes[id]||[]}
+function toggleCheck(id){if(state[id])delete state[id];else state[id]=true;saveState()}
+function toggleFlag(id){if(flags[id])delete flags[id];else flags[id]=true;saveFlags()}
+
+const TOTAL_POINTS = DATA.etapy.reduce((s,e)=>s+e.punkty.length,0);
+
+function escapeHTML(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function $(s,p){return(p||document).querySelector(s)}
+function $$(s,p){return Array.from((p||document).querySelectorAll(s))}
+function polishPlural(n,sing,few,many){if(n===1)return sing;const lt=n%100,lo=n%10;if(lt>=12&&lt<=14)return many;if(lo>=2&&lo<=4)return few;return many}
+
+function renderMenu(){
+  const list=$('#menu-list');const items=[];
+  items.push(`<li><button class="menu-link" data-target="top" type="button"><span class="menu-num">↑</span><span>Wstęp</span></button></li>`);
+  DATA.etapy.forEach(e=>{
+    const d=e.punkty.filter(p=>isChecked(p.id)).length;
+    items.push(`<li><button class="menu-link" data-target="${e.id}" type="button"><span class="menu-num">${e.num}</span><span>${escapeHTML(e.name)}</span><span class="menu-progress">${d}/${e.punkty.length}</span></button></li>`);
+  });
+  items.push(`<li><button class="menu-link" data-target="${DATA.galeria.id}" type="button"><span class="menu-num">◐</span><span>Co pod płytkami</span></button></li>`);
+  items.push(`<li><button class="menu-link" data-target="${DATA.case_study.id}" type="button"><span class="menu-num">·</span><span>Z archiwum</span></button></li>`);
+  items.push(`<li><button class="menu-link" data-target="${DATA.czerwone_flagi.id}" type="button"><span class="menu-num">⚠</span><span>Czerwone flagi</span></button></li>`);
+  items.push(`<li><button class="menu-link" data-target="${DATA.audyt.id}" type="button"><span class="menu-num">★</span><span>Audyt Wideo</span></button></li>`);
+  list.innerHTML=items.join('');
+}
+
+function renderPunkt(p){
+  const checked = isChecked(p.id);
+  const flagged = isFlagged(p.id);
+  const hasNote = getNotes(p.id).length > 0;
+  const schemat = p.schemat ? `<button type="button" class="punkt-action-btn" data-schemat="${p.schemat}" data-punkt-id="${p.id}" title="Schemat techniczny" aria-label="Schemat">${ICONS.schemat}</button>` : '';
+  return `<div class="punkt ${checked?'checked':''}" data-id="${p.id}" data-text="${escapeHTML((p.title+' '+p.desc).toLowerCase())}" role="checkbox" tabindex="0" aria-checked="${checked}">
+    <div class="punkt-checkbox" aria-hidden="true"></div>
+    <div class="punkt-content">
+      <p class="punkt-title">${escapeHTML(p.title)}</p>
+      <p class="punkt-desc">${escapeHTML(p.desc)}</p>
+    </div>
+    <div class="punkt-actions">
+      <button type="button" class="punkt-action-btn ${flagged?'flagged':''}" data-flag-punkt="${p.id}" title="Muszę osobiście zobaczyć" aria-label="Oflaguj punkt">${ICONS.flag}</button>
+      <button type="button" class="punkt-action-btn ${hasNote?'has-note':''}" data-note-punkt="${p.id}" data-punkt-title="${escapeHTML(p.title)}" title="Dziennik budowy" aria-label="Notatka">${ICONS.note}</button>
+      ${schemat}
+    </div>
+  </div>`;
+}
+
+function renderEtap(etap){
+  const punkty = etap.punkty.map(renderPunkt).join('');
+  const criticalBanner = etap.critical ? `<div class="etap-critical-banner"><div class="etap-critical-banner-icon">${ICONS.warning}</div><div class="etap-critical-banner-content"><p class="etap-critical-banner-label">Punkt bez powrotu</p><p class="etap-critical-banner-text">${escapeHTML(etap.critical_message)}</p></div></div>` : '';
+  return `<section class="etap" id="${etap.id}" data-etap="${etap.num}">
+    ${criticalBanner}
+    <header class="etap-header">
+      <div class="etap-num-wrap"><div class="etap-num">${etap.num}</div><div class="etap-icon-wrap" aria-hidden="true">${etap.icon||''}</div></div>
+      <div class="etap-titles"><h2 class="etap-name" id="${etap.id}-title">${escapeHTML(etap.name)}</h2><p class="etap-subtitle">${escapeHTML(etap.subtitle)}</p></div>
+    </header>
+    <div class="etap-progress"><span class="etap-progress-text"><strong class="etap-done">0</strong>/<span class="etap-total">${etap.punkty.length}</span> · <span class="etap-pct">0%</span></span><div class="etap-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="etap-progress-fill"></div></div></div>
+    <p class="etap-intro">${escapeHTML(etap.intro)}</p>
+    <div class="etap-punkty">${punkty}</div>
+    <div class="etap-actions" role="group">
+      <button class="etap-action mark-all" type="button" data-etap-id="${etap.id}" data-action="check-all">Zaznacz etap jako zrobiony</button>
+      <button class="etap-action clear-etap" type="button" data-etap-id="${etap.id}" data-action="clear-etap">Wyczyść ten etap</button>
+      ${etap.pytania_do_ekipy?`<button class="etap-action pytania-do-ekipy" type="button" data-pytania-etap="${etap.id}">${ICONS.pytania}<span>Pytania do ekipy (${etap.pytania_do_ekipy.length})</span></button>`:''}
+    </div>
+  </section>`;
+}
+
+function renderGaleria(){
+  const g = DATA.galeria;
+  const tiles = g.items.map(item => `<button type="button" class="galeria-tile" data-galeria-id="${item.id}">
+    <div class="galeria-tile-illustration">
+      <span class="galeria-tile-badge">Błąd ukryty</span>
+      ${item.ilustracja}
+    </div>
+    <div class="galeria-tile-content">
+      <h3 class="galeria-tile-title">${escapeHTML(item.title)}</h3>
+      <p class="galeria-tile-desc">${escapeHTML(item.krotki_opis)}</p>
+    </div>
+  </button>`).join('');
+  return `<section class="galeria" id="${g.id}">
+    <h2>${escapeHTML(g.title)}</h2>
+    <p class="galeria-subtitle">${escapeHTML(g.subtitle)}</p>
+    <p class="galeria-intro">${escapeHTML(g.intro)}</p>
+    <div class="galeria-grid">${tiles}</div>
+  </section>`;
+}
+
+function renderCaseStudy(){
+  const cs = DATA.case_study;
+  const items = cs.items.map(c => {
+    const searchText = (c.title+' '+c.kontekst+' '+c.zle+' '+c.konsekwencje+' '+c.lekcja+' '+c.place).toLowerCase();
+    return `<article class="case-card" data-text="${escapeHTML(searchText)}">
+      <div class="case-meta"><span class="case-num">#${c.num}</span><span class="case-place">${escapeHTML(c.place)}</span></div>
+      <h3 class="case-title">${escapeHTML(c.title)}</h3>
+      <div class="case-row"><div class="case-row-label">Kontekst</div><p class="case-row-text">${escapeHTML(c.kontekst)}</p></div>
+      <div class="case-row"><div class="case-row-label">Błąd</div><p class="case-row-text">${escapeHTML(c.zle)}</p></div>
+      <div class="case-row"><div class="case-row-label">Konsekwencja</div><p class="case-row-text">${escapeHTML(c.konsekwencje)}</p></div>
+      ${c.koszt?`<div class="case-koszt"><span class="case-koszt-label">Koszt naprawy</span><span class="case-koszt-value">≈ ${escapeHTML(c.koszt)}</span></div>`:''}
+      <div class="case-lekcja"><div class="case-lekcja-label">Lekcja dla inwestora</div><p class="case-lekcja-text">${escapeHTML(c.lekcja)}</p></div>
+    </article>`;
+  }).join('');
+  return `<section class="section-info" id="${cs.id}"><h2>${escapeHTML(cs.title)}</h2><p class="section-info-subtitle">${escapeHTML(cs.subtitle)}</p><p class="section-info-intro">${escapeHTML(cs.intro)}</p><div class="disclaimer">${escapeHTML(cs.disclaimer)}</div>${items}</section>`;
+}
+
+function renderFlagi(){
+  const cf = DATA.czerwone_flagi;
+  const flagi = cf.flagi.map(f => `<div class="flaga" data-text="${escapeHTML((f.title+' '+f.desc).toLowerCase())}"><p class="flaga-title">${escapeHTML(f.title)}</p><p class="flaga-desc">${escapeHTML(f.desc)}</p></div>`).join('');
+  return `<section class="section-info" id="${cf.id}"><h2>${escapeHTML(cf.title)}</h2><p class="section-info-subtitle">${escapeHTML(cf.subtitle)}</p><p class="section-info-intro">${escapeHTML(cf.intro)}</p>${flagi}</section>`;
+}
+
+function renderAudyt(){
+  const a = DATA.audyt;
+  const items = a.co_zawiera.map(i => `<div class="audyt-item"><div class="audyt-item-num">${i.num}</div><div class="audyt-item-content"><p class="audyt-item-title">${escapeHTML(i.title)}</p><p class="audyt-item-desc">${escapeHTML(i.desc)}</p></div></div>`).join('');
+  const testimoniale = (a.testimoniale||[]).map(t => `<blockquote class="audyt-testimonial"><p class="audyt-testimonial-text">${escapeHTML(t.tekst)}</p></blockquote>`).join('');
+  return `<section class="audyt" id="${a.id}"><h2>${escapeHTML(a.title)}</h2><p class="audyt-subtitle">${escapeHTML(a.subtitle)}</p><p class="audyt-process">${escapeHTML(a.process)}</p><p class="audyt-intro">${escapeHTML(a.intro)}</p><p class="audyt-purpose">${escapeHTML(a.purpose)}</p><p class="audyt-co-label">${escapeHTML(a.co_zawiera_label)}</p>${items}${testimoniale?`<p class="audyt-testimoniale-label">${escapeHTML(a.testimoniale_label)}</p><div class="audyt-testimoniale-list">${testimoniale}</div><p class="audyt-testimoniale-note">Powtarzające się sytuacje z rozmów z inwestorami. Nie są to cytaty konkretnych klientów.</p>`:''}<div class="audyt-price-card"><p class="audyt-price-label">${escapeHTML(a.cena_label)}</p><div class="audyt-price">${escapeHTML(a.cena)}</div><p class="audyt-termin">${escapeHTML(a.termin)}</p></div><a href="${AUDYT_LINK}" class="audyt-cta" id="audyt-cta" ${AUDYT_LINK.startsWith('http')?'target="_blank" rel="noopener noreferrer"':''}>${escapeHTML(a.cta_main)}</a><p class="audyt-cta-sub">${escapeHTML(a.cta_sub)}</p><div class="audyt-disclaimer">${escapeHTML(a.disclaimer)}</div><div class="audyt-info"><div class="audyt-info-block"><div class="audyt-info-block-label">Wsparcie</div><p class="audyt-info-block-text">${escapeHTML(a.gwarancja)}</p></div><div class="audyt-info-block"><div class="audyt-info-block-label">Limitacja</div><p class="audyt-info-block-text">${escapeHTML(a.limitacja)}</p></div></div></section>`;
+}
+
+function renderCoDalej(){
+  return `<section class="co-dalej" id="co-dalej"><p class="co-dalej-kicker">Skończyłeś checklistę?</p><h2 class="co-dalej-title">Co dalej?</h2><p class="co-dalej-intro">Trzy ścieżki dla inwestorów, którzy chcą iść głębiej.</p><div class="co-dalej-cards"><article class="co-dalej-card"><p class="co-dalej-card-label">Twój projekt</p><h3 class="co-dalej-card-title">Audyt Wideo Przed Remontem™</h3><p class="co-dalej-card-desc">Praktyczna analiza Twoich materiałów. Nagranie wideo z omówieniem ryzyk.</p><button type="button" class="co-dalej-card-link" data-go-to="audyt"><span>Sprawdź ofertę</span><span aria-hidden="true">→</span></button></article><article class="co-dalej-card"><p class="co-dalej-card-label">Wizualnie</p><h3 class="co-dalej-card-title">Co siedzi pod płytkami</h3><p class="co-dalej-card-desc">Sześć ukrytych błędów z budów. Każdy z ilustracją i kosztem naprawy.</p><button type="button" class="co-dalej-card-link" data-go-to="galeria"><span>Zobacz galerię</span><span aria-hidden="true">→</span></button></article><article class="co-dalej-card"><p class="co-dalej-card-label">Z budów</p><h3 class="co-dalej-card-title">Cztery historie</h3><p class="co-dalej-card-desc">Realne błędy z budów w Polsce, Anglii i Holandii.</p><button type="button" class="co-dalej-card-link" data-go-to="case-study"><span>Przeczytaj</span><span aria-hidden="true">→</span></button></article></div></section>`;
+}
+
+function renderAll(){
+  const main=$('#main');const sections=[];
+  DATA.etapy.forEach(e=>sections.push(renderEtap(e)));
+  sections.push(renderGaleria());
+  sections.push(renderCoDalej());
+  sections.push(renderCaseStudy());
+  sections.push(renderFlagi());
+  sections.push(renderAudyt());
+  main.innerHTML=sections.join('');
+  ['global-total','hero-total-text','hero-total-meta'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=TOTAL_POINTS});
+}
+
+function updateProgress(){
+  let totalDone=0;
+  DATA.etapy.forEach(etap=>{
+    const done=etap.punkty.filter(p=>isChecked(p.id)).length;
+    const pct=etap.punkty.length?Math.round(done/etap.punkty.length*100):0;
+    totalDone+=done;
+    const section=document.getElementById(etap.id);
+    if(section){
+      const d=$('.etap-done',section),pc=$('.etap-pct',section),f=$('.etap-progress-fill',section),b=$('.etap-progress-bar',section);
+      if(d)d.textContent=done;if(pc)pc.textContent=pct+'%';if(f)f.style.width=pct+'%';if(b)b.setAttribute('aria-valuenow',pct);
+      section.classList.toggle('complete',done===etap.punkty.length&&etap.punkty.length>0);
+    }
+    const ml=$(`#menu-list .menu-link[data-target="${etap.id}"] .menu-progress`);
+    if(ml)ml.textContent=`${done}/${etap.punkty.length}`;
+  });
+  const gp=TOTAL_POINTS?Math.round(totalDone/TOTAL_POINTS*100):0;
+  $('#global-pct').textContent=gp;$('#global-count').textContent=totalDone;$('#global-fill').style.width=gp+'%';
+  $('.global-progress-bar').setAttribute('aria-valuenow',gp);
+}
+
+function handlePunktAction(p){
+  if(!p)return;
+  const id=p.dataset.id,was=isChecked(id);
+  toggleCheck(id);
+  const now=isChecked(id);
+  p.classList.toggle('checked',now);p.setAttribute('aria-checked',now);
+  if(now){p.classList.remove('just-checked');void p.offsetWidth;p.classList.add('just-checked');setTimeout(()=>p.classList.remove('just-checked'),500);try{if(navigator.vibrate)navigator.vibrate(8)}catch(_){}}
+  updateProgress();
+  if(now&&!was){checkMilestones();checkEtapComplete(p)}
+}
+
+function checkMilestones(){
+  const total=TOTAL_POINTS,done=Object.keys(state).filter(k=>state[k]).length;
+  const ms=[{at:10,msg:'Świetnie. 10 punktów odhaczonych. Kontynuuj.'},{at:Math.floor(total*0.5),msg:'Połowa za Tobą. Może warto omówić Twój projekt z praktykiem? → Audyt'},{at:Math.floor(total*0.75),msg:'Trzy czwarte sprawdzone. Jesteś na finiszu.'},{at:total,msg:'Wszystkie punkty sprawdzone. Najlepszy moment, żeby pokazać projekt Arkowi. → Audyt'}];
+  for(const m of ms){if(done===m.at&&!shownMilestones.has(m.at)){shownMilestones.add(m.at);saveMilestones();setTimeout(()=>showToast(m.msg,m.at>=total*0.5?4500:3000),600);break}}
+}
+function checkEtapComplete(p){
+  const sec=p.closest('.etap');if(!sec)return;
+  const etap=DATA.etapy.find(e=>e.id===sec.id);if(!etap)return;
+  if(!etap.punkty.every(pt=>isChecked(pt.id)))return;
+  if(sec.dataset.confettiShown==='1')return;
+  sec.dataset.confettiShown='1';triggerConfetti(p);
+  try{if(navigator.vibrate)navigator.vibrate(40)}catch(_){}
+}
+function triggerConfetti(el){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+  const c=document.createElement('div');c.className='confetti-burst';c.style.left=cx+'px';c.style.top=cy+'px';
+  for(let i=0;i<14;i++){const p=document.createElement('i');const ang=(Math.PI*2*i)/14+(Math.random()-0.5)*0.5,d=60+Math.random()*50;p.style.setProperty('--dx',(Math.cos(ang)*d)+'px');p.style.setProperty('--dy',(Math.sin(ang)*d-20)+'px');p.style.setProperty('--rot',(Math.random()*360)+'deg');p.style.setProperty('--delay',(Math.random()*60)+'ms');c.appendChild(p)}
+  document.body.appendChild(c);setTimeout(()=>c.remove(),1600);
+}
+
+$('#main').addEventListener('click',e=>{
+  // Flaga
+  const flagBtn=e.target.closest('[data-flag-punkt]');
+  if(flagBtn){e.stopPropagation();const id=flagBtn.dataset.flagPunkt;toggleFlag(id);flagBtn.classList.toggle('flagged',isFlagged(id));showToast(isFlagged(id)?'Oflagowane — punkt do osobistej kontroli':'Flaga usunięta');return}
+  // Notatka
+  const noteBtn=e.target.closest('[data-note-punkt]');
+  if(noteBtn){e.stopPropagation();openDziennikModal(noteBtn.dataset.notePunkt,noteBtn.dataset.punktTitle);return}
+  // Schemat
+  const schematBtn=e.target.closest('[data-schemat]');
+  if(schematBtn){e.stopPropagation();openSchematModal(schematBtn.dataset.schemat);return}
+  // Pytania do ekipy
+  const pytaniaBtn=e.target.closest('[data-pytania-etap]');
+  if(pytaniaBtn){openPytaniaModal(pytaniaBtn.dataset.pytaniaEtap);return}
+  // Galeria tile
+  const galTile=e.target.closest('[data-galeria-id]');
+  if(galTile){openGaleriaModal(galTile.dataset.galeriaId);return}
+  // Akcje etapu
+  const ab=e.target.closest('.etap-action');if(ab&&ab.dataset.action){handleEtapAction(ab);return}
+  // Klik na punkt
+  const pt=e.target.closest('.punkt');if(pt)handlePunktAction(pt);
+});
+
+function handleEtapAction(btn){
+  const etap=DATA.etapy.find(e=>e.id===btn.dataset.etapId);if(!etap)return;
+  const should=btn.dataset.action==='check-all';
+  if(!should){const ce=etap.punkty.filter(p=>isChecked(p.id)).length;if(ce>0&&!confirm('Wyczyścić '+ce+' odhaczonych punktów?'))return}
+  etap.punkty.forEach(p=>{if(should)state[p.id]=true;else delete state[p.id]});
+  saveState();
+  const sec=document.getElementById(etap.id);
+  if(sec){sec.querySelectorAll('.punkt').forEach(el=>{el.classList.toggle('checked',should);el.setAttribute('aria-checked',should)});if(!should)sec.dataset.confettiShown=''}
+  updateProgress();
+  if(should){if(sec){sec.dataset.confettiShown='1';const fp=sec.querySelector('.punkt');if(fp)triggerConfetti(fp)}checkMilestones()}
+  showToast(should?'Etap zaznaczony':'Etap wyczyszczony');
+}
+
+$('#main').addEventListener('keydown',e=>{if(e.key!==' '&&e.key!=='Enter')return;const p=e.target.closest('.punkt');if(!p)return;e.preventDefault();handlePunktAction(p)});
+
+// MENU
+const hamburger=$('#hamburger'),menu=$('#menu');let lastFocusBeforeMenu=null;
+function openMenu(){lastFocusBeforeMenu=document.activeElement;menu.classList.add('open');hamburger.classList.add('open');hamburger.setAttribute('aria-expanded','true');menu.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(()=>{const f=$('#menu-list .menu-link');if(f)f.focus()},100)}
+function closeMenu(restore){if(restore===undefined)restore=true;menu.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');menu.setAttribute('aria-hidden','true');document.body.style.overflow='';if(restore&&lastFocusBeforeMenu)lastFocusBeforeMenu.focus();lastFocusBeforeMenu=null}
+hamburger.addEventListener('click',()=>{if(menu.classList.contains('open'))closeMenu(true);else openMenu()});
+$('#menu-list').addEventListener('click',e=>{const btn=e.target.closest('.menu-link');if(!btn)return;const t=btn.dataset.target;closeMenu(false);setTimeout(()=>{try{if(t==='top')window.scrollTo({top:0,behavior:'smooth'});else{const tg=document.getElementById(t);if(tg)tg.scrollIntoView({behavior:'smooth',block:'start'})}}catch(_){}},300)});
+
+// CONFIRM MODAL
+const modal=$('#modal');let lastFocusBeforeConfirmModal=null;
+function openConfirmModal(){lastFocusBeforeConfirmModal=document.activeElement;modal.classList.add('show');document.body.style.overflow='hidden';setTimeout(()=>{const c=$('#modal-cancel');if(c)c.focus()},100)}
+function closeConfirmModal(){modal.classList.remove('show');document.body.style.overflow='';if(lastFocusBeforeConfirmModal)try{lastFocusBeforeConfirmModal.focus()}catch(_){};lastFocusBeforeConfirmModal=null}
+$('#menu-clear').addEventListener('click',()=>{closeMenu();setTimeout(openConfirmModal,280)});
+$('#modal-cancel').addEventListener('click',closeConfirmModal);
+$('#modal-confirm').addEventListener('click',()=>{state={};saveState();$$('.punkt.checked').forEach(p=>{p.classList.remove('checked');p.setAttribute('aria-checked','false')});shownMilestones=new Set();saveMilestones();$$('.etap').forEach(s=>{s.dataset.confettiShown=''});updateProgress();closeConfirmModal();showToast('Postęp wyczyszczony')});
+modal.addEventListener('click',e=>{if(e.target===modal)closeConfirmModal()});
+
+// TOAST
+const toast=$('#toast');let toastTimer=null;
+function showToast(msg,dur){toast.textContent=msg;toast.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),dur||2400)}
+
+// SEARCH
+const searchInput=$('#search'),searchClear=$('#search-clear'),searchCount=$('#search-count'),noResults=$('#no-results'),searchTerm=$('#search-term');
+function normalizeForSearch(s){return(s||'').toLowerCase().replace(/ą/g,'a').replace(/ć/g,'c').replace(/ę/g,'e').replace(/ł/g,'l').replace(/ń/g,'n').replace(/ó/g,'o').replace(/ś/g,'s').replace(/ź/g,'z').replace(/ż/g,'z')}
+function searchStem(s){const n=normalizeForSearch(s).trim();if(n.length<4)return n;const ends=['ami','ach','om','imi','ymi','ego','emu','iego','iemu','iej','ej','ie','ow','em','ym','im','ek','a','e','i','y','o','u'];for(const en of ends)if(n.length-en.length>=3&&n.endsWith(en))return n.slice(0,n.length-en.length);return n}
+function stemMatches(t,s){if(t.includes(s))return true;if(s.length>=3){const l=s.charAt(s.length-1),v=s.slice(0,-1)+'e'+l;if(t.includes(v))return true}return false}
+
+function performSearch(){
+  const rq=searchInput.value.trim();
+  searchClear.classList.toggle('visible',rq.length>0);
+  if(rq.length===0){
+    $$('.punkt').forEach(p=>p.classList.remove('hidden','search-match'));
+    $$('.case-card').forEach(c=>c.classList.remove('hidden','search-match'));
+    $$('.flaga').forEach(f=>f.classList.remove('hidden','search-match'));
+    $$('.etap').forEach(s=>s.classList.remove('hidden'));
+    $$('.section-info').forEach(s=>s.classList.remove('hidden'));
+    $$('.audyt').forEach(s=>s.classList.remove('hidden'));
+    $$('.galeria').forEach(s=>s.classList.remove('hidden'));
+    $$('.co-dalej').forEach(s=>s.classList.remove('hidden'));
+    searchCount.classList.remove('visible');noResults.classList.remove('show');return;
+  }
+  const qw=rq.split(/\s+/).filter(w=>w.length>0);
+  const stems=qw.map(searchStem).filter(s=>s.length>=2);
+  if(stems.length===0)return;
+  let mc=0,pc=0,cc=0,fc=0;
+  const me=new Set(),mi=new Set();
+  $$('.punkt').forEach(p=>{const n=normalizeForSearch(p.dataset.text||'');if(stems.every(s=>stemMatches(n,s))){p.classList.remove('hidden');p.classList.add('search-match');pc++;mc++;const e=p.closest('.etap');if(e)me.add(e.id)}else{p.classList.add('hidden');p.classList.remove('search-match')}});
+  $$('.case-card').forEach(c=>{const n=normalizeForSearch(c.dataset.text||'');if(stems.every(s=>stemMatches(n,s))){c.classList.remove('hidden');c.classList.add('search-match');cc++;mc++;const sec=c.closest('.section-info');if(sec)mi.add(sec.id)}else{c.classList.add('hidden');c.classList.remove('search-match')}});
+  $$('.flaga').forEach(f=>{const n=normalizeForSearch(f.dataset.text||'');if(stems.every(s=>stemMatches(n,s))){f.classList.remove('hidden');f.classList.add('search-match');fc++;mc++;const sec=f.closest('.section-info');if(sec)mi.add(sec.id)}else{f.classList.add('hidden');f.classList.remove('search-match')}});
+  $$('.etap').forEach(s=>s.classList.toggle('hidden',!me.has(s.id)));
+  $$('.section-info').forEach(s=>s.classList.toggle('hidden',!mi.has(s.id)));
+  $$('.audyt, .co-dalej, .galeria').forEach(s=>s.classList.add('hidden'));
+  if(mc>0){const parts=[];if(pc>0)parts.push(`${pc} ${polishPlural(pc,'punkt','punkty','punktów')} checklisty`);if(cc>0)parts.push(`${cc} ${polishPlural(cc,'historia','historie','historii')} z budów`);if(fc>0)parts.push(`${fc} ${polishPlural(fc,'czerwona flaga','czerwone flagi','czerwonych flag')}`);searchCount.textContent='Znaleziono: '+parts.join(' · ');searchCount.classList.add('visible');noResults.classList.remove('show')}
+  else{searchCount.classList.remove('visible');searchTerm.textContent='„'+searchInput.value+'"';noResults.classList.add('show')}
+}
+
+let scrollAfterSearchTimer=null;
+function scrollToFirstMatch(){if(scrollAfterSearchTimer)clearTimeout(scrollAfterSearchTimer);scrollAfterSearchTimer=setTimeout(()=>{if(searchInput.value.trim().length===0)return;const f=document.querySelector('.search-match');if(!f)return;const r=f.getBoundingClientRect();if(r.top>=154&&r.top<=window.innerHeight-80)return;f.scrollIntoView({behavior:'smooth',block:'center'})},450)}
+searchInput.addEventListener('input',()=>{performSearch();scrollToFirstMatch()});
+searchClear.addEventListener('click',()=>{searchInput.value='';performSearch();if(scrollAfterSearchTimer)clearTimeout(scrollAfterSearchTimer);searchInput.focus()});
+
+// LEGAL MODAL
+const legalModal=$('#legal-modal'),legalModalTitle=$('#legal-modal-title'),legalModalBody=$('#legal-modal-body');
+let lastFocusBeforeLegal=null;
+const LEGAL_DOCS={'regulamin':{title:'Regulamin',placeholder:true},'polityka-prywatnosci':{title:'Polityka prywatności',placeholder:true},'polityka-cookies':{title:'Polityka cookies',placeholder:true}};
+function openLegalModal(k){const d=LEGAL_DOCS[k];if(!d)return;lastFocusBeforeLegal=document.activeElement;legalModalTitle.textContent=d.title;if(d.placeholder)legalModalBody.innerHTML='<p class="modal-legal-placeholder"><strong>Dokument roboczy — treść wymaga uzupełnienia przed sprzedażą produktu.</strong></p><p>Pełna treść tego dokumentu zostanie opracowana zgodnie z polskim prawem konsumenckim przed udostępnieniem aplikacji publicznie.</p>';legalModal.classList.add('show');document.body.style.overflow='hidden';setTimeout(()=>{const c=$('#legal-modal-close-x');if(c)c.focus()},100)}
+function closeLegalModal(){legalModal.classList.remove('show');document.body.style.overflow='';if(lastFocusBeforeLegal)try{lastFocusBeforeLegal.focus()}catch(_){};lastFocusBeforeLegal=null}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-legal]');if(t){e.preventDefault();openLegalModal(t.dataset.legal);return}if(e.target.closest('#legal-modal-close-x')||e.target.closest('#legal-modal-close-btn')||e.target===legalModal)closeLegalModal()});
+
+// PYTANIA DO EKIPY MODAL
+const pytaniaModal=$('#pytania-modal'),pytaniaList=$('#pytania-list'),pytaniaTitle=$('#pytania-modal-title');
+let lastFocusBeforePytania=null,currentPytania=[];
+function openPytaniaModal(etapId){
+  const etap=DATA.etapy.find(e=>e.id===etapId);if(!etap||!etap.pytania_do_ekipy)return;
+  lastFocusBeforePytania=document.activeElement;
+  pytaniaTitle.textContent=etap.name;
+  currentPytania=etap.pytania_do_ekipy;
+  pytaniaList.innerHTML=etap.pytania_do_ekipy.map((q,i)=>`<div class="pytanie-card"><span class="pytanie-num">${String(i+1).padStart(2,'0')}</span><p class="pytanie-text">${escapeHTML(q)}</p><button type="button" class="pytanie-copy" data-q="${escapeHTML(q)}" aria-label="Skopiuj">${ICONS.copy}</button></div>`).join('');
+  pytaniaModal.classList.add('show');document.body.style.overflow='hidden';
+  setTimeout(()=>{const c=$('#pytania-modal-close-x');if(c)c.focus()},100);
+}
+function closePytaniaModal(){pytaniaModal.classList.remove('show');document.body.style.overflow='';if(lastFocusBeforePytania)try{lastFocusBeforePytania.focus()}catch(_){};lastFocusBeforePytania=null}
+document.addEventListener('click',async e=>{
+  if(e.target.closest('#pytania-modal-close-x')||e.target.closest('#pytania-modal-close-btn')||e.target===pytaniaModal){closePytaniaModal();return}
+  const copyBtn=e.target.closest('.pytanie-copy');
+  if(copyBtn){try{await navigator.clipboard.writeText(copyBtn.dataset.q);copyBtn.classList.add('copied');setTimeout(()=>copyBtn.classList.remove('copied'),1200);showToast('Skopiowano pytanie')}catch(_){showToast('Nie udało się skopiować')}return}
+  if(e.target.closest('#pytania-copy-all')){const text=currentPytania.map((q,i)=>`${i+1}. ${q}`).join('\n\n');try{await navigator.clipboard.writeText(text);showToast('Skopiowano '+currentPytania.length+' pytań')}catch(_){showToast('Nie udało się skopiować')}}
+});
+
+// DZIENNIK BUDOWY MODAL
+const dziennikModal=$('#dziennik-modal'),dziennikTextarea=$('#dziennik-textarea'),dziennikNoteList=$('#dziennik-note-list'),dziennikContextText=$('#dziennik-context-text'),dziennikTitle=$('#dziennik-modal-title');
+let lastFocusBeforeDziennik=null,currentDziennikPunktId=null;
+function renderDziennikNotes(punktId){
+  const arr=getNotes(punktId);
+  if(arr.length===0){dziennikNoteList.innerHTML='<p class="dziennik-empty">Brak notatek do tego punktu. Dodaj pierwszą — data, problem, telefon do ekipy.</p>';return}
+  dziennikNoteList.innerHTML=arr.map((n,i)=>`<div class="dziennik-note"><div class="dziennik-note-header"><span class="dziennik-note-date">${escapeHTML(n.date)}</span><button type="button" class="dziennik-note-delete" data-del-note="${i}" aria-label="Usuń notatkę">×</button></div><p class="dziennik-note-text">${escapeHTML(n.text)}</p></div>`).join('');
+}
+function openDziennikModal(punktId,punktTitle){
+  currentDziennikPunktId=punktId;
+  lastFocusBeforeDziennik=document.activeElement;
+  dziennikTitle.textContent='Notatka';
+  dziennikContextText.textContent=punktTitle;
+  dziennikTextarea.value='';
+  renderDziennikNotes(punktId);
+  dziennikModal.classList.add('show');document.body.style.overflow='hidden';
+  setTimeout(()=>{dziennikTextarea.focus()},150);
+}
+function closeDziennikModal(){dziennikModal.classList.remove('show');document.body.style.overflow='';if(lastFocusBeforeDziennik)try{lastFocusBeforeDziennik.focus()}catch(_){};lastFocusBeforeDziennik=null;currentDziennikPunktId=null}
+document.addEventListener('click',e=>{
+  if(e.target.closest('#dziennik-modal-close-x')||e.target.closest('#dziennik-modal-close-btn')||e.target===dziennikModal){closeDziennikModal();return}
+  if(e.target.closest('#dziennik-save-btn')){
+    const txt=dziennikTextarea.value.trim();if(!txt||!currentDziennikPunktId){showToast('Wpisz treść notatki');return}
+    const arr=notes[currentDziennikPunktId]||[];
+    arr.unshift({date:new Date().toLocaleString('pl-PL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}),text:txt});
+    notes[currentDziennikPunktId]=arr;saveNotes();
+    dziennikTextarea.value='';
+    renderDziennikNotes(currentDziennikPunktId);
+    const btn=document.querySelector(`[data-note-punkt="${currentDziennikPunktId}"]`);if(btn)btn.classList.add('has-note');
+    showToast('Notatka dodana');
+    return;
+  }
+  const delBtn=e.target.closest('[data-del-note]');
+  if(delBtn&&currentDziennikPunktId){
+    const idx=parseInt(delBtn.dataset.delNote,10);
+    if(!confirm('Usunąć tę notatkę?'))return;
+    const arr=notes[currentDziennikPunktId]||[];
+    arr.splice(idx,1);
+    if(arr.length===0)delete notes[currentDziennikPunktId];else notes[currentDziennikPunktId]=arr;
+    saveNotes();
+    renderDziennikNotes(currentDziennikPunktId);
+    const btn=document.querySelector(`[data-note-punkt="${currentDziennikPunktId}"]`);if(btn)btn.classList.toggle('has-note',getNotes(currentDziennikPunktId).length>0);
+    showToast('Notatka usunięta');
+  }
+});
+
+// SCHEMAT MODAL
+const schematModal=$('#schemat-modal'),schematIll=$('#schemat-illustration'),schematCap=$('#schemat-caption'),schematTitle=$('#schemat-modal-title');
+let lastFocusBeforeSchemat=null;
+function openSchematModal(key){const s=SCHEMATY[key];if(!s)return;lastFocusBeforeSchemat=document.activeElement;schematTitle.textContent=s.title;schematIll.innerHTML=s.svg;schematCap.textContent=s.caption;schematModal.classList.add('show');document.body.style.overflow='hidden';setTimeout(()=>{const c=$('#schemat-modal-close-x');if(c)c.focus()},100)}
+function closeSchematModal(){schematModal.classList.remove('show');document.body.style.overflow='';if(lastFocusBeforeSchemat)try{lastFocusBeforeSchemat.focus()}catch(_){};lastFocusBeforeSchemat=null}
+document.addEventListener('click',e=>{if(e.target.closest('#schemat-modal-close-x')||e.target.closest('#schemat-modal-close-btn')||e.target===schematModal)closeSchematModal()});
+
+// GALERIA MODAL
+const galeriaModal=$('#galeria-modal'),galeriaModalBody=$('#galeria-modal-body'),galeriaModalTitle=$('#galeria-modal-title');
+let lastFocusBeforeGaleria=null;
+function openGaleriaModal(id){
+  const item=DATA.galeria.items.find(i=>i.id===id);if(!item)return;
+  lastFocusBeforeGaleria=document.activeElement;
+  galeriaModalTitle.textContent=item.title;
+  galeriaModalBody.innerHTML=`
+    <div class="galeria-stage">
+      <div class="galeria-stage-illustration">${item.ilustracja}</div>
+      <div class="galeria-stage-meta">
+        <span class="galeria-stage-label problem">${escapeHTML(item.problem.label)}</span>
+        <p class="galeria-stage-text">${escapeHTML(item.problem.text)}</p>
+      </div>
+    </div>
+    <div class="galeria-stage">
+      <div class="galeria-stage-meta">
+        <span class="galeria-stage-label skutek">${escapeHTML(item.skutek.label)}</span>
+        <p class="galeria-stage-text">${escapeHTML(item.skutek.text)}</p>
+      </div>
+    </div>
+    <div class="galeria-stage">
+      <div class="galeria-stage-meta">
+        <span class="galeria-stage-label poprawnie">${escapeHTML(item.poprawnie.label)}</span>
+        <p class="galeria-stage-text">${escapeHTML(item.poprawnie.text)}</p>
+      </div>
+    </div>
+    <div class="galeria-modal-koszt">
+      <p class="galeria-modal-koszt-label">Koszt naprawy po fakcie</p>
+      <p class="galeria-modal-koszt-value">≈ ${escapeHTML(item.koszt)}</p>
+      <p class="galeria-modal-koszt-note">${escapeHTML(item.koszt_note)}</p>
+    </div>`;
+  galeriaModal.classList.add('show');
+  document.body.style.overflow='hidden';
+  galeriaModalBody.scrollTop=0;
+  setTimeout(()=>$('#galeria-modal-close').focus(),100);
+}
+function closeGaleriaModal(){galeriaModal.classList.remove('show');document.body.style.overflow='';if(lastFocusBeforeGaleria)try{lastFocusBeforeGaleria.focus()}catch(_){};lastFocusBeforeGaleria=null}
+$('#galeria-modal-close').addEventListener('click',closeGaleriaModal);
+
+// ESC HANDLER
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  if(legalModal.classList.contains('show'))closeLegalModal();
+  else if(galeriaModal.classList.contains('show'))closeGaleriaModal();
+  else if(schematModal.classList.contains('show'))closeSchematModal();
+  else if(pytaniaModal.classList.contains('show'))closePytaniaModal();
+  else if(dziennikModal.classList.contains('show'))closeDziennikModal();
+  else if(exportModal.classList.contains('show'))closeExportModal();
+  else if(modal.classList.contains('show'))closeConfirmModal();
+  else if(menu.classList.contains('open'))closeMenu();
+  else if(document.activeElement===searchInput&&searchInput.value){searchInput.value='';performSearch()}
+});
+
+// AUDYT CTA
+function isPlaceholder(l){if(!l||typeof l!=='string')return true;const t=l.trim();if(t==='')return true;if(/^[\[\{<]/.test(t))return true;if(/PLACEHOLDER|TODO|TUTAJ_WSTAW|TU_WKLEJ|WSTAW_LINK/i.test(t))return true;if(!/^(https?:|mailto:)/i.test(t))return true;return false}
+document.addEventListener('click',e=>{const c=e.target.closest('#audyt-cta');if(!c)return;if(isPlaceholder(AUDYT_LINK)){e.preventDefault();showToast('Link zostanie dodany w wersji produkcyjnej.')}});
+
+// TRYB BUDOWA
+const toggleBudowa=$('#toggle-budowa');
+function setTrybBudowa(en){document.body.classList.toggle('tryb-budowa',en);toggleBudowa.setAttribute('aria-pressed',en?'true':'false');try{localStorage.setItem(TRYB_BUDOWA_KEY,en?'1':'0')}catch(_){}}
+try{if(localStorage.getItem(TRYB_BUDOWA_KEY)==='1')setTrybBudowa(true)}catch(_){}
+toggleBudowa.addEventListener('click',()=>{const en=!document.body.classList.contains('tryb-budowa');setTrybBudowa(en);showToast(en?'Tryb budowa — większe fonty i checkboxy':'Tryb budowa wyłączony')});
+
+// SHARE
+$('#share-app').addEventListener('click',async()=>{
+  const url=window.location.href.split('#')[0],title='Łazienka Na Lata™ — System inwestora',text='Mobilna checklista inwestora — '+TOTAL_POINTS+' punktów kontroli. Praktyka 20+ lat.';
+  if(navigator.share){try{await navigator.share({title,text,url});return}catch(_){return}}
+  try{await navigator.clipboard.writeText(url);showToast('Link skopiowany')}catch(_){showToast('Skopiuj link z paska adresu')}
+});
+
+// EXPORT
+const exportModal=$('#export-modal');let lastFocusBeforeExport=null;
+function openExportModal(){lastFocusBeforeExport=document.activeElement;exportModal.classList.add('show');document.body.style.overflow='hidden';setTimeout(()=>{const c=$('#export-modal-close-x');if(c)c.focus()},100)}
+function closeExportModal(){exportModal.classList.remove('show');document.body.style.overflow='';if(lastFocusBeforeExport)try{lastFocusBeforeExport.focus()}catch(_){};lastFocusBeforeExport=null}
+$('#open-export').addEventListener('click',openExportModal);
+document.addEventListener('click',e=>{if(e.target.closest('#export-modal-close-x')||e.target.closest('#export-modal-close-btn')||e.target===exportModal)closeExportModal()});
+
+function buildProgressReport(onlyFlagged){
+  const date=new Date().toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'});
+  const done=Object.keys(state).filter(k=>state[k]).length,pct=TOTAL_POINTS?Math.round(done/TOTAL_POINTS*100):0;
+  const lines=['ŁAZIENKA NA LATA™ — System inwestora'];
+  if(onlyFlagged)lines.push('Lista warunków wykonania dla ekipy — '+date);
+  else{lines.push('Postęp na dzień '+date);lines.push('');lines.push('PODSUMOWANIE: '+done+' z '+TOTAL_POINTS+' punktów ('+pct+'%)')}
+  lines.push('');lines.push('────────────────────────────────────');lines.push('');
+  DATA.etapy.forEach(etap=>{
+    const punkty=onlyFlagged?etap.punkty.filter(p=>isFlagged(p.id)):etap.punkty;
+    if(onlyFlagged&&punkty.length===0)return;
+    lines.push(etap.num+'. '+etap.name.toUpperCase());
+    punkty.forEach(p=>{lines.push('  '+(onlyFlagged?'⚑':(isChecked(p.id)?'[x]':'[ ]'))+' '+p.title);if(p.desc)lines.push('       '+p.desc);const nts=getNotes(p.id);if(nts.length>0){nts.forEach(n=>{lines.push('       NOTATKA ('+n.date+'): '+n.text)})}});
+    lines.push('');
+  });
+  lines.push('────────────────────────────────────');
+  if(onlyFlagged)lines.push('Powyższe punkty są warunkami wykonania umowy. Proszę o ich pisemne potwierdzenie.');
+  lines.push('');lines.push('Arkadiusz Bunkowski — ekspert remontów łazienek');lines.push('Praktyka: Polska · Anglia · Holandia');lines.push(window.location.href.split('#')[0]);
+  return lines.join('\n');
+}
+
+function exportToPDF(onlyFlagged){
+  const date=new Date().toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'});
+  const done=Object.keys(state).filter(k=>state[k]).length,pct=TOTAL_POINTS?Math.round(done/TOTAL_POINTS*100):0;
+  const flaggedCount=Object.keys(flags).filter(k=>flags[k]).length;
+  if(onlyFlagged&&flaggedCount===0){showToast('Najpierw oflaguj punkty, które chcesz dać ekipie');return}
+  let etapyHTML='';
+  DATA.etapy.forEach(etap=>{
+    const pts=onlyFlagged?etap.punkty.filter(p=>isFlagged(p.id)):etap.punkty;
+    if(onlyFlagged&&pts.length===0)return;
+    const ed=etap.punkty.filter(p=>isChecked(p.id)).length;
+    const punkty=pts.map(p=>{const c=isChecked(p.id),nts=getNotes(p.id);return `<li class="${c?'done':'todo'}"><span class="box"></span><span class="content"><strong>${escapeHTML(p.title)}</strong><em>${escapeHTML(p.desc)}</em>${nts.length>0?'<div class="notes">'+nts.map(n=>'<div class="note"><span class="ndate">'+escapeHTML(n.date)+'</span> '+escapeHTML(n.text)+'</div>').join('')+'</div>':''}</span></li>`}).join('');
+    etapyHTML+=`<section class="etap"><h2><span class="num">${etap.num}</span> <span class="name">${escapeHTML(etap.name)}</span>${!onlyFlagged?'<span class="count">'+ed+'/'+etap.punkty.length+'</span>':''}</h2><ul>${punkty}</ul></section>`;
+  });
+  const title=onlyFlagged?'Lista warunków wykonania — dla ekipy':'Postęp remontu łazienki';
+  const subtitle=onlyFlagged?'Punkty, których pisemnego potwierdzenia oczekujemy przed/w trakcie wykonania':'';
+  const summary=onlyFlagged?'<div class="summary"><span class="summary-label">Liczba warunków</span><span class="summary-value"><strong>'+flaggedCount+'</strong> punktów do pisemnego potwierdzenia</span></div>':'<div class="summary"><span class="summary-label">Sprawdzono</span><span class="summary-value"><strong>'+done+'</strong> z '+TOTAL_POINTS+' punktów ('+pct+'%)</span></div>';
+  const html=`<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8"><title>${title} — ${date}</title><style>*{box-sizing:border-box}body{font-family:'Inter',sans-serif;color:#1a1a1a;background:#fff;max-width:720px;margin:30px auto;padding:0 24px;line-height:1.5}header.report-header{border-bottom:2px solid #c9a861;padding-bottom:18px;margin-bottom:24px}h1{margin:0 0 6px;font-size:22px;font-weight:700}.kicker{font-size:10px;letter-spacing:0.2em;color:#8a6f30;text-transform:uppercase;font-weight:700;margin:0 0 8px}.meta{color:#666;font-size:13px;margin:0}.sub{color:#666;font-size:13px;margin:6px 0 0;font-style:italic}.summary{background:#faf6ec;border:1px solid #e6d9b3;padding:16px 20px;border-radius:6px;margin:18px 0 30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}.summary-label{font-size:11px;letter-spacing:0.16em;color:#8a6f30;text-transform:uppercase;font-weight:700}.summary-value{font-size:18px;font-weight:700}.summary-value strong{color:#8a6f30}section.etap{page-break-inside:avoid;margin-bottom:28px}h2{font-size:16px;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid #ddd;display:flex;gap:10px;align-items:baseline}.num{color:#c9a861;font-weight:900;font-size:18px;min-width:24px}.name{flex:1}.count{color:#888;font-weight:600;font-size:12px;background:#f5f5f5;padding:3px 8px;border-radius:10px}ul{list-style:none;padding:0;margin:0}li{display:flex;gap:12px;padding:10px 0;border-bottom:1px dotted #e0e0e0;page-break-inside:avoid}.box{flex-shrink:0;width:14px;height:14px;border:1.5px solid #888;border-radius:3px;background:#fff;margin-top:3px;position:relative}li.done .box{background:#c9a861;border-color:#c9a861}li.done .box::after{content:"";position:absolute;left:3px;top:0;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}li.done strong{text-decoration:line-through;color:#999}li.done em{color:#bbb}.content{flex:1}strong{display:block;font-size:13.5px;font-weight:600;margin-bottom:2px}em{display:block;font-size:12px;color:#666;font-style:normal}.notes{margin-top:8px;padding-left:8px;border-left:2px solid #c9a861}.note{font-size:11.5px;color:#555;margin-bottom:4px;line-height:1.4}.ndate{color:#8a6f30;font-weight:600;font-size:10px;letter-spacing:0.08em}footer.report-footer{margin-top:40px;padding-top:18px;border-top:1px solid #ddd;font-size:11px;color:#888}footer.report-footer strong{color:#555}.signatures{margin-top:32px;padding-top:24px;border-top:1px dashed #c9a861;display:flex;gap:32px;justify-content:space-between}.sig{flex:1;text-align:center;border-top:1px solid #1a1a1a;padding-top:8px;font-size:11px;color:#666;margin-top:48px}.no-print{background:#c9a861;color:#1a1a1a;padding:13px 24px;border:none;border-radius:6px;font-weight:700;font-size:13px;text-transform:uppercase;cursor:pointer;margin:0 0 24px;font-family:inherit}@media print{.no-print{display:none}}</style></head><body><button class="no-print" onclick="window.print()">Drukuj / zapisz jako PDF</button><header class="report-header"><p class="kicker">Łazienka Na Lata™ · System inwestora</p><h1>${title}</h1>${subtitle?'<p class="sub">'+subtitle+'</p>':''}<p class="meta">Wygenerowano: ${date}</p></header>${summary}${etapyHTML}${onlyFlagged?'<div class="signatures"><div class="sig">Inwestor — data, podpis</div><div class="sig">Wykonawca — data, podpis</div></div>':''}<footer class="report-footer"><strong>Arkadiusz Bunkowski</strong> · Ekspert remontów łazienek<br>Praktyka: Polska · Anglia · Holandia<br>${window.location.href.split('#')[0]}</footer></body></html>`;
+  const w=window.open('','_blank');if(!w){showToast('Zezwól na popup-y');return}
+  w.document.open();w.document.write(html);w.document.close();
+}
+
+function exportToEmail(){const s='Mój postęp — Łazienka Na Lata™',b=buildProgressReport(false);const l='mailto:?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b);if(l.length>6000){const sb='Postęp remontu łazienki:\n\n'+window.location.href.split('#')[0]+'\n\nPostęp: '+Object.keys(state).filter(k=>state[k]).length+'/'+TOTAL_POINTS+' punktów.';window.location.href='mailto:?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(sb)}else window.location.href=l}
+async function exportToClipboard(){try{await navigator.clipboard.writeText(buildProgressReport(false));showToast('Postęp skopiowany do schowka')}catch(_){showToast('Nie udało się skopiować')}}
+function exportToJSON(){const d={app:'Łazienka Na Lata™',version:'v2',exportedAt:new Date().toISOString(),state:state,flags:flags,notes:notes,milestones:[...shownMilestones]};const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='lazienka-postep-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),1000);showToast('Backup zapisany')}
+
+$('#import-file').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(!d.state||typeof d.state!=='object')throw new Error('Invalid');if(!confirm('Przywrócić postęp z pliku?')){e.target.value='';return}Object.keys(state).forEach(k=>delete state[k]);Object.assign(state,d.state);saveState();if(d.flags){Object.keys(flags).forEach(k=>delete flags[k]);Object.assign(flags,d.flags);saveFlags()}if(d.notes){Object.keys(notes).forEach(k=>delete notes[k]);Object.assign(notes,d.notes);saveNotes()}if(d.milestones){shownMilestones=new Set(d.milestones);saveMilestones()}$$('.punkt').forEach(el=>{const c=isChecked(el.dataset.id),fg=isFlagged(el.dataset.id);el.classList.toggle('checked',c);el.setAttribute('aria-checked',c);const fb=el.querySelector('[data-flag-punkt]');if(fb)fb.classList.toggle('flagged',fg);const nb=el.querySelector('[data-note-punkt]');if(nb)nb.classList.toggle('has-note',getNotes(el.dataset.id).length>0)});updateProgress();showToast('Postęp przywrócony');closeExportModal()}catch(err){showToast('Plik niepoprawny')}e.target.value=''};r.readAsText(f)});
+
+document.addEventListener('click',e=>{const btn=e.target.closest('[data-export]');if(!btn)return;const a=btn.dataset.export;if(a==='pdf')exportToPDF(false);else if(a==='ekipa')exportToPDF(true);else if(a==='email')exportToEmail();else if(a==='copy')exportToClipboard();else if(a==='json')exportToJSON()});
+document.addEventListener('click',e=>{const btn=e.target.closest('[data-go-to]');if(!btn)return;const t=document.getElementById(btn.dataset.goTo);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+
+// ONBOARDING
+const onboarding=$('#onboarding');let obStep=1;const obTotalSteps=3;
+function showOnboarding(){onboarding.classList.add('show');obStep=1;updateOBStep()}
+function hideOnboarding(){onboarding.classList.remove('show');try{localStorage.setItem(ONBOARDING_KEY,'1')}catch(_){}}
+function updateOBStep(){$$('.onboarding-step').forEach(s=>s.classList.toggle('active',parseInt(s.dataset.step,10)===obStep));$$('.onboarding-dot').forEach((d,i)=>d.classList.toggle('active',i===obStep-1));$('#onboarding-next').textContent=obStep<obTotalSteps?'Dalej →':'Zaczynamy →'}
+$('#onboarding-skip').addEventListener('click',hideOnboarding);
+$('#onboarding-next').addEventListener('click',()=>{if(obStep<obTotalSteps){obStep++;updateOBStep()}else hideOnboarding()});
+
+try{
+  renderAll();renderMenu();updateProgress();
+  // Onboarding tylko przy pierwszej wizycie
+  try{if(!localStorage.getItem(ONBOARDING_KEY))setTimeout(showOnboarding,400)}catch(_){}
+}catch(err){console.error('Init error:',err)}
+window.addEventListener('error',e=>{console.warn('Caught:',e.message);return true});
+</script>
+</body>
+</html>
