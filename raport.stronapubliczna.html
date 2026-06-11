@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raport Inwestora — Łazienka Na Lata™ | Polecany materiał przed remontem</title>
+<meta name="description" content="Ktoś polecił Ci ten raport, bo zmienia sposób patrzenia na remont łazienki. Zobacz, dlaczego warto przeczytać go, zanim wydasz pieniądze na ekipę.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Raport Inwestora — Łazienka Na Lata™">
+<meta property="og:description" content="Materiał, który zmienia sposób patrzenia na remont łazienki. Zobacz, co naprawdę kryje się pod płytkami, zanim wydasz pieniądze.">
+<meta property="og:image" content="TU_WKLEJ_PUBLICZNY_LINK_GITHUB/og-image.png">
+<meta property="og:url" content="TU_WKLEJ_PUBLICZNY_LINK_GITHUB">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Raport Inwestora — Łazienka Na Lata™">
+<meta name="twitter:description" content="Materiał, który zmienia sposób patrzenia na remont łazienki. Zobacz, co naprawdę kryje się pod płytkami.">
+<meta name="twitter:image" content="TU_WKLEJ_PUBLICZNY_LINK_GITHUB/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0d1626;
+  --navy-2:#11203a;
+  --navy-3:#16284a;
+  --gold:#c8a35a;
+  --gold-light:#e0c587;
+  --cream:#f6f1e7;
+  --ink:#e9eef6;
+  --muted:#9fb0c8;
+  --line:rgba(200,163,90,.22);
+  --red:#a8311f;
+  --green:#2f6d46;
+  --maxw:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Archivo',system-ui,sans-serif;
+  background:var(--navy);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:17px;
+  overflow-x:hidden;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.18;letter-spacing:-.01em}
+p{color:var(--muted)}
+strong{color:var(--ink);font-weight:600}
+a{color:inherit}
+
+.eyebrow{
+  font-family:'Archivo',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:12px;
+  font-weight:600;
+  color:var(--gold);
+}
+
+.cta{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:16.5px;letter-spacing:.01em;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#1a1407;
+  text-decoration:none;
+  padding:17px 30px;border-radius:999px;
+  box-shadow:0 10px 30px -10px rgba(200,163,90,.6);
+  transition:transform .18s ease, box-shadow .18s ease;
+  border:none;cursor:pointer;
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 16px 38px -10px rgba(200,163,90,.75)}
+.cta:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+.cta .price{opacity:.82;font-weight:600}
+
+.hero{
+  position:relative;
+  padding:74px 0 64px;
+  background:
+    radial-gradient(120% 80% at 80% -10%, rgba(200,163,90,.16), transparent 55%),
+    radial-gradient(90% 70% at 0% 0%, rgba(22,40,74,.9), transparent 60%),
+    var(--navy);
+  border-bottom:1px solid var(--line);
+}
+.hero .eyebrow{margin-bottom:20px}
+.hero h1{
+  font-size:clamp(31px,7vw,50px);
+  color:var(--cream);
+  margin-bottom:18px;
+}
+.hero .sub{
+  font-size:clamp(17px,2.6vw,20px);
+  color:var(--ink);
+  margin-bottom:18px;
+  font-weight:500;
+}
+.hero .lede{margin-bottom:30px;max-width:62ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero-actions .note{font-size:13.5px;color:var(--muted)}
+
+.cover{
+  margin-top:42px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.8);
+  background:var(--navy-2);
+}
+.cover img{display:block;width:100%;height:auto}
+
+section{padding:58px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+section h2{
+  font-size:clamp(24px,4.5vw,34px);
+  color:var(--cream);
+  margin-bottom:18px;
+}
+section h2 + p{font-size:17.5px}
+
+.referral{background:linear-gradient(180deg,var(--navy-2),var(--navy));}
+.referral .card{
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+  background:rgba(22,40,74,.4);
+  padding:26px 26px;
+  border-radius:12px;
+}
+
+.benefits{list-style:none;display:grid;gap:14px;margin-top:8px}
+.benefits li{position:relative;padding-left:34px;color:var(--ink);font-size:16.5px;}
+.benefits li::before{
+  content:"";position:absolute;left:0;top:10px;
+  width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--gold-light),var(--gold));
+  box-shadow:0 0 0 4px rgba(200,163,90,.14);
+}
+
+.taste blockquote{
+  font-family:'Fraunces',serif;
+  font-size:clamp(20px,3.4vw,26px);
+  line-height:1.4;
+  color:var(--cream);
+  font-style:italic;
+  border-left:3px solid var(--gold);
+  padding:6px 0 6px 24px;
+  margin:8px 0 18px;
+}
+.taste .small{font-size:14.5px;color:var(--gold-light);font-style:normal}
+
+.case{background:linear-gradient(180deg,var(--navy),var(--navy-2))}
+.case .flag{
+  display:inline-block;font-family:'Archivo';font-weight:600;font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--cream);
+  background:rgba(168,49,31,.22);border:1px solid rgba(168,49,31,.5);
+  padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+.case .findings{list-style:none;display:grid;gap:10px;margin:18px 0 22px}
+.case .findings li{padding-left:26px;position:relative;color:var(--ink);font-size:16px}
+.case .findings li::before{content:"\2715";position:absolute;left:0;color:var(--red);font-weight:700}
+.case .punch{
+  font-family:'Fraunces',serif;font-style:italic;font-size:19px;color:var(--gold-light);
+  border-top:1px solid var(--line);padding-top:20px;
+}
+
+.author .who{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.author .badge{
+  width:54px;height:54px;border-radius:50%;flex:0 0 auto;
+  background:radial-gradient(circle at 35% 30%,var(--gold-light),var(--gold) 70%,#8c6f33);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-weight:700;color:#1a1407;font-size:20px;
+  box-shadow:0 0 0 4px rgba(200,163,90,.14);
+}
+.author .who div span{display:block}
+.author .who .name{font-family:'Fraunces',serif;font-size:19px;color:var(--cream);font-weight:600}
+.author .who .role{font-size:13px;color:var(--gold-light);letter-spacing:.04em}
+
+.offer{background:linear-gradient(160deg,var(--navy-3),var(--navy));}
+.offer .box{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:
+    radial-gradient(100% 60% at 50% 0%, rgba(200,163,90,.12), transparent 60%),
+    rgba(13,22,38,.6);
+  padding:34px 28px;
+  text-align:center;
+  box-shadow:0 30px 70px -34px rgba(0,0,0,.8);
+}
+.offer .name{font-family:'Fraunces',serif;font-size:23px;color:var(--cream);margin-bottom:6px}
+.offer .price-big{font-family:'Fraunces',serif;font-size:52px;color:var(--gold-light);line-height:1;margin:8px 0 4px}
+.offer .price-big small{font-size:20px;color:var(--gold)}
+.offer .desc{max-width:48ch;margin:14px auto 24px}
+.offer .cta{margin-top:6px}
+.offer .guarantee{margin-top:16px;font-size:13.5px;color:var(--muted)}
+
+.path .card{
+  border:1px dashed var(--line);
+  border-radius:12px;padding:24px;
+  background:rgba(22,40,74,.3);
+}
+.path h2{font-size:clamp(21px,3.6vw,27px)}
+
+.faq details{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;
+  margin-bottom:12px;
+  background:rgba(22,40,74,.25);
+  overflow:hidden;
+}
+.faq summary{
+  cursor:pointer;list-style:none;
+  padding:18px 20px;
+  font-family:'Archivo';font-weight:600;font-size:16.5px;color:var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold);font-size:24px;font-weight:400;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 20px 20px;font-size:16px}
+
+.final{
+  text-align:center;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(200,163,90,.18), transparent 55%),
+    var(--navy);
+  border-bottom:none;
+}
+.final h2{font-size:clamp(25px,5vw,38px);max-width:18ch;margin:0 auto 18px}
+.final p{max-width:54ch;margin:0 auto 28px}
+
+footer{padding:34px 0 48px;text-align:center;border-top:1px solid var(--line);}
+footer .brand{font-family:'Fraunces',serif;color:var(--gold-light);font-size:16px;margin-bottom:6px}
+footer small{color:var(--muted);font-size:12.5px;line-height:1.7;display:block}
+
+@media (max-width:560px){
+  body{font-size:16px}
+  section{padding:46px 0}
+  .hero{padding:56px 0 48px}
+  .cta{width:100%;justify-content:center}
+  .hero-actions .note{text-align:center;width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+
+.brandmark{display:flex;justify-content:center;margin-bottom:26px}
+.brandmark img{width:148px;height:auto;filter:drop-shadow(0 12px 28px rgba(0,0,0,.5))}
+@media(max-width:560px){.brandmark img{width:120px}}
+.brandmark-text{
+  font-family:'Fraunces',serif;font-weight:600;letter-spacing:.01em;
+  font-size:clamp(22px,4.5vw,30px);color:var(--gold-light);text-align:center;
+}
+
+.author .who{align-items:center}
+.author .ablogo{
+  width:64px;height:64px;border-radius:50%;flex:0 0 auto;object-fit:cover;
+  border:1px solid var(--line);box-shadow:0 0 0 4px rgba(200,163,90,.14);
+}
+footer .footmark{width:110px;height:auto;margin:0 auto 16px;display:block;opacity:.95}
+
+</style>
+</head>
+<body>
+
+<!-- 1. HERO — REKOMENDACJA -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brandmark"><img src="logo.png" alt="Łazienka Na Lata" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="brandmark-text" style="display:none">Łazienka Na Lata&trade;</span></div>
+    <span class="eyebrow">Polecany materiał&nbsp;&middot;&nbsp;Łazienka Na Lata&trade;</span>
+    <h1>Ten raport zmienia sposób patrzenia na remont łazienki</h1>
+    <p class="sub">Jeśli planujesz remont i nie chcesz podejmować decyzji wyłącznie na słowo ekipy, zobacz Raport Inwestora Łazienka Na Lata&trade;.</p>
+    <p class="lede">To materiał, który pomaga zwykłemu inwestorowi zobaczyć to, czego często nie widać na pierwszy rzut oka: ryzyka pod płytkami, błędy w przygotowaniu, brak hydroizolacji, złe spadki, źle zadane pytania i zbyt szybkie zaufanie ekipie.</p>
+    <div class="hero-actions">
+      <a class="cta" href="TU_WKLEJ_LINK_STRIPE">Zobacz raport <span class="price">&mdash; 47 zł</span></a>
+      <span class="note">Cyfrowy raport &middot; dostęp po zakupie</span>
+    </div>
+    <div class="cover">
+      <img src="og-image.png" alt="Okładka — Raport Inwestora Łazienka Na Lata">
+    </div>
+  </div>
+</header>
+
+<!-- 2. DLACZEGO KTOŚ CI TO POLECIŁ -->
+<section class="referral">
+  <div class="wrap">
+    <h2>Dlaczego ktoś mógł wysłać Ci ten link?</h2>
+    <div class="card">
+      <p>Najczęściej dlatego, że sam przeczytał ten raport i zrozumiał, że remont łazienki to nie tylko wybór płytek, kabiny i baterii. <strong>To decyzje, które mogą kosztować tysiące złotych</strong>, jeśli zostaną podjęte bez wiedzy, pytań i kontroli.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CO MOŻE CI OTWORZYĆ OCZY -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Zmiana myślenia</span>
+    <h2 style="margin-top:14px">Co może Ci otworzyć oczy?</h2>
+    <ul class="benefits">
+      <li>Zaczynasz rozumieć, że najdroższe błędy są często niewidoczne.</li>
+      <li>Przestajesz ślepo ufać hasłu „będzie dobrze”.</li>
+      <li>Wiesz, o co zapytać ekipę przed startem.</li>
+      <li>Lepiej rozumiesz, gdzie uciekają pieniądze.</li>
+      <li>Widzisz, dlaczego hydroizolacja, odpływ, spadki i podłoże są ważniejsze niż sama estetyka.</li>
+      <li>Podchodzisz do remontu jak świadomy inwestor, nie jak przypadkowy klient.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. KRÓTKI PRZEDSMAK WARTOŚCI -->
+<section class="taste">
+  <div class="wrap">
+    <span class="eyebrow">Przedsmak</span>
+    <h2 style="margin-top:14px">Fragment, który nadaje ton</h2>
+    <blockquote>„Najdroższe błędy w łazience często nie zaczynają się na płytkach. One zaczynają się wcześniej — w decyzjach podjętych bez pytań, w braku kontroli nad etapami prac i w zaufaniu ekipie bez sprawdzenia tego, czego później nie da się już zobaczyć.”</blockquote>
+    <p class="small">To tylko krótki przedsmak. Pełny raport otrzymujesz po zakupie.</p>
+  </div>
+</section>
+
+<!-- 5. CASE STUDY Z ANGLII -->
+<section class="case">
+  <div class="wrap">
+    <span class="flag">Prawdziwy przypadek &middot; Anglia</span>
+    <h2>Płytki odstawały. Problem był głębiej.</h2>
+    <p>Klient miał problem z odstającymi płytkami w strefie prysznicowej. Był przekonany, że remont wykonano prawidłowo, bo zaufał poprzedniej ekipie na słowo. Po demontażu wyszło coś innego:</p>
+    <ul class="findings">
+      <li>Płytki klejone na kleksy, a nie na pełną warstwę kleju.</li>
+      <li>Brak hydroizolacji — mimo wcześniejszych zapewnień ekipy.</li>
+      <li>Pęknięta fuga, przez którą woda wchodziła w ścianę.</li>
+    </ul>
+    <p class="punch">„Właśnie dlatego inwestor nie musi być fachowcem, ale powinien wiedzieć, jakie pytania zadać i czego nie ignorować.”</p>
+  </div>
+</section>
+
+<!-- 6. DLA KOGO JEST TEN RAPORT -->
+<section>
+  <div class="wrap">
+    <h2>Dla kogo jest ten raport?</h2>
+    <p style="margin-bottom:18px">Dla osoby, która:</p>
+    <ul class="benefits">
+      <li>planuje remont łazienki,</li>
+      <li>nie zna się na technicznych detalach,</li>
+      <li>boi się przepłacić,</li>
+      <li>nie wie, jak rozmawiać z ekipą,</li>
+      <li>chce uniknąć kosztownych błędów,</li>
+      <li>chce podejść do remontu bardziej świadomie.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. AUTOR -->
+<section class="author">
+  <div class="wrap">
+    <span class="eyebrow">Autor</span>
+    <div class="who" style="margin-top:16px">
+      <img class="ablogo" src="ab-logo.png" alt="Arkadiusz Bunkowski — logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="badge" aria-hidden="true" style="display:none">AB</div>
+      <div>
+        <span class="name">Arkadiusz Bunkowski</span>
+        <span class="role">Ekspert remontów łazienek</span>
+      </div>
+    </div>
+    <p>Ekspert remontów łazienek z ponad 20-letnią praktyką na budowach w Polsce, Anglii i Holandii. Twórca systemu <strong>Łazienka Na Lata&trade;</strong> — praktycznego podejścia do świadomego planowania i kontroli remontu łazienki.</p>
+  </div>
+</section>
+
+<!-- 8. OFERTA -->
+<section class="offer">
+  <div class="wrap">
+    <div class="box">
+      <span class="eyebrow">Produkt wejściowy</span>
+      <div class="name" style="margin-top:14px">Raport Inwestora — Łazienka Na Lata&trade;</div>
+      <div class="price-big">47&nbsp;<small>zł</small></div>
+      <p class="desc">To produkt wejściowy dla osób, które chcą mądrzej przygotować się do remontu łazienki, zanim zapłacą ekipie i podejmą kluczowe decyzje.</p>
+      <a class="cta" href="TU_WKLEJ_LINK_STRIPE">Kup raport <span class="price">&mdash; 47 zł</span></a>
+      <p class="guarantee">Wersja cyfrowa &middot; dostęp przesyłany po zakupie</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. POCZĄTEK WIĘKSZEJ ŚCIEŻKI -->
+<section class="path">
+  <div class="wrap">
+    <div class="card">
+      <span class="eyebrow">Kolejny krok</span>
+      <h2 style="margin-top:12px">To początek większej ścieżki</h2>
+      <p>Raport Inwestora jest pierwszym krokiem. Jeśli po jego przeczytaniu zechcesz przejść przez cały remont bardziej szczegółowo, naturalnym kolejnym etapem będzie <strong>System Inwestora Łazienka Na Lata&trade;</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <h2 style="margin-bottom:24px">Najczęstsze pytania</h2>
+    <details>
+      <summary>Czy raport zastępuje fachowca?</summary>
+      <p>Nie. Raport nie zastępuje projektu, oględzin na miejscu ani osoby z odpowiednimi uprawnieniami. Pomaga jednak inwestorowi lepiej przygotować się do rozmowy z ekipą i świadomie patrzeć na remont.</p>
+    </details>
+    <details>
+      <summary>Czy muszę znać się na budowlance?</summary>
+      <p>Nie. Raport jest napisany prostym językiem dla inwestora, nie dla fachowca.</p>
+    </details>
+    <details>
+      <summary>Czy raport jest dla mnie przed startem remontu?</summary>
+      <p>Tak. Największą wartość daje właśnie przed startem remontu — zanim zapadną decyzje i zanim wydasz pieniądze.</p>
+    </details>
+    <details>
+      <summary>Dlaczego ktoś mógł mi polecić ten raport?</summary>
+      <p>Najczęściej dlatego, że sam go przeczytał, dostał konkretną wartość i uznał, że może uchronić Cię przed kosztownymi błędami w Twoim remoncie.</p>
+    </details>
+  </div>
+</section>
+
+<!-- 11. KOŃCOWE CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Jeśli planujesz remont łazienki, nie wchodź w niego po omacku.</h2>
+    <p>Zacznij od raportu, który pomoże Ci zrozumieć, gdzie naprawdę kryją się ryzyka i o co warto zapytać, zanim wydasz pieniądze.</p>
+    <a class="cta" href="TU_WKLEJ_LINK_STRIPE">Kup Raport Inwestora <span class="price">&mdash; 47 zł</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="footmark" src="logo.png" alt="Łazienka Na Lata" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <div class="brand">Łazienka Na Lata&trade;</div>
+    <small>Arkadiusz Bunkowski — ekspert remontów łazienek.<br>Raport ma charakter informacyjny i nie zastępuje projektu, oględzin na miejscu ani osoby z odpowiednimi uprawnieniami.</small>
+  </div>
+</footer>
+
+</body>
+</html>
