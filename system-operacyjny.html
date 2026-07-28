@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>System Operacyjny Akademii Łazienka Na Lata™</title>
+<meta name="description" content="Prywatne centrum dowodzenia Akademii Łazienka Na Lata™.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.className += ' js';</script>
+<style>
+/* ============================================================
+   SYSTEM OPERACYJNY AKADEMII ŁAZIENKA NA LATA™
+   Warstwa 1: tokeny
+   ============================================================ */
+:root{
+  --void:#05080F;
+  --hull:#0A1420;
+  --navy:#0A1A2F;
+  --plate:#10202F;
+  --gold:#C9A961;
+  --gold-dim:#8A7440;
+  --cream:#F7F3EC;
+  --steel:#7C8DA1;
+  --steel-dim:#4A5A6C;
+  --line:rgba(201,169,97,.16);
+  --line-soft:rgba(124,141,161,.14);
+
+  --ok:#4E9E7E;
+  --uwaga:#C9A961;
+  --stop:#C25B4E;
+
+  --glass:rgba(16,32,47,.62);
+  --glass-hi:rgba(20,40,58,.78);
+
+  --f-display:'Fraunces',Georgia,serif;
+  --f-ui:'Archivo',system-ui,-apple-system,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --rail:236px;
+  --panel:400px;
+  --head:62px;
+  --foot:38px;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--void);
+  color:var(--cream);
+  font-family:var(--f-ui);
+  font-size:15px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(1100px 700px at 50% 46%, rgba(18,44,68,.55), transparent 68%),
+    radial-gradient(700px 500px at 88% 6%, rgba(201,169,97,.06), transparent 70%);
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.4;
+  background-image:linear-gradient(rgba(124,141,161,.045) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(124,141,161,.045) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(closest-side at 50% 50%, #000 30%, transparent 100%);
+}
+::selection{background:rgba(201,169,97,.28)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:3px}
+
+/* ============================================================
+   Warstwa 2: szkielet
+   ============================================================ */
+.shell{
+  position:relative;z-index:2;
+  height:100%;
+  display:grid;
+  grid-template-columns:var(--rail) 1fr var(--panel);
+  grid-template-rows:var(--head) 1fr var(--foot);
+  grid-template-areas:
+    "head head head"
+    "rail map  panel"
+    "foot foot foot";
+}
+
+/* ---------- HEAD ---------- */
+.head{
+  grid-area:head;display:flex;align-items:center;gap:22px;
+  padding:0 22px;
+  border-bottom:1px solid var(--line-soft);
+  background:linear-gradient(180deg,rgba(10,26,47,.86),rgba(5,8,15,.55));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.mark{display:flex;align-items:center;gap:12px;min-width:0}
+.mark .sig{
+  width:30px;height:30px;flex:none;border-radius:8px;
+  border:1px solid var(--line);
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 40%,rgba(201,169,97,.22),transparent 70%);
+  font-family:var(--f-display);font-size:13px;color:var(--gold);letter-spacing:.04em;
+}
+.mark h1{
+  font-family:var(--f-display);font-weight:400;font-size:16px;letter-spacing:.005em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.mark h1 em{font-style:normal;color:var(--gold)}
+.head .clock{
+  font-family:var(--f-mono);font-size:11.5px;color:var(--steel);
+  letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
+}
+.head .spacer{flex:1}
+.kbtn{
+  display:flex;align-items:center;gap:9px;
+  height:34px;padding:0 12px;border-radius:9px;
+  background:rgba(124,141,161,.07);
+  border:1px solid var(--line-soft);
+  color:var(--steel);font-size:13px;font-family:var(--f-ui);
+  cursor:pointer;transition:all .18s var(--ease);white-space:nowrap;
+}
+.kbtn:hover{color:var(--cream);border-color:var(--line);background:rgba(201,169,97,.08)}
+.kbtn kbd{
+  font-family:var(--f-mono);font-size:10.5px;padding:2px 5px;border-radius:4px;
+  background:rgba(5,8,15,.7);border:1px solid var(--line-soft);color:var(--steel);
+}
+
+/* ---------- RAIL ---------- */
+.rail{
+  grid-area:rail;overflow-y:auto;
+  border-right:1px solid var(--line-soft);
+  padding:20px 14px 24px;
+  background:linear-gradient(180deg,rgba(10,20,32,.5),rgba(5,8,15,.2));
+}
+.eyebrow{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel-dim);margin-bottom:12px;
+}
+.dom{
+  width:100%;text-align:left;background:none;border:0;cursor:pointer;
+  padding:11px 12px;border-radius:10px;color:var(--cream);
+  display:block;margin-bottom:4px;
+  border-left:2px solid transparent;
+  transition:background .18s var(--ease),border-color .18s var(--ease);
+}
+.dom:hover{background:rgba(201,169,97,.07)}
+.dom[aria-current="true"]{background:rgba(201,169,97,.11);border-left-color:var(--gold)}
+.dom .dt{display:flex;align-items:baseline;gap:8px}
+.dom .dn{font-size:13.5px;font-weight:600;letter-spacing:.02em}
+.dom .dc{font-family:var(--f-mono);font-size:10.5px;color:var(--steel-dim);margin-left:auto}
+.dom .dd{font-size:11.5px;color:var(--steel);margin-top:3px;line-height:1.4}
+.rail .sep{height:1px;background:var(--line-soft);margin:20px 4px}
+
+.pulse{padding:0 12px}
+.pulse .row{display:flex;align-items:center;gap:9px;padding:6px 0;font-size:12px;color:var(--steel)}
+.pulse .row b{color:var(--cream);font-weight:600;font-family:var(--f-mono);font-size:12px}
+.dotm{width:7px;height:7px;border-radius:50%;flex:none}
+.dotm.ok{background:var(--ok);box-shadow:0 0 8px rgba(78,158,126,.6)}
+.dotm.uwaga{background:var(--uwaga);box-shadow:0 0 8px rgba(201,169,97,.6)}
+.dotm.stop{background:var(--stop);box-shadow:0 0 8px rgba(194,91,78,.6)}
+
+/* ---------- MAP ---------- */
+.map{grid-area:map;position:relative;overflow:hidden;display:grid;place-items:center}
+#core{width:100%;height:100%;max-height:100%;display:block}
+.hint{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel-dim);pointer-events:none;
+}
+
+/* SVG */
+.ring{fill:none;stroke:rgba(124,141,161,.13);stroke-width:1}
+.spoke{stroke:rgba(124,141,161,.16);stroke-width:1;transition:stroke .25s var(--ease)}
+.spoke.hot{stroke:rgba(201,169,97,.65)}
+.arc{fill:none;stroke-width:2.5;stroke-linecap:round;opacity:.55;transition:opacity .25s var(--ease)}
+.arc.hot{opacity:1}
+.domlabel{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;
+  fill:var(--steel-dim);text-transform:uppercase;
+}
+.node{cursor:pointer}
+.node .halo{fill:transparent;transition:fill .25s var(--ease)}
+.node .disc{
+  fill:rgba(10,26,47,.92);stroke:rgba(124,141,161,.3);stroke-width:1;
+  transition:stroke .25s var(--ease),fill .25s var(--ease);
+}
+.node .glyph{stroke:var(--steel);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s var(--ease)}
+.node .lbl{
+  font-family:var(--f-ui);font-size:12.5px;font-weight:600;fill:var(--steel);
+  transition:fill .25s var(--ease);
+}
+.node .st{width:6px;height:6px}
+.node:hover .disc,.node.sel .disc{stroke:var(--gold);fill:rgba(20,44,66,.96)}
+.node:hover .halo,.node.sel .halo{fill:rgba(201,169,97,.07)}
+.node:hover .glyph,.node.sel .glyph{stroke:var(--gold)}
+.node:hover .lbl,.node.sel .lbl{fill:var(--cream)}
+
+.corehex{fill:rgba(10,26,47,.9);stroke:var(--gold);stroke-width:1.2}
+.coreglow{fill:url(#cg)}
+.corering{fill:none;stroke:rgba(201,169,97,.35);stroke-width:1;stroke-dasharray:3 9}
+.coret1{font-family:var(--f-display);font-size:20px;fill:var(--cream);font-weight:400}
+.coret2{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.22em;fill:var(--gold);text-transform:uppercase}
+.coret3{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;fill:var(--steel-dim)}
+
+html.js .corering{animation:spin 90s linear infinite;transform-origin:500px 500px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- PANEL ---------- */
+.panel{
+  grid-area:panel;overflow-y:auto;
+  border-left:1px solid var(--line-soft);
+  background:linear-gradient(180deg,rgba(10,20,32,.55),rgba(5,8,15,.25));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:22px 20px 40px;
+}
+.pclose{display:none}
+.ptag{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--steel-dim);margin-bottom:10px;
+}
+.ptitle{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.15;margin-bottom:8px}
+.pwhen{
+  font-size:13px;color:var(--steel);line-height:1.55;
+  border-left:2px solid var(--line);padding-left:12px;margin:14px 0 18px;
+}
+.pwhen b{color:var(--gold);font-weight:600;display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;font-family:var(--f-mono)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;
+  padding:4px 9px;border-radius:6px;border:1px solid var(--line-soft);color:var(--steel);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.chip.ok{border-color:rgba(78,158,126,.4);color:var(--ok)}
+.chip.uwaga{border-color:rgba(201,169,97,.4);color:var(--uwaga)}
+.chip.stop{border-color:rgba(194,91,78,.45);color:var(--stop)}
+
+.sub{margin-top:6px}
+.sub h4{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel-dim);margin-bottom:10px;
+}
+.leaf{border-top:1px solid var(--line-soft)}
+.leaf:last-child{border-bottom:1px solid var(--line-soft)}
+.leaf>button{
+  width:100%;background:none;border:0;cursor:pointer;color:var(--cream);
+  display:flex;align-items:center;gap:10px;padding:12px 2px;text-align:left;
+  font-family:var(--f-ui);font-size:13.5px;transition:color .16s var(--ease);
+}
+.leaf>button:hover{color:var(--gold)}
+.leaf .arrow{margin-left:auto;color:var(--steel-dim);font-size:11px;transition:transform .22s var(--ease)}
+.leaf.open .arrow{transform:rotate(90deg)}
+.leaf .body{
+  display:none;padding:0 2px 14px 17px;font-size:13px;color:var(--steel);line-height:1.6;
+  border-left:1px solid var(--line-soft);margin-left:3px;
+}
+.leaf.open .body{display:block}
+.leaf .body ul{list-style:none;margin-top:8px}
+.leaf .body li{padding:4px 0 4px 14px;position:relative}
+.leaf .body li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:1px;background:var(--gold-dim)}
+
+/* DZIŚ */
+.today .metric{
+  display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px solid var(--line-soft);
+}
+.today .metric .k{font-size:13px;color:var(--steel);flex:1}
+.today .metric .v{font-family:var(--f-mono);font-size:14px;color:var(--cream)}
+.today .metric .v.warn{color:var(--uwaga)}
+.gate{margin-top:8px}
+.gate .bar{height:3px;background:rgba(124,141,161,.16);border-radius:2px;overflow:hidden;margin-top:7px}
+.gate .bar i{display:block;height:100%;background:var(--gold);border-radius:2px}
+
+.capture{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.capture textarea{
+  width:100%;min-height:74px;resize:vertical;
+  background:rgba(5,8,15,.55);border:1px solid var(--line-soft);border-radius:9px;
+  color:var(--cream);font-family:var(--f-ui);font-size:13.5px;padding:11px 12px;line-height:1.5;
+}
+.capture textarea::placeholder{color:var(--steel-dim)}
+.capture textarea:focus{border-color:var(--gold);outline:none}
+.crow{display:flex;gap:8px;margin-top:9px}
+.btn{
+  flex:1;height:36px;border-radius:9px;cursor:pointer;font-family:var(--f-ui);
+  font-size:12.5px;font-weight:600;letter-spacing:.02em;transition:all .18s var(--ease);
+}
+.btn.pri{background:var(--gold);color:#0A1420;border:1px solid var(--gold)}
+.btn.pri:hover{background:#DBBB74}
+.btn.sec{background:transparent;color:var(--steel);border:1px solid var(--line-soft)}
+.btn.sec:hover{color:var(--cream);border-color:var(--line)}
+.log{margin-top:14px;max-height:190px;overflow-y:auto}
+.log .it{padding:9px 0;border-top:1px solid var(--line-soft);font-size:12.5px;color:var(--steel);line-height:1.5}
+.log .it time{display:block;font-family:var(--f-mono);font-size:9.5px;color:var(--steel-dim);letter-spacing:.08em;margin-bottom:3px}
+.empty{font-size:12.5px;color:var(--steel-dim);font-style:italic;padding:10px 0}
+
+/* ---------- FOOT ---------- */
+.foot{
+  grid-area:foot;display:flex;align-items:center;gap:18px;padding:0 22px;
+  border-top:1px solid var(--line-soft);background:rgba(5,8,15,.7);
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--steel-dim);overflow:hidden;white-space:nowrap;
+}
+.foot .fi{display:flex;align-items:center;gap:7px}
+.foot .fi b{color:var(--steel);font-weight:500}
+.foot .push{margin-left:auto}
+
+/* ---------- PALETA ---------- */
+.scrim{
+  position:fixed;inset:0;z-index:50;background:rgba(5,8,15,.72);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:none;align-items:flex-start;justify-content:center;padding:11vh 18px 18px;
+}
+.scrim.on{display:flex}
+.pal{
+  width:100%;max-width:600px;max-height:70vh;display:flex;flex-direction:column;
+  background:var(--glass-hi);border:1px solid var(--line);border-radius:15px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);overflow:hidden;
+}
+.pal input{
+  width:100%;background:none;border:0;border-bottom:1px solid var(--line-soft);
+  padding:17px 19px;color:var(--cream);font-family:var(--f-ui);font-size:16px;
+}
+.pal input:focus{outline:none}
+.pal input::placeholder{color:var(--steel-dim)}
+.res{overflow-y:auto;padding:7px}
+.res .r{
+  display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:9px;cursor:pointer;
+}
+.res .r[aria-selected="true"]{background:rgba(201,169,97,.13)}
+.res .r .rn{font-size:13.5px;color:var(--cream)}
+.res .r .rp{font-family:var(--f-mono);font-size:10px;color:var(--steel-dim);letter-spacing:.08em;text-transform:uppercase}
+.res .r .rr{margin-left:auto;font-family:var(--f-mono);font-size:10px;color:var(--steel-dim)}
+
+/* ---------- MOBILE / TABLET ---------- */
+.mstack{display:none}
+.mhero{display:none}
+
+@media (max-width:1180px){
+  :root{--rail:0px;--panel:360px}
+  .rail{display:none}
+  .shell{grid-template-columns:1fr var(--panel)}
+  .shell{grid-template-areas:"head head" "map panel" "foot foot"}
+}
+
+@media (max-width:860px){
+  body{overflow:auto}
+  .shell{
+    display:block;height:auto;min-height:100%;
+  }
+  .head{
+    position:sticky;top:0;z-index:20;height:56px;padding:0 15px;gap:12px;
+  }
+  .head .clock{display:none}
+  .map{display:none}
+  .foot{display:none}
+
+  .mhero{
+    display:block;padding:26px 18px 20px;text-align:center;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .mhero .ck{
+    width:78px;height:78px;margin:0 auto 16px;border-radius:50%;
+    border:1px solid var(--line);display:grid;place-items:center;
+    background:radial-gradient(circle at 50% 40%,rgba(201,169,97,.16),transparent 72%);
+    font-family:var(--f-display);font-size:24px;color:var(--gold);
+  }
+  .mhero h2{font-family:var(--f-display);font-weight:400;font-size:21px;line-height:1.2;margin-bottom:8px}
+  .mhero p{font-size:13px;color:var(--steel);line-height:1.5;max-width:34ch;margin:0 auto}
+  .mhero .st{
+    display:inline-flex;gap:8px;margin-top:15px;font-family:var(--f-mono);font-size:10.5px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--steel-dim);
+  }
+
+  .mstack{display:block;padding:8px 14px 30px}
+  .mdom{margin-top:18px}
+  .mdom>.dh{
+    display:flex;align-items:center;gap:9px;padding:0 4px 9px;
+    font-family:var(--f-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-dim);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .mdom>.dh span{margin-left:auto}
+  .mcard{
+    width:100%;text-align:left;background:var(--glass);border:1px solid var(--line-soft);
+    border-radius:12px;padding:14px;margin-top:9px;cursor:pointer;color:var(--cream);
+    display:flex;align-items:flex-start;gap:12px;
+  }
+  .mcard .mg{width:20px;height:20px;flex:none;margin-top:2px}
+  .mcard .mg svg{width:20px;height:20px}
+  .mcard .mn{font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .mcard .md{font-size:12.5px;color:var(--steel);margin-top:4px;line-height:1.45}
+
+  /* panel = arkusz */
+  .panel{
+    position:fixed;inset:0;z-index:60;display:none;
+    padding:18px 18px 40px;border-left:0;
+    background:linear-gradient(180deg,rgba(10,26,47,.99),rgba(5,8,15,.99));
+    overflow-y:auto;
+  }
+  .panel.on{display:block}
+  .pclose{
+    display:flex;align-items:center;gap:8px;background:none;border:0;color:var(--steel);
+    font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    cursor:pointer;padding:4px 0;margin-bottom:16px;
+  }
+  .ptitle{font-size:23px}
+  .scrim{padding:8vh 14px 14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="head">
+    <div class="mark">
+      <div class="sig">AB</div>
+      <h1>System Operacyjny <em>Akademii Łazienka Na Lata™</em></h1>
+    </div>
+    <div class="clock" id="clock">—</div>
+    <div class="spacer"></div>
+    <button class="kbtn" id="openPal" aria-label="Otwórz wyszukiwanie">
+      Szukaj w systemie <kbd>⌘K</kbd>
+    </button>
+  </header>
+
+  <!-- MOBILE HERO -->
+  <section class="mhero">
+    <div class="ck">◉</div>
+    <h2>Centrum dowodzenia Akademii</h2>
+    <p>Dwanaście modułów w czterech domenach. Zacznij od tego, co świeci na żółto.</p>
+    <div class="st" id="mstat">—</div>
+  </section>
+
+  <nav class="rail" aria-label="Domeny systemu">
+    <div class="eyebrow">Domeny</div>
+    <div id="domList"></div>
+    <div class="sep"></div>
+    <div class="eyebrow" style="padding:0 12px">Stan systemu</div>
+    <div class="pulse" id="pulse"></div>
+  </nav>
+
+  <main class="map" aria-label="Mapa systemu">
+    <svg id="core" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa orbitalna modułów systemu"></svg>
+    <div class="hint">Kliknij moduł, aby rozwinąć jego strukturę</div>
+  </main>
+
+  <aside class="panel" id="panel" aria-live="polite"></aside>
+
+  <footer class="foot">
+    <div class="fi">Akademia Łazienka Na Lata™ · <b>Kontroler Inwestorski™</b></div>
+    <div class="fi">Wersja systemu <b>1.0</b></div>
+    <div class="fi push" id="footStat">—</div>
+  </footer>
+
+</div>
+
+<!-- PALETA POLECEŃ -->
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-label="Wyszukiwanie w systemie">
+  <div class="pal">
+    <input id="palInput" type="text" placeholder="Wpisz moduł, element albo słowo kluczowe…" autocomplete="off" spellcheck="false">
+    <div class="res" id="palRes" role="listbox"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   WARSTWA DANYCH — jedyne miejsce, które edytujesz przy rozwoju.
+   Zasada: treść systemu jest obiektem danych, interfejs jest tylko
+   wykonawcą. Nowy moduł = nowy wpis. Nowa domena = nowy wpis.
+   Statusy: 'ok' | 'uwaga' | 'stop'
+   ============================================================ */
+
+const G = { /* glify — ścieżki SVG w siatce 24x24 */
+  doc:'M6 3h8l4 4v14H6z M14 3v4h4',
+  map:'M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3z M9 4v13 M15 7v13',
+  law:'M12 3v18 M5 8h14 M5 8l-2 6h4z M19 8l2 6h-4z',
+  tower:'M12 3v18 M7 21h10 M6 8l6-4 6 4 M9 12h6',
+  ctx:'M4 6h16v12H4z M4 10h16 M8 14h8',
+  dec:'M12 4l7 4v8l-7 4-7-4V8z M9 12l2 2 4-4',
+  know:'M12 3l9 5-9 5-9-5z M3 13l9 5 9-5 M3 16l9 5 9-5',
+  case:'M4 7h16v13H4z M9 7V4h6v3 M4 12h16',
+  proc:'M5 4h14v16H5z M9 9h6 M9 13h6 M9 17h3',
+  prod:'M3 8l9-4 9 4v8l-9 4-9-4z M3 8l9 4 9-4 M12 12v8',
+  mkt:'M4 18V9 M10 18V5 M16 18v-7 M22 18V3',
+  diary:'M5 4h13v16H5z M5 4a2 2 0 000 4h13 M9 12h7'
+};
+
+const SYSTEM = {
+  domains:[
+    { id:'fundament', name:'Fundament', desc:'To, co się nie zmienia. Punkt odniesienia dla każdej decyzji.' },
+    { id:'pamiec',    name:'Pamięć',    desc:'To, co wiemy. Kontekst, decyzje, wiedza techniczna, dowody.' },
+    { id:'operacje',  name:'Operacje',  desc:'To, jak działamy. Metryki, standardy, dziennik pracy.' },
+    { id:'rynek',     name:'Rynek',     desc:'To, co sprzedajemy i jak docieramy do inwestora.' }
+  ],
+  modules:[
+    /* ---------- FUNDAMENT ---------- */
+    { id:'dokument-0', dom:'fundament', name:'Dokument 0', glyph:G.doc, status:'ok', updated:'2026-07-08',
+      lead:'Jedno zdanie, po co Akademia istnieje. Nadrzędny nad wszystkim innym.',
+      when:'Kiedy pojawia się nowy pomysł i nie wiesz, czy w ogóle należy do tego biznesu.',
+      children:[
+        { n:'Misja', b:'Inwestor ma zobaczyć błąd, zanim zostanie zalany klejem i zakryty płytką na 15 lat.' },
+        { n:'Kategoria', b:'Kontroler Inwestorski™ — ekspert po stronie inwestora, w trakcie remontu, w skali łazienki.', l:['Nie wykonawca','Nie rzeczoznawca po szkodzie','Nie inspektor nadzoru budowlanego'] },
+        { n:'Kto to jest inwestor', b:'Osoba prywatna remontująca łazienkę, która płaci wykonawcy i nie ma jak sprawdzić, czy dostaje to, za co płaci.' },
+        { n:'Czego nie robimy', b:'Nie wykonujemy remontów. Nie polecamy konkretnych ekip. Nie wydajemy opinii sądowych.' }
+      ] },
+    { id:'mapa-systemu', dom:'fundament', name:'Mapa Systemu', glyph:G.map, status:'ok', updated:'2026-07-28',
+      lead:'Spis wszystkich modułów i zależności między nimi. Ten ekran jest jej żywą wersją.',
+      when:'Kiedy wracasz po przerwie i nie pamiętasz, gdzie co leży.',
+      children:[
+        { n:'Cztery domeny', b:'Fundament → Pamięć → Operacje → Rynek. Kolejność zgodna z ruchem wskazówek zegara na mapie.' },
+        { n:'Zasada dodawania modułu', b:'Nowy moduł zawsze wchodzi do istniejącej domeny. Nowa domena wymaga decyzji zapisanej w MASTER DECISIONS™.' },
+        { n:'Adresowalność', b:'Każdy moduł ma własny adres w URL. Możesz go wkleić w notatkę, zadanie albo wiadomość.' }
+      ] },
+    { id:'konstytucja', dom:'fundament', name:'Konstytucja', glyph:G.law, status:'uwaga', updated:'2026-07-14',
+      lead:'Zasady, których nie łamiesz nawet pod presją terminu albo pieniędzy.',
+      when:'Kiedy kusi Cię skrót, który da szybki wynik kosztem wiarygodności.',
+      children:[
+        { n:'Prawda przed estetyką', b:'Tylko prawdziwe zdjęcia z budowy. Wizerunki generowane przez AI są zakazane w komunikacji Akademii.' },
+        { n:'Priorytet sprzedaży', b:'Nowy materiał strategiczny powstaje dopiero wtedy, gdy bieżąca bramka sprzedażowa jest domknięta.', l:['Wyjątek 28.07.2026: budowa Systemu Operacyjnego — świadoma, jednorazowa decyzja właściciela'] },
+        { n:'Schemat wypowiedzi eksperckiej', b:'Uczciwe zastrzeżenie → konkretne liczby → test praktyczny → prośba o dane.' },
+        { n:'Higiena obecności', b:'Ta sama treść maksymalnie raz na 3–4 tygodnie w tym samym miejscu.' },
+        { n:'Granica kompetencji', b:'Nie orzekasz o tym, czego nie widziałeś. Brak danych mówisz wprost.' }
+      ] },
+
+    /* ---------- PAMIĘĆ ---------- */
+    { id:'master-context', dom:'pamiec', name:'MASTER CONTEXT™', glyph:G.ctx, status:'ok', updated:'2026-07-20',
+      lead:'Aktualny stan rzeczy: co istnieje, co działa, co jest w budowie.',
+      when:'Kiedy zaczynasz sesję pracy i musisz w minutę odtworzyć, gdzie jesteś.',
+      children:[
+        { n:'Stan firmy', b:'Działalność jednoosobowa, Grudziądz. Sprzedaż online przez linki płatności, dostawa ręczna.' },
+        { n:'Zasoby', b:'20 lat praktyki remontowej w Polsce, Wielkiej Brytanii i Holandii. Archiwum zdjęć z budów.' },
+        { n:'Kanały', b:'Facebook — profil i grupy remontowe. Strony na GitHub Pages. Messenger jako kanał sprzedaży.' },
+        { n:'Wąskie gardło', b:'Brak zweryfikowanego, powtarzalnego kanału pozyskiwania płacących klientów.' }
+      ] },
+    { id:'master-decisions', dom:'pamiec', name:'MASTER DECISIONS™', glyph:G.dec, status:'ok', updated:'2026-07-28',
+      lead:'Rejestr decyzji z datą i uzasadnieniem. Chroni przed rozstrzyganiem tej samej sprawy po raz trzeci.',
+      when:'Kiedy wracasz do tematu, który już kiedyś zamknąłeś, i nie pamiętasz dlaczego.',
+      children:[
+        { n:'Format wpisu', b:'Data · decyzja · alternatywy odrzucone · powód · warunek rewizji.' },
+        { n:'Audyt na Miejscu™', b:'Nazwa wybrana po analizie architektury marki: symetria z Audytem Wideo, zerowy koszt edukacji rynku.' },
+        { n:'Wix odłożony', b:'Sklep Wix wstrzymany. Linki płatności plus ręczna dostawa wystarczą do pierwszych sprzedaży.' },
+        { n:'Schemat wiedzy zamrożony', b:'Struktura atomu MASTER KNOWLEDGE™ nie podlega zmianom do odwołania.' },
+        { n:'Wyjątek 28.07.2026', b:'Budowa Systemu Operacyjnego przed domknięciem bramki sprzedażowej. Świadomy, jednorazowy wyjątek. Po zakończeniu powrót do priorytetu sprzedaży.' }
+      ] },
+    { id:'master-knowledge', dom:'pamiec', name:'MASTER KNOWLEDGE™', glyph:G.know, status:'ok', updated:'2026-07-22',
+      lead:'Repozytorium wiedzy technicznej w atomach. Fundament, którego konkurencja nie skopiuje.',
+      when:'Kiedy potrzebujesz twardej podstawy pod werdykt, artykuł albo odpowiedź klientowi.',
+      children:[
+        { n:'Struktura', b:'12 domen tematycznych. Atom to plik YAML z opisem w Markdown, wersjonowany w Git.' },
+        { n:'Relacje', b:'Pięć typów powiązań między atomami.', l:['WYKRYWA','POWODUJE','SYGNALIZUJE','WYMAGA','BLOKUJE'] },
+        { n:'Walidacja', b:'Walidator w Pythonie, 16 reguł, z czego 12 blokuje zapis przy błędzie.' },
+        { n:'Tempo', b:'2–4 zweryfikowane atomy tygodniowo. Tempo ważniejsze niż zryw.' },
+        { n:'Atom pilotażowy', b:'LNL-OGL-HST-001 — przypadek Greenford.' }
+      ] },
+    { id:'case-study', dom:'pamiec', name:'Biblioteka Case Study™', glyph:G.case, status:'uwaga', updated:'2026-07-13',
+      lead:'Udokumentowane przypadki z budowy. Dowód, że wiedza pochodzi z ręki, nie z internetu.',
+      when:'Kiedy piszesz post, ofertę albo odpowiadasz na „skąd Pan to wie".',
+      children:[
+        { n:'Greenford, Wielka Brytania', b:'Zbutwiała konstrukcja pod idealnie wyglądającymi płytkami. Brak hydroizolacji, klej nakładany punktowo.', l:['Główna narracja marki','14 150+ wyświetleń w grupach, lipiec 2026','Wygenerował lead: Emilio'] },
+        { n:'Luka do uzupełnienia', b:'Jeden przypadek to za mało na bibliotekę. Docelowo minimum pięć udokumentowanych, z różnych krajów i różnych typów błędu.' },
+        { n:'Format przypadku', b:'Objaw widoczny dla inwestora → co było pod spodem → co należało zrobić → jak to sprawdzić przed zakryciem.' }
+      ] },
+
+    /* ---------- OPERACJE ---------- */
+    { id:'control-tower', dom:'operacje', name:'Control Tower', glyph:G.tower, status:'uwaga', updated:'2026-07-28',
+      lead:'Liczby, które decydują. Pięć metryk i bramki, które odblokowują kolejny etap.',
+      when:'Codziennie rano. To jest pierwszy moduł dnia.',
+      children:[
+        { n:'Pięć metryk', b:'Sprzedaże w tygodniu · zapisy na listę · rozmowy sprzedażowe · nowe atomy wiedzy · publikacje.' },
+        { n:'Bramka bieżąca', b:'10 sprzedaży Systemu Inwestora™ oraz 300 adresów e-mail. Do czasu jej domknięcia nie zaczynasz nowego dużego projektu.' },
+        { n:'Rytm', b:'Rano zbiór komentarzy, wieczorem jedno działanie sprzedażowe, o 20:00 wpis statusowy.' },
+        { n:'Wzorzec do pilnowania', b:'Zarządzanie komentarzami zamiast budowania infrastruktury sprzedaży. Jeśli wracasz do niego trzeci dzień z rzędu — to nie jest praca, to unik.' }
+      ] },
+    { id:'standardy', dom:'operacje', name:'Standardy i Procedury™', glyph:G.proc, status:'ok', updated:'2026-07-16',
+      lead:'Powtarzalne sposoby wykonania. To, co pozwoli kiedyś przekazać robotę komuś innemu.',
+      when:'Kiedy robisz coś po raz drugi. Wtedy powstaje procedura.',
+      children:[
+        { n:'Procedura Audytu Wideo', b:'Przyjęcie zgłoszenia → lista wymaganych ujęć → analiza → werdykt → raport → rozmowa domykająca.' },
+        { n:'Siedem bramek kontroli', b:'Silnik Agenta STOP™ wydaje werdykt OK / UWAGA / STOP na podstawie reguł, nie na podstawie modelu językowego.' },
+        { n:'Zasada architektury', b:'Wiedza jest obiektem danych, silnik czystym wykonawcą, model językowy wyłącznie warstwą języka. AI nigdy nie wydaje werdyktu.' },
+        { n:'Lekcja techniczna', b:'Animacje ukrywające treść przez opacity:0 muszą być zależne od klasy dodanej przez JavaScript. Inaczej przy błędzie skryptu strona jest pusta.' }
+      ] },
+    { id:'dziennik', dom:'operacje', name:'Dziennik Właściciela™', glyph:G.diary, status:'ok', updated:'2026-07-28',
+      lead:'Zapis pracy i obserwacji. Miejsce na to, co przyszło do głowy w trakcie, a nie ma jeszcze swojego modułu.',
+      when:'Na końcu dnia. Trzy zdania wystarczą.',
+      children:[
+        { n:'Co zapisujesz', b:'Co zrobione. Co zablokowane. Jedno zdanie od klienta, dosłownie.' },
+        { n:'Cytat z pola', b:'Cytaty inwestorów są surowcem na nagłówki i oferty. Zapisuj dosłownie, nie streszczaj.' },
+        { n:'Szybki wpis', b:'Pole na dole panelu startowego. Wpisy z sesji pobierzesz jako plik Markdown.' }
+      ] },
+
+    /* ---------- RYNEK ---------- */
+    { id:'produkty', dom:'rynek', name:'Produkty Akademii™', glyph:G.prod, status:'stop', updated:'2026-07-28',
+      lead:'Drabina wartości od materiału bezpłatnego do audytu na miejscu.',
+      when:'Kiedy klient pyta „ile to kosztuje" albo kiedy planujesz kolejny krok w ofercie.',
+      children:[
+        { n:'Checklista Inwestora™ — bezpłatna', b:'Materiał wejściowy. Pięć pytań, które inwestor zadaje przed położeniem płytek.' },
+        { n:'Agent STOP Przed Płytkami™ — bezpłatny', b:'Aplikacja z siedmioma bramkami kontroli. Zbiera adres e-mail i prowadzi do Systemu Inwestora.' },
+        { n:'Raport Inwestora™ — 47 zł', b:'TRIPWIRE. Pierwszy próg płatny — zamienia czytelnika w klienta. Mini-poradnik PDF, 8 rozdziałów plus dylatacje. Płatność aktywna.', l:['Rola w drabinie: przełamanie bariery pierwszej transakcji','Kupujący tutaj to jedyna sensowna grupa na ofertę Systemu Inwestora','Do zrobienia: oferta Systemu 197 zł na stronie podziękowania po zakupie'] },
+        { n:'System Inwestora™ — 197 zł', b:'Przewodnik z punktami kontrolnymi i pytaniami do wykonawcy. Płatność aktywna.' },
+        { n:'Audyt Wideo Łazienki™ — 397 / 597 zł', b:'BLOKADA: link płatności to nadal placeholder. Klient nie ma jak zapłacić, nawet jeśli chce.', l:['Do zrobienia: utworzyć link płatności 397 zł','Do zrobienia: uzupełnić 13 parametrów na stronie sprzedażowej','Do zrobienia: podmienić 3 odnośniki do sklepu'] },
+        { n:'Audyt na Miejscu™', b:'Usługa na miejscu, kwalifikacja przez formularz. Najwyższy poziom drabiny.' }
+      ] },
+    { id:'marketing', dom:'rynek', name:'Marketing i Sprzedaż™', glyph:G.mkt, status:'stop', updated:'2026-07-28',
+      lead:'Skąd przychodzą ludzie i co się z nimi dzieje dalej.',
+      when:'Rano przy zbiorze komentarzy i wieczorem przy jednym działaniu sprzedażowym.',
+      children:[
+        { n:'Lead oczekujący: Emilio', b:'PILNE: napisał na Messengerze. Objawy: pękające fugi, woda spod brodzika, dwie ściany zewnętrzne z problemem hydroizolacji, płytki zmieniają kolor. Kwalifikuje się na Audyt Wideo.', l:['Sprawdzić zakładkę Prośby o wiadomość','Wysłać link płatności — po jego utworzeniu'] },
+        { n:'Kanał: grupy remontowe', b:'Kilka dużych polskich grup. Post o Greenford dał ponad 14 150 wyświetleń.', l:['Grupy nowe — tydzień obserwacji, wyłącznie komentarze pomocowe','Bez autopromocji w pierwszym tygodniu'] },
+        { n:'Lejek', b:'Materiał bezpłatny → tripwire 47 zł → System Inwestora 197 zł → Audyt Wideo 397 zł → Audyt na Miejscu.', l:['Próg 47 zł jest najważniejszym pomiarem lejka — pokazuje, czy ludzie w ogóle płacą','Bez niego skaczesz z zera na 197 zł i nie wiesz, gdzie tracisz'] },
+        { n:'Luka', b:'Brak sekwencji e-mail po pobraniu materiału bezpłatnego. Adresy zbierane, kontakt nie kontynuowany.' },
+        { n:'Frazy własne', b:'„Fuszerka nie ma paszportu". „Na budowie trzeba stać, nie promptować".' }
+      ] }
+  ],
+  /* Panel startowy */
+  today:{
+    focus:'Utwórz link płatności do Audytu Wideo. Bez niego rozmowa z Emiliem nie ma jak się zamknąć.',
+    metrics:[
+      { k:'Sprzedaże Systemu Inwestora™', v:'0 / 10', warn:true },
+      { k:'Adresy e-mail', v:'0 / 300', warn:true },
+      { k:'Leady oczekujące na odpowiedź', v:'1', warn:true },
+      { k:'Atomy wiedzy w tym tygodniu', v:'1 / 3', warn:false },
+      { k:'Zasięg posta Greenford', v:'14 150+', warn:false }
+    ],
+    gates:[
+      { n:'Bramka sprzedażowa', p:0, d:'10 sprzedaży Systemu Inwestora™' },
+      { n:'Bramka listy', p:0, d:'300 adresów e-mail' }
+    ]
+  }
+};
+
+/* ============================================================
+   WARSTWA WIDOKU
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const el = (t,c) => { const n=document.createElement(t); if(c) n.className=c; return n; };
+const esc = s => String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+
+const modsOf = d => SYSTEM.modules.filter(m => m.dom === d);
+const RANK = { ok:0, uwaga:1, stop:2 };
+const worst = list => list.reduce((a,m) => RANK[m.status] > RANK[a] ? m.status : a, 'ok');
+const COL = { ok:'#4E9E7E', uwaga:'#C9A961', stop:'#C25B4E' };
+const LABEL = { ok:'OK', uwaga:'UWAGA', stop:'STOP' };
+
+let selected = null;
+
+/* ---------- zegar ---------- */
+function tick(){
+  const d = new Date();
+  const days = ['niedziela','poniedziałek','wtorek','środa','czwartek','piątek','sobota'];
+  const mo = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
+  const p = n => String(n).padStart(2,'0');
+  $('#clock').textContent = `${days[d.getDay()]} · ${d.getDate()} ${mo[d.getMonth()]} ${d.getFullYear()} · ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+tick(); setInterval(tick, 20000);
+
+/* ---------- mapa orbitalna ----------
+   Pozycje wyliczane, nie wpisane na sztywno. Dodanie modułu
+   automatycznie rozkłada węzły w obrębie sektora domeny. */
+const SV = { cx:500, cy:500, rNode:352, rArc:262, rLabel:214, span:74 };
+const pt = (r,deg) => {
+  const a = (deg - 90) * Math.PI / 180;
+  return [SV.cx + r*Math.cos(a), SV.cy + r*Math.sin(a)];
+};
+
+function buildMap(){
+  const svg = $('#core');
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (t,attrs) => { const n=document.createElementNS(NS,t); for(const k in attrs) n.setAttribute(k,attrs[k]); return n; };
+  svg.innerHTML = '';
+
+  const defs = mk('defs');
+  defs.innerHTML = '<radialGradient id="cg"><stop offset="0%" stop-color="rgba(201,169,97,.22)"/><stop offset="100%" stop-color="rgba(201,169,97,0)"/></radialGradient>';
+  svg.appendChild(defs);
+
+  svg.appendChild(mk('circle',{class:'ring',cx:SV.cx,cy:SV.cy,r:SV.rNode}));
+  svg.appendChild(mk('circle',{class:'ring',cx:SV.cx,cy:SV.cy,r:SV.rArc}));
+
+  SYSTEM.domains.forEach((dom,di) => {
+    const center = di * 90;
+    const list = modsOf(dom.id);
+    const st = worst(list);
+
+    // łuk domeny
+    const a0 = center - SV.span/2, a1 = center + SV.span/2;
+    const [x0,y0] = pt(SV.rArc,a0), [x1,y1] = pt(SV.rArc,a1);
+    const arc = mk('path',{
+      class:'arc', 'data-dom':dom.id, stroke:COL[st],
+      d:`M ${x0} ${y0} A ${SV.rArc} ${SV.rArc} 0 0 1 ${x1} ${y1}`
+    });
+    svg.appendChild(arc);
+
+    // etykieta domeny
+    const [lx,ly] = pt(SV.rLabel,center);
+    const t = mk('text',{class:'domlabel',x:lx,y:ly,'text-anchor':'middle','dominant-baseline':'middle'});
+    t.textContent = dom.name.toUpperCase();
+    svg.appendChild(t);
+
+    // węzły
+    const n = list.length;
+    list.forEach((m,i) => {
+      const step = n > 1 ? SV.span / (n - 1) : 0;
+      const ang = n > 1 ? center - SV.span/2 + i*step : center;
+      const [ax,ay] = pt(SV.rArc,ang);
+      const [nx,ny] = pt(SV.rNode,ang);
+      const [ix,iy] = pt(140,ang);
+
+      svg.appendChild(mk('line',{class:'spoke','data-id':m.id,x1:ix,y1:iy,x2:ax,y2:ay}));
+      svg.appendChild(mk('line',{class:'spoke','data-id':m.id,x1:ax,y1:ay,x2:nx,y2:ny}));
+
+      const g = mk('g',{class:'node','data-id':m.id,tabindex:'0',role:'button','aria-label':m.name});
+      g.appendChild(mk('circle',{class:'halo',cx:nx,cy:ny,r:34}));
+      g.appendChild(mk('circle',{class:'disc',cx:nx,cy:ny,r:23}));
+
+      const gl = mk('path',{class:'glyph',d:m.glyph,transform:`translate(${nx-12},${ny-12})`});
+      g.appendChild(gl);
+
+      g.appendChild(mk('circle',{cx:nx+17,cy:ny-16,r:4,fill:COL[m.status]}));
+
+      // etykieta: na zewnątrz węzła, po właściwej stronie
+      const outward = Math.abs(((ang % 360) + 360) % 360 - 180) < 90; // dół
+      const side = pt(SV.rNode + 40, ang);
+      const anchorRight = side[0] > SV.cx + 12;
+      const anchorLeft  = side[0] < SV.cx - 12;
+      const lab = mk('text',{
+        class:'lbl', x:side[0], y:side[1] + (outward ? 5 : -2),
+        'text-anchor': anchorRight ? 'start' : anchorLeft ? 'end' : 'middle',
+        'dominant-baseline':'middle'
+      });
+      lab.textContent = m.name;
+      g.appendChild(lab);
+
+      g.addEventListener('click', () => open(m.id));
+      g.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(m.id); }});
+      g.addEventListener('mouseenter', () => hot(m.id,dom.id,true));
+      g.addEventListener('mouseleave', () => hot(m.id,dom.id,false));
+      g.addEventListener('focus', () => hot(m.id,dom.id,true));
+      g.addEventListener('blur', () => hot(m.id,dom.id,false));
+      svg.appendChild(g);
+    });
+  });
+
+  // rdzeń
+  const gcore = mk('g',{});
+  gcore.appendChild(mk('circle',{class:'coreglow',cx:SV.cx,cy:SV.cy,r:170}));
+  gcore.appendChild(mk('circle',{class:'corering',cx:SV.cx,cy:SV.cy,r:132}));
+  gcore.appendChild(mk('circle',{class:'corehex',cx:SV.cx,cy:SV.cy,r:105}));
+  const t1 = mk('text',{class:'coret2',x:SV.cx,y:SV.cy-42,'text-anchor':'middle'}); t1.textContent='System Operacyjny';
+  const t2 = mk('text',{class:'coret1',x:SV.cx,y:SV.cy-8,'text-anchor':'middle'}); t2.textContent='Akademia';
+  const t3 = mk('text',{class:'coret1',x:SV.cx,y:SV.cy+18,'text-anchor':'middle'}); t3.textContent='Łazienka Na Lata™';
+  const st = worst(SYSTEM.modules);
+  const t4 = mk('text',{class:'coret3',x:SV.cx,y:SV.cy+52,'text-anchor':'middle',fill:COL[st]});
+  t4.textContent = `STAN: ${LABEL[st]}`;
+  [t1,t2,t3,t4].forEach(n => gcore.appendChild(n));
+  gcore.style.cursor='pointer';
+  gcore.addEventListener('click', () => open(null));
+  svg.appendChild(gcore);
+}
+
+function hot(id,dom,on){
+  document.querySelectorAll(`.spoke[data-id="${id}"]`).forEach(s => s.classList.toggle('hot',on));
+  const a = document.querySelector(`.arc[data-dom="${dom}"]`);
+  if(a) a.classList.toggle('hot',on);
+}
+
+/* ---------- rail ---------- */
+function buildRail(){
+  const host = $('#domList'); host.innerHTML = '';
+  SYSTEM.domains.forEach(d => {
+    const list = modsOf(d.id);
+    const b = el('button','dom');
+    b.dataset.dom = d.id;
+    b.innerHTML = `<span class="dt"><span class="dn">${esc(d.name)}</span>
+      <span class="dc">${list.length}</span></span>
+      <span class="dd">${esc(d.desc)}</span>`;
+    b.addEventListener('click', () => open(list[0].id));
+    b.addEventListener('mouseenter', () => { const a=document.querySelector(`.arc[data-dom="${d.id}"]`); if(a) a.classList.add('hot'); });
+    b.addEventListener('mouseleave', () => { const a=document.querySelector(`.arc[data-dom="${d.id}"]`); if(a) a.classList.remove('hot'); });
+    host.appendChild(b);
+  });
+
+  const p = $('#pulse'); p.innerHTML='';
+  ['stop','uwaga','ok'].forEach(s => {
+    const n = SYSTEM.modules.filter(m => m.status===s).length;
+    const r = el('div','row');
+    r.innerHTML = `<i class="dotm ${s}"></i>${esc(LABEL[s])}<b style="margin-left:auto">${n}</b>`;
+    p.appendChild(r);
+  });
+}
+
+/* ---------- pasek stanu ---------- */
+function buildStat(){
+  const stop = SYSTEM.modules.filter(m=>m.status==='stop');
+  const uw = SYSTEM.modules.filter(m=>m.status==='uwaga');
+  const txt = stop.length
+    ? `${stop.length} moduł(y) wymagają działania · ${uw.length} do przeglądu`
+    : `Wszystko w normie · ${uw.length} do przeglądu`;
+  $('#footStat').innerHTML = `<b>${esc(txt)}</b>`;
+  $('#mstat').innerHTML =
+    `<span><i class="dotm stop" style="display:inline-block;margin-right:5px"></i>${stop.length}</span>
+     <span><i class="dotm uwaga" style="display:inline-block;margin-right:5px"></i>${uw.length}</span>
+     <span><i class="dotm ok" style="display:inline-block;margin-right:5px"></i>${SYSTEM.modules.filter(m=>m.status==='ok').length}</span>`;
+}
+
+/* ---------- stos mobilny ---------- */
+function buildStack(){
+  const host = el('div','mstack');
+  SYSTEM.domains.forEach(d => {
+    const list = modsOf(d.id);
+    const wrap = el('section','mdom');
+    const h = el('div','dh');
+    h.innerHTML = `<i class="dotm ${worst(list)}"></i>${esc(d.name)}<span>${list.length}</span>`;
+    wrap.appendChild(h);
+    list.forEach(m => {
+      const c = el('button','mcard');
+      c.innerHTML = `<span class="mg"><svg viewBox="0 0 24 24"><path d="${m.glyph}" fill="none" stroke="${COL[m.status]}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span style="min-width:0"><span class="mn">${esc(m.name)}<i class="dotm ${m.status}"></i></span>
+        <span class="md">${esc(m.lead)}</span></span>`;
+      c.addEventListener('click', () => open(m.id));
+      wrap.appendChild(c);
+    });
+    host.appendChild(wrap);
+  });
+  $('.mhero').after(host);
+}
+
+/* ---------- panel ---------- */
+function open(id){
+  selected = id;
+  document.querySelectorAll('.node').forEach(n => n.classList.toggle('sel', n.dataset.id===id));
+  document.querySelectorAll('.dom').forEach(b => {
+    const m = SYSTEM.modules.find(x=>x.id===id);
+    b.setAttribute('aria-current', String(!!m && m.dom===b.dataset.dom));
+  });
+  location.hash = id ? '#/modul/'+id : '#/dzis';
+  renderPanel();
+  const p = $('#panel');
+  p.classList.add('on');
+  p.scrollTop = 0;
+}
+
+function closeSheet(){ $('#panel').classList.remove('on'); }
+
+function renderPanel(){
+  const p = $('#panel');
+  const m = SYSTEM.modules.find(x => x.id === selected);
+  p.innerHTML = '';
+
+  const back = el('button','pclose');
+  back.innerHTML = '← Wróć do mapy';
+  back.addEventListener('click', closeSheet);
+  p.appendChild(back);
+
+  if(!m){ renderToday(p); return; }
+
+  const dom = SYSTEM.domains.find(d => d.id === m.dom);
+  const head = el('div');
+  head.innerHTML =
+    `<div class="ptag"><i class="dotm ${m.status}"></i>${esc(dom.name)}</div>
+     <h2 class="ptitle">${esc(m.name)}</h2>
+     <p style="font-size:14px;color:var(--steel);line-height:1.6">${esc(m.lead)}</p>
+     <div class="pwhen"><b>Kiedy tu wchodzisz</b>${esc(m.when)}</div>
+     <div class="meta">
+       <span class="chip ${m.status}">${esc(LABEL[m.status])}</span>
+       <span class="chip">Aktualizacja ${esc(m.updated)}</span>
+       <span class="chip">${m.children.length} elementów</span>
+     </div>`;
+  p.appendChild(head);
+
+  const sub = el('div','sub');
+  sub.innerHTML = '<h4>Struktura modułu</h4>';
+  m.children.forEach((c,i) => {
+    const leaf = el('div','leaf');
+    const b = el('button');
+    b.innerHTML = `<span>${esc(c.n)}</span><span class="arrow">›</span>`;
+    const body = el('div','body');
+    body.innerHTML = esc(c.b) + (c.l ? '<ul>' + c.l.map(x=>`<li>${esc(x)}</li>`).join('') + '</ul>' : '');
+    b.addEventListener('click', () => leaf.classList.toggle('open'));
+    leaf.appendChild(b); leaf.appendChild(body);
+    if(i===0) leaf.classList.add('open');
+    sub.appendChild(leaf);
+  });
+  p.appendChild(sub);
+}
+
+function renderToday(p){
+  const t = SYSTEM.today;
+  const head = el('div','today');
+  head.innerHTML =
+    `<div class="ptag">Panel startowy</div>
+     <h2 class="ptitle">Dziś</h2>
+     <div class="pwhen"><b>Jedno działanie</b>${esc(t.focus)}</div>
+     <h4 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-dim);margin:22px 0 4px">Metryki</h4>`;
+  t.metrics.forEach(x => {
+    const r = el('div','metric');
+    r.innerHTML = `<span class="k">${esc(x.k)}</span><span class="v${x.warn?' warn':''}">${esc(x.v)}</span>`;
+    head.appendChild(r);
+  });
+  t.gates.forEach(g => {
+    const w = el('div','gate');
+    w.innerHTML = `<div style="display:flex;font-size:12.5px;color:var(--steel);margin-top:14px">
+      <span>${esc(g.n)}</span><span style="margin-left:auto;font-family:var(--f-mono)">${g.p}%</span></div>
+      <div style="font-size:11.5px;color:var(--steel-dim);margin-top:2px">${esc(g.d)}</div>
+      <div class="bar"><i style="width:${g.p}%"></i></div>`;
+    head.appendChild(w);
+  });
+  p.appendChild(head);
+
+  const cap = el('div','capture');
+  cap.innerHTML =
+    `<h4 style="font-family:var(--f-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-dim);margin-bottom:10px">Szybki wpis do dziennika</h4>
+     <textarea id="capIn" placeholder="Co zrobione, co zablokowane, jedno zdanie od klienta…"></textarea>
+     <div class="crow">
+       <button class="btn pri" id="capAdd">Zapisz wpis</button>
+       <button class="btn sec" id="capDl">Pobierz dziennik</button>
+     </div>
+     <div class="log" id="capLog"></div>`;
+  p.appendChild(cap);
+
+  $('#capAdd').addEventListener('click', addEntry);
+  $('#capDl').addEventListener('click', download);
+  $('#capIn').addEventListener('keydown', e => {
+    if((e.metaKey||e.ctrlKey) && e.key==='Enter') addEntry();
+  });
+  renderLog();
+}
+
+/* ---------- dziennik sesji ----------
+   Świadomie bez pamięci przeglądarki: wpisy trafiają do pliku,
+   plik trafia do repozytorium. Jedno źródło prawdy. */
+const entries = [];
+function addEntry(){
+  const ta = $('#capIn');
+  const v = ta.value.trim();
+  if(!v) { ta.focus(); return; }
+  const d = new Date();
+  const p = n => String(n).padStart(2,'0');
+  entries.unshift({ t:`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`, v });
+  ta.value=''; renderLog();
+}
+function renderLog(){
+  const host = $('#capLog'); if(!host) return;
+  host.innerHTML='';
+  if(!entries.length){
+    host.innerHTML = '<div class="empty">Dziennik tej sesji jest pusty. Wpisy pobierzesz jako plik i wrzucisz do repozytorium.</div>';
+    return;
+  }
+  entries.forEach(e => {
+    const i = el('div','it');
+    i.innerHTML = `<time>${esc(e.t)}</time>${esc(e.v)}`;
+    host.appendChild(i);
+  });
+}
+function download(){
+  if(!entries.length){ addEntry(); if(!entries.length) return; }
+  const md = '# Dziennik Właściciela™\n\n' +
+    entries.slice().reverse().map(e => `## ${e.t}\n\n${e.v}\n`).join('\n');
+  const a = el('a');
+  a.href = URL.createObjectURL(new Blob([md],{type:'text/markdown'}));
+  a.download = 'dziennik-' + new Date().toISOString().slice(0,10) + '.md';
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+}
+
+/* ---------- paleta poleceń ---------- */
+const INDEX = [];
+SYSTEM.modules.forEach(m => {
+  INDEX.push({ n:m.name, p:SYSTEM.domains.find(d=>d.id===m.dom).name, id:m.id, k:(m.name+' '+m.lead+' '+m.when).toLowerCase() });
+  m.children.forEach(c => INDEX.push({ n:c.n, p:m.name, id:m.id, k:(c.n+' '+c.b+' '+(c.l||[]).join(' ')).toLowerCase() }));
+});
+INDEX.push({ n:'Dziś — panel startowy', p:'System', id:'', k:'dziś dzis start metryki bramki dziennik wpis' });
+
+let palIdx = 0, palHits = [];
+function palRender(q){
+  const s = q.trim().toLowerCase();
+  palHits = (s ? INDEX.filter(x => s.split(/\s+/).every(w => x.k.includes(w))) : INDEX).slice(0,40);
+  palIdx = 0;
+  const host = $('#palRes'); host.innerHTML='';
+  if(!palHits.length){
+    host.innerHTML = '<div class="empty" style="padding:16px">Brak trafień. Spróbuj innego słowa — indeks obejmuje wszystkie moduły i ich elementy.</div>';
+    return;
+  }
+  palHits.forEach((h,i) => {
+    const r = el('div','r');
+    r.setAttribute('role','option');
+    r.setAttribute('aria-selected', String(i===0));
+    r.innerHTML = `<span class="rn">${esc(h.n)}</span><span class="rp">${esc(h.p)}</span><span class="rr">↵</span>`;
+    r.addEventListener('click', () => { open(h.id||null); palClose(); });
+    r.addEventListener('mousemove', () => palSel(i));
+    host.appendChild(r);
+  });
+}
+function palSel(i){
+  const rows = $('#palRes').children;
+  if(!rows.length) return;
+  palIdx = (i + rows.length) % rows.length;
+  [...rows].forEach((r,j) => r.setAttribute('aria-selected', String(j===palIdx)));
+  rows[palIdx].scrollIntoView({block:'nearest'});
+}
+function palOpen(){ $('#scrim').classList.add('on'); $('#palInput').value=''; palRender(''); $('#palInput').focus(); }
+function palClose(){ $('#scrim').classList.remove('on'); }
+
+$('#openPal').addEventListener('click', palOpen);
+$('#scrim').addEventListener('click', e => { if(e.target === $('#scrim')) palClose(); });
+$('#palInput').addEventListener('input', e => palRender(e.target.value));
+$('#palInput').addEventListener('keydown', e => {
+  if(e.key==='ArrowDown'){ e.preventDefault(); palSel(palIdx+1); }
+  else if(e.key==='ArrowUp'){ e.preventDefault(); palSel(palIdx-1); }
+  else if(e.key==='Enter'){ e.preventDefault(); const h=palHits[palIdx]; if(h){ open(h.id||null); palClose(); } }
+});
+document.addEventListener('keydown', e => {
+  if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); palOpen(); }
+  else if(e.key==='Escape'){
+    if($('#scrim').classList.contains('on')) palClose();
+    else if(window.innerWidth<=860) closeSheet();
+  }
+});
+
+/* ---------- routing ---------- */
+function fromHash(){
+  const h = location.hash;
+  const m = h.match(/^#\/modul\/(.+)$/);
+  const id = m && SYSTEM.modules.some(x=>x.id===m[1]) ? m[1] : null;
+  selected = id;
+  document.querySelectorAll('.node').forEach(n => n.classList.toggle('sel', n.dataset.id===id));
+  renderPanel();
+  if(id && window.innerWidth<=860) $('#panel').classList.add('on');
+}
+window.addEventListener('hashchange', fromHash);
+
+/* ---------- start ---------- */
+buildMap();
+buildRail();
+buildStat();
+buildStack();
+fromHash();
+</script>
+</body>
+</html>
