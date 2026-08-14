@@ -330,6 +330,7 @@ img{max-width:100%;display:block}
   .content{padding:0 40px}
 }
 @media(max-width:860px){
+  .shell{z-index:auto}
   .topbar{display:flex}
   .progress-top{top:0}
   .rail{
@@ -926,9 +927,16 @@ tocLinks.forEach(a=>{
     const target = document.getElementById(a.dataset.sec);
     if(target){
       e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - 24;
-      window.scrollTo({top:y, behavior:'smooth'});
-      if(window.innerWidth <= 860) toggleRail(false);
+      if(window.innerWidth <= 860){
+        toggleRail(false);
+        requestAnimationFrame(()=>{
+          const y = target.getBoundingClientRect().top + window.scrollY - 24;
+          window.scrollTo({top:y, behavior:'smooth'});
+        });
+      }else{
+        const y = target.getBoundingClientRect().top + window.scrollY - 24;
+        window.scrollTo({top:y, behavior:'smooth'});
+      }
     }
   });
 });
