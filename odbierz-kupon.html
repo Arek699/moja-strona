@@ -7,7 +7,8 @@
   <meta name="referrer" content="no-referrer">
   <title>Twój kod | Łazienka Na Lata™</title>
   <style>
-    *{box-sizing:border-box}body{margin:0;padding:28px 18px;background:#0a1a2f;color:#fbfaf7;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}main{max-width:560px;margin:5vh auto}.brand{font-size:13px;font-weight:700;letter-spacing:2px;color:#e4ce97}h1{font-size:clamp(29px,7vw,40px);line-height:1.2;margin:18px 0}p{margin:14px 0}.card{padding:26px;border-radius:18px;background:#fbfaf7;color:#12161c;margin:26px 0;box-shadow:0 14px 42px #0003}label{display:block;font-size:14px;font-weight:650;margin-bottom:8px}input{width:100%;min-width:0;padding:16px 12px;border:1px solid #a7b5bd;border-radius:9px;background:white;color:#0a1a2f;font:700 clamp(17px,5vw,23px)/1.4 ui-monospace,monospace;user-select:all;-webkit-user-select:all}button,a.action{display:block;width:100%;padding:15px 12px;border-radius:9px;min-height:54px;text-align:center;font:650 17px/1.5 system-ui;cursor:pointer;text-decoration:none}button{margin-top:16px;border:0;background:#0a1a2f;color:#fff}a.action{margin-top:12px;border:1px solid #0a1a2f;background:transparent;color:#0a1a2f}button:focus-visible,a:focus-visible{outline:3px solid #c9a961;outline-offset:4px}button:disabled{opacity:.5;cursor:default}[hidden]{display:none!important}#status{min-height:28px;font-weight:600;color:#076248}small,.hint{font-size:14px;color:#53606d}.steps{padding-left:23px}.steps li{margin:9px 0}.expiry{font-size:15px}footer{font-size:13px;color:#c6d0de}#invalid{color:#9b251c}details{margin-top:18px}summary{cursor:pointer;font-weight:600}@media(max-width:420px){body{padding:20px 14px}.card{padding:20px}main{margin-top:20px}}
+    *{box-sizing:border-box}body{margin:0;padding:28px 18px;background:#0a1a2f;color:#fbfaf7;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}main{max-width:560px;margin:5vh auto}.brand{font-size:13px;font-weight:700;letter-spacing:2px;color:#e4ce97}h1{font-size:clamp(29px,7vw,40px);line-height:1.2;margin:18px 0}p{margin:14px 0}.card{padding:26px;border-radius:18px;background:#fbfaf7;color:#12161c;margin:26px 0;box-shadow:0 14px 42px #0003}label{display:block;font-size:14px;font-weight:650;margin-bottom:8px}input{width:100%;min-width:0;padding:16px 12px;border:1px solid #a7b5bd;border-radius:9px;background:white;color:#0a1a2f;font:700 clamp(17px,5vw,23px)/1.4 ui-monospace,monospace;user-select:text;-webkit-user-select:text}button,a.action{display:block;width:100%;padding:15px 12px;border-radius:9px;min-height:54px;text-align:center;font:650 17px/1.5 system-ui;cursor:pointer;text-decoration:none}button{margin-top:16px;border:0;background:#0a1a2f;color:#fff}a.action{margin-top:12px;border:1px solid #0a1a2f;background:transparent;color:#0a1a2f}button:focus-visible,a:focus-visible{outline:3px solid #c9a961;outline-offset:4px}button:disabled{opacity:.5;cursor:default}[hidden]{display:none!important}#status{min-height:28px;font-weight:600;color:#076248}small,.hint{font-size:14px;color:#53606d}.steps{padding-left:23px}.steps li{margin:9px 0}.expiry{font-size:15px}footer{font-size:13px;color:#c6d0de}#invalid{color:#9b251c}details{margin-top:18px}summary{cursor:pointer;font-weight:600}@media(max-width:420px){body{padding:20px 14px}.card{padding:20px}main{margin-top:20px}}
+    button.secondary{background:transparent;color:#0a1a2f;border:1px solid #9daeb9;font-size:15px}#paste-check{border-top:1px solid #d8dfe5;padding-top:18px}#paste-check label{margin-top:16px}#paste-result{font-size:14px;font-weight:650;color:#7d321a}#paste-result[data-valid=true]{color:#076248}
   </style>
 </head>
 <body>
@@ -19,9 +20,18 @@
       <p id="invalid" role="alert">Ten link nie zawiera kompletnego kodu. Otwórz pełny link z wiadomości od Arka.</p>
       <div id="content" hidden>
         <label for="code">Twój kod rabatowy 100%</label>
-        <input id="code" readonly autocapitalize="none" autocorrect="off" spellcheck="false">
+        <input id="code" type="text" readonly autocapitalize="none" autocorrect="off" spellcheck="false">
         <button id="copy" type="button">Kopiuj kod</button>
         <p id="status" role="status" aria-live="polite"></p>
+        <button id="select-code" class="secondary" type="button">Zaznacz kod do ręcznego kopiowania</button>
+        <details id="paste-check">
+          <summary>Sprawdź, czy kod się skopiował</summary>
+          <label for="paste-test">Przytrzymaj pole i wybierz „Wklej”</label>
+          <input id="paste-test" type="text" placeholder="Wklej tutaj skopiowany kod" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+          <button id="paste-from-clipboard" class="secondary" type="button">Wklej ze schowka i sprawdź</button>
+          <p id="paste-result" role="status" aria-live="polite"></p>
+          <p class="hint">Po wklejeniu prawidłowego kodu pojawi się potwierdzenie. To pole niczego nie wysyła.</p>
+        </details>
         <p id="expiry" class="expiry"></p>
         <a id="purchase" class="action" rel="noreferrer">Przejdź do zakupu</a>
         <ol class="steps">
@@ -62,6 +72,36 @@
       document.getElementById('expiry').textContent = 'Ważny do: ' + parts[2] + '.' + parts[1] + '.' + parts[0] + ', do końca dnia czasu polskiego.';
       function selectCode() { field.focus({preventScroll:true}); field.select(); field.setSelectionRange(0, code.length); }
       field.addEventListener('click', selectCode);
+      document.getElementById('select-code').addEventListener('click', () => {
+        selectCode();
+        status.textContent = 'Kod zaznaczony. Przytrzymaj zaznaczony kod i wybierz Kopiuj.';
+      });
+      const pasteTest = document.getElementById('paste-test');
+      const pasteResult = document.getElementById('paste-result');
+      function checkPastedCode() {
+        const pasted = pasteTest.value;
+        pasteResult.textContent = !pasted ? '' : pasted === code
+          ? 'Potwierdzone: wklejono prawidłowy kod. Możesz przejść do zakupu.'
+          : 'Wklejony tekst nie jest tym kodem. Naciśnij Kopiuj kod lub skopiuj zaznaczony kod ręcznie i spróbuj ponownie.';
+        pasteResult.dataset.valid = pasted === code ? 'true' : 'false';
+      }
+      pasteTest.addEventListener('input', checkPastedCode);
+      document.getElementById('paste-from-clipboard').addEventListener('click', () => {
+        // Explicit user action: read the actual clipboard, never fill with the expected code.
+        if (!navigator.clipboard || !navigator.clipboard.readText) {
+          pasteResult.textContent = 'Przytrzymaj puste pole powyżej i wybierz Wklej z menu telefonu.';
+          delete pasteResult.dataset.valid;
+          return;
+        }
+        navigator.clipboard.readText().then(pasted => {
+          pasteTest.value = pasted;
+          checkPastedCode();
+          if (!pasted) pasteResult.textContent = 'Schowek jest pusty. Użyj Kopiuj kod albo skopiuj zaznaczony kod ręcznie.';
+        }, () => {
+          pasteResult.textContent = 'Przeglądarka nie udostępniła schowka temu przyciskowi. Przytrzymaj puste pole powyżej i wybierz Wklej z menu telefonu.';
+          delete pasteResult.dataset.valid;
+        });
+      });
       const today = new Date().toLocaleDateString('sv-SE', {timeZone:'Europe/Warsaw'});
       if (today > expiry) {
         button.disabled = true;
@@ -69,20 +109,38 @@
         status.textContent = 'Termin ważności tego kodu minął. Skontaktuj się z Arkiem.';
         return;
       }
-      button.addEventListener('click', async () => {
-        let copied = false;
+      button.addEventListener('click', () => {
+        pasteTest.value = '';
+        pasteResult.textContent = '';
+        delete pasteResult.dataset.valid;
+        let selectedCopy = false;
+        const supplyText = event => {
+          if (event.clipboardData) {
+            event.clipboardData.setData('text/plain', code);
+            event.preventDefault();
+          }
+        };
+        // Both methods start in this click, before an async rejection can lose activation.
+        try {
+          document.addEventListener('copy', supplyText);
+          selectCode();
+          selectedCopy = document.execCommand('copy');
+        } catch (_) {}
+        finally { document.removeEventListener('copy', supplyText); }
+        function completed() {
+          status.textContent = 'Spróbuj teraz wkleić kod w Wix. Możesz sprawdzić kopiowanie w polu poniżej.';
+        }
+        function manual() {
+          if (selectedCopy) { completed(); return; }
+          selectCode();
+          document.getElementById('paste-check').open = true;
+          status.textContent = 'Przeglądarka nie pozwoliła na automatyczne kopiowanie. Kod jest zaznaczony — przytrzymaj go i wybierz Kopiuj.';
+        }
         try {
           if (navigator.clipboard && navigator.clipboard.writeText) {
-            await navigator.clipboard.writeText(code);
-            copied = true;
-          }
-        } catch (_) {}
-        if (!copied) {
-          try { selectCode(); copied = document.execCommand('copy'); } catch (_) {}
-        }
-        status.textContent = copied
-          ? 'Kod skopiowany. Teraz przejdź do zakupu i wklej go w Wix.'
-          : 'Kod zaznaczony. Przytrzymaj tekst w polu i wybierz Kopiuj.';
+            navigator.clipboard.writeText(code).then(completed, manual);
+          } else { manual(); }
+        } catch (_) { manual(); }
       });
     })();
   </script>
