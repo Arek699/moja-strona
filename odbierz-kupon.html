@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Twój kod | Łazienka Na Lata™</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;padding:28px 18px;background:#0a1a2f;color:#fbfaf7;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}main{max-width:560px;margin:5vh auto}.brand{font-size:13px;font-weight:700;letter-spacing:2px;color:#e4ce97}h1{font-size:clamp(29px,7vw,40px);line-height:1.2;margin:18px 0}p{margin:14px 0}.card{padding:26px;border-radius:18px;background:#fbfaf7;color:#12161c;margin:26px 0;box-shadow:0 14px 42px #0003}label{display:block;font-size:14px;font-weight:650;margin-bottom:8px}input{width:100%;min-width:0;padding:16px 12px;border:1px solid #a7b5bd;border-radius:9px;background:white;color:#0a1a2f;font:700 clamp(17px,5vw,23px)/1.4 ui-monospace,monospace;user-select:all;-webkit-user-select:all}button,a.action{display:block;width:100%;padding:15px 12px;border-radius:9px;min-height:54px;text-align:center;font:650 17px/1.5 system-ui;cursor:pointer;text-decoration:none}button{margin-top:16px;border:0;background:#0a1a2f;color:#fff}a.action{margin-top:12px;border:1px solid #0a1a2f;background:transparent;color:#0a1a2f}button:focus-visible,a:focus-visible{outline:3px solid #c9a961;outline-offset:4px}button:disabled{opacity:.5;cursor:default}[hidden]{display:none!important}#status{min-height:28px;font-weight:600;color:#076248}small,.hint{font-size:14px;color:#53606d}.steps{padding-left:23px}.steps li{margin:9px 0}.expiry{font-size:15px}footer{font-size:13px;color:#c6d0de}#invalid{color:#9b251c}details{margin-top:18px}summary{cursor:pointer;font-weight:600}@media(max-width:420px){body{padding:20px 14px}.card{padding:20px}main{margin-top:20px}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">ŁAZIENKA NA LATA™</div>
+    <h1 id="title">Twój kod do produktu</h1>
+    <p>Skopiuj kod i użyj go podczas składania zamówienia w Wix.</p>
+    <section class="card">
+      <p id="invalid" role="alert">Ten link nie zawiera kompletnego kodu. Otwórz pełny link z wiadomości od Arka.</p>
+      <div id="content" hidden>
+        <label for="code">Twój kod rabatowy 100%</label>
+        <input id="code" readonly autocapitalize="none" autocorrect="off" spellcheck="false">
+        <button id="copy" type="button">Kopiuj kod</button>
+        <p id="status" role="status" aria-live="polite"></p>
+        <p id="expiry" class="expiry"></p>
+        <a id="purchase" class="action" rel="noreferrer">Przejdź do zakupu</a>
+        <ol class="steps">
+          <li>Naciśnij <strong>„Kopiuj kod”</strong>.</li>
+          <li>Wybierz <strong>„Przejdź do zakupu”</strong>, a w Wix kliknij „Kup”.</li>
+          <li>Wklej kod w pole kodu promocyjnego i zastosuj rabat.</li>
+          <li>Przed zatwierdzeniem sprawdź sumę <strong>0,00 zł</strong>.</li>
+        </ol>
+        <p class="hint">Kod dotyczy jednej sztuki wskazanego produktu. Jeśli rabat się nie nalicza, zatrzymaj zamówienie i skontaktuj się z Arkiem.</p>
+        <details><summary>Gdy kopiowanie na telefonie nie działa</summary><p class="hint">Dotknij pola z kodem i przytrzymaj zaznaczony tekst. Wybierz „Kopiuj”. Możesz też otworzyć ten link w Safari lub Chrome, jeśli przeglądarka w komunikatorze ogranicza kopiowanie.</p></details>
+      </div>
+      <noscript>Włącz JavaScript w przeglądarce, aby wyświetlić kod i przycisk kopiowania.</noscript>
+    </section>
+    <footer>Arkadiusz Bunkowski · Łazienka Na Lata™</footer>
+  </main>
+  <script>
+    (() => {
+      const products = {
+        planer: { name: 'Planer Inwestora™', url: 'https://www.xn--azienkanalata-vhc.com/product-page/planer-inwestora-start' },
+        system: { name: 'System Inwestora™', url: 'https://www.xn--azienkanalata-vhc.com/product-page/system-inwestora-na-lata' }
+      };
+      const parameters = new URLSearchParams(location.hash.slice(1));
+      const product = products[parameters.get('produkt')];
+      const code = (parameters.get('kod') || '').trim();
+      const expiry = parameters.get('do') || '';
+      const validDate = /^\d{4}-\d{2}-\d{2}$/.test(expiry) && Number.isFinite(Date.parse(expiry)) && new Date(expiry).toISOString().slice(0,10) === expiry;
+      if (!product || !code || code.length > 20 || /[\x00-\x1f\x7f]/.test(code) || !validDate) return;
+      const field = document.getElementById('code');
+      const button = document.getElementById('copy');
+      const status = document.getElementById('status');
+      const purchase = document.getElementById('purchase');
+      document.getElementById('invalid').hidden = true;
+      document.getElementById('content').hidden = false;
+      document.getElementById('title').textContent = product.name;
+      field.value = code;
+      purchase.href = product.url;
+      const parts = expiry.split('-');
+      document.getElementById('expiry').textContent = 'Ważny do: ' + parts[2] + '.' + parts[1] + '.' + parts[0] + ', do końca dnia czasu polskiego.';
+      function selectCode() { field.focus({preventScroll:true}); field.select(); field.setSelectionRange(0, code.length); }
+      field.addEventListener('click', selectCode);
+      const today = new Date().toLocaleDateString('sv-SE', {timeZone:'Europe/Warsaw'});
+      if (today > expiry) {
+        button.disabled = true;
+        purchase.hidden = true;
+        status.textContent = 'Termin ważności tego kodu minął. Skontaktuj się z Arkiem.';
+        return;
+      }
+      button.addEventListener('click', async () => {
+        let copied = false;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(code);
+            copied = true;
+          }
+        } catch (_) {}
+        if (!copied) {
+          try { selectCode(); copied = document.execCommand('copy'); } catch (_) {}
+        }
+        status.textContent = copied
+          ? 'Kod skopiowany. Teraz przejdź do zakupu i wklej go w Wix.'
+          : 'Kod zaznaczony. Przytrzymaj tekst w polu i wybierz Kopiuj.';
+      });
+    })();
+  </script>
+</body>
+</html>
