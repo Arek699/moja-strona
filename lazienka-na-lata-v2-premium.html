@@ -1604,18 +1604,64 @@ const ONBOARDING_KEY = "lazienkaNaLata_onboarding_v1";
 const TRYB_BUDOWA_KEY = "lazienkaNaLata_trybBudowa_v1";
 const MILESTONE_KEY = "lazienkaNaLata_milestones_v1";
 
-function lsGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(_){return null}}
-function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}
-
-let state = lsGet(STORAGE_KEY) || {};
-let flags = lsGet(FLAGS_KEY) || {};
-let notes = lsGet(NOTES_KEY) || {};
-let shownMilestones = new Set(lsGet(MILESTONE_KEY) || []);
-
-function saveState(){lsSet(STORAGE_KEY,state)}
-function saveFlags(){lsSet(FLAGS_KEY,flags)}
-function saveNotes(){lsSet(NOTES_KEY,notes)}
-function saveMilestones(){lsSet(MILESTONE_KEY,[...shownMilestones])}
+// One complete snapshot makes importing all four data groups a single storage write.
+// Legacy keys remain untouched and are read until the first successful snapshot save.
+const SNAPSHOT_KEY = "lazienkaNaLata_snapshot_v1";
+let storageReadFailed = false;
+function lsGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(_){storageReadFailed=true;return null}}
+function setStorageWarning(message){
+  let warning=document.getElementById('storage-warning');
+  if(!message){if(warning)warning.remove();return}
+  if(!warning){warning=document.createElement('div');warning.id='storage-warning';warning.setAttribute('role','alert');warning.style.cssText='position:sticky;top:0;z-index:1000;padding:14px 20px;background:#fff2cc;color:#322600;border:2px solid #a87500;font:600 14px/1.5 sans-serif;text-align:center';document.body.prepend(warning)}
+  warning.textContent=message;
+}
+function validateBackup(d,fallback){
+  const record=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
+  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+  const fail=()=>{throw new Error('Invalid backup')};
+  if(!record(d)||!own(d,'state'))fail();
+  if(own(d,'app')&&d.app!=='Łazienka Na Lata™')fail();
+  if(own(d,'version')&&d.version!=='v2')fail();
+  const ids=new Set(DATA.etapy.flatMap(e=>e.punkty.map(p=>p.id)));
+  const booleanMap=value=>{
+    if(!record(value))fail();
+    const result={};
+    for(const [id,v] of Object.entries(value)){if(!ids.has(id)||typeof v!=='boolean')fail();result[id]=v}
+    return result;
+  };
+  const next={state:booleanMap(d.state),flags:booleanMap(own(d,'flags')?d.flags:fallback.flags),notes:{},milestones:[]};
+  const sourceNotes=own(d,'notes')?d.notes:fallback.notes;
+  if(!record(sourceNotes))fail();
+  for(const [id,entries] of Object.entries(sourceNotes)){
+    if(!ids.has(id)||!Array.isArray(entries))fail();
+    next.notes[id]=entries.map(n=>{if(!record(n)||typeof n.date!=='string'||typeof n.text!=='string')fail();return {date:n.date,text:n.text}});
+  }
+  const milestones=own(d,'milestones')?d.milestones:fallback.milestones;
+  const total=ids.size;
+  if(!Array.isArray(milestones)||milestones.some(n=>!Number.isInteger(n)||n<0||n>total))fail();
+  next.milestones=[...new Set(milestones)];
+  return next;
+}
+const emptySnapshot={state:{},flags:{},notes:{},milestones:[]};
+let initialSnapshot;
+const storedSnapshot=lsGet(SNAPSHOT_KEY);
+try{
+  initialSnapshot=validateBackup(storedSnapshot!==null?storedSnapshot:{state:lsGet(STORAGE_KEY)||{},flags:lsGet(FLAGS_KEY)||{},notes:lsGet(NOTES_KEY)||{},milestones:lsGet(MILESTONE_KEY)||[]},emptySnapshot);
+}catch(_){initialSnapshot=emptySnapshot;storageReadFailed=true}
+let state = initialSnapshot.state;
+let flags = initialSnapshot.flags;
+let notes = initialSnapshot.notes;
+let shownMilestones = new Set(initialSnapshot.milestones);
+function currentSnapshot(){return {state,flags,notes,milestones:[...shownMilestones]}}
+function persistSnapshot(next){
+  try{localStorage.setItem(SNAPSHOT_KEY,JSON.stringify(next));setStorageWarning('');return true}
+  catch(_){setStorageWarning('Nie udało się zapisać zmian w tej przeglądarce. Przed zamknięciem strony wyeksportuj kopię JSON.');return false}
+}
+function saveState(){return persistSnapshot(currentSnapshot())}
+function saveFlags(){return persistSnapshot(currentSnapshot())}
+function saveNotes(){return persistSnapshot(currentSnapshot())}
+function saveMilestones(){return persistSnapshot(currentSnapshot())}
+if(storageReadFailed)setStorageWarning('Nie udało się odczytać zapisanego postępu. Zachowaj kopię JSON i sprawdź ustawienia pamięci przeglądarki przed wprowadzaniem zmian.');
 
 function isChecked(id){return Boolean(state[id])}
 function isFlagged(id){return Boolean(flags[id])}
@@ -2102,7 +2148,28 @@ function exportToEmail(){const s='Mój postęp — Łazienka Na Lata™',b=build
 async function exportToClipboard(){try{await navigator.clipboard.writeText(buildProgressReport(false));showToast('Postęp skopiowany do schowka')}catch(_){showToast('Nie udało się skopiować')}}
 function exportToJSON(){const d={app:'Łazienka Na Lata™',version:'v2',exportedAt:new Date().toISOString(),state:state,flags:flags,notes:notes,milestones:[...shownMilestones]};const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='lazienka-postep-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),1000);showToast('Backup zapisany')}
 
-$('#import-file').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(!d.state||typeof d.state!=='object')throw new Error('Invalid');if(!confirm('Przywrócić postęp z pliku?')){e.target.value='';return}Object.keys(state).forEach(k=>delete state[k]);Object.assign(state,d.state);saveState();if(d.flags){Object.keys(flags).forEach(k=>delete flags[k]);Object.assign(flags,d.flags);saveFlags()}if(d.notes){Object.keys(notes).forEach(k=>delete notes[k]);Object.assign(notes,d.notes);saveNotes()}if(d.milestones){shownMilestones=new Set(d.milestones);saveMilestones()}$$('.punkt').forEach(el=>{const c=isChecked(el.dataset.id),fg=isFlagged(el.dataset.id);el.classList.toggle('checked',c);el.setAttribute('aria-checked',c);const fb=el.querySelector('[data-flag-punkt]');if(fb)fb.classList.toggle('flagged',fg);const nb=el.querySelector('[data-note-punkt]');if(nb)nb.classList.toggle('has-note',getNotes(el.dataset.id).length>0)});updateProgress();showToast('Postęp przywrócony');closeExportModal()}catch(err){showToast('Plik niepoprawny')}e.target.value=''};r.readAsText(f)});
+$('#import-file').addEventListener('change',e=>{
+  const f=e.target.files&&e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onerror=()=>{showToast('Nie udało się odczytać pliku. Dotychczasowy postęp pozostał bez zmian.');e.target.value=''};
+  r.onload=ev=>{
+    let next;
+    try{next=validateBackup(JSON.parse(ev.target.result),currentSnapshot())}
+    catch(_){showToast('Plik niepoprawny. Dotychczasowy postęp pozostał bez zmian.');e.target.value='';return}
+    if(!confirm('Przywrócić postęp z pliku? Zastąpi to obecne dane.')){e.target.value='';return}
+    // Storage failure leaves both the current in-memory state and saved snapshot intact.
+    if(!persistSnapshot(next)){showToast('Nie przywrócono kopii: zapis jest niedostępny. Dotychczasowy postęp pozostał bez zmian.');e.target.value='';return}
+    state=next.state;flags=next.flags;notes=next.notes;shownMilestones=new Set(next.milestones);
+    $$('.punkt').forEach(el=>{
+      const c=isChecked(el.dataset.id),fg=isFlagged(el.dataset.id);
+      el.classList.toggle('checked',c);el.setAttribute('aria-checked',c?'true':'false');
+      const fb=el.querySelector('[data-flag-punkt]');if(fb)fb.classList.toggle('flagged',fg);
+      const nb=el.querySelector('[data-note-punkt]');if(nb)nb.classList.toggle('has-note',getNotes(el.dataset.id).length>0);
+    });
+    updateProgress();showToast('Postęp przywrócony');closeExportModal();e.target.value='';
+  };
+  r.readAsText(f);
+});
 
 document.addEventListener('click',e=>{const btn=e.target.closest('[data-export]');if(!btn)return;const a=btn.dataset.export;if(a==='pdf')exportToPDF(false);else if(a==='ekipa')exportToPDF(true);else if(a==='email')exportToEmail();else if(a==='copy')exportToClipboard();else if(a==='json')exportToJSON()});
 document.addEventListener('click',e=>{const btn=e.target.closest('[data-go-to]');if(!btn)return;const t=document.getElementById(btn.dataset.goTo);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
